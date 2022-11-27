@@ -1,4 +1,4 @@
-import Auth from "../utils/auth";
+import Auth from "./auth";
 import decode from "jwt-decode";
 
 export const getUserId = () => {
