@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchBooks from "./pages/SearchBooks";
 import SavedBooks from "./pages/SavedBooks";
 import Navbar from "./components/Navbar";
+import MapPage from "./pages/MapPage";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -44,6 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SearchBooks />} />
             <Route path="/saved" element={<SavedBooks />} />
+            <Route path="/map" element={<MapPage />} />
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}

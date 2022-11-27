@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import "./App.css";
 
-import Map from "./components/Map/";
+import Map from "../components/Map";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
