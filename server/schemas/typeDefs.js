@@ -27,11 +27,32 @@ const typeDefs = gql`
     user: User
   }
 
+  type Thought {
+    _id: ID
+    thoughtText: String
+    thoughtAuthor: String
+    createdAt: String
+  }
+
+  type Location {
+    _id: ID
+    locationId: String
+    businessName: String
+    address: String
+  }
+
   type Query {
     users: [User]!
     user(email: String!): User
     books(username: String): [Book]
     me(_id: ID!): User
+
+
+    thoughts: [Thought]!
+    thought(thoughtId: ID!): Thought
+
+    locations: [Location]!
+    location(locationId: ID!): Location
   }
 
   type Mutation {

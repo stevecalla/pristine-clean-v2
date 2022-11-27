@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useQuery } from '@apollo/client';
+import { QUERY_SINGLE_LOCATION } from '../utils/queries';
 // import "./App.css";
 
 import Map from "../components/Map";
@@ -76,6 +78,19 @@ function MapPage() {
 
   //get destinationDB from database
   // setDestinationDb('Longmont, CO, USA');
+
+  let locationId = "6383d5f3484faddf1cc8ea76"
+
+  const { loading, data } = useQuery(QUERY_SINGLE_LOCATION, {
+    // pass URL parameter
+    variables: { locationId: locationId },
+  });
+
+  if (loading) {
+    return <div>Loading...</div>;
+  } else {
+    console.log({data});
+  }
 
   return (
     <div className="App">
