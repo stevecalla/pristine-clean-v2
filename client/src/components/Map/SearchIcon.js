@@ -35,7 +35,7 @@ function SearchIcon({
             <Form>
               <Autocomplete>
                 <Form.Control
-                  className="ml-5"
+                  className=""
                   type="search"
                   required
                   id="origin"
