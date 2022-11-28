@@ -5,7 +5,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 // import Form from 'react-bootstrap/Form';
 
-import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
+// import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,7 +16,8 @@ const Timeoff = () => {
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage ] = useState("");
 
   // const handleFormSubmit = (e) => {
 

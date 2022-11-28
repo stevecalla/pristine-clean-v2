@@ -3,7 +3,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import { useQuery } from "@apollo/client";
-import { QUERY_SINGLE_EMPLOYEE, QUERY_LOCATIONS } from "../utils/queries";
+// import { QUERY_SINGLE_EMPLOYEE } from "../utils/queries";
+import { QUERY_LOCATIONS } from "../utils/queries";
 
 import EmployeeLocationsCont from "../components/EmployeeLocationsCont";
 import FullCalendar from "../components/FullCalendar";
@@ -12,6 +13,7 @@ const EmployeeDash = () => {
   // Execute the query on component load
   // const { loading, data } = useQuery(QUERY_SINGLE_EMPLOYEE);
   const { loadingLocations, locationsData } = useQuery(QUERY_LOCATIONS);
+  console.log(loadingLocations);
 
   // Use optional chaining to check if data exists and if it has an employee property. If not, return an empty array to use.
   // const employee = data?.employee || [];
