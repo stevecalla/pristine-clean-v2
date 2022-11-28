@@ -51,7 +51,7 @@ const SignupForm = ({ setShowModal }) => {
       //section
       let decodedToken = decode(data.addUser.token);
       let isManager = decodedToken.data.isManager;
-      let userId = decodedToken.data._id;
+      // let userId = decodedToken.data._id;
 
       // navigate('/location', {replace: true});
       // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})

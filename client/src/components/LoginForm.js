@@ -1,6 +1,6 @@
 // see SignupForm.js for comments
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -41,7 +41,7 @@ const LoginForm = ({ setShowModal }) => {
       
       let decodedToken = decode(data.login.token);
       let isManager = decodedToken.data.isManager;
-      let userId = decodedToken.data._id;
+      // let userId = decodedToken.data._id;
 
       // navigate('/location', {replace: true});
       // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
