@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const CenterIcon = ({ center, map }) => {
-
   return (
     <>
       <FontAwesomeIcon
@@ -18,7 +17,7 @@ export const CenterIcon = ({ center, map }) => {
       />
     </>
   );
-}
+};
 
 const centerStyle = {
   bottom: "62px",

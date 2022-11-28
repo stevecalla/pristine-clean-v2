@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Modal, Tab, NavDropdown } from "react-bootstrap";
-import Dropdown from 'react-bootstrap/Dropdown';
+import {
+  Navbar,
+  Nav,
+  Container,
+  Modal,
+  Tab,
+  NavDropdown,
+} from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 import Auth from "../utils/auth";
@@ -29,16 +36,14 @@ const AppNavbar = () => {
                   <Nav.Link as={Link} to="/saved" eventKey="2">
                     See Your Books
                   </Nav.Link>
-                  <Nav.Link onClick={Auth.logout}>
-                    Logout
-                  </Nav.Link>
+                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
                 <>
                   <NavDropdown
                     id="nav-dropdown-example"
                     title="Dashboard"
-                    menuVariant="dark"
+                    menuvariant="dark"
                   >
                     <NavDropdown.Item as={Link} to="/employeedash" eventKey="3">
                       Employee
@@ -50,7 +55,7 @@ const AppNavbar = () => {
                   <NavDropdown
                     id="nav-dropdown-example"
                     title="Forms"
-                    menuVariant="dark"
+                    menuvariant="dark"
                   >
                     <NavDropdown.Item as={Link} to="/availability" eventKey="5">
                       Availability

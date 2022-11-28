@@ -92,11 +92,7 @@ export const Share = () => {
         alt="Share my profile"
       />
 
-      <Modal 
-        size="sm" 
-        show={show} 
-        onHide={handleClose}
-      >
+      <Modal size="sm" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title className="">Directions</Modal.Title>
         </Modal.Header>

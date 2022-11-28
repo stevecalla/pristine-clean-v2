@@ -41,7 +41,10 @@ const BookListSearch = ({
                 ) : null}
                 <Card.Body>
                   <Card.Title className="mb-0">{book.title}</Card.Title>
-                  <p className="small mb-0">{book.authors.length === 1 ? "Author: " : "Authors: " } {`${book.authors.join(', ')}`}</p>
+                  <p className="small mb-0">
+                    {book.authors.length === 1 ? "Author: " : "Authors: "}{" "}
+                    {`${book.authors.join(", ")}`}
+                  </p>
                   <p className="small mt-0">
                     Published Date: {book.publishedDate}
                   </p>

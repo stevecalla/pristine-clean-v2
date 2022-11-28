@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const locationSchema = new Schema({
   locationId: {
@@ -17,7 +17,6 @@ const locationSchema = new Schema({
   },
 });
 
-const Location = model('Location', locationSchema);
+const Location = model("Location", locationSchema);
 
 module.exports = Location;
-

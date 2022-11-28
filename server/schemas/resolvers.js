@@ -6,7 +6,7 @@ const resolvers = {
   Query: {
     users: async (parent, args, context) => {
       // if (context.user) {
-        return User.find().populate("books");
+      return User.find().populate("books");
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
@@ -34,12 +34,10 @@ const resolvers = {
     },
 
     location: async (parent, { locationId }) => {
-      
-      console.log('resolve js line 38 = ', locationId)
+      console.log("resolve js line 38 = ", locationId);
 
       return Location.findOne({ _id: locationId });
     },
-    
   },
 
   Mutation: {
@@ -49,7 +47,7 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email }).populate('books');
+      const user = await User.findOne({ email }).populate("books");
 
       if (!user) {
         throw new AuthenticationError("No user found with this email address");

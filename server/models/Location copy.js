@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const locationSchema = new Schema({
   businessName: {
@@ -22,23 +22,23 @@ const locationSchema = new Schema({
   instructions: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Instructions',
+      ref: "Instructions",
     },
   ],
   manager: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Employee',
+      ref: "Employee",
     },
   ],
   cleaners: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Employee',
+      ref: "Employee",
     },
   ],
 });
 
-const Location = model('Location', locationSchema);
+const Location = model("Location", locationSchema);
 
 module.exports = Location;

@@ -1,7 +1,7 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-type Employee {
+  type Employee {
     _id: ID
     firstName: String
     lastName: String
@@ -10,6 +10,10 @@ type Employee {
     isManager: Boolean
     availability: [Availability]
     schedule: [Schedule]
+  }
+
+  type Schedule {
+    _id: ID
   }
 
   type Availability {
@@ -74,7 +78,6 @@ type Employee {
     user(email: String!): User
     books(username: String): [Book]
     me(_id: ID!): User
-
 
     thoughts: [Thought]!
     thought(thoughtId: ID!): Thought

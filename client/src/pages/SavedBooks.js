@@ -19,9 +19,9 @@ const SavedBooks = () => {
   let savedBooks = [];
   // get all user saved book info to render to page
   const { loading, data } = useQuery(QUERY_ME, {
-    variables: { id: userId }, 
+    variables: { id: userId },
     // if skip is true, this query will not be executed; in this instance, if the user is not logged in this query will be skipped when the component mounts
-    skip: !Auth.loggedIn(), 
+    skip: !Auth.loggedIn(),
   });
 
   // using loading paramater to wait for response from useQuery QUERY_ME
@@ -59,12 +59,14 @@ const SavedBooks = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1 className="d-flex justify-content-center text-center">Viewing saved books!</h1>
+          <h1 className="d-flex justify-content-center text-center">
+            Viewing saved books!
+          </h1>
         </Container>
       </Jumbotron>
 
       {/* {Auth.loggedIn() &&  */}
-        <BookList
+      <BookList
         savedBooks={savedBooks}
         handleDeleteBook={handleDeleteBook}
         source={"saved"}
