@@ -35,7 +35,7 @@ const resolvers = {
 
     location: async (parent, { locationId }) => {
       
-      console.log(locationId)
+      console.log('resolve js line 38 = ', locationId)
 
       return Location.findOne({ _id: locationId });
     },

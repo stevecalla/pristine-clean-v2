@@ -101,6 +101,7 @@ function Map({ originDb, destinationDb }) {
   return (
     <div>
       <div style={containerStyle} className="d-flex align-items-center">
+      
         <LoadMap
           center={center}
           directionsResponse={directionsResponse}
