@@ -1,11 +1,13 @@
 // see SignupForm.js for comments
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import decode from "jwt-decode";
 
-const LoginForm = () => {
+const LoginForm = ({ setShowModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -16,6 +18,8 @@ const LoginForm = () => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
+
+  let navigate = useNavigate();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -34,6 +38,20 @@ const LoginForm = () => {
 
       // Auth.login(data.login.token);
       Auth.login(data.login);
+      
+      let decodedToken = decode(data.login.token);
+      let isManager = decodedToken.data.isManager;
+      let userId = decodedToken.data._id;
+
+      // navigate('/location', {replace: true});
+      // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
+      
+      // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/${userId}`)
+
+      isManager ? navigate(`/managerdash/${userId}`, {replace: true}) : navigate(`/employeedash/${userId}`, {replace: true});
+
+      setShowModal(false);
+
     } catch (e) {
       console.error(e);
       setShowAlert(true);

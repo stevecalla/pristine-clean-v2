@@ -48,16 +48,18 @@ function App() {
         <>
           <Navbar />
           <Routes>
-            <Route path="/" element={<SearchBooks />} />
-            <Route path="/saved" element={<SavedBooks />} />
-            <Route path="/map" element={<MapPage />} />
-            <Route path="/employeedash" element={<EmployeeDash />} />
-            <Route path="/managerdash" element={<ManagerDash />} />
-            <Route path="/availability" element={<Availability />} />
-            <Route path="/timeoff" element={<Timeoff />} />
-            <Route path="/incident" element={<Incident />} />
-            <Route path="/location" element={<Location />} />
-            
+            <Route exact path="/" element={<SearchBooks />} />
+            <Route exact path="/saved" element={<SavedBooks />} />
+            <Route exact path="/map" element={<MapPage />} />
+            <Route exact path="/employeedash" element={<EmployeeDash />} />
+            <Route exact path="/employeedash/:userId" element={<EmployeeDash />} />
+            <Route exact path="/managerdash" element={<ManagerDash />} />
+            <Route exact path="/managerdash/:userId" element={<ManagerDash />} />
+            <Route exact path="/availability" element={<Availability />} />
+            <Route exact path="/timeoff" element={<Timeoff />} />
+            <Route exact path="/incident" element={<Incident />} />
+            <Route exact path="/location" element={<Location />} />
+
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}
