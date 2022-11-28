@@ -28,17 +28,17 @@ const AppNavbar = () => {
           <Navbar.Collapse id="navbar">
             <Nav className="ml-auto">
               {/* if user is logged in show saved books & logout nav links else show login/signup modal */}
-              {Auth.loggedIn() ? (
+              {/* {Auth.loggedIn() ? ( */}
                 <>
-                  <Nav.Link as={Link} to="/" eventKey="1">
+                  {/* <Nav.Link as={Link} to="/" eventKey="1">
                     Search For Books
                   </Nav.Link>
                   <Nav.Link as={Link} to="/saved" eventKey="2">
                     See Your Books
-                  </Nav.Link>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  </Nav.Link> */}
+                  {/* <Nav.Link onClick={Auth.logout}>Logout</Nav.Link> */}
                 </>
-              ) : (
+              {/* ) : ( */}
                 <>
                   <NavDropdown
                     id="nav-dropdown-example"
@@ -76,6 +76,7 @@ const AppNavbar = () => {
                   <Nav.Link onClick={() => setShowModal(true)}>
                     Login/Sign Up
                   </Nav.Link>
+                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               )}
             </Nav>

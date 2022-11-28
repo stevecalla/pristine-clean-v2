@@ -7,8 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SearchBooks from "./pages/SearchBooks";
-import SavedBooks from "./pages/SavedBooks";
+import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
 import MapPage from "./pages/MapPage";
 import EmployeeDash from "./pages/EmployeeDash";
@@ -48,8 +47,7 @@ function App() {
         <>
           <Navbar />
           <Routes>
-            <Route exact path="/" element={<SearchBooks />} />
-            <Route exact path="/saved" element={<SavedBooks />} />
+            <Route exact path="/" element={<Homepage />} />
             <Route exact path="/map" element={<MapPage />} />
             <Route exact path="/employeedash" element={<EmployeeDash />} />
             <Route exact path="/managerdash" element={<ManagerDash />} />
