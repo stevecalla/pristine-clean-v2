@@ -38,6 +38,13 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    firstName: String
+    lastName: String
+    cell: String
+    isManager: Boolean
+    availability: [Availability]
+    schedule: [Schedule]
+    location: [Location]
     savedBooks: [Book]!
     bookCount: String
   }
