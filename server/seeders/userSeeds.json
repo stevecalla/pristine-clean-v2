@@ -11,5 +11,18 @@
       "availability": [],
       "schedule": [],
       "location": []
+  },
+  {
+      "username": "b",
+      "email": "b@b.com",
+      "password": "12",
+      "bookCount": "0",
+      "firstName": "first",
+      "lastName": "last",
+      "cell": "8675309",
+      "isManager": "false",
+      "availability": [],
+      "schedule": [],
+      "location": []
   }
 ]
