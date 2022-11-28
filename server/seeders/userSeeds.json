@@ -11,6 +11,45 @@
         "availability": [
             {
                 "mondayAm": true
+            },
+            {
+                "mondayPm": true
+            },
+            {
+                "tuesdayAm": true
+            },
+            {
+                "tuesdayPm": true
+            },
+            {
+                "wednesdayAm": true
+            },
+            {
+                "wednesdayPm": true
+            },
+            {
+                "thursdayAm": true
+            },
+            {
+                "thursdayPm": true
+            },
+            {
+                "fridayAm": true
+            },
+            {
+                "fridayPm": true
+            },
+            {
+                "saturdayAm": true
+            },
+            {
+                "saturdayPm": true
+            },
+            {
+                "sundayAm": true
+            },
+            {
+                "sundayPm": true
             }
         ],
         "schedule": [],
@@ -28,6 +67,45 @@
         "availability": [
             {
                 "mondayAm": true
+            },
+            {
+                "mondayPm": true
+            },
+            {
+                "tuesdayAm": true
+            },
+            {
+                "tuesdayPm": true
+            },
+            {
+                "wednesdayAm": true
+            },
+            {
+                "wednesdayPm": true
+            },
+            {
+                "thursdayAm": true
+            },
+            {
+                "thursdayPm": true
+            },
+            {
+                "fridayAm": true
+            },
+            {
+                "fridayPm": true
+            },
+            {
+                "saturdayAm": true
+            },
+            {
+                "saturdayPm": true
+            },
+            {
+                "sundayAm": true
+            },
+            {
+                "sundayPm": true
             }
         ],
         "schedule": [],
@@ -42,7 +120,50 @@
         "lastName": "last",
         "cell": "8675309",
         "isManager": "false",
-        "availability": [],
+        "availability": [
+            {
+                "mondayAm": true
+            },
+            {
+                "mondayPm": true
+            },
+            {
+                "tuesdayAm": true
+            },
+            {
+                "tuesdayPm": true
+            },
+            {
+                "wednesdayAm": true
+            },
+            {
+                "wednesdayPm": true
+            },
+            {
+                "thursdayAm": true
+            },
+            {
+                "thursdayPm": true
+            },
+            {
+                "fridayAm": true
+            },
+            {
+                "fridayPm": true
+            },
+            {
+                "saturdayAm": true
+            },
+            {
+                "saturdayPm": true
+            },
+            {
+                "sundayAm": true
+            },
+            {
+                "sundayPm": true
+            }
+        ],
         "schedule": [],
         "location": []
     }
