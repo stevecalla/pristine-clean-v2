@@ -20,7 +20,7 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-    },  
+    },
     firstName: {
       type: String,
       trim: true,
@@ -37,10 +37,11 @@ const userSchema = new Schema(
       type: Boolean,
     },
     availability: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Availability',
-      },
+      // {
+      //   type: Schema.Types.ObjectId,
+      //   ref: 'Availability',
+      // },
+
     ],
     schedule: [
       {

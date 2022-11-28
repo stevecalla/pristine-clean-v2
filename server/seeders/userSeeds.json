@@ -1,41 +1,49 @@
 [
-  {
-      "username": "cmcnatt",
-      "email": "colinmichael89@gmail.com",
-      "password": "12",
-      "bookCount": "0",
-      "firstName": "Colin",
-      "lastName": "McNatt",
-      "cell": "8675309",
-      "isManager": "true",
-      "availability": [],
-      "schedule": [],
-      "location": []
-  },
-  {
-      "username": "b",
-      "email": "b@b.com",
-      "password": "12",
-      "bookCount": "0",
-      "firstName": "first",
-      "lastName": "last",
-      "cell": "8675309",
-      "isManager": "true",
-      "availability": [],
-      "schedule": [],
-      "location": []
-  },
-  {
-      "username": "a",
-      "email": "a@a.com",
-      "password": "12",
-      "bookCount": "0",
-      "firstName": "first",
-      "lastName": "last",
-      "cell": "8675309",
-      "isManager": "false",
-      "availability": [],
-      "schedule": [],
-      "location": []
-  }
+    {
+        "username": "cmcnatt",
+        "email": "colinmichael89@gmail.com",
+        "password": "12",
+        "bookCount": "0",
+        "firstName": "Colin",
+        "lastName": "McNatt",
+        "cell": "8675309",
+        "isManager": "true",
+        "availability": [
+            {
+                "mondayAm": true
+            }
+        ],
+        "schedule": [],
+        "location": []
+    },
+    {
+        "username": "b",
+        "email": "b@b.com",
+        "password": "12",
+        "bookCount": "0",
+        "firstName": "first",
+        "lastName": "last",
+        "cell": "8675309",
+        "isManager": "true",
+        "availability": [
+            {
+                "mondayAm": true
+            }
+        ],
+        "schedule": [],
+        "location": []
+    },
+    {
+        "username": "a",
+        "email": "a@a.com",
+        "password": "12",
+        "bookCount": "0",
+        "firstName": "first",
+        "lastName": "last",
+        "cell": "8675309",
+        "isManager": "false",
+        "availability": [],
+        "schedule": [],
+        "location": []
+    }
 ]
