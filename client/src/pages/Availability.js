@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import { useQuery } from "@apollo/client";
+// import { useQuery } from "@apollo/client";
 
 // import { QUERY_SINGLE_EMPLOYEE } from '../utils/queries';
 

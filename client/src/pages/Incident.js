@@ -13,6 +13,7 @@ function Incident() {
   // Execute the query on component load
   const { loadingEmployees, employeesData } = useQuery(QUERY_EMPLOYEES);
   const { loadingLocations, locationsData } = useQuery(QUERY_LOCATIONS);
+  console.log(loadingEmployees, loadingLocations);
   // Use Form.Optional chaining to check if data exists and if it has an employee property. If not, return an empty array to use.
   const employees = employeesData?.employees || [];
   const locations = locationsData?.employees || [];

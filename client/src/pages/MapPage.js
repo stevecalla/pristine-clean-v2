@@ -27,7 +27,8 @@ library.add(
 function MapPage() {
   const [originDb, setOriginDb] = useState("");
   // const [originDb, setOriginDb] = useState('40.0945509, -105.178197'); //Boulder, CO
-  const [destinationDb, setDestinationDb] = useState("Longmont, CO, USA");
+  const [destinationDb] = useState("Longmont, CO, USA");
+  // const [destinationDb, setDestinationDb] = useState("Longmont, CO, USA");
   const [coords, setCoords] = useState("");
 
   useEffect(() => {
