@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
+import { Navbar, Nav, Container, Modal, Tab, NavDropdown } from "react-bootstrap";
+import Dropdown from 'react-bootstrap/Dropdown';
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 import Auth from "../utils/auth";
@@ -34,12 +35,39 @@ const AppNavbar = () => {
                 </>
               ) : (
                 <>
-                <Nav.Link onClick={() => setShowModal(true)}>
-                  Login/Sign Up
-                </Nav.Link>
-                <Nav.Link as={Link} to="/map" eventKey="3">
-                  Map Page
-                </Nav.Link>
+                  <NavDropdown
+                    id="nav-dropdown-example"
+                    title="Dashboard"
+                    menuVariant="dark"
+                  >
+                    <NavDropdown.Item as={Link} to="/employeedash" eventKey="3">
+                      Employee
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/managerdash" eventKey="4">
+                      Manager
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <NavDropdown
+                    id="nav-dropdown-example"
+                    title="Forms"
+                    menuVariant="dark"
+                  >
+                    <NavDropdown.Item as={Link} to="/availability" eventKey="5">
+                      Availability
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/timeoff" eventKey="6">
+                      Request Time-Off
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/incident" eventKey="7">
+                      Incident Report
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <Nav.Link as={Link} to="/map" eventKey="8">
+                    Map Page
+                  </Nav.Link>
+                  <Nav.Link onClick={() => setShowModal(true)}>
+                    Login/Sign Up
+                  </Nav.Link>
                 </>
               )}
             </Nav>
