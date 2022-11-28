@@ -42,3 +42,53 @@ export const QUERY_SINGLE_LOCATION = gql`
     }
   }
 `;
+
+export const QUERY_LOCATIONS = gql`
+  query allLocations {
+    locations {
+      _id
+      businessName
+      address
+      days
+      laborHours
+      instructions
+      manager
+      cleaners
+    }
+  }
+`;
+
+// export const QUERY_SINGLE_LOCATION = gql`
+//   query singleLocation($locationId: ID!) {
+//     location(locationId: $locationId) {
+//       _id
+//       name
+//       skills
+//     }
+//   }
+// `;
+
+export const QUERY_EMPLOYEES = gql`
+  query allEmployees {
+    employees {
+      _id
+      firstName
+      lastName
+      cell
+      email
+      isManager
+      availability
+      schedule
+    }
+  }
+`;
+
+export const QUERY_SINGLE_EMPLOYEE = gql`
+  query singleEmployee($employeeId: ID!) {
+    employee(employeeId: $employeeId) {
+      _id
+      name
+      skills
+    }
+  }
+`;

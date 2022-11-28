@@ -12,6 +12,14 @@ import SearchBooks from "./pages/SearchBooks";
 import SavedBooks from "./pages/SavedBooks";
 import Navbar from "./components/Navbar";
 import MapPage from "./pages/MapPage";
+import EmployeeDash from "./pages/EmployeeDash";
+import ManagerDash from "./pages/ManagerDash";
+import Availability from "./pages/Availability";
+import Timeoff from "./pages/Timeoff";
+import Incident from "./pages/Incident";
+
+
+
 
 // Construct our main GraphQL API endpoint
 // const httpLink = createHttpLink({
@@ -51,6 +59,12 @@ function App() {
             <Route path="/" element={<SearchBooks />} />
             <Route path="/saved" element={<SavedBooks />} />
             <Route path="/map" element={<MapPage />} />
+            <Route path="/employeedash" element={<EmployeeDash />} />
+            <Route path="/managerdash" element={<ManagerDash />} />
+            <Route path="/availability" element={<Availability />} />
+            <Route path="/timeoff" element={<Timeoff />} />
+            <Route path="/incident" element={<Incident />} />
+            
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}
