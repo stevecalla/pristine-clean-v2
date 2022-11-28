@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const employeeSchema = new Schema({
   firstName: {
@@ -60,11 +60,11 @@ const employeeSchema = new Schema({
   schedule: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Schedule',
+      ref: "Schedule",
     },
   ],
 });
 
-const Employee = model('Employee', employeeSchema);
+const Employee = model("Employee", employeeSchema);
 
 module.exports = Employee;

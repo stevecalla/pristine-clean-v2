@@ -15,7 +15,7 @@ export function geoLocation(pos) {
     const crd = pos.coords;
 
     console.log(pos.coords);
-    
+
     console.log("Your current position is:");
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
@@ -25,14 +25,11 @@ export function geoLocation(pos) {
     console.log(`More or less ${crd.altitudeAccuracy} meters.`);
     console.log(`Speed: ${crd.speed}`);
     console.log(`Heading: ${crd.heading}`);
-    console.log({crd})
+    console.log({ crd });
     return crd;
-    
   } catch (error) {
-    
-    console.warn(`ERROR(${error.code}): ${error.message}`); 
+    console.warn(`ERROR(${error.code}): ${error.message}`);
     return error;
-    
   }
 }
 
@@ -51,26 +48,23 @@ export function getCoords() {
     navigator.geolocation.getCurrentPosition((position) => {
       let crds = position.coords;
       console.log(
-          position.coords.latitude, 
-          position.coords.longitude,
-          position.coords.accuracy,
-          position.coords.altitude,
-          position.coords.altitudeAccuracy,
-          position.coords.speed
+        position.coords.latitude,
+        position.coords.longitude,
+        position.coords.accuracy,
+        position.coords.altitude,
+        position.coords.altitudeAccuracy,
+        position.coords.speed
       );
-      return (`${crds.latitude},${crds.longitude}`);
-    })
-
+      return `${crds.latitude},${crds.longitude}`;
+    });
   } catch (error) {
-
     console.warn(`ERROR(${error.code}): ${error.message}`);
-    
   }
 }
 
 // navigator.geolocation.getCurrentPosition((position) => {
 //   console.log(
-//       position.coords.latitude, 
+//       position.coords.latitude,
 //       position.coords.longitude,
 //       position.coords.accuracy,
 //       position.coords.altitude,

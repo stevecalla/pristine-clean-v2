@@ -2,9 +2,8 @@ import React from "react";
 import { GoogleMap, DirectionsRenderer } from "@react-google-maps/api";
 
 export const LoadMap = ({ center, directionsResponse, setMap }) => {
-  console.log({directionsResponse})
+  console.log({ directionsResponse });
 
-  
   return (
     <GoogleMap
       center={center}

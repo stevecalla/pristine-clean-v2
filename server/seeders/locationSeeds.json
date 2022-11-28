@@ -1,12 +1,12 @@
 [
   {
-      "locationId": 1,
-      "businessName": "The Station Hair Studio",
-      "address": "1120 Delaware St Suite 120, Denver, CO 80204"
+    "locationId": 1,
+    "businessName": "The Station Hair Studio",
+    "address": "1120 Delaware St Suite 120, Denver, CO 80204"
   },
   {
-      "locationId": 2,
-      "businessName": "DECO",
-      "address": "572 Inca St, Denver, CO 80204"
+    "locationId": 2,
+    "businessName": "DECO",
+    "address": "572 Inca St, Denver, CO 80204"
   }
 ]

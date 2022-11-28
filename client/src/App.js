@@ -3,7 +3,6 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  // createHttpLink,
   HttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
@@ -17,14 +16,7 @@ import ManagerDash from "./pages/ManagerDash";
 import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
-
-
-
-
-// Construct our main GraphQL API endpoint
-// const httpLink = createHttpLink({
-//   uri: "/graphql",
-// });
+import Location from "./pages/Location";
 
 const httpLink = new HttpLink({
   uri: process.env.NODE_ENV === 'development' ? "http://localhost:3001/graphql" : "/graphql"
@@ -64,6 +56,7 @@ function App() {
             <Route path="/availability" element={<Availability />} />
             <Route path="/timeoff" element={<Timeoff />} />
             <Route path="/incident" element={<Incident />} />
+            <Route path="/location" element={<Location />} />
             
             <Route
               path="*"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useQuery } from '@apollo/client';
-import { QUERY_SINGLE_LOCATION } from '../utils/queries';
+import { useQuery } from "@apollo/client";
+import { QUERY_SINGLE_LOCATION } from "../utils/queries";
 // import "./App.css";
 
 import Map from "../components/Map";
@@ -47,13 +47,13 @@ function MapPage() {
     async function postData(url = "", data = {}) {
       let reverseGeoCodeURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords}&result_type=street_address&key=AIzaSyBGXIaFo3Dhmjo6RcGyEKYi3KqXN0sYt2I`;
 
-      fetch(reverseGeoCodeURL) 
+      fetch(reverseGeoCodeURL)
         .then((response) => {
           if (response.ok) {
             response.json().then((data) => {
               // console.log(data.results[0].formatted_address);
               setOriginDb(data.results[0].formatted_address);
-              console.log({originDb})
+              console.log({ originDb });
             });
           } else {
             // launchValidationModal(
@@ -73,13 +73,12 @@ function MapPage() {
     }
 
     coords && postData();
-
   }, [coords, originDb]);
 
   //get destinationDB from database
   // setDestinationDb('Longmont, CO, USA');
 
-  let locationId = "6383d5f3484faddf1cc8ea76"
+  let locationId = "6383d5f3484faddf1cc8ea76";
 
   const { loading, data } = useQuery(QUERY_SINGLE_LOCATION, {
     // pass URL parameter
@@ -89,7 +88,7 @@ function MapPage() {
   if (loading) {
     return <div>Loading...</div>;
   } else {
-    console.log({data});
+    console.log({ data });
   }
 
   return (
@@ -100,4 +99,3 @@ function MapPage() {
 }
 
 export default MapPage;
-

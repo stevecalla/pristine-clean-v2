@@ -58,13 +58,13 @@ const SearchBooks = () => {
         image:
           book.imageLinks?.thumbnail ||
           "https://placehold.jp/16/0000FF/ffffff/300x500.png?text=No%20Image%20Available",
-          // book.imageLinks?.thumbnail.replace("http:", "https:") ||
-          // "https://placehold.jp/16/0000FF/ffffff/300x500.png?text=No%20Image%20Available",
+        // book.imageLinks?.thumbnail.replace("http:", "https:") ||
+        // "https://placehold.jp/16/0000FF/ffffff/300x500.png?text=No%20Image%20Available",
         publishedDate: book.publishedDate || "No publish date",
-        previewLink: 
-          // book.previewLink.replace("http:", "https:") || "No preview link", 
+        previewLink:
+          // book.previewLink.replace("http:", "https:") || "No preview link",
           book.previewLink || "No preview link",
-        infoLink: 
+        infoLink:
           // book.infoLink.replace("http:", "https:") || "No info link",
           book.infoLink || "No info link",
       }));
@@ -93,7 +93,6 @@ const SearchBooks = () => {
 
       // if book saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
-      
     } catch (err) {
       console.error(err);
     }
@@ -103,7 +102,9 @@ const SearchBooks = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1 className="d-flex justify-content-center text-center">Search for Books!</h1>
+          <h1 className="d-flex justify-content-center text-center">
+            Search for Books!
+          </h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Form.Control
@@ -125,7 +126,9 @@ const SearchBooks = () => {
                 Search
               </Button>
             </Form.Row>
-            <p className='mt-2 ml-2 small'>* Includes only books with a preview.</p>
+            <p className="mt-2 ml-2 small">
+              * Includes only books with a preview.
+            </p>
           </Form>
         </Container>
       </Jumbotron>
