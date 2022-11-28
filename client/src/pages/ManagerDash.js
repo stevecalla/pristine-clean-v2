@@ -1,13 +1,17 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { getUserId } from "../utils/getUserId";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
 import FullCalendar from "../components/FullCalendar";
 
 const ManagerDash = () => {
+  const userId = getUserId();
+  console.log(userId)
+  
   return (
     <>
       <Row className="m-2">

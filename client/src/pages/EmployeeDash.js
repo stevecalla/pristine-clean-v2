@@ -1,6 +1,7 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { getUserId } from "../utils/getUserId";
 
 import { useQuery } from "@apollo/client";
 // import { QUERY_SINGLE_EMPLOYEE } from "../utils/queries";
@@ -10,6 +11,9 @@ import EmployeeLocationsCont from "../components/EmployeeLocationsCont";
 import FullCalendar from "../components/FullCalendar";
 
 const EmployeeDash = () => {
+  const userId = getUserId();
+  console.log(userId)
+
   // Execute the query on component load
   // const { loading, data } = useQuery(QUERY_SINGLE_EMPLOYEE);
   const { loadingLocations, locationsData } = useQuery(QUERY_LOCATIONS);

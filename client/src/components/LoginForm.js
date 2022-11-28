@@ -1,6 +1,6 @@
 // see SignupForm.js for comments
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -48,7 +48,7 @@ const LoginForm = ({ setShowModal }) => {
       
       // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/${userId}`)
 
-      isManager ? navigate(`/managerdash/${userId}`, {replace: true}) : navigate(`/employeedash/${userId}`, {replace: true});
+      isManager ? navigate(`/managerdash`, {replace: true}) : navigate(`/employeedash`, {replace: true});
 
       setShowModal(false);
 

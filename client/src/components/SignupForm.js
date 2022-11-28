@@ -58,7 +58,7 @@ const SignupForm = ({ setShowModal }) => {
       
       // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/${userId}`)
 
-      isManager ? navigate(`/managerdash/${userId}`, {replace: true}) : navigate(`/employeedash/${userId}`, {replace: true});
+      isManager ? navigate(`/managerdash`, {replace: true}) : navigate(`/employeedash`, {replace: true});
 
       setShowModal(false);
 

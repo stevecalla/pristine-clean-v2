@@ -6,7 +6,7 @@ export const getUserId = () => {
   const user = token && decode(token);
   const userId = token && user.data._id;
 
-  console.log({token}, {userId}, {user})
+  // console.log({token}, {userId}, {user})
 
   return userId;
 };

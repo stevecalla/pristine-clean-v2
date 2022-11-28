@@ -52,9 +52,7 @@ function App() {
             <Route exact path="/saved" element={<SavedBooks />} />
             <Route exact path="/map" element={<MapPage />} />
             <Route exact path="/employeedash" element={<EmployeeDash />} />
-            <Route exact path="/employeedash/:userId" element={<EmployeeDash />} />
             <Route exact path="/managerdash" element={<ManagerDash />} />
-            <Route exact path="/managerdash/:userId" element={<ManagerDash />} />
             <Route exact path="/availability" element={<Availability />} />
             <Route exact path="/timeoff" element={<Timeoff />} />
             <Route exact path="/incident" element={<Incident />} />
