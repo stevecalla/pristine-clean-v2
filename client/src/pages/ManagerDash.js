@@ -1,17 +1,29 @@
 import React from "react";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { getUserId } from "../utils/getUserId";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import FullCalendar from "../components/FullCalendar";
 
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
-import FullCalendar from "../components/FullCalendar";
+
+import { getUserId } from "../utils/getUserId";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import Auth from "../utils/auth";
 
 const ManagerDash = () => {
   const userId = getUserId();
-  console.log(userId)
-  
+  console.log(userId);
+
+  // get user info to render to page
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { id: userId },
+    // if skip is true, this query will not be executed; in this instance, if the user is not logged in this query will be skipped when the component mounts
+    skip: !Auth.loggedIn(),
+  });
+  console.log({ data }, loading);
+
   return (
     <>
       <Row className="m-2">
