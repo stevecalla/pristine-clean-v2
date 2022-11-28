@@ -8,11 +8,12 @@ import ListGroup from "react-bootstrap/ListGroup";
 
 import { useQuery } from "@apollo/client";
 // query a single location
-import { QUERY_SINGLE_LOCATION } from "../../utils/queries";
+import { QUERY_SINGLE_LOCATION } from "../utils/queries";
 
 const Location = () => {
   // Execute the query on component load
   const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
+  console.log(loadingLocation);
   // Use Form.Optional chaining to check if data exists and if it has an business property. If not, return an empty array to use.
   const location = locationData?.business || [];
   return (

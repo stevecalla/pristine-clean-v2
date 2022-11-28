@@ -8,7 +8,7 @@ import {
   Tab,
   NavDropdown,
 } from "react-bootstrap";
-import Dropdown from "react-bootstrap/Dropdown";
+// import Dropdown from "react-bootstrap/Dropdown";
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 import Auth from "../utils/auth";
@@ -67,6 +67,9 @@ const AppNavbar = () => {
                       Incident Report
                     </NavDropdown.Item>
                   </NavDropdown>
+                  <Nav.Link as={Link} to="/location" eventKey="9">
+                    Location Page
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/map" eventKey="8">
                     Map Page
                   </Nav.Link>
