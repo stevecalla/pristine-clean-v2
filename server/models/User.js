@@ -20,7 +20,40 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+    },  
+    firstName: {
+      type: String,
+      trim: true,
     },
+    lastName: {
+      type: String,
+      trim: true,
+    },
+    cell: {
+      // TODO: Add validation for phone number
+      type: String,
+    },
+    isManager: {
+      type: Boolean,
+    },
+    availability: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Availability',
+      },
+    ],
+    schedule: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Schedule',
+      },
+    ],
+    location: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Location',
+      },
+    ],
     // set savedBooks to be an array of data that adheres to the bookSchema
     savedBooks: [bookSchema],
   },

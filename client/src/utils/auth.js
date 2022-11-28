@@ -45,7 +45,7 @@ class AuthService {
         JSON.stringify(user.savedBooks.map((element) => element.bookId))
       );
     // Returns to root url
-    window.location.assign("/");
+    // window.location.assign("/");
   }
 
   logout() {
