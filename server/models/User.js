@@ -42,6 +42,9 @@ const userSchema = new Schema(
     // availability: [availabilitySchema],
     availability: 
       {
+        userEmail: {
+          type: String
+        },
         mondayAm: {
           type: Boolean,
         },

@@ -105,22 +105,8 @@ const typeDefs = gql`
       publishedDate: String
     ): User
     removeBook(_id: ID!, bookId: ID!): User
+    updateAvailability(_id: ID!, username: String): User
   }
 `;
 
 module.exports = typeDefs;
-
-// mondayAm: Boolean
-// mondayPm: Boolean
-// tuesdayAm: Boolean
-// tuesdayPm: Boolean
-// wednesdayAm: Boolean
-// wednesdayPm: Boolean
-// thursdayAm: Boolean
-// thursdayPm: Boolean
-// fridayAm: Boolean
-// fridayPm: Boolean
-// saturdayAm: Boolean
-// saturdayPm: Boolean
-// sundayAm: Boolean
-// sundayPm: Boolean

@@ -19,6 +19,7 @@
     "cell": "8675309",
     "isManager": "true",
     "availability": {
+      "userEmail": "b@b.com",
       "mondayAm": "true",
       "mondayPm": "true",
       "tuesdayAm": "true",
@@ -43,6 +44,23 @@
     "firstName": "first",
     "lastName": "last",
     "cell": "8675309",
-    "isManager": "false"
+    "isManager": "false",
+    "availability": {
+      "userEmail": "a@a.com",
+      "mondayAm": "true",
+      "mondayPm": "true",
+      "tuesdayAm": "true",
+      "tuesdayPm": "true",
+      "wednesdayAm": "true",
+      "wednesdayPm": "true",
+      "thursdayAm": "false",
+      "thursdayPm": "false",
+      "fridayAm": "false",
+      "fridayPm": "false",
+      "saturdayAm": "false",
+      "saturdayPm": "false",
+      "sundayAm": "false",
+      "sundayPm": "false"
+    }
   }
 ]

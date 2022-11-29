@@ -9,15 +9,15 @@ import Form from "react-bootstrap/Form";
 import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import { UPDATE_AVAILABILITY } from "../utils/mutations";
 
 // import { useQuery } from "@apollo/client";
 
 // import { QUERY_SINGLE_EMPLOYEE } from '../utils/queries';
 
 const Availability = () => {
-
   const [mondayAm, setMondayAm] = useState();
   const [mondayPm, setMondayPm] = useState();
   const [tuesdayAm, setTuesdayAm] = useState();
@@ -49,7 +49,7 @@ const Availability = () => {
 
   useEffect(() => {
     Object.keys(availability).map((key) => {
-      key === "mondayAm"
+      return key === "mondayAm"
         ? setMondayAm(!mondayAm)
         : key === "mondayPm"
         ? setMondayPm(!mondayPm)
@@ -77,7 +77,7 @@ const Availability = () => {
         ? setSundayAm(!sundayAm)
         : key === "sundayPm"
         ? setSundayPm(!sundayAm)
-        : console.log("error");
+        : console.log("error")
     });
 
     // setSwitchState({...availability});
@@ -85,10 +85,14 @@ const Availability = () => {
     // Object.keys(availability).map((key) =>
     //   console.log(`${key}: ${availability[key]}`)
     // );
+  }, []);
 
-  }, [availability]);
 
-  function handleChange(evt) {
+
+  // setup remove book graphql mutation
+  const [updateAvailability] = useMutation(UPDATE_AVAILABILITY);
+
+  async function handleChange(evt) {
     console.log(evt.target.name, evt.target.name === "mondayAm");
 
     evt.target.name === "mondayAm"
@@ -107,7 +111,6 @@ const Availability = () => {
       ? setThursdayAm(!thursdayAm)
       : evt.target.name === "thursdayPm"
       ? setThursdayPm(!thursdayPm)
-
       : evt.target.name === "fridayAm"
       ? setFridayAm(!fridayAm)
       : evt.target.name === "fridayPm"
@@ -121,6 +124,19 @@ const Availability = () => {
       : evt.target.name === "sundayPm"
       ? setSundayPm(!sundayPm)
       : console.log("error");
+
+    try {
+      await updateAvailability({
+        variables: {
+          id: userId,
+          username: "changed_2"
+        },
+      });
+      console.log('changed')
+
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   const handleFormSubmit = (e) => {
