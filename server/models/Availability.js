@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
 // TODO: Each day of the week should be an array of Locations
 const availabilitySchema = new Schema({
-    user: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-        },
-    ],
+    // user: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'User',
+    //     },
+    // ],
     mondayAm: {
         type: Boolean,
     },

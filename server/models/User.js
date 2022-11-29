@@ -1,8 +1,7 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-// import schema from Book.js
-const bookSchema = require("./Book");
+// import schema from Availability.js
 const availabilitySchema = require("./Availability");
 
 const userSchema = new Schema(
@@ -38,20 +37,15 @@ const userSchema = new Schema(
       type: Boolean,
     },
     availability: [availabilitySchema],
-    schedule: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Schedule',
-      },
-    ],
-    location: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Location',
-      },
-    ],
-    // set savedBooks to be an array of data that adheres to the bookSchema
-    savedBooks: [bookSchema],
+
+    locations:
+    {
+      type: Schema.Types.Array,
+      ref: 'Location',
+    },
+
+
+
   },
   // set this to use virtual below
   {

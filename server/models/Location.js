@@ -11,9 +11,8 @@ const locationSchema = new Schema({
     type: String,
     required: true,
   },
-  days: {
-    type: Array,
-    required: true,
+  shifts: {
+    type: String,
   },
   laborHours: {
     type: Number,
@@ -23,18 +22,6 @@ const locationSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'Instructions',
-    },
-  ],
-  manager: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Employee',
-    },
-  ],
-  cleaners: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Employee',
     },
   ],
 });
