@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 // import schema from Book.js
 const bookSchema = require("./Book");
+const availabilitySchema = require("./Availability");
 
 const userSchema = new Schema(
   {
@@ -36,13 +37,7 @@ const userSchema = new Schema(
     isManager: {
       type: Boolean,
     },
-    availability: [
-      // {
-      //   type: Schema.Types.ObjectId,
-      //   ref: 'Availability',
-      // },
-
-    ],
+    availability: [availabilitySchema],
     schedule: [
       {
         type: Schema.Types.ObjectId,

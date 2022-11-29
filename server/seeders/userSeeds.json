@@ -10,45 +10,19 @@
         "isManager": "true",
         "availability": [
             {
-                "mondayAm": true
-            },
-            {
-                "mondayPm": true
-            },
-            {
-                "tuesdayAm": true
-            },
-            {
-                "tuesdayPm": true
-            },
-            {
-                "wednesdayAm": true
-            },
-            {
-                "wednesdayPm": true
-            },
-            {
-                "thursdayAm": true
-            },
-            {
-                "thursdayPm": true
-            },
-            {
-                "fridayAm": true
-            },
-            {
-                "fridayPm": true
-            },
-            {
-                "saturdayAm": true
-            },
-            {
-                "saturdayPm": true
-            },
-            {
-                "sundayAm": true
-            },
-            {
+                "mondayAm": true,
+                "mondayPm": true,
+                "tuesdayAm": true,
+                "tuesdayPm": true,
+                "wednesdayAm": true,
+                "wednesdayPm": true,
+                "thursdayAm": true,
+                "thursdayPm": true,
+                "fridayAm": true,
+                "fridayPm": true,
+                "saturdayAm": true,
+                "saturdayPm": true,
+                "sundayAm": true,
                 "sundayPm": true
             }
         ],
@@ -66,45 +40,19 @@
         "isManager": "true",
         "availability": [
             {
-                "mondayAm": true
-            },
-            {
-                "mondayPm": true
-            },
-            {
-                "tuesdayAm": true
-            },
-            {
-                "tuesdayPm": true
-            },
-            {
-                "wednesdayAm": true
-            },
-            {
-                "wednesdayPm": true
-            },
-            {
-                "thursdayAm": true
-            },
-            {
-                "thursdayPm": true
-            },
-            {
-                "fridayAm": true
-            },
-            {
-                "fridayPm": true
-            },
-            {
-                "saturdayAm": true
-            },
-            {
-                "saturdayPm": true
-            },
-            {
-                "sundayAm": true
-            },
-            {
+                "mondayAm": true,
+                "mondayPm": true,
+                "tuesdayAm": true,
+                "tuesdayPm": true,
+                "wednesdayAm": true,
+                "wednesdayPm": true,
+                "thursdayAm": true,
+                "thursdayPm": true,
+                "fridayAm": true,
+                "fridayPm": true,
+                "saturdayAm": true,
+                "saturdayPm": true,
+                "sundayAm": true,
                 "sundayPm": true
             }
         ],
@@ -122,45 +70,19 @@
         "isManager": "false",
         "availability": [
             {
-                "mondayAm": true
-            },
-            {
-                "mondayPm": true
-            },
-            {
-                "tuesdayAm": true
-            },
-            {
-                "tuesdayPm": true
-            },
-            {
-                "wednesdayAm": true
-            },
-            {
-                "wednesdayPm": true
-            },
-            {
-                "thursdayAm": true
-            },
-            {
-                "thursdayPm": true
-            },
-            {
-                "fridayAm": true
-            },
-            {
-                "fridayPm": true
-            },
-            {
-                "saturdayAm": true
-            },
-            {
-                "saturdayPm": true
-            },
-            {
-                "sundayAm": true
-            },
-            {
+                "mondayAm": true,
+                "mondayPm": true,
+                "tuesdayAm": true,
+                "tuesdayPm": true,
+                "wednesdayAm": true,
+                "wednesdayPm": true,
+                "thursdayAm": true,
+                "thursdayPm": true,
+                "fridayAm": true,
+                "fridayPm": true,
+                "saturdayAm": true,
+                "saturdayPm": true,
+                "sundayAm": true,
                 "sundayPm": true
             }
         ],

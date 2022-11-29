@@ -50,5 +50,5 @@ const availabilitySchema = new Schema({
         type: Boolean,
     },
 });
-const Availability = model('Availability', availabilitySchema);
-module.exports = Availability;
+// const Availability = model('Availability', availabilitySchema);
+module.exports = availabilitySchema;
