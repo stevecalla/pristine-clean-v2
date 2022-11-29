@@ -81,3 +81,17 @@ export const REMOVE_BOOK = gql`
     }
   }
 `;
+
+export const UPDATE_AVAILABILITY = gql`
+  mutation updateAvailability(
+    $id: ID!, 
+    $username: String! 
+    ) 
+    {
+    updateAvailability(_id: $id, username: $username) {
+      _id
+      username
+      fridayAm
+    }
+  }
+`;

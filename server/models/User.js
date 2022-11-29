@@ -6,7 +6,7 @@ const bookSchema = require("./Book");
 
 // const Location = require('./Location');
 // import schema from Availability.js
-const availabilitySchema = require("./Availability");
+// const availabilitySchema = require("./Availability");
 
 const userSchema = new Schema(
   {
@@ -34,22 +34,65 @@ const userSchema = new Schema(
       trim: true,
     },
     cell: {
-      // TODO: Add validation for phone number
       type: String,
     },
     isManager: {
       type: Boolean,
     },
-    availability: [
-      availabilitySchema
-    ],
-    locations:
-    {
-      type: Schema.Types.Array,
-      ref: 'Location',
-    },
+    // availability: [availabilitySchema],
+    availability: 
+      {
+        userEmail: {
+          type: String
+        },
+        mondayAm: {
+          type: Boolean,
+        },
+        mondayPm: {
+          type: Boolean,
+        },
+        tuesdayAm: {
+          type: Boolean,
+        },
+        tuesdayPm: {
+          type: Boolean,
+        },
+        wednesdayAm: {
+          type: Boolean,
+        },
+        wednesdayPm: {
+          type: Boolean,
+        },
+        thursdayAm: {
+          type: Boolean,
+        },
+        thursdayPm: {
+          type: Boolean,
+        },
+        fridayAm: {
+          type: Boolean,
+        },
+        fridayPm: {
+          type: Boolean,
+        },
+        saturdayAm: {
+          type: Boolean,
+        },
+        saturdayPm: {
+          type: Boolean,
+        },
+        sundayAm: {
+          type: Boolean,
+        },
+        sundayPm: {
+          type: Boolean,
+        },
+      }
+    // locations: {
+    //   type: Schema.Types.Array,
+    //   ref: "Location",
+    // },
     // locations: [Location.schema]
-    savedBooks: [bookSchema],
   },
   // set this to use virtual below
   {

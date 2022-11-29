@@ -16,8 +16,20 @@ const typeDefs = gql`
     _id: ID
   }
 
-  type Availability {
+  type User {
     _id: ID
+    username: String
+    email: String
+    password: String
+    firstName: String
+    lastName: String
+    cell: String
+    isManager: Boolean
+    availability: Availability
+    locations: [Location]
+  }
+
+  type Availability {
     mondayAm: Boolean
     mondayPm: Boolean
     tuesdayAm: Boolean
@@ -32,19 +44,6 @@ const typeDefs = gql`
     saturdayPm: Boolean
     sundayAm: Boolean
     sundayPm: Boolean
-  }
-
-  type User {
-    _id: ID
-    username: String
-    email: String
-    password: String
-    firstName: String
-    lastName: String
-    cell: String
-    isManager: Boolean
-    availability: [Availability]
-    locations: [Location]
   }
 
   type Book {
@@ -76,7 +75,6 @@ const typeDefs = gql`
     businessName: String
     address: String
     laborHours: Float
-
   }
 
   type Query {
@@ -107,6 +105,7 @@ const typeDefs = gql`
       publishedDate: String
     ): User
     removeBook(_id: ID!, bookId: ID!): User
+    updateAvailability(_id: ID!, username: String): User
   }
 `;
 

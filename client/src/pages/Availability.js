@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -9,19 +9,30 @@ import Form from "react-bootstrap/Form";
 import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import { UPDATE_AVAILABILITY } from "../utils/mutations";
 
 // import { useQuery } from "@apollo/client";
 
 // import { QUERY_SINGLE_EMPLOYEE } from '../utils/queries';
 
 const Availability = () => {
-  // const { loading, employeeData } = useQuery(QUERY_SINGLE_EMPLOYEE);
+  const [mondayAm, setMondayAm] = useState();
+  const [mondayPm, setMondayPm] = useState();
+  const [tuesdayAm, setTuesdayAm] = useState();
+  const [tuesdayPm, setTuesdayPm] = useState();
+  const [wednesdayAm, setWednesdayAm] = useState();
+  const [wednesdayPm, setWednesdayPm] = useState();
+  const [thursdayAm, setThursdayAm] = useState();
+  const [thursdayPm, setThursdayPm] = useState();
+  const [fridayAm, setFridayAm] = useState();
+  const [fridayPm, setFridayPm] = useState();
+  const [saturdayAm, setSaturdayAm] = useState();
+  const [saturdayPm, setSaturdayPm] = useState();
+  const [sundayAm, setSundayAm] = useState();
+  const [sundayPm, setSundayPm] = useState();
 
-  //load employee info here
-  //map availability to the toggles/switch
-  //
   const userId = getUserId();
   console.log(userId);
 
@@ -32,33 +43,100 @@ const Availability = () => {
     skip: !Auth.loggedIn(),
   });
   console.log({ data }, loading);
+  console.log(data.me.availability);
+  let availability = data.me.availability;
+  console.log(availability);
 
-  const [switchState, setSwitchState] = useState({
-    mondayAm: false,
-    mondayPm: false,
-    tuesdayAm: false,
-    tuesdayPm: false,
-    wednesdayAm: false,
-    wednesdayPm: false,
-    thursdayAm: false,
-    thursdayPm: false,
-    fridayAm: false,
-    fridayPm: false,
-    saturdayAm: false,
-    saturdayPm: false,
-    sundayAm: false,
-    sundayPm: false,
-  });
-
-  function handleChange(evt) {
-    const value =
-      evt.target.type === "checkbox" ? evt.target.checked : evt.target.value;
-    setSwitchState({
-      ...switchState,
-      [evt.target.name]: value,
+  useEffect(() => {
+    Object.keys(availability).map((key) => {
+      return key === "mondayAm"
+        ? setMondayAm(!mondayAm)
+        : key === "mondayPm"
+        ? setMondayPm(!mondayPm)
+        : key === "tuesdayAm"
+        ? setTuesdayAm(!tuesdayAm)
+        : key === "tuesdayPm"
+        ? setTuesdayPm(!tuesdayPm)
+        : key === "wednesdayAm"
+        ? setWednesdayAm(!wednesdayAm)
+        : key === "wednesdayPm"
+        ? setWednesdayPm(!wednesdayPm)
+        : key === "thursdayAm"
+        ? setThursdayAm(!thursdayAm)
+        : key === "thursdayPm"
+        ? setThursdayPm(!thursdayPm)
+        : key === "fridayAm"
+        ? setFridayAm(!fridayPm)
+        : key === "fridayPm"
+        ? setFridayPm(!fridayPm)
+        : key === "saturdayAm"
+        ? setSaturdayAm(!saturdayAm)
+        : key === "saturdayPm"
+        ? setSaturdayPm(!saturdayAm)
+        : key === "sundayAm"
+        ? setSundayAm(!sundayAm)
+        : key === "sundayPm"
+        ? setSundayPm(!sundayAm)
+        : console.log("error")
     });
 
-    //add mutation query here
+    // setSwitchState({...availability});
+    // setSundayAm(!sundayAm);
+    // Object.keys(availability).map((key) =>
+    //   console.log(`${key}: ${availability[key]}`)
+    // );
+  }, []);
+
+
+
+  // setup remove book graphql mutation
+  const [updateAvailability] = useMutation(UPDATE_AVAILABILITY);
+
+  async function handleChange(evt) {
+    console.log(evt.target.name, evt.target.name === "mondayAm");
+
+    evt.target.name === "mondayAm"
+      ? setMondayAm(!mondayAm)
+      : evt.target.name === "mondayPm"
+      ? setMondayPm(!mondayPm)
+      : evt.target.name === "tuesdayAm"
+      ? setTuesdayAm(!tuesdayAm)
+      : evt.target.name === "tuesdayPm"
+      ? setTuesdayPm(!tuesdayPm)
+      : evt.target.name === "wednesdayAm"
+      ? setWednesdayAm(!wednesdayAm)
+      : evt.target.name === "wednesdayPm"
+      ? setWednesdayPm(!wednesdayPm)
+      : evt.target.name === "thursdayAm"
+      ? setThursdayAm(!thursdayAm)
+      : evt.target.name === "thursdayPm"
+      ? setThursdayPm(!thursdayPm)
+      : evt.target.name === "fridayAm"
+      ? setFridayAm(!fridayAm)
+      : evt.target.name === "fridayPm"
+      ? setFridayPm(!fridayPm)
+      : evt.target.name === "saturdayAm"
+      ? setSaturdayAm(!saturdayAm)
+      : evt.target.name === "saturdayPm"
+      ? setSaturdayPm(!saturdayPm)
+      : evt.target.name === "sundayAm"
+      ? setSundayAm(!sundayAm)
+      : evt.target.name === "sundayPm"
+      ? setSundayPm(!sundayPm)
+      : console.log("error");
+
+    try {
+      await updateAvailability({
+        variables: {
+          id: userId,
+          username: "changed_2"
+        },
+      });
+      console.log('changed')
+
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   const handleFormSubmit = (e) => {
@@ -68,7 +146,7 @@ const Availability = () => {
 
   // if (loading) {
   //     return <div>Loading...</div>;
-  // }
+  // } else {
   return (
     <main>
       <Container>
@@ -82,7 +160,7 @@ const Availability = () => {
                 name="mondayAm"
                 type="switch"
                 id="mondayAm-switch"
-                checked={switchState.mondayAm}
+                checked={mondayAm || false}
                 onChange={handleChange}
                 label="AM"
               />
@@ -92,7 +170,7 @@ const Availability = () => {
                 name="mondayPm"
                 type="switch"
                 id="mondayPm-switch"
-                checked={switchState.mondayPm}
+                checked={mondayPm || false}
                 onChange={handleChange}
                 label="PM"
               />
@@ -107,7 +185,7 @@ const Availability = () => {
                 name="tuesdayAm"
                 type="switch"
                 id="tuesdayAm-switch"
-                checked={switchState.tuesdayAm}
+                checked={tuesdayAm || false}
                 onChange={handleChange}
                 label="AM"
               />
@@ -117,7 +195,7 @@ const Availability = () => {
                 name="tuesdayPm"
                 type="switch"
                 id="tuesdayPm-switch"
-                checked={switchState.tuesdayPm}
+                checked={tuesdayPm || false}
                 onChange={handleChange}
                 label="PM"
               />
@@ -132,7 +210,7 @@ const Availability = () => {
                 name="wednesdayAm"
                 type="switch"
                 id="wednesdayAm-switch"
-                checked={switchState.wednesdayAm}
+                checked={wednesdayAm || false}
                 onChange={handleChange}
                 label="AM"
               />
@@ -142,7 +220,7 @@ const Availability = () => {
                 name="wednesdayPm"
                 type="switch"
                 id="wednesdayPm-switch"
-                checked={switchState.wednesdayPm}
+                checked={wednesdayPm || false}
                 onChange={handleChange}
                 label="PM"
               />
@@ -157,7 +235,7 @@ const Availability = () => {
                 name="thursdayAm"
                 type="switch"
                 id="thursdayAm-switch"
-                checked={switchState.thursdayAm}
+                checked={thursdayAm || false}
                 onChange={handleChange}
                 label="AM"
               />
@@ -167,7 +245,7 @@ const Availability = () => {
                 name="thursdayPm"
                 type="switch"
                 id="thursdayPm-switch"
-                checked={switchState.thursdayPm}
+                checked={thursdayPm || false}
                 onChange={handleChange}
                 label="PM"
               />
@@ -182,7 +260,7 @@ const Availability = () => {
                 name="fridayAm"
                 type="switch"
                 id="fridayAm-switch"
-                checked={switchState.fridayAm}
+                checked={fridayAm || false}
                 onChange={handleChange}
                 label="AM"
               />
@@ -192,7 +270,7 @@ const Availability = () => {
                 name="fridayPm"
                 type="switch"
                 id="fridayPm-switch"
-                checked={switchState.fridayPm}
+                checked={fridayPm || false}
                 onChange={handleChange}
                 label="PM"
               />
@@ -207,7 +285,7 @@ const Availability = () => {
                 name="saturdayAm"
                 type="switch"
                 id="saturdayAm-switch"
-                checked={switchState.saturdayAm}
+                checked={saturdayAm || false}
                 onChange={handleChange}
                 label="AM"
               />
@@ -217,7 +295,7 @@ const Availability = () => {
                 name="saturdayPm"
                 type="switch"
                 id="saturdayPm-switch"
-                checked={switchState.saturdayPm}
+                checked={saturdayPm || false}
                 onChange={handleChange}
                 label="PM"
               />
@@ -232,7 +310,7 @@ const Availability = () => {
                 name="sundayAm"
                 type="switch"
                 id="sundayAm-switch"
-                checked={switchState.sundayAm}
+                checked={sundayAm || false}
                 onChange={handleChange}
                 label="AM"
               />
@@ -242,7 +320,7 @@ const Availability = () => {
                 name="sundayPm"
                 type="switch"
                 id="sundayPm-switch"
-                checked={switchState.sundayPm}
+                checked={sundayPm || false}
                 onChange={handleChange}
                 label="PM"
               />
@@ -260,5 +338,6 @@ const Availability = () => {
     </main>
   );
 };
+// };
 
 export default Availability;

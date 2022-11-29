@@ -116,6 +116,30 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    updateAvailability: async (parent, { _id, username }, context) => {
+      // if (context.user) {
+        console.log('hello =', _id, username)
+        
+        let test = await User.findOne({_id});
+        console.log(test);
+
+        let test2 = await User.findOneAndUpdate(
+          {_id},
+          {username: username},
+          { new: true }
+        );
+        console.log('------------ TEST2 -----------')
+        console.log(test2)
+
+        return User.findOneAndUpdate(
+          {_id},
+          {username: username},
+          { new: true }
+        );
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 
