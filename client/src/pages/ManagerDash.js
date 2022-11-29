@@ -11,33 +11,35 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import AllEmployeesCont from '../components/AllEmployeesCont'
 import AllLocationsCont from '../components/AllLocationsCont'
-import FullCalendar from '../components/FullCalendar'
+// import FullCalendar from '../components/FullCalendar'
 
 
 const ManagerDash = () => {
 
-    const [open, setOpen] = useState(false);
+    const [openEmployee, setOpenEmployee] = useState(true);
     const [openLocation, setOpenLocation] = useState(false);
 
     return (
         <Container>
-            <Row>
+            {/* <Row>
                 <Col>
                     <FullCalendar />
                 </Col>
-            </Row>
+            </Row> */}
             <Row>
                 <Col>
                     <Button
-                        onClick={() => setOpen(!open)}
+                        onClick={() => setOpenEmployee(!openEmployee)}
                         aria-controls="example-fade-text"
-                        aria-expanded={open}
+                        aria-expanded={openEmployee}
                         size="lg"
                         className="btn-block my-2"
                     >
                         All Locations
                     </Button>
-                    <Collapse in={open}>
+                    <Collapse  
+                    // style={{'height': '300px', 'overflow': 'scroll!important'}} 
+                    in={openEmployee}>
                         <div id="collapse-employee-bar">
                             <AllLocationsCont />
                         </div>
@@ -47,21 +49,25 @@ const ManagerDash = () => {
             <Row>
                 <Col>
                     <Button
-                        onClick={() => setOpenLocation(!open)}
+                        onClick={() => setOpenLocation(!openLocation)}
                         aria-controls="example-fade-text"
-                        aria-expanded={open}
+                        aria-expanded={openLocation}
                         size="lg"
                         className="btn-block my-2"
                     >
                         All Employees
                     </Button>
-                    <Collapse in={openLocation}>
+                    <Collapse  
+                    // style={{'height': '500px', 'overflow': 'scroll!important'}} 
+                    in={openLocation}>
                         <div id="collapse-location-bar">
                             <AllEmployeesCont />
                         </div>
                     </Collapse>
                 </Col>
             </Row>
+            
+            
         </Container>
     )
 }

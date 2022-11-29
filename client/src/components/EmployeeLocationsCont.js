@@ -24,6 +24,7 @@ const EmployeeLocationsCont = ({ locations }) => {
         </Card>
       ))} */}
       <Row>
+        <Col>
       <Card className="m-2">
           <Card.Header>Wal-Mart</Card.Header>
           <Card.Body className=" bg-light">
@@ -174,6 +175,7 @@ const EmployeeLocationsCont = ({ locations }) => {
             </ListGroup>
           </Card.Body>
         </Card>
+        </Col>
         </Row>
     </>
   );
