@@ -6,12 +6,21 @@ import Col from "react-bootstrap/Col";
 // import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+import { getUserId } from "../utils/getUserId";
+import Auth from "../utils/auth";
+
 // import { useQuery } from "@apollo/client";
 
 // import { QUERY_SINGLE_EMPLOYEE } from '../utils/queries';
 
 const Availability = () => {
   // const { loading, employeeData } = useQuery(QUERY_SINGLE_EMPLOYEE);
+
+  //load employee info here
+  //map availability to the toggles/switch
+  //
+  const userId = getUserId();
+  console.log(userId);
 
   const [switchState, setSwitchState] = useState({
     mondayAm: false,
@@ -37,6 +46,8 @@ const Availability = () => {
       ...switchState,
       [evt.target.name]: value,
     });
+
+    //add mutation query here
   }
 
   const handleFormSubmit = (e) => {
@@ -69,7 +80,7 @@ const Availability = () => {
               <Form.Check
                 name="mondayPm"
                 type="switch"
-                id="mondayAm-switch"
+                id="mondayPm-switch"
                 checked={switchState.mondayPm}
                 onChange={handleChange}
                 label="PM"

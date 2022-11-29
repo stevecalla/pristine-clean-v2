@@ -20,7 +20,7 @@ const locationSchema = new Schema({
   },
   instructions: [
     {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.Array,
       ref: 'Instructions',
     },
   ],

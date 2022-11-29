@@ -1,6 +1,10 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
+// import schema from Book.js
+const bookSchema = require("./Book");
+
+// const Location = require('./Location');
 // import schema from Availability.js
 const availabilitySchema = require("./Availability");
 
@@ -36,16 +40,16 @@ const userSchema = new Schema(
     isManager: {
       type: Boolean,
     },
-    availability: [availabilitySchema],
-
+    availability: [
+      availabilitySchema
+    ],
     locations:
     {
       type: Schema.Types.Array,
       ref: 'Location',
     },
-
-
-
+    // locations: [Location.schema]
+    savedBooks: [bookSchema],
   },
   // set this to use virtual below
   {

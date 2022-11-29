@@ -26,10 +26,7 @@
                 "sundayPm": true
             }
         ],
-        "locations": [
-            "The Station Hair Studio",
-            "DECO"
-        ]
+        "locations": ""
     },
     {
         "username": "b",
@@ -58,7 +55,7 @@
                 "sundayPm": true
             }
         ],
-        "locations": "The Station Hair Studio"
+        "locations": ""
     },
     {
         "username": "a",
@@ -87,6 +84,6 @@
                 "sundayPm": true
             }
         ],
-        "locations": "The Station Hair Studio"
+        "locations": ""
     }
 ]
