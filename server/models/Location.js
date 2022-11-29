@@ -20,8 +20,51 @@ const locationSchema = new Schema({
   },
   instructions: [
     {
-      type: Schema.Types.Array,
-      ref: 'Instructions',
+      facilityType: {
+        type: String,
+      },
+      cleaningType: {
+        type: String,
+      },
+      bathrooms: {
+        type: String,
+      },
+      lobby: {
+        type: String,
+      },
+      sittingArea: {
+        type: String,
+      },
+      breakRoom: {
+        type: String,
+      },
+      frontdesk: {
+        type: String,
+      },
+      appliances: {
+        type: String,
+      },
+      dusting: {
+        type: String,
+      },
+      windows: {
+        type: String,
+      },
+      trash: {
+        type: String,
+      },
+      vacuum: {
+        type: String,
+      },
+      mop: {
+        type: String,
+      },
+      additionalServices: {
+        type: String,
+      },
+      exclusions: {
+        type: String,
+      },
     },
   ],
 });
