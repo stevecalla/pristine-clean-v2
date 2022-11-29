@@ -1,20 +1,20 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  # type Employee {
-  #   _id: ID
-  #   firstName: String
-  #   lastName: String
-  #   cell: String
-  #   email: String
-  #   isManager: Boolean
-  #   availability: [Availability]
-  #   schedule: [Schedule]
-  # }
+  type Employee {
+    _id: ID
+    firstName: String
+    lastName: String
+    cell: String
+    email: String
+    isManager: Boolean
+    availability: [Availability]
+    schedule: [Schedule]
+  }
 
-  # type Schedule {
-  #   _id: ID
-  # }
+  type Schedule {
+    _id: ID
+  }
 
   type Availability {
     _id: ID
@@ -46,36 +46,36 @@ const typeDefs = gql`
     locations: [Location]
   }
 
-  # type Book {
-  #   _id: ID
-  #   bookId: String
-  #   authors: [String]
-  #   description: String
-  #   image: String
-  #   title: String
-  #   infoLink: String
-  #   previewLink: String
-  #   publishedDate: String
-  # }
+  type Book {
+    _id: ID
+    bookId: String
+    authors: [String]
+    description: String
+    image: String
+    title: String
+    infoLink: String
+    previewLink: String
+    publishedDate: String
+  }
 
   type Auth {
     token: ID!
     user: User
   }
 
-  # type Thought {
-  #   _id: ID
-  #   thoughtText: String
-  #   thoughtAuthor: String
-  #   createdAt: String
-  # }
+  type Thought {
+    _id: ID
+    thoughtText: String
+    thoughtAuthor: String
+    createdAt: String
+  }
 
   type Location {
     _id: ID
     businessName: String
     address: String
-    laborHours: INT
-    
+    laborHours: Int
+
   }
 
   type Query {
