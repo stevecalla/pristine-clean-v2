@@ -43,20 +43,20 @@ const EmployeeDash = () => {
           {/* {loading ? (
                         <div>Loading Jobs...</div>
                     ) : ( */}
-          <EmployeeLocationsCont locations={locationsData} />
+          <EmployeeLocationsCont />
           {/* )} */}
           <p>TESTING</p>
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Col>
-          {/* {loading ? (
+          {loading ? (
                         <div>Loading Calendar...</div>
-                    ) : ( */}
+                    ) : (
           <FullCalendar />
-          {/* )} */}
+          )}
         </Col>
-      </Row>
+      </Row> */}
     </>
   );
 };
