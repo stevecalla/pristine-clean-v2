@@ -91,7 +91,6 @@ export const UPDATE_AVAILABILITY = gql`
     updateAvailability(_id: $id, username: $username) {
       _id
       username
-      fridayAm
     }
   }
 `;

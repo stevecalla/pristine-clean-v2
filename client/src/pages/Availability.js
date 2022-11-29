@@ -48,35 +48,37 @@ const Availability = () => {
   console.log(availability);
 
   useEffect(() => {
+
     Object.keys(availability).map((key) => {
+      console.log(availability[key])
       return key === "mondayAm"
-        ? setMondayAm(!mondayAm)
+        ? setMondayAm(availability[key])
         : key === "mondayPm"
-        ? setMondayPm(!mondayPm)
+        ? setMondayPm(availability[key])
         : key === "tuesdayAm"
-        ? setTuesdayAm(!tuesdayAm)
+        ? setTuesdayAm(availability[key])
         : key === "tuesdayPm"
-        ? setTuesdayPm(!tuesdayPm)
+        ? setTuesdayPm(availability[key])
         : key === "wednesdayAm"
-        ? setWednesdayAm(!wednesdayAm)
+        ? setWednesdayAm(availability[key])
         : key === "wednesdayPm"
-        ? setWednesdayPm(!wednesdayPm)
+        ? setWednesdayPm(availability[key])
         : key === "thursdayAm"
-        ? setThursdayAm(!thursdayAm)
+        ? setThursdayAm(availability[key])
         : key === "thursdayPm"
-        ? setThursdayPm(!thursdayPm)
+        ? setThursdayPm(availability[key])
         : key === "fridayAm"
-        ? setFridayAm(!fridayPm)
+        ? setFridayAm(availability[key])
         : key === "fridayPm"
-        ? setFridayPm(!fridayPm)
+        ? setFridayPm(availability[key])
         : key === "saturdayAm"
-        ? setSaturdayAm(!saturdayAm)
+        ? setSaturdayAm(availability[key])
         : key === "saturdayPm"
-        ? setSaturdayPm(!saturdayAm)
+        ? setSaturdayPm(availability[key])
         : key === "sundayAm"
-        ? setSundayAm(!sundayAm)
+        ? setSundayAm(availability[key])
         : key === "sundayPm"
-        ? setSundayPm(!sundayAm)
+        ? setSundayPm(availability[key])
         : console.log("error")
     });
 
@@ -85,6 +87,8 @@ const Availability = () => {
     // Object.keys(availability).map((key) =>
     //   console.log(`${key}: ${availability[key]}`)
     // );
+
+    // eslint-disable-next-line
   }, []);
 
 
