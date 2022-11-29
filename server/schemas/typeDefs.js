@@ -17,6 +17,7 @@ const typeDefs = gql`
   }
 
   type Availability {
+    _id: ID
     mondayAm: Boolean
     mondayPm: Boolean
     tuesdayAm: Boolean
@@ -42,10 +43,7 @@ const typeDefs = gql`
     cell: String
     isManager: Boolean
     availability: [Availability]
-    schedule: [Schedule]
-    location: [Location]
-    savedBooks: [Book]!
-    bookCount: String
+    locations: [Location]
   }
 
   type Book {
@@ -74,9 +72,10 @@ const typeDefs = gql`
 
   type Location {
     _id: ID
-    locationId: String
     businessName: String
     address: String
+    laborHours: Int
+
   }
 
   type Query {
