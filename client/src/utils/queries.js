@@ -13,6 +13,22 @@ export const QUERY_ME = gql`
         businessName
         address
       }
+      availability{
+        mondayAm
+        mondayPm
+        tuesdayAm
+        tuesdayPm
+        wednesdayAm
+        wednesdayPm
+        thursdayAm
+        thursdayPm
+        fridayAm
+        fridayPm
+        saturdayAm
+        saturdayPm
+        sundayAm
+        sundayPm
+      }
       schedule {
         _id
       }

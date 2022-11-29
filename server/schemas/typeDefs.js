@@ -17,7 +17,6 @@ const typeDefs = gql`
   }
 
   type Availability {
-    _id: ID
     mondayAm: Boolean
     mondayPm: Boolean
     tuesdayAm: Boolean
