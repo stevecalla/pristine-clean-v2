@@ -9,7 +9,7 @@ export const QUERY_ME = gql`
       firstName
       isManager
       lastName
-      availability{
+      availability {
         mondayAm
         mondayPm
         tuesdayAm

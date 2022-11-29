@@ -16,8 +16,20 @@ const typeDefs = gql`
     _id: ID
   }
 
-  type Availability {
+  type User {
     _id: ID
+    username: String
+    email: String
+    password: String
+    firstName: String
+    lastName: String
+    cell: String
+    isManager: Boolean
+    availability: Availability
+    locations: [Location]
+  }
+
+  type Availability {
     mondayAm: Boolean
     mondayPm: Boolean
     tuesdayAm: Boolean
@@ -32,19 +44,6 @@ const typeDefs = gql`
     saturdayPm: Boolean
     sundayAm: Boolean
     sundayPm: Boolean
-  }
-
-  type User {
-    _id: ID
-    username: String
-    email: String
-    password: String
-    firstName: String
-    lastName: String
-    cell: String
-    isManager: Boolean
-    availability: [Availability]
-    locations: [Location]
   }
 
   type Book {
@@ -76,7 +75,6 @@ const typeDefs = gql`
     businessName: String
     address: String
     laborHours: Float
-
   }
 
   type Query {
@@ -111,3 +109,18 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
+
+// mondayAm: Boolean
+// mondayPm: Boolean
+// tuesdayAm: Boolean
+// tuesdayPm: Boolean
+// wednesdayAm: Boolean
+// wednesdayPm: Boolean
+// thursdayAm: Boolean
+// thursdayPm: Boolean
+// fridayAm: Boolean
+// fridayPm: Boolean
+// saturdayAm: Boolean
+// saturdayPm: Boolean
+// sundayAm: Boolean
+// sundayPm: Boolean

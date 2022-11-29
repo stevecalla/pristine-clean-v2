@@ -3,15 +3,15 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
-import { useQuery } from "@apollo/client";
+// import { useQuery } from "@apollo/client";
 // // query all employees and locations
-import { QUERY_EMPLOYEES } from "../utils/queries";
+// import { QUERY_EMPLOYEES } from "../utils/queries";
 
 const AllEmployeesCont = () => {
-  const { loadingEmployees, employeesData } = useQuery(QUERY_EMPLOYEES);
-  console.log(loadingEmployees);
+  // const { loadingEmployees, employeesData } = useQuery(QUERY_EMPLOYEES);
+  // console.log(loadingEmployees);
 
-  const employees = employeesData?.employees || [];
+  // const employees = employeesData?.employees || [];
 
   return (
     <>
