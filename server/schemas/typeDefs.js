@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Employee {
@@ -75,6 +75,25 @@ const typeDefs = gql`
     businessName: String
     address: String
     laborHours: Float
+    instructions: [Instructions]
+  }
+
+  type Instructions {
+    facilityType: String
+    cleaningType: String
+    bathrooms: String
+    lobby: String
+    sittingArea: String
+    breakRoom: String
+    frontdesk: String
+    appliances: String
+    dusting: String
+    windows: String
+    trash: String
+    vacuum: String
+    mop: String
+    additionalServices: String
+    exclusions: String
   }
 
   type Query {
