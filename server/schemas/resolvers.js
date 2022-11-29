@@ -15,10 +15,10 @@ const resolvers = {
       return Book.find(params).sort({ createdAt: -1 });
     },
     me: async (parent, { _id }, context) => {
-      if (context.user) {
-        return User.findById({ _id: context.user._id }).populate("books");
-      }
-      throw new AuthenticationError("You need to be logged in!");
+      // if (context.user) {
+        return User.findById({ _id });
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
     },
 
     thoughts: async () => {

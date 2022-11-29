@@ -9,10 +9,6 @@ export const QUERY_ME = gql`
       firstName
       isManager
       lastName
-      location {
-        businessName
-        address
-      }
       availability{
         mondayAm
         mondayPm
@@ -28,9 +24,6 @@ export const QUERY_ME = gql`
         saturdayPm
         sundayAm
         sundayPm
-      }
-      schedule {
-        _id
       }
     }
   }
