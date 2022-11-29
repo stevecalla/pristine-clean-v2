@@ -33,6 +33,7 @@ const typeDefs = gql`
     sundayAm: Boolean
     sundayPm: Boolean
   }
+
   type User {
     _id: ID
     username: String
@@ -74,7 +75,7 @@ const typeDefs = gql`
     _id: ID
     businessName: String
     address: String
-    laborHours: Int
+    laborHours: Float
 
   }
 
