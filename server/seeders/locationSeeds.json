@@ -7,7 +7,7 @@
     "laborHours": "2.25",
     "instructions": {
       "facilityType": "Salon",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 1",
       "bathrooms": "(1) Wipe down all surfaces including partitions, walls, dispensers, plants and trash cans. Clean all mirrors. Bleach toilet, scrub base. CLR weekly on sinks/counters and toilets as needed.",
       "lobby": "none",
       "sittingArea": "wipe down all surfaces, tables, chairs, hair dryers, windowsills, bases of lights, plants, mirrors.",
@@ -31,7 +31,7 @@
     "laborHours": "2.25",
     "instructions": {
       "facilityType": "Salon",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 2",
       "bathrooms": "(3) Wipe down all surfaces including partitions, walls, dispensers and trash cans. Clean all mirrors and sinks. Bleach all toilets, scrub bases.",
       "lobby": "none",
       "sittingArea": "wipe down all surfaces, tables, chairs, hair dryers, windowsills, bases of lights, plants, mirrors, and fireplaces.",
@@ -55,7 +55,7 @@
     "laborHours": "1.75",
     "instructions": {
       "facilityType": "Salon",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 3",
       "bathrooms": "(1) Wipe down all surfaces including partitions, walls, dispensers and trash cans. Clean all mirrors and sinks. Bleach all toilets, scrub bases.",
       "lobby": "None",
       "sittingArea": "Wipe down all surfaces, tables, chairs, hair dryers, windowsills, bases of lights, plants, mirrors, and fireplaces.",
@@ -79,7 +79,7 @@
     "laborHours": "3.5",
     "instructions": {
       "facilityType": "Salon",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 4",
       "bathrooms": "(1) Wipe down all surfaces including partitions, walls, dispensers, plants and trash cans. Clean all mirrors. Bleach all toilets, scrub bases. CLR weekly on sinks/counters and toilets as needed.",
       "lobby": "Vacuum flooring and mat. Dust plants. Clean all glass and doors. Clean interior/exterior of elevator (wipe down, vaccuum, mop). Mopp all flooring inluding rubber mat.",
       "sittingArea": "Wipe down all surfaces, tables, chairs, hair dryers, windowsills, bases of lights, plants, mirrors, and fireplaces.",
@@ -103,7 +103,7 @@
     "laborHours": "2",
     "instructions": {
       "facilityType": "Office",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 5",
       "bathrooms": "None",
       "lobby": "None",
       "sittingArea": "Wipe down all surfaces, tables, chairs, desks, windowsills, bases of lights, plants, mirrors, and fireplace.",
@@ -151,7 +151,7 @@
     "laborHours": "4",
     "instructions": {
       "facilityType": "Salon",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 7",
       "bathrooms": "(1) Wipe down all surfaces including partitions, walls, dispensers, plants and trash cans. Clean all mirrors. Bleach all toilets, scrub bases. CLR weekly on sinks/counters and toilets as needed.",
       "lobby": "None.",
       "sittingArea": "Wipe down all surfaces, tables, chairs, hair dryers, windowsills, bases of lights, mirror stands and mirrors.",
@@ -175,7 +175,7 @@
     "laborHours": "2.5",
     "instructions": {
       "facilityType": "Office",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 8",
       "bathrooms": "(1) Wipe down all surfaces including partitions, walls, dispensers, plants and trash cans. Clean all mirrors. Bleach all toilets.",
       "lobby": "String",
       "sittingArea": "wipe down all surfaces, tables, chairs, hair dryers, windowsills, bases of lights, plants, mirrors, and fireplaces.",
@@ -199,7 +199,7 @@
     "laborHours": "2.5",
     "instructions": {
       "facilityType": "Salon",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 9",
       "bathrooms": "(1) Wipe down all surfaces including partitions, walls, dispensers, plants and trash cans. Clean all mirrors. Bleach all toilets, scrub bases. CLR weekly on sinks/counters and toilets as needed.",
       "lobby": "String",
       "sittingArea": "wipe down all surfaces, tables, chairs, hair dryers, windowsills, bases of lights, plants, mirrors, and fireplaces.",
@@ -223,7 +223,7 @@
     "laborHours": "2",
     "instructions": {
       "facilityType": "Salon",
-      "cleaningType": "Deep Clean",
+      "cleaningType": "Deep Clean 10",
       "bathrooms": "(1) Wipe down all surfaces including partitions, walls, dispensers, plants and trash cans. Clean all mirrors. Bleach all toilets, scrub bases. CLR weekly on sinks/counters and toilets as needed.",
       "lobby": "String",
       "sittingArea": "wipe down all surfaces, tables, chairs, hair dryers, windowsills, bases of lights, plants, mirrors, and fireplaces.",

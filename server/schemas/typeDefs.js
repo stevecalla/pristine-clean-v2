@@ -76,7 +76,7 @@ const typeDefs = gql`
     address: String
     shifts: String
     laborHours: Float
-    instructions: [Instructions]
+    instructions: Instructions
   }
 
   type Instructions {
