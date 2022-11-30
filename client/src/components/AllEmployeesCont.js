@@ -17,9 +17,9 @@ const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
 
   const { loading, data } = useQuery(QUERY_USERS);
-  if (!loading) {
-    console.log(data.users)
-  };
+  // if (!loading) {
+  //   console.log(data.users)
+  // };
 
   // // const { loadingEmployees, employeesData } = useQuery(QUERY_USERS);
   // const { employees } = useQuery({ query: QUERY_USERS });
@@ -66,38 +66,38 @@ const AllEmployeesCont = () => {
                         <tbody>
                           <tr>
                             <td>Sunday</td>
-                            <td>{employee.availability.sundayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
-                            <td>{employee.availability.sundayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.sundayAm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
+                            <td>{employee.availability.sundayPm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
                           </tr>
                           <tr>
                             <td>Monday</td>
-                            <td>{employee.availability.mondayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
-                            <td>{employee.availability.mondayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.mondayAm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
+                            <td>{employee.availability.mondayPm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
                           </tr>
                           <tr>
                             <td>Tuesday</td>
-                            <td>{employee.availability.tuesdayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
-                            <td>{employee.availability.tuesdayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.tuesdayAm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
+                            <td>{employee.availability.tuesdayPm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
                           </tr>
                           <tr>
                             <td>Wednesday</td>
-                            <td>{employee.availability.wednesdayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
-                            <td>{employee.availability.wednesdayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.wednesdayAm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
+                            <td>{employee.availability.wednesdayPm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
                           </tr>
                           <tr>
                             <td>Thursday</td>
-                            <td>{employee.availability.thursdayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
-                            <td>{employee.availability.thursdayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.thursdayAm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
+                            <td>{employee.availability.thursdayPm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
                           </tr>
                           <tr>
                             <td>Friday</td>
-                            <td>{employee.availability.fridayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
-                            <td>{employee.availability.fridayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.fridayAm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
+                            <td>{employee.availability.fridayPm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
                           </tr>
                           <tr>
                             <td>Saturday</td>
-                            <td>{employee.availability.saturdayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
-                            <td>{employee.availability.saturdayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.saturdayAm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
+                            <td>{employee.availability.saturdayPm ? <Check2Circle color="green" /> : <XSquareFill color="red" />}</td>
                           </tr>
                         </tbody>
                       </Table>

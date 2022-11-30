@@ -5,17 +5,22 @@ import React from "react";
 // import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-
-// import { useQuery } from "@apollo/client";
-// import { QUERY_ME } from "../utils/queries";
+import Auth from "../utils/auth";
+import { getUserId } from "../utils/getUserId";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
 
 const AllLocationsCont = () => {
+  const userId = getUserId();
 
-  // const { loading, data } = useQuery(QUERY_ME);
-  // if (!loading) {
-  //   console.log(data)
-  // };
-  // console.log(data);
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { id: userId },
+    skip: !Auth.loggedIn(),
+  });
+  if (!loading) {
+    console.log(data)
+  };
+  console.log(data);
 
   return (
     <>
