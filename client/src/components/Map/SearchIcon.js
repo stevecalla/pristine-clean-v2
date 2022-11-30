@@ -22,11 +22,14 @@ function SearchIcon({
     <>
       <FontAwesomeIcon
         icon="fa-search"
-        className="fa-duotone fa-xl"
+        // icon="fa-search"
+        className=""
         style={searchStyle}
         onClick={() => setOpen(!open)}
         title="Search"
         alt="Share my profile"
+        size="20x"
+        transform="grow-4"
       />
 
       <div style={formStyle} className="">
@@ -122,7 +125,7 @@ export default memo(SearchIcon);
 
 const formStyle = {
   width: "165px",
-  top: "95px",
+  top: "140px",
   left: "10px",
   position: "absolute",
   zIndex: "1",
@@ -132,16 +135,11 @@ const formStyle = {
 };
 
 const searchStyle = {
-  // bottom: "22px",
-  bottom: "-11px",
-  // bottom: "-185px",
-  // left: "12px",
-  left: "60px",
-  // height: "22px",
+  top: "95px",
+  left: "10px",
   height: "20px",
-  // width: "22px",
   width: "18px",
-  padding: "20px 10px 10px 12px",
+  padding: "10px 10px 10px 12px",
   color: "#666666",
   backgroundColor: "white",
   cursor: "grab",
