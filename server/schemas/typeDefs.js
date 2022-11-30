@@ -74,6 +74,7 @@ const typeDefs = gql`
     _id: ID
     businessName: String
     address: String
+    shifts: String
     laborHours: Float
     instructions: [Instructions]
   }
