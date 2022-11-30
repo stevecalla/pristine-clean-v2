@@ -145,21 +145,11 @@ const Location = () => {
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>
-
-              <ResponsiveEmbed style={{ "height": "1000px"}}>
-                <div style={{ "height": "1000px"}}>
+              <ResponsiveEmbed className="mt-1" style={{ "height": "1000px"}}>
+                <div>
                   <Map />
                 </div>
               </ResponsiveEmbed>
-
-              {/* <Frame style={{ "height": "1000px", "width": "1000px" }}>
-                <div style={mapContainer}>
-                  <Map />
-                </div>
-              </Frame> */}
-
-              {/* <iframe title="test" src="https://www.google.com/maps/dir/?api=1&origin=Space+Needle+Seattle+WA&destination=Pike+Place+Market+Seattle+WA&travelmode=driving "></iframe> */}
-
             </Card>
           </Col>
         </Row>
@@ -175,6 +165,4 @@ const mapContainer = {
   width: "100%",
   height: "100%",
   position: "relative",
-  // margin: "50px",
-  // padding: "50px",
 };
