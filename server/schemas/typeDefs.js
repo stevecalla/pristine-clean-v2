@@ -103,6 +103,7 @@ const typeDefs = gql`
     books(username: String): [Book]
     me(_id: ID!): User
 
+
     thoughts: [Thought]!
     thought(thoughtId: ID!): Thought
 

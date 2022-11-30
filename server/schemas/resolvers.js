@@ -6,9 +6,12 @@ const resolvers = {
   Query: {
     users: async (parent, args, context) => {
       // if (context.user) {
-      return User.find().populate('books');
+      return User.find().populate('locations');
       // }
       // throw new AuthenticationError("You need to be logged in!");
+    },
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId });
     },
     books: async (parent, { username }) => {
       const params = username ? { username } : {};
