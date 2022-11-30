@@ -75,18 +75,33 @@ export const QUERY_LOCATIONS = gql`
 //   }
 // `;
 
-export const QUERY_EMPLOYEES = gql`
-  query allEmployees {
-    employees {
+export const QUERY_USERS = gql`
+  query allUsers {
+    users {
       _id
-      firstName
-      lastName
-      cell
-      email
-      isManager
-      availability
-      schedule
-    }
+    username
+    email
+    password
+    firstName
+    lastName
+    cell
+    isManager
+    availability {
+      mondayAm
+      mondayPm
+      tuesdayAm
+      tuesdayPm
+      wednesdayAm
+      wednesdayPm
+      thursdayAm
+      thursdayPm
+      fridayAm
+      fridayPm
+      saturdayAm
+      saturdayPm
+      sundayAm
+      sundayPm
+    }}
   }
 `;
 

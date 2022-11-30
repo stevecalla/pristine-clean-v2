@@ -88,17 +88,18 @@ const userSchema = new Schema(
         type: Boolean,
       },
     },
-    locations: [
-      {
-        type: String,
-      },
-    ],
+    // locations: [
+    //   {
+    //     type: String,
+    //   },
+    // ],
+
+    locations: {
+      type: Schema.Types.Array,
+      ref: "Location",
+    },
   },
 
-  // locations: {
-  //   type: Schema.Types.Array,
-  //   ref: "Location",
-  // },
   // locations: [Location.schema]
   // set this to use virtual below
   {
