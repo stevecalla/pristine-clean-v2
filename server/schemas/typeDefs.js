@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Employee {
@@ -74,7 +74,27 @@ const typeDefs = gql`
     _id: ID
     businessName: String
     address: String
+    shifts: String
     laborHours: Float
+    instructions: [Instructions]
+  }
+
+  type Instructions {
+    facilityType: String
+    cleaningType: String
+    bathrooms: String
+    lobby: String
+    sittingArea: String
+    breakRoom: String
+    frontdesk: String
+    appliances: String
+    dusting: String
+    windows: String
+    trash: String
+    vacuum: String
+    mop: String
+    additionalServices: String
+    exclusions: String
   }
 
   type Query {
@@ -82,6 +102,7 @@ const typeDefs = gql`
     user(email: String!): User
     books(username: String): [Book]
     me(_id: ID!): User
+
 
     thoughts: [Thought]!
     thought(thoughtId: ID!): Thought

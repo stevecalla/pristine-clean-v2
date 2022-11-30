@@ -1,8 +1,8 @@
-const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
+const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
 
 // import schema from Book.js
-const bookSchema = require("./Book");
+const bookSchema = require('./Book');
 
 // const Location = require('./Location');
 // import schema from Availability.js
@@ -19,7 +19,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, "Must use a valid email address"],
+      match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
     password: {
       type: String,
@@ -38,62 +38,69 @@ const userSchema = new Schema(
     },
     isManager: {
       type: Boolean,
+      default: false,
     },
     // availability: [availabilitySchema],
-    availability: 
-      {
-        userEmail: {
-          type: String
-        },
-        mondayAm: {
-          type: Boolean,
-        },
-        mondayPm: {
-          type: Boolean,
-        },
-        tuesdayAm: {
-          type: Boolean,
-        },
-        tuesdayPm: {
-          type: Boolean,
-        },
-        wednesdayAm: {
-          type: Boolean,
-        },
-        wednesdayPm: {
-          type: Boolean,
-        },
-        thursdayAm: {
-          type: Boolean,
-        },
-        thursdayPm: {
-          type: Boolean,
-        },
-        fridayAm: {
-          type: Boolean,
-        },
-        fridayPm: {
-          type: Boolean,
-        },
-        saturdayAm: {
-          type: Boolean,
-        },
-        saturdayPm: {
-          type: Boolean,
-        },
-        sundayAm: {
-          type: Boolean,
-        },
-        sundayPm: {
-          type: Boolean,
-        },
-      }
-    // locations: {
-    //   type: Schema.Types.Array,
-    //   ref: "Location",
-    // },
-    // locations: [Location.schema]
+    availability: {
+      userEmail: {
+        type: String,
+      },
+      mondayAm: {
+        type: Boolean,
+      },
+      mondayPm: {
+        type: Boolean,
+      },
+      tuesdayAm: {
+        type: Boolean,
+      },
+      tuesdayPm: {
+        type: Boolean,
+      },
+      wednesdayAm: {
+        type: Boolean,
+      },
+      wednesdayPm: {
+        type: Boolean,
+      },
+      thursdayAm: {
+        type: Boolean,
+      },
+      thursdayPm: {
+        type: Boolean,
+      },
+      fridayAm: {
+        type: Boolean,
+      },
+      fridayPm: {
+        type: Boolean,
+      },
+      saturdayAm: {
+        type: Boolean,
+      },
+      saturdayPm: {
+        type: Boolean,
+      },
+      sundayAm: {
+        type: Boolean,
+      },
+      sundayPm: {
+        type: Boolean,
+      },
+    },
+    // locations: [
+    //   {
+    //     type: String,
+    //   },
+    // ],
+
+    locations: {
+      type: Schema.Types.Array,
+      ref: "Location",
+    },
   },
+
+  // locations: [Location.schema]
   // set this to use virtual below
   {
     toJSON: {
@@ -103,8 +110,8 @@ const userSchema = new Schema(
 );
 
 // hash user password
-userSchema.pre("save", async function (next) {
-  if (this.isNew || this.isModified("password")) {
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
@@ -118,10 +125,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 // when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
-userSchema.virtual("bookCount").get(function () {
+userSchema.virtual('bookCount').get(function () {
   return this.savedBooks.length;
 });
 
-const User = model("User", userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
