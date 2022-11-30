@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Table from 'react-bootstrap/Table';
 // import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -33,7 +34,7 @@ const Availability = () => {
   const [sundayAm, setSundayAm] = useState();
   const [sundayPm, setSundayPm] = useState();
 
-  const [ availability, setAvailability ] = useState();
+  const [availability, setAvailability] = useState();
 
   const userId = getUserId();
 
@@ -60,37 +61,37 @@ const Availability = () => {
         return key === "mondayAm"
           ? setMondayAm(data.me.availability[key])
           : key === "mondayPm"
-          ? setMondayPm(availability[key])
-          : key === "tuesdayAm"
-          ? setTuesdayAm(availability[key])
-          : key === "tuesdayPm"
-          ? setTuesdayPm(availability[key])
-          : key === "wednesdayAm"
-          ? setWednesdayAm(availability[key])
-          : key === "wednesdayPm"
-          ? setWednesdayPm(availability[key])
-          : key === "thursdayAm"
-          ? setThursdayAm(availability[key])
-          : key === "thursdayPm"
-          ? setThursdayPm(availability[key])
-          : key === "fridayAm"
-          ? setFridayAm(availability[key])
-          : key === "fridayPm"
-          ? setFridayPm(availability[key])
-          : key === "saturdayAm"
-          ? setSaturdayAm(availability[key])
-          : key === "saturdayPm"
-          ? setSaturdayPm(availability[key])
-          : key === "sundayAm"
-          ? setSundayAm(availability[key])
-          : setSundayPm(availability[key])
+            ? setMondayPm(availability[key])
+            : key === "tuesdayAm"
+              ? setTuesdayAm(availability[key])
+              : key === "tuesdayPm"
+                ? setTuesdayPm(availability[key])
+                : key === "wednesdayAm"
+                  ? setWednesdayAm(availability[key])
+                  : key === "wednesdayPm"
+                    ? setWednesdayPm(availability[key])
+                    : key === "thursdayAm"
+                      ? setThursdayAm(availability[key])
+                      : key === "thursdayPm"
+                        ? setThursdayPm(availability[key])
+                        : key === "fridayAm"
+                          ? setFridayAm(availability[key])
+                          : key === "fridayPm"
+                            ? setFridayPm(availability[key])
+                            : key === "saturdayAm"
+                              ? setSaturdayAm(availability[key])
+                              : key === "saturdayPm"
+                                ? setSaturdayPm(availability[key])
+                                : key === "sundayAm"
+                                  ? setSundayAm(availability[key])
+                                  : setSundayPm(availability[key])
         //   : key === "sundayPm"
         //   ? setSundayPm(availability[key])
         // : console.log(key, availability[key], "error")
 
         // return true;
       }
-    );
+      );
     }
   });
 
@@ -102,37 +103,37 @@ const Availability = () => {
   async function handleChange(evt) {
     // console.log(evt.target.name, evt.target.name === "mondayAm");
 
-    let name = evt.target.name; 
+    let name = evt.target.name;
 
     evt.target.name === "mondayAm"
       ? setMondayAm(!mondayAm)
       : evt.target.name === "mondayPm"
-      ? setMondayPm(!mondayPm)
-      : evt.target.name === "tuesdayAm"
-      ? setTuesdayAm(!tuesdayAm)
-      : evt.target.name === "tuesdayPm"
-      ? setTuesdayPm(!tuesdayPm)
-      : evt.target.name === "wednesdayAm"
-      ? setWednesdayAm(!wednesdayAm)
-      : evt.target.name === "wednesdayPm"
-      ? setWednesdayPm(!wednesdayPm)
-      : evt.target.name === "thursdayAm"
-      ? setThursdayAm(!thursdayAm)
-      : evt.target.name === "thursdayPm"
-      ? setThursdayPm(!thursdayPm)
-      : evt.target.name === "fridayAm"
-      ? setFridayAm(!fridayAm)
-      : evt.target.name === "fridayPm"
-      ? setFridayPm(!fridayPm)
-      : evt.target.name === "saturdayAm"
-      ? setSaturdayAm(!saturdayAm)
-      : evt.target.name === "saturdayPm"
-      ? setSaturdayPm(!saturdayPm)
-      : evt.target.name === "sundayAm"
-      ? setSundayAm(!sundayAm)
-      : evt.target.name === "sundayPm"
-      ? setSundayPm(!sundayPm)
-      : console.log("error");
+        ? setMondayPm(!mondayPm)
+        : evt.target.name === "tuesdayAm"
+          ? setTuesdayAm(!tuesdayAm)
+          : evt.target.name === "tuesdayPm"
+            ? setTuesdayPm(!tuesdayPm)
+            : evt.target.name === "wednesdayAm"
+              ? setWednesdayAm(!wednesdayAm)
+              : evt.target.name === "wednesdayPm"
+                ? setWednesdayPm(!wednesdayPm)
+                : evt.target.name === "thursdayAm"
+                  ? setThursdayAm(!thursdayAm)
+                  : evt.target.name === "thursdayPm"
+                    ? setThursdayPm(!thursdayPm)
+                    : evt.target.name === "fridayAm"
+                      ? setFridayAm(!fridayAm)
+                      : evt.target.name === "fridayPm"
+                        ? setFridayPm(!fridayPm)
+                        : evt.target.name === "saturdayAm"
+                          ? setSaturdayAm(!saturdayAm)
+                          : evt.target.name === "saturdayPm"
+                            ? setSaturdayPm(!saturdayPm)
+                            : evt.target.name === "sundayAm"
+                              ? setSundayAm(!sundayAm)
+                              : evt.target.name === "sundayPm"
+                                ? setSundayPm(!sundayPm)
+                                : console.log("error");
 
     try {
       await updateAvailability({
@@ -174,191 +175,170 @@ const Availability = () => {
       <Container>
         <Form onSubmit={handleFormSubmit}>
           <Row>
-            <Col>
-              <p>MONDAY</p>
-            </Col>
-            <Col>
-              <Form.Check
-                name="mondayAm"
-                type="switch"
-                id="mondayAm-switch"
-                checked={mondayAm || false}
-                // onClick={loadChange}
-                onChange={handleChange}
-                label="AM"
-              />
-            </Col>
-            <Col>
-              <Form.Check
-                name="mondayPm"
-                type="switch"
-                id="mondayPm-switch"
-                checked={mondayPm || false}
-                onChange={handleChange}
-                label="PM"
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>TUESDAY</p>
-            </Col>
-            <Col>
-              <Form.Check
-                name="tuesdayAm"
-                type="switch"
-                id="tuesdayAm-switch"
-                checked={tuesdayAm || false}
-                onChange={handleChange}
-                label="AM"
-              />
-            </Col>
-            <Col>
-              <Form.Check
-                name="tuesdayPm"
-                type="switch"
-                id="tuesdayPm-switch"
-                checked={tuesdayPm || false}
-                onChange={handleChange}
-                label="PM"
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>WEDNESDAY</p>
-            </Col>
-            <Col>
-              <Form.Check
-                name="wednesdayAm"
-                type="switch"
-                id="wednesdayAm-switch"
-                checked={wednesdayAm || false}
-                onChange={handleChange}
-                label="AM"
-              />
-            </Col>
-            <Col>
-              <Form.Check
-                name="wednesdayPm"
-                type="switch"
-                id="wednesdayPm-switch"
-                checked={wednesdayPm || false}
-                onChange={handleChange}
-                label="PM"
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>THURSDAY</p>
-            </Col>
-            <Col>
-              <Form.Check
-                name="thursdayAm"
-                type="switch"
-                id="thursdayAm-switch"
-                checked={thursdayAm || false}
-                onChange={handleChange}
-                label="AM"
-              />
-            </Col>
-            <Col>
-              <Form.Check
-                name="thursdayPm"
-                type="switch"
-                id="thursdayPm-switch"
-                checked={thursdayPm || false}
-                onChange={handleChange}
-                label="PM"
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>FRIDAY</p>
-            </Col>
-            <Col>
-              <Form.Check
-                name="fridayAm"
-                type="switch"
-                id="fridayAm-switch"
-                checked={fridayAm || false}
-                onChange={handleChange}
-                label="AM"
-              />
-            </Col>
-            <Col>
-              <Form.Check
-                name="fridayPm"
-                type="switch"
-                id="fridayPm-switch"
-                checked={fridayPm || false}
-                onChange={handleChange}
-                label="PM"
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>SATURDAY</p>
-            </Col>
-            <Col>
-              <Form.Check
-                name="saturdayAm"
-                type="switch"
-                id="saturdayAm-switch"
-                checked={saturdayAm || false}
-                onChange={handleChange}
-                label="AM"
-              />
-            </Col>
-            <Col>
-              <Form.Check
-                name="saturdayPm"
-                type="switch"
-                id="saturdayPm-switch"
-                checked={saturdayPm || false}
-                onChange={handleChange}
-                label="PM"
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>SUNDAY</p>
-            </Col>
-            <Col>
-              <Form.Check
-                name="sundayAm"
-                type="switch"
-                id="sundayAm-switch"
-                checked={sundayAm || false}
-                onChange={handleChange}
-                label="AM"
-              />
-            </Col>
-            <Col>
-              <Form.Check
-                name="sundayPm"
-                type="switch"
-                id="sundayPm-switch"
-                checked={sundayPm || false}
-                onChange={handleChange}
-                label="PM"
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              {/* <Form.Button>
-                                <Button type="submit" className="btn-primary">Submit</Button>
-                            </Form.Button> */}
+            <Col sm={12}>
+              <Table striped bordered hover variant="dark" className="mt-3">
+                <thead>
+                  <tr>
+                    <th>Day of the Week</th>
+                    <th>AM</th>
+                    <th>PM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sunday</td>
+                    <td>
+                      <Form.Check
+                        name="sundayAm"
+                        type="switch"
+                        id="sundayAm-switch"
+                        checked={sundayAm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                    <td>
+                      <Form.Check
+                        name="sundayPm"
+                        type="switch"
+                        id="sundayPm-switch"
+                        checked={sundayPm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Monday</td>
+                    <td>
+                      <Form.Check
+                        name="mondayAm"
+                        type="switch"
+                        id="mondayAm-switch"
+                        checked={mondayAm || false}
+                        // onClick={loadChange}
+                        onChange={handleChange}
+                      />
+                    </td>
+                    <td><Form.Check
+                      name="mondayPm"
+                      type="switch"
+                      id="mondayPm-switch"
+                      checked={mondayPm || false}
+                      onChange={handleChange}
+                    />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tuesday</td>
+                    <td>
+                      <Form.Check
+                        name="tuesdayAm"
+                        type="switch"
+                        id="tuesdayAm-switch"
+                        checked={tuesdayAm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                    <td>
+                      <Form.Check
+                        name="tuesdayPm"
+                        type="switch"
+                        id="tuesdayPm-switch"
+                        checked={tuesdayPm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Wedenesday</td>
+                    <td>
+                      <Form.Check
+                        name="wednesdayAm"
+                        type="switch"
+                        id="wednesdayAm-switch"
+                        checked={wednesdayAm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                    <td>
+                      <Form.Check
+                        name="wednesdayPm"
+                        type="switch"
+                        id="wednesdayPm-switch"
+                        checked={wednesdayPm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Thursday</td>
+                    <td>
+                      <Form.Check
+                        name="thursdayAm"
+                        type="switch"
+                        id="thursdayAm-switch"
+                        checked={thursdayAm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                    <td>
+                      <Form.Check
+                        name="thursdayPm"
+                        type="switch"
+                        id="thursdayPm-switch"
+                        checked={thursdayPm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Friday</td>
+                    <td>
+                      <Form.Check
+                        name="fridayAm"
+                        type="switch"
+                        id="fridayAm-switch"
+                        checked={fridayAm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                    <td>
+                      <Form.Check
+                        name="fridayPm"
+                        type="switch"
+                        id="fridayPm-switch"
+                        checked={fridayPm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Saturday</td>
+                    <td>
+                      <Form.Check
+                        name="saturdayAm"
+                        type="switch"
+                        id="saturdayAm-switch"
+                        checked={saturdayAm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                    <td>
+                      <Form.Check
+                        name="saturdayPm"
+                        type="switch"
+                        id="saturdayPm-switch"
+                        checked={saturdayPm || false}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
             </Col>
           </Row>
         </Form>
       </Container>
-    </main>
+    </main >
   );
 };
 // };
