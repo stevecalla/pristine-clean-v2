@@ -20,11 +20,17 @@ export const CenterIcon = ({ center, map }) => {
 };
 
 const centerStyle = {
-  bottom: "62px",
-  left: "12px",
-  height: "28px",
-  width: "28px",
-  padding: "12px",
+  // bottom: "62px",
+  bottom: "-145px",
+  // bottom: "250px",
+  // left: "12px",
+  left: "73px",
+  // height: "28px",
+  height: "30px",
+  // width: "28px",
+  width: "24px",
+  // padding: "12px",
+  // paddingTop: "10px",
   color: "#666666",
   backgroundColor: "white",
   cursor: "grab",

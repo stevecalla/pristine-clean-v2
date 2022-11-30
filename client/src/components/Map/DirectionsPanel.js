@@ -8,15 +8,15 @@ export const DirectionsPanel = () => {
     <>
       <div id="accordion">
         <div className="card">
-          <div className="card-header" id="headingOne">
+          <div className="card-header p-2 primary" id="headingOne">
             <h5 className="mb-0">
               <button
-                className="btn btn-link"
+                className="btn btn-link p-0"
                 onClick={() => setOpen(!open)}
                 aria-controls="collapse-text-directions"
                 aria-expanded={open}
               >
-                Text Directions
+                Directions - Step by Step
               </button>
             </h5>
           </div>

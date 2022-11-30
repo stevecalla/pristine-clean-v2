@@ -11,9 +11,21 @@ export const LoadMap = ({ center, directionsResponse, setMap }) => {
       mapContainerStyle={mapStyle}
       options={{
         zoomControl: true,
+        zoomControlOptions: {
+          // eslint-disable-next-line no-undef
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
         streetViewControl: true,
+        streetViewControlOptions: {
+          // eslint-disable-next-line no-undef
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
         mapTypeControl: true,
         fullscreenControl: true,
+        fullscreenControlOptions: {
+          // eslint-disable-next-line no-undef
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
       }}
       onLoad={(map) => {
         setMap(map);
@@ -67,10 +79,16 @@ export const LoadMap = ({ center, directionsResponse, setMap }) => {
 };
 
 const mapStyle = {
-  height: "100%",
+  height: "950px",
   width: "100%",
+  // width: "85%",
+  // width: "50%",
   position: "absolute",
+
   left: "0",
   top: "0",
-  border: "1px solid black",
+  // marginRight: "50px"
+  // bottom: "0",
+  // right: "0",
+  // border: "1px solid black",
 };
