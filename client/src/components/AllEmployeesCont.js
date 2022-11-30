@@ -29,9 +29,8 @@ const AllEmployeesCont = () => {
             </Card.Header>
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
-                <ListGroup.Item>{employee._id}</ListGroup.Item>
-                <ListGroup.Item>{employee.cell}</ListGroup.Item>
-                <ListGroup.Item>{employee.email}</ListGroup.Item>
+                <ListGroup.Item>Phone: {employee.cell}</ListGroup.Item>
+                <ListGroup.Item>Email: {employee.email}</ListGroup.Item>
                 <ListGroup.Item></ListGroup.Item>
               </ListGroup>
             </Card.Body>
