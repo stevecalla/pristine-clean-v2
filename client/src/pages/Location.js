@@ -9,7 +9,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 // import Collapse from "react-bootstrap/Collapse";
 // import Ratio from 'react-bootstrap/Ratio';
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
-import Frame from "react-frame-component";
+// import Frame from "react-frame-component";
 
 import Map from "../components/Map";
 
@@ -160,9 +160,9 @@ const Location = () => {
 
 export default Location;
 
-const mapContainer = {
-  flexDirection: "column",
-  width: "100%",
-  height: "100%",
-  position: "relative",
-};
+// const mapContainer = {
+//   flexDirection: "column",
+//   width: "100%",
+//   height: "100%",
+//   position: "relative",
+// };
