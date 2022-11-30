@@ -48,14 +48,12 @@ function App() {
           <Navbar />
           <Routes>
             <Route exact path="/" element={<Homepage />} />
-            <Route exact path="/map" element={<MapPage />} />
             <Route exact path="/employeedash" element={<EmployeeDash />} />
             <Route exact path="/managerdash" element={<ManagerDash />} />
             <Route exact path="/availability" element={<Availability />} />
             <Route exact path="/timeoff" element={<Timeoff />} />
             <Route exact path="/incident" element={<Incident />} />
             <Route exact path="/location" element={<Location />} />
-
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}
