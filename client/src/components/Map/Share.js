@@ -113,9 +113,10 @@ export const Share = () => {
 
 const shareStyle = {
   // bottom: "128px",
-  bottom: "-245px",
+  bottom: "-71px",
+  // bottom: "-245px",
   // left: "12px",
-  left: "73px",
+  left: "60px",
   // height: "22px",
   height: "18px",
   // width: "22px",

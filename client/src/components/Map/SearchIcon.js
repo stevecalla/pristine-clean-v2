@@ -133,12 +133,13 @@ const formStyle = {
 
 const searchStyle = {
   // bottom: "22px",
-  bottom: "-185px",
+  bottom: "-11px",
+  // bottom: "-185px",
   // left: "12px",
-  left: "73px",
+  left: "60px",
   // height: "22px",
   height: "20px",
-  width: "22px",
+  // width: "22px",
   width: "18px",
   padding: "20px 10px 10px 12px",
   color: "#666666",
