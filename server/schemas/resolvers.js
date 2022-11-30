@@ -1,12 +1,12 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Book, Thought, Location } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Book, Thought, Location } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async (parent, args, context) => {
       // if (context.user) {
-      return User.find().populate("books");
+      return User.find().populate('books');
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
@@ -16,7 +16,7 @@ const resolvers = {
     },
     me: async (parent, { _id }, context) => {
       // if (context.user) {
-        return User.findById({ _id });
+      return User.findById({ _id });
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
@@ -34,7 +34,7 @@ const resolvers = {
     },
 
     location: async (parent, { locationId }) => {
-      console.log("resolve js line 38 = ", locationId);
+      console.log('resolve js line 38 = ', locationId);
 
       return Location.findOne({ _id: locationId });
     },
@@ -47,16 +47,16 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email }).populate("books");
+      const user = await User.findOne({ email }).populate('books');
 
       if (!user) {
-        throw new AuthenticationError("No user found with this email address");
+        throw new AuthenticationError('No user found with this email address');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
@@ -98,7 +98,7 @@ const resolvers = {
           { new: true }
         );
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
     removeBook: async (parent, { _id, bookId }, context) => {
       if (context.user) {
@@ -114,29 +114,29 @@ const resolvers = {
           { new: true }
         );
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     updateAvailability: async (parent, { _id, username }, context) => {
       // if (context.user) {
-        console.log('hello =', _id, username)
-        
-        let test = await User.findOne({_id});
-        console.log(test);
+      console.log('hello =', _id, username);
 
-        let test2 = await User.findOneAndUpdate(
-          {_id},
-          {username: username},
-          { new: true }
-        );
-        console.log('------------ TEST2 -----------')
-        console.log(test2)
+      let test = await User.findOne({ _id });
+      console.log(test);
 
-        return User.findOneAndUpdate(
-          {_id},
-          {username: username},
-          { new: true }
-        );
+      let test2 = await User.findOneAndUpdate(
+        { _id },
+        { username: username },
+        { new: true }
+      );
+      console.log('------------ TEST2 -----------');
+      console.log(test2);
+
+      return User.findOneAndUpdate(
+        { _id },
+        { username: username },
+        { new: true }
+      );
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
