@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -34,70 +34,66 @@ const Availability = () => {
   const [sundayPm, setSundayPm] = useState();
 
   const userId = getUserId();
-  console.log(userId);
 
-  // get user info to render to page
+  // eslint-disable-next-line
   const { loading, data } = useQuery(QUERY_ME, {
     variables: { id: userId },
     // if skip is true, this query will not be executed; in this instance, if the user is not logged in this query will be skipped when the component mounts
     skip: !Auth.loggedIn(),
+    onCompleted: (data) => {
+
+      // console.log('hey there = ', data.me.availability)
+
+      let availability = data.me.availability;
+
+      // console.log({availability});
+
+      Object.keys(availability).map((key) => {
+
+        // console.log(key, availability[key])
+
+        return key === "mondayAm"
+          ? setMondayAm(availability[key])
+          : key === "mondayPm"
+          ? setMondayPm(availability[key])
+          : key === "tuesdayAm"
+          ? setTuesdayAm(availability[key])
+          : key === "tuesdayPm"
+          ? setTuesdayPm(availability[key])
+          : key === "wednesdayAm"
+          ? setWednesdayAm(availability[key])
+          : key === "wednesdayPm"
+          ? setWednesdayPm(availability[key])
+          : key === "thursdayAm"
+          ? setThursdayAm(availability[key])
+          : key === "thursdayPm"
+          ? setThursdayPm(availability[key])
+          : key === "fridayAm"
+          ? setFridayAm(availability[key])
+          : key === "fridayPm"
+          ? setFridayPm(availability[key])
+          : key === "saturdayAm"
+          ? setSaturdayAm(availability[key])
+          : key === "saturdayPm"
+          ? setSaturdayPm(availability[key])
+          : key === "sundayAm"
+          ? setSundayAm(availability[key])
+          : setSundayPm(availability[key])
+        //   : key === "sundayPm"
+        //   ? setSundayPm(availability[key])
+        // : console.log(key, availability[key], "error")
+      }
+    );
+    }
   });
-  console.log({ data }, loading);
-  console.log(data.me.availability);
-  let availability = data.me.availability;
-  console.log(availability);
-
-  useEffect(() => {
-
-    Object.keys(availability).map((key) => {
-      console.log(availability[key])
-      return key === "mondayAm"
-        ? setMondayAm(availability[key])
-        : key === "mondayPm"
-        ? setMondayPm(availability[key])
-        : key === "tuesdayAm"
-        ? setTuesdayAm(availability[key])
-        : key === "tuesdayPm"
-        ? setTuesdayPm(availability[key])
-        : key === "wednesdayAm"
-        ? setWednesdayAm(availability[key])
-        : key === "wednesdayPm"
-        ? setWednesdayPm(availability[key])
-        : key === "thursdayAm"
-        ? setThursdayAm(availability[key])
-        : key === "thursdayPm"
-        ? setThursdayPm(availability[key])
-        : key === "fridayAm"
-        ? setFridayAm(availability[key])
-        : key === "fridayPm"
-        ? setFridayPm(availability[key])
-        : key === "saturdayAm"
-        ? setSaturdayAm(availability[key])
-        : key === "saturdayPm"
-        ? setSaturdayPm(availability[key])
-        : key === "sundayAm"
-        ? setSundayAm(availability[key])
-        : key === "sundayPm"
-        ? setSundayPm(availability[key])
-        : console.log("error")
-    });
-
-    // setSwitchState({...availability});
-    // setSundayAm(!sundayAm);
-    // Object.keys(availability).map((key) =>
-    //   console.log(`${key}: ${availability[key]}`)
-    // );
-
-    // eslint-disable-next-line
-  }, []);
-
-
 
   // setup remove book graphql mutation
   const [updateAvailability] = useMutation(UPDATE_AVAILABILITY);
 
   async function handleChange(evt) {
-    console.log(evt.target.name, evt.target.name === "mondayAm");
+    // console.log(evt.target.name, evt.target.name === "mondayAm");
+
+    let name = evt.target.name; 
 
     evt.target.name === "mondayAm"
       ? setMondayAm(!mondayAm)
@@ -133,10 +129,23 @@ const Availability = () => {
       await updateAvailability({
         variables: {
           id: userId,
-          username: "changed_2"
+          mondayAm: name === "mondayAm" ? !mondayAm : mondayAm,
+          mondayPm: name === "mondayPm" ? !mondayPm : mondayPm,
+          tuesdayAm: name === "tuesdayAm" ? !tuesdayAm : tuesdayAm,
+          tuesdayPm: name === "tuesdayPm" ? !tuesdayPm : tuesdayPm,
+          wednesdayAm: name === "wednesdayAm" ? !wednesdayAm : wednesdayAm,
+          wednesdayPm: name === "wednesdayPm" ? !wednesdayPm : wednesdayPm,
+          thursdayAm: name === "thursdayAm" ? !thursdayAm : thursdayAm,
+          thursdayPm: name === "thursdayPm" ? !thursdayPm : thursdayPm,
+          fridayAm: name === "fridayAm" ? !fridayAm : fridayAm,
+          fridayPm: name === "fridayPm" ? !fridayPm : fridayPm,
+          saturdayAm: name === "saturdayAm" ? !saturdayAm : saturdayAm,
+          saturdayPm: name === "saturdayPm" ? !saturdayPm : saturdayPm,
+          sundayAm: name === "sundayAm" ? !sundayAm : sundayAm,
+          sundayPm: name === "sundayPm" ? !sundayPm : sundayPm,
         },
       });
-      console.log('changed')
+      // console.log('changed')
 
     } catch (err) {
       console.log(err);
@@ -165,6 +174,7 @@ const Availability = () => {
                 type="switch"
                 id="mondayAm-switch"
                 checked={mondayAm || false}
+                // onClick={loadChange}
                 onChange={handleChange}
                 label="AM"
               />
