@@ -1,10 +1,10 @@
-const db = require("../config/connection");
+const db = require('../config/connection');
 
-const { User } = require("../models");
-const userSeeds = require("./userSeeds.json");
+const { User } = require('../models');
+const userSeeds = require('./userSeeds.json');
 
-const { Location } = require("../models");
-const locationSeeds = require("./locationSeeds.json");
+const { Location } = require('../models');
+const locationSeeds = require('./locationSeeds.json');
 
 // db.once("open", async () => {
 //   await Location.deleteMany({});
@@ -29,26 +29,26 @@ db.once('open', async () => {
     await Location.deleteMany({});
     await User.deleteMany({});
 
-
     await User.create(userSeeds);
+    await Location.create(locationSeeds);
 
-    for (let i = 0; i < locationSeeds.length; i++) {
+    // for (let i = 0; i < locationSeeds.length; i++) {
 
-      const { _id, businessName } = await Location.create(locationSeeds[i]);
-      console.log(_id, businessName);
-      const user = await User.updateMany(
+    //   const { _id, businessName } = await Location.create(locationSeeds[i]);
+    //   console.log(_id, businessName);
+    //   const user = await User.updateMany(
 
-        { locations: businessName },
-        {
-          $addToSet: {
-            locations: [_id],
-          },
+    //     { locations: businessName },
+    //     {
+    //       $addToSet: {
+    //         locations: [_id],
+    //       },
 
-        },
-        { new: true }
+    //     },
+    //     { new: true }
 
-      );
-    }
+    //   );
+    // }
   } catch (err) {
     console.error(err);
     process.exit(1);
