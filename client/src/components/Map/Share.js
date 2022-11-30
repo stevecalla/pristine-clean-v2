@@ -85,7 +85,7 @@ export const Share = () => {
     <>
       <FontAwesomeIcon
         icon="fa-share-nodes"
-        className="fa-2xl"
+        className=""
         style={shareStyle}
         onClick={() => webShareAPI()}
         title="Share"
@@ -112,10 +112,15 @@ export const Share = () => {
 };
 
 const shareStyle = {
-  bottom: "128px",
-  left: "12px",
-  height: "22px",
-  width: "22px",
+  // bottom: "128px",
+  bottom: "-245px",
+  // left: "12px",
+  left: "73px",
+  // height: "22px",
+  height: "18px",
+  // width: "22px",
+  width: "18px",
+  font: "22px",
   padding: "11px",
   color: "#0E6DFD",
   backgroundColor: "white",

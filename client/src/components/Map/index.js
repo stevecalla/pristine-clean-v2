@@ -100,6 +100,8 @@ function Map({ originDb, destinationDb }) {
 
   return (
     <div>
+      <DirectionsPanel />
+      
       <div style={containerStyle} className="d-flex align-items-center">
         <LoadMap
           center={center}
@@ -125,7 +127,6 @@ function Map({ originDb, destinationDb }) {
         />
       </div>
 
-      <DirectionsPanel />
     </div>
   );
 }
@@ -140,10 +141,12 @@ const containerStyle = {
 };
 
 const lineBreakStyle = {
-  heigth: "1px",
+  // heigth: "1px",
+  heigth: ".25px",
   width: "33px",
-  bottom: "59px",
-  left: "18px",
+  // bottom: "135px",
+  bottom: "-145px",
+  left: "77px",
   padding: "1px",
   color: "#E6E6E6",
   backgroundColor: "#E6E6E6",
