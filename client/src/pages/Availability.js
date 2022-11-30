@@ -33,6 +33,8 @@ const Availability = () => {
   const [sundayAm, setSundayAm] = useState();
   const [sundayPm, setSundayPm] = useState();
 
+  const [ availability, setAvailability ] = useState();
+
   const userId = getUserId();
 
   // eslint-disable-next-line
@@ -42,18 +44,21 @@ const Availability = () => {
     skip: !Auth.loggedIn(),
     onCompleted: (data) => {
 
-      // console.log('hey there = ', data.me.availability)
+      console.log('hey there = ', data)
 
       let availability = data.me.availability;
+      // availability.mondayAm = true;
 
-      // console.log({availability});
+      setAvailability(data.me.availability);
 
-      Object.keys(availability).map((key) => {
+      console.log('#1 = ', availability);
+
+      Object.keys(data.me.availability).map((key) => {
 
         // console.log(key, availability[key])
 
         return key === "mondayAm"
-          ? setMondayAm(availability[key])
+          ? setMondayAm(data.me.availability[key])
           : key === "mondayPm"
           ? setMondayPm(availability[key])
           : key === "tuesdayAm"
@@ -82,10 +87,14 @@ const Availability = () => {
         //   : key === "sundayPm"
         //   ? setSundayPm(availability[key])
         // : console.log(key, availability[key], "error")
+
+        // return true;
       }
     );
     }
   });
+
+  console.log('#2 = ', availability);
 
   // setup remove book graphql mutation
   const [updateAvailability] = useMutation(UPDATE_AVAILABILITY);
