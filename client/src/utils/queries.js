@@ -4,29 +4,53 @@ export const QUERY_ME = gql`
   query me($id: ID!) {
     me(_id: $id) {
       _id
-      username
-      email
-      firstName
-      isManager
-      lastName
-      availability {
-        mondayAm
-        mondayPm
-        tuesdayAm
-        tuesdayPm
-        wednesdayAm
-        wednesdayPm
-        thursdayAm
-        thursdayPm
-        fridayAm
-        fridayPm
-        saturdayAm
-        saturdayPm
-        sundayAm
-        sundayPm
+    username
+    email
+    firstName
+    isManager
+    lastName
+    availability {
+      mondayAm
+      mondayPm
+      tuesdayAm
+      tuesdayPm
+      wednesdayAm
+      wednesdayPm
+      thursdayAm
+      thursdayPm
+      fridayAm
+      fridayPm
+      saturdayAm
+      saturdayPm
+      sundayAm
+      sundayPm
+    }
+    locations {
+      _id
+      businessName
+      address
+      shifts
+      laborHours
+      instructions {
+        facilityType
+        cleaningType
+        bathrooms
+        lobby
+        sittingArea
+        breakRoom
+        frontdesk
+        appliances
+        dusting
+        windows
+        trash
+        vacuum
+        mop
+        additionalServices
+        exclusions
       }
     }
   }
+}
 `;
 
 export const QUERY_SINGLE_THOUGHT = gql`

@@ -10,9 +10,9 @@ import { QUERY_USERS } from "../utils/queries";
 const AllEmployeesCont = () => {
 
   const { loading, data } = useQuery(QUERY_USERS);
-  // if (!loading) {
-  //   console.log(data.users)
-  // };
+  if (!loading) {
+    console.log(data.users)
+  };
 
   // // const { loadingEmployees, employeesData } = useQuery(QUERY_USERS);
   // const { employees } = useQuery({ query: QUERY_USERS });
