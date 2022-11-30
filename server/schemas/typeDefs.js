@@ -74,6 +74,7 @@ const typeDefs = gql`
     _id: ID
     businessName: String
     address: String
+    businessContact: String
     shifts: String
     laborHours: Float
     instructions: Instructions
@@ -103,7 +104,6 @@ const typeDefs = gql`
     books(username: String): [Book]
     me(_id: ID!): User
 
-
     thoughts: [Thought]!
     thought(thoughtId: ID!): Thought
 
@@ -127,21 +127,21 @@ const typeDefs = gql`
     ): User
     removeBook(_id: ID!, bookId: ID!): User
     updateAvailability(
-      _id: ID!,
-      mondayAm: Boolean,
-      mondayPm: Boolean,
-      tuesdayAm: Boolean,
-      tuesdayPm: Boolean,
-      wednesdayAm: Boolean,
-      wednesdayPm: Boolean,
-      thursdayAm: Boolean,
-      thursdayPm: Boolean,
-      fridayAm: Boolean,
-      fridayPm: Boolean,
-      saturdayAm: Boolean,
-      saturdayPm: Boolean,
-      sundayAm: Boolean,
-      sundayPm: Boolean,
+      _id: ID!
+      mondayAm: Boolean
+      mondayPm: Boolean
+      tuesdayAm: Boolean
+      tuesdayPm: Boolean
+      wednesdayAm: Boolean
+      wednesdayPm: Boolean
+      thursdayAm: Boolean
+      thursdayPm: Boolean
+      fridayAm: Boolean
+      fridayPm: Boolean
+      saturdayAm: Boolean
+      saturdayPm: Boolean
+      sundayAm: Boolean
+      sundayPm: Boolean
     ): User
   }
 `;

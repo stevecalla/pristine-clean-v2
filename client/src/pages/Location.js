@@ -1,17 +1,17 @@
 // import React, { useState } from "react";
-import React from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 // import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 // import Collapse from "react-bootstrap/Collapse";
 // import Ratio from 'react-bootstrap/Ratio';
-import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
+import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed';
 // import Frame from "react-frame-component";
 
-import Map from "../components/Map";
+import Map from '../components/Map';
 
 // import { useQuery } from "@apollo/client";
 // query a single location
@@ -37,8 +37,7 @@ const Location = () => {
                 <ListGroup variant="flush">
                   <ListGroup.Item>{location.manager}</ListGroup.Item>
                   <ListGroup.Item>{location.address}</ListGroup.Item> */}
-      {/* TODO: add phone # to model/seed/query */}
-      {/* <ListGroup.Item>{location.phone}</ListGroup.Item> */}
+      {/* <ListGroup.Item>{location.businessContact}</ListGroup.Item> */}
       {/* <ListGroup.Item>{location.cleaners}</ListGroup.Item>
                   <ListGroup.Item>{location.shifts}</ListGroup.Item>
                 </ListGroup>
@@ -105,15 +104,15 @@ const Location = () => {
               <Card.Header>
                 <h1>Walmart</h1>
               </Card.Header>
-              <Card.Body className=" bg-light">
-                <ListGroup variant="flush">
+              <Card.Body className=' bg-light'>
+                <ListGroup variant='flush'>
                   <ListGroup.Item>Manager: Mcnatt, Colin</ListGroup.Item>
                   <ListGroup.Item>
                     Address: 2468 Xanadu Circle, Narnia 08412
                   </ListGroup.Item>
                   <ListGroup.Item>
                     Cleaners
-                    <ListGroup variant="flush">
+                    <ListGroup variant='flush'>
                       <ListGroup.Item>Ratcliff, Patrick</ListGroup.Item>
                       <ListGroup.Item>Calla, Steve</ListGroup.Item>
                       <ListGroup.Item>Cleveland, Alex</ListGroup.Item>
@@ -121,7 +120,7 @@ const Location = () => {
                   </ListGroup.Item>
                   <ListGroup.Item>
                     Frequency:
-                    <ListGroup variant="flush">
+                    <ListGroup variant='flush'>
                       <ListGroup.Item>Tuesday</ListGroup.Item>
                       <ListGroup.Item>Friday</ListGroup.Item>
                       <ListGroup.Item>Sunday</ListGroup.Item>
@@ -136,8 +135,8 @@ const Location = () => {
           <Col>
             <Card>
               <Card.Header>Instructions</Card.Header>
-              <Card.Body className=" bg-light">
-                <ListGroup variant="flush">
+              <Card.Body className=' bg-light'>
+                <ListGroup variant='flush'>
                   <ListGroup.Item>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
@@ -145,7 +144,7 @@ const Location = () => {
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>
-              <ResponsiveEmbed className="mt-1" style={{ "height": "1000px"}}>
+              <ResponsiveEmbed className='mt-1' style={{ height: '1000px' }}>
                 <div>
                   <Map />
                 </div>

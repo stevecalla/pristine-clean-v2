@@ -11,6 +11,9 @@ const locationSchema = new Schema({
     type: String,
     required: true,
   },
+  businessContact: {
+    type: String,
+  },
   shifts: {
     type: String,
   },

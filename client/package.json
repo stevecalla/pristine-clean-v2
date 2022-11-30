@@ -20,6 +20,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^4.6.2",
     "fullcalendar": "^5.11.3",
+    "phone-number-formats": "^2.2.1",
     "graphql": "^15.4.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.29.4",
