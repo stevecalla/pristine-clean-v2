@@ -14,7 +14,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { UPDATE_AVAILABILITY } from "../utils/mutations";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/spinner.css";
 
 // import { useQuery } from "@apollo/client";
@@ -36,8 +36,10 @@ const Availability = () => {
   const [saturdayPm, setSaturdayPm] = useState();
   const [sundayAm, setSundayAm] = useState();
   const [sundayPm, setSundayPm] = useState();
-
   // const [availability, setAvailability] = useState();
+
+  // setup update availability upon toggle
+  const [updateAvailability] = useMutation(UPDATE_AVAILABILITY);
 
   const userId = getUserId();
 
@@ -47,20 +49,11 @@ const Availability = () => {
     // if skip is true, this query will not be executed; in this instance, if the user is not logged in this query will be skipped when the component mounts
     skip: !Auth.loggedIn(),
     onCompleted: (data) => {
-      console.log("hey there = ", data);
-
       let availability = data.me.availability;
-      // availability.mondayAm = true;
 
-      // setAvailability(data.me.availability);
-
-      console.log("#1 = ", availability);
-
-      Object.keys(data.me.availability).map((key) => {
-        // console.log(key, availability[key])
-
+      Object.keys(availability).map((key) => {
         return key === "mondayAm"
-          ? setMondayAm(data.me.availability[key])
+          ? setMondayAm(availability[key])
           : key === "mondayPm"
           ? setMondayPm(availability[key])
           : key === "tuesdayAm"
@@ -86,19 +79,9 @@ const Availability = () => {
           : key === "sundayAm"
           ? setSundayAm(availability[key])
           : setSundayPm(availability[key]);
-        //   : key === "sundayPm"
-        //   ? setSundayPm(availability[key])
-        // : console.log(key, availability[key], "error")
-
-        // return true;
       });
     },
   });
-
-  // console.log("#2 = ", availability);
-
-  // setup remove book graphql mutation
-  const [updateAvailability] = useMutation(UPDATE_AVAILABILITY);
 
   async function handleChange(evt) {
     // console.log(evt.target.name, evt.target.name === "mondayAm");
