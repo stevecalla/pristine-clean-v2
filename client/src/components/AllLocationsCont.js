@@ -6,7 +6,16 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
+// import { useQuery } from "@apollo/client";
+// import { QUERY_ME } from "../utils/queries";
+
 const AllLocationsCont = () => {
+
+  // const { loading, data } = useQuery(QUERY_ME);
+  // if (!loading) {
+  //   console.log(data)
+  // };
+  // console.log(data);
 
   return (
     <>
@@ -26,50 +35,50 @@ const AllLocationsCont = () => {
         </Card>
       ))} */}
       <Card className="m-2">
-          <Card.Header>Wal-Mart</Card.Header>
-          <Card.Body className=" bg-light">
-            <ListGroup variant="flush">
-              <ListGroup.Item>ID: 123456</ListGroup.Item>
-              <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-        </Card>
-        <Card className="m-2">
-          <Card.Header>Target</Card.Header>
-          <Card.Body className=" bg-light">
-            <ListGroup variant="flush">
-              <ListGroup.Item>ID: 123456</ListGroup.Item>
-              <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-        </Card>
-        <Card className="m-2">
-          <Card.Header>K-Mart</Card.Header>
-          <Card.Body className=" bg-light">
-            <ListGroup variant="flush">
-              <ListGroup.Item>ID: 123456</ListGroup.Item>
-              <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-        </Card>
-        <Card className="m-2">
-          <Card.Header>Big Lots</Card.Header>
-          <Card.Body className=" bg-light">
-            <ListGroup variant="flush">
-              <ListGroup.Item>ID: 123456</ListGroup.Item>
-              <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-        </Card>
-        <Card className="m-2">
-          <Card.Header>Dollar General</Card.Header>
-          <Card.Body className=" bg-light">
-            <ListGroup variant="flush">
-              <ListGroup.Item>ID: 123456</ListGroup.Item>
-              <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-        </Card>
+        <Card.Header>Wal-Mart</Card.Header>
+        <Card.Body className=" bg-light">
+          <ListGroup variant="flush">
+            <ListGroup.Item>ID: 123456</ListGroup.Item>
+            <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
+          </ListGroup>
+        </Card.Body>
+      </Card>
+      <Card className="m-2">
+        <Card.Header>Target</Card.Header>
+        <Card.Body className=" bg-light">
+          <ListGroup variant="flush">
+            <ListGroup.Item>ID: 123456</ListGroup.Item>
+            <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
+          </ListGroup>
+        </Card.Body>
+      </Card>
+      <Card className="m-2">
+        <Card.Header>K-Mart</Card.Header>
+        <Card.Body className=" bg-light">
+          <ListGroup variant="flush">
+            <ListGroup.Item>ID: 123456</ListGroup.Item>
+            <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
+          </ListGroup>
+        </Card.Body>
+      </Card>
+      <Card className="m-2">
+        <Card.Header>Big Lots</Card.Header>
+        <Card.Body className=" bg-light">
+          <ListGroup variant="flush">
+            <ListGroup.Item>ID: 123456</ListGroup.Item>
+            <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
+          </ListGroup>
+        </Card.Body>
+      </Card>
+      <Card className="m-2">
+        <Card.Header>Dollar General</Card.Header>
+        <Card.Body className=" bg-light">
+          <ListGroup variant="flush">
+            <ListGroup.Item>ID: 123456</ListGroup.Item>
+            <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
+          </ListGroup>
+        </Card.Body>
+      </Card>
     </>
   );
 };
