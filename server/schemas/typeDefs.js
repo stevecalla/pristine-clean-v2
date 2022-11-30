@@ -126,7 +126,23 @@ const typeDefs = gql`
       publishedDate: String
     ): User
     removeBook(_id: ID!, bookId: ID!): User
-    updateAvailability(_id: ID!, username: String): User
+    updateAvailability(
+      _id: ID!,
+      mondayAm: Boolean,
+      mondayPm: Boolean,
+      tuesdayAm: Boolean,
+      tuesdayPm: Boolean,
+      wednesdayAm: Boolean,
+      wednesdayPm: Boolean,
+      thursdayAm: Boolean,
+      thursdayPm: Boolean,
+      fridayAm: Boolean,
+      fridayPm: Boolean,
+      saturdayAm: Boolean,
+      saturdayPm: Boolean,
+      sundayAm: Boolean,
+      sundayPm: Boolean,
+    ): User
   }
 `;
 

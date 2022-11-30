@@ -120,26 +120,48 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    updateAvailability: async (parent, { _id, username }, context) => {
+    updateAvailability: async (parent, { 
+      _id, 
+      username,
+      mondayAm,
+      mondayPm,
+      tuesdayAm,
+      tuesdayPm,
+      wednesdayAm,
+      wednesdayPm,
+      thursdayAm,
+      thursdayPm,
+      fridayAm,
+      fridayPm,
+      saturdayAm,
+      saturdayPm,
+      sundayAm,
+      sundayPm 
+    }, 
+    context) => {
       // if (context.user) {
-      console.log('hello =', _id, username);
-
-      let test = await User.findOne({ _id });
-      console.log(test);
-
-      let test2 = await User.findOneAndUpdate(
-        { _id },
-        { username: username },
-        { new: true }
-      );
-      console.log('------------ TEST2 -----------');
-      console.log(test2);
-
-      return User.findOneAndUpdate(
-        { _id },
-        { username: username },
-        { new: true }
-      );
+        return User.findOneAndUpdate(
+          {_id},
+          { 
+            availability: { 
+              mondayAm,
+              mondayPm,
+              tuesdayAm,
+              tuesdayPm,
+              wednesdayAm,
+              wednesdayPm,
+              thursdayAm,
+              thursdayPm,
+              fridayAm,
+              fridayPm,
+              saturdayAm,
+              saturdayPm,
+              sundayAm,
+              sundayPm,
+            }
+          },
+          { new: true }
+        );
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
