@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
-// import FullCalendar from '../components/FullCalendar'
+import FullCalendarApp from '../components/FullCalendarApp'
 
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
@@ -19,7 +19,7 @@ import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 
 const ManagerDash = () => {
-  const [openEmployee, setOpenEmployee] = useState(true);
+  const [openEmployee, setOpenEmployee] = useState(false);
   const [openLocation, setOpenLocation] = useState(false);
 
   const userId = getUserId();
@@ -35,11 +35,11 @@ const ManagerDash = () => {
 
   return (
     <Container>
-      {/* <Row>
+      <Row>
                 <Col>
-                    <FullCalendar />
+                    <FullCalendarApp />
                 </Col>
-            </Row> */}
+            </Row>
       <Row>
         <Col>
           <Button
@@ -49,7 +49,7 @@ const ManagerDash = () => {
             size="lg"
             className="btn-block my-2"
           >
-            All Locations
+            View Locations
           </Button>
           <Collapse
             // style={{'height': '300px', 'overflow': 'scroll!important'}}
@@ -70,7 +70,7 @@ const ManagerDash = () => {
             size="lg"
             className="btn-block my-2"
           >
-            All Employees
+            View All Employees
           </Button>
           <Collapse
             // style={{'height': '500px', 'overflow': 'scroll!important'}}
