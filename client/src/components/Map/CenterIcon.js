@@ -6,10 +6,11 @@ export const CenterIcon = ({ center, map }) => {
     <>
       <FontAwesomeIcon
         icon="fa-location"
-        className="pt-2 px-2 pb-1 fa-lg"
+        className=""
         title="Center"
         alt="Center Map"
         style={centerStyle}
+        transform="grow-7"
         onClick={() => {
           map.panTo(center);
           map.setZoom(15);
@@ -20,18 +21,11 @@ export const CenterIcon = ({ center, map }) => {
 };
 
 const centerStyle = {
-  // bottom: "62px",
-  bottom: "29px",
-  // bottom: "-145px",
-  // bottom: "250px",
-  // left: "12px",
-  left: "60px",
-  // height: "28px",
-  height: "29px",
-  // width: "28px",
-  width: "24px",
-  // padding: "12px",
-  // paddingTop: "10px",
+  top: "95px",
+  left: "55px",
+  height: "19px",
+  width: "18px",
+  padding: "10px 10px 10px 12px",
   color: "#666666",
   backgroundColor: "white",
   cursor: "grab",

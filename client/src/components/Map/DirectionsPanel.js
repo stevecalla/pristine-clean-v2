@@ -7,8 +7,8 @@ export const DirectionsPanel = () => {
   return (
     <>
       <div id="accordion">
-        <div className="card">
-          <div className="card-header p-2 mb-1" style={{ "backgroundColor": "#0E6DFD"}} id="headingOne">
+        <div className="card p-2 mb-1" style={{ "backgroundColor": "#0E6DFD"}}  >
+          <div className="" id="headingOne">
             <h5 className="mb-0">
               <button
                 className="btn btn-link p-0"
