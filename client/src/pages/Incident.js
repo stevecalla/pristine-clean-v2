@@ -100,15 +100,15 @@ function Incident() {
       : setShowBodyValidation(false);
   };
 
-  const handleChecked = (e) => {
-    setIsUrgent((current) => !current);
+  // const handleChecked = (e) => {
+  //   setIsUrgent((current) => !current);
 
-    if (e.target.checked) {
-      console.log("✅ Checkbox is checked", isUrgent);
-    } else {
-      console.log("⛔️ Checkbox is NOT checked", isUrgent);
-    }
-  };
+  //   if (e.target.checked) {
+  //     console.log("✅ Checkbox is checked", isUrgent);
+  //   } else {
+  //     console.log("⛔️ Checkbox is NOT checked", isUrgent);
+  //   }
+  // };
 
   return (
     <Form

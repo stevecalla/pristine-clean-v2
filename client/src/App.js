@@ -9,13 +9,32 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
-import MapPage from "./pages/MapPage";
+// import MapPage from "./pages/MapPage";
 import EmployeeDash from "./pages/EmployeeDash";
 import ManagerDash from "./pages/ManagerDash";
 import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
 import Location from "./pages/Location";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faTrash,
+  faLocation,
+  faShareNodes,
+  faXmarkCircle,
+  faSearch,
+  faSpinner
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(
+  faTrash,
+  faLocation,
+  faShareNodes,
+  faXmarkCircle,
+  faSearch,
+  faSpinner
+);
 
 const httpLink = new HttpLink({
   uri: process.env.NODE_ENV === 'development' ? "http://localhost:3001/graphql" : "/graphql"

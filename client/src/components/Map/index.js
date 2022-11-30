@@ -3,6 +3,8 @@ import { useJsApiLoader } from "@react-google-maps/api";
 
 import Spinner from "react-bootstrap/Spinner";
 
+import "../../styles/spinner.css";
+
 import SearchIcon from "./SearchIcon";
 import { LoadMap } from "./LoadMap";
 
@@ -35,7 +37,15 @@ function Map({ originDb, destinationDb }) {
   let destination = useRef();
 
   if (!isLoaded) {
-    return <Spinner animation="border" />;
+    return (
+      <div 
+        className="d-flex justify-content-center" 
+        style={{ "height": "200px", "color": "red"}}
+        transform="grow-7"
+      >
+        <Spinner animation="border" />;  
+      </div>
+    )  
   }
 
   // if ( originDb && destinationDb ) {
@@ -98,38 +108,42 @@ function Map({ originDb, destinationDb }) {
     destination.current.value = "";
   }
 
-  return (
-    <div>
-      <DirectionsPanel />
-      
-      <div style={containerStyle} className="d-flex align-items-center">
-        <LoadMap
-          center={center}
-          directionsResponse={directionsResponse}
-          setMap={setMap}
-        />
+  // if (!isLoaded) {
+  //   return <Spinner animation="border" />;
+  // } else {
 
-        <Share />
 
-        <CenterIcon center={center} map={map} />
+    return (
+      <div>
+        <DirectionsPanel />
 
-        <div style={lineBreakStyle}></div>
+        <div style={containerStyle} className="d-flex align-items-center">
+          <LoadMap
+            center={center}
+            directionsResponse={directionsResponse}
+            setMap={setMap}
+          />
 
-        <SearchIcon
-          calculateRoute={calculateRoute}
-          center={center}
-          clearRoute={clearRoute}
-          destination={destination}
-          distance={distance}
-          duration={duration}
-          map={map}
-          origin={origin}
-        />
+          <Share />
+
+          <CenterIcon center={center} map={map} />
+
+          <div style={lineBreakStyle}></div>
+
+          <SearchIcon
+            calculateRoute={calculateRoute}
+            center={center}
+            clearRoute={clearRoute}
+            destination={destination}
+            distance={distance}
+            duration={duration}
+            map={map}
+            origin={origin}
+          />
+        </div>
       </div>
-
-    </div>
-  );
-}
+    );
+  }
 
 export default memo(Map);
 

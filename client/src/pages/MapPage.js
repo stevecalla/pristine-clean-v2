@@ -5,24 +5,26 @@ import { QUERY_SINGLE_LOCATION } from "../utils/queries";
 
 import Map from "../components/Map";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faTrash,
-  faLocation,
-  faShareNodes,
-  faXmarkCircle,
-  faSearchLocation,
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
+// import { library } from "@fortawesome/fontawesome-svg-core";
+// import {
+//   faTrash,
+//   faLocation,
+//   faShareNodes,
+//   faXmarkCircle,
+//   faSearch,
+//   faSpinner
+// } from "@fortawesome/free-solid-svg-icons";
 
-library.add(
-  faTrash,
-  faLocation,
-  faShareNodes,
-  faXmarkCircle,
-  faSearchLocation,
-  faSearch
-);
+// library.add(
+//   faTrash,
+//   faLocation,
+//   faShareNodes,
+//   faXmarkCircle,
+//   faSearch,
+//   faSpinner
+// );
+
+import "../styles/spinner.css";
 
 function MapPage() {
   const [originDb, setOriginDb] = useState("");
@@ -86,17 +88,17 @@ function MapPage() {
     variables: { locationId: locationId },
   });
 
-  if (loading) {
-    return <div>Loading...</div>;
-  } else {
-    console.log({ data });
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // } else {
+  //   console.log({ data });
+  // }
 
-  return (
-    <div className="App">
-      <Map originDb={originDb} destinationDb={destinationDb} />
-    </div>
-  );
-}
+    return (
+      <div className="App">
+        <Map originDb={originDb} destinationDb={destinationDb} />
+      </div>
+    );
+  }
 
 export default MapPage;
