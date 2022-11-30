@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
+import Table from 'react-bootstrap/Table';
+import { XSquareFill, Check2Circle } from 'react-bootstrap-icons';
+
 
 import { useQuery } from "@apollo/client";
 // // query all employees and locations
 import { QUERY_USERS } from "../utils/queries";
 
 const AllEmployeesCont = () => {
+
+  const [openAvailability, setOpenAvailability] = useState(false);
 
   const { loading, data } = useQuery(QUERY_USERS);
   if (!loading) {
@@ -20,10 +27,11 @@ const AllEmployeesCont = () => {
 
   // // const employees = employeesData?.employees || [];
   if (!loading) {
+
     return (
       <>
         {data.users.map((employee) => (
-          <Card>
+          <Card className="m-2">
             <Card.Header>
               {employee.firstName}, {employee.lastName}
             </Card.Header>
@@ -31,11 +39,76 @@ const AllEmployeesCont = () => {
               <ListGroup variant="flush">
                 <ListGroup.Item>Phone: {employee.cell}</ListGroup.Item>
                 <ListGroup.Item>Email: {employee.email}</ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
+                <ListGroup.Item>
+                  {/* TODO: View Availability Button opens all availability tables, need to open only target */}
+                  <Button
+                    onClick={() => setOpenAvailability(!openAvailability)}
+                    aria-controls="example-fade-text"
+                    aria-expanded={openAvailability}
+                    size="lg"
+                    className="btn-block my-2"
+                  >
+                    View Availability
+                  </Button>
+                  <Collapse
+                    // style={{'height': '300px', 'overflow': 'scroll!important'}}
+                    in={openAvailability}
+                  >
+                    <div id="collapse-availability-bar">
+                      <Table striped bordered hover size="sm">
+                        <thead>
+                          <tr>
+                            <th>Day</th>
+                            <th>AM</th>
+                            <th>PM</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Sunday</td>
+                            <td>{employee.availability.sundayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.sundayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                          </tr>
+                          <tr>
+                            <td>Monday</td>
+                            <td>{employee.availability.mondayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.mondayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                          </tr>
+                          <tr>
+                            <td>Tuesday</td>
+                            <td>{employee.availability.tuesdayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.tuesdayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                          </tr>
+                          <tr>
+                            <td>Wednesday</td>
+                            <td>{employee.availability.wednesdayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.wednesdayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                          </tr>
+                          <tr>
+                            <td>Thursday</td>
+                            <td>{employee.availability.thursdayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.thursdayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                          </tr>
+                          <tr>
+                            <td>Friday</td>
+                            <td>{employee.availability.fridayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.fridayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                          </tr>
+                          <tr>
+                            <td>Saturday</td>
+                            <td>{employee.availability.saturdayAm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                            <td>{employee.availability.saturdayPm ? <Check2Circle color="green"/> : <XSquareFill color="red"/>}</td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    </div>
+                  </Collapse>
+                </ListGroup.Item>
               </ListGroup>
             </Card.Body>
           </Card>
-        ))}
+        ))
+        }
       </>
       // <> <Card className="m-2">
       //   <Card.Header>

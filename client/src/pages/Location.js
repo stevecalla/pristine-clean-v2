@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import Collapse from "react-bootstrap/Collapse";
 
 import Map from '../components/Map'
 
@@ -18,60 +19,85 @@ const Location = () => {
   const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
   console.log(loadingLocation);
   // Use Form.Optional chaining to check if data exists and if it has an business property. If not, return an empty array to use.
-  const location = locationData?.business || [];
+  const location = locationData?.businessName || [];
+
+  const [openInstructions, setOpenInstruction] = useState(false);
+
   return (
     <main>
       {/* <Container>
         <Row>
-          <Col> */}
-      {/* h1 location.business */}
-      {/*  li location.manager */}
-      {/*  li location.cleaners */}
-      {/*  li location.cleaners */}
-      {/* <Card>
-              <Card.Header>{location.business}</Card.Header>
+          <Col>
+            <Card>
+              <Card.Header>{location.businessName}</Card.Header>
               <Card.Body className=" bg-light">
                 <ListGroup variant="flush">
                   <ListGroup.Item>{location.manager}</ListGroup.Item>
-                  <ListGroup.Item>{location.cleaners}</ListGroup.Item>
-                  <ListGroup.Item>{location.frequency}</ListGroup.Item>
+                  <ListGroup.Item>{location.address}</ListGroup.Item> */}
+                   {/* TODO: add phone # to model/seed/query */}
+                  {/* <ListGroup.Item>{location.phone}</ListGroup.Item> */}
+                  {/* <ListGroup.Item>{location.cleaners}</ListGroup.Item>
+                  <ListGroup.Item>{location.shifts}</ListGroup.Item>
                 </ListGroup>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-        <Row>
-          <Col> */}
-      {/*  h1 INSTRUCTIONs */}
-      {/*  li location.instructions */}
-      {/* <Card>
-              <Card.Header>Instructions</Card.Header>
-              <Card.Body className=" bg-light">
-                <ListGroup variant="flush">
-                  <ListGroup.Item>{location.instructions}</ListGroup.Item>
-                </ListGroup>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row> */}
-      <Col>{/* MAP GOES HERE */}</Col>
-      {/* </Row>
         <Row>
           <Col>
-            <Button type="click" className="btn-primary">
-              Get Directions
+            <Button
+              onClick={() => setOpenInstruction(!openInstructions)}
+              aria-controls="instructions-fade-text"
+              aria-expanded={openInstructions}
+              size="lg"
+              className="btn-block my-2"
+            >
+              View Instructions
             </Button>
+            <Collapse
+              style={{ 'height': '300px', 'overflow': 'scroll!important' }}
+              in={openInstructions}
+            >
+              <div id="collapse-instructions-bar">
+                <Card>
+                  <Card.Body className=" bg-light">
+                    <ListGroup variant="flush">
+                      <ListGroup.Item>Facility Type: {location.instructions.facilityType}</ListGroup.Item>
+                      <ListGroup.Item>Cleaning Type: {location.instructions.cleaningType}</ListGroup.Item>
+                      <ListGroup.Item>Bathrooms: {location.instructions.bathrooms}</ListGroup.Item>
+                      <ListGroup.Item>Lobby: {location.instructions.lobby}</ListGroup.Item>
+                      <ListGroup.Item>Sitting-Area: {location.instructions.sittingArea}</ListGroup.Item>
+                      <ListGroup.Item>Break-Room: {location.instructions.breakRoom}</ListGroup.Item>
+                      <ListGroup.Item>Fornt-Desk: {location.instructions.frontdesk}</ListGroup.Item>
+                      <ListGroup.Item>Appliances: {location.instructions.appliances}</ListGroup.Item>
+                      <ListGroup.Item>Dusting: {location.instructions.dusting}</ListGroup.Item>
+                      <ListGroup.Item>Windows: {location.instructions.windows}</ListGroup.Item>
+                      <ListGroup.Item>Trash: {location.instructions.trash}</ListGroup.Item>
+                      <ListGroup.Item>Vacuum: {location.instructions.vacuum}</ListGroup.Item>
+                      <ListGroup.Item>Mop: {location.instructions.mop}</ListGroup.Item>
+                      <ListGroup.Item>Additional Services: {location.instructions.additionalServices}</ListGroup.Item>
+                      <ListGroup.Item>Exclusions: {location.instructions.exclusions}</ListGroup.Item>
+                    </ListGroup >
+                  </Card.Body >
+                </Card >
+              </div >
+            </Collapse >
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Body>
+                <Map />
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container> */}
+
       <Container>
         <Row>
           <Col>
-            {/* h1 location.business */}
-            {/*  li location.manager */}
-            {/*  li location.cleaners */}
-            {/*  li location.cleaners */}
             <Card>
               <Card.Header><h1>Walmart</h1></Card.Header>
               <Card.Body className=" bg-light">
@@ -99,8 +125,6 @@ const Location = () => {
         </Row>
         <Row>
           <Col>
-            {/*  h1 INSTRUCTIONs */}
-            {/*  li location.instructions */}
             <Card>
               <Card.Header>Instructions</Card.Header>
               <Card.Body className=" bg-light">
@@ -109,30 +133,13 @@ const Location = () => {
                 </ListGroup>
               </Card.Body>
               <Card.Body>
-              <Map />
+                <Map />
               </Card.Body>
             </Card>
           </Col>
         </Row>
-        <Row>
-          {/* MAP GOES HERE */}
-          <Col >
-          
-            
-            
-          </Col>
-        </Row>
-        
-        {/* <Row>
-          <Col>
-            <Button type="click" className="btn-primary">
-              Get Directions
-            </Button>
-          </Col>
-        </Row> */}
       </Container>
-
-    </main>
+    </main >
   );
 };
 

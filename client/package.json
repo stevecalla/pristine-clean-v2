@@ -22,8 +22,11 @@
     "fullcalendar": "^5.11.3",
     "graphql": "^15.4.0",
     "jwt-decode": "^2.2.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^1.0.1",
+    "react-bootstrap-icons": "^1.10.2",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
@@ -39,8 +42,7 @@
     "workbox-range-requests": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
-    "workbox-streams": "^6.5.4",
-    "react-datepicker": "^4.8.0"
+    "workbox-streams": "^6.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
