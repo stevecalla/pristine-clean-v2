@@ -70,15 +70,11 @@ const AppNavbar = () => {
                   <Nav.Link as={Link} to="/location" eventKey="9">
                     Location Page
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/map" eventKey="8">
-                    Map Page
-                  </Nav.Link>
                   <Nav.Link onClick={() => setShowModal(true)}>
                     Login/Sign Up
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
-              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

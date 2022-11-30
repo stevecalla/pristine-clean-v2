@@ -28,7 +28,6 @@ function SearchIcon({
         onClick={() => setOpen(!open)}
         title="Search"
         alt="Share my profile"
-        size="20x"
         transform="grow-4"
       />
 
