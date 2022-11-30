@@ -9,10 +9,12 @@ function Incident() {
   const [subject, setSubject] = useState("");
   const [telNo, setTelNo] = useState("");
   const [body, setBody] = useState("");
+  const [isUrgent, setIsUrgent] = useState("Not Urgent");
   const [areAllFieldsFilled, setAreAllFieldsFilled] = useState(true);
 
   const [showNameValidation, setShowNameValidation] = useState(false);
-  const [showlocationNameValidation, setShowlocationNameValidation] = useState(false);
+  const [showlocationNameValidation, setShowlocationNameValidation] =
+    useState(false);
   const [showTelNoValidation, setShowTelNoValidation] = useState(false);
   const [showSubjectValidation, setShowSubjectValidation] = useState(false);
   const [showBodyValidation, setShowBodyValidation] = useState(false);
@@ -21,12 +23,18 @@ function Incident() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
+    console.log(e.target, e.target.checked);
+
     // Ternary statement that will call either setFirstName or setLastName based on what field the user is typing in
     name === "name"
       ? setName(value)
       : name === "telNo"
       ? setTelNo(value)
       : name === "subject"
+      ? setSubject(value)
+      : name === "urgent"
+      ? setIsUrgent(value)
+      : name === "urgent"
       ? setSubject(value)
       : name === "locationName"
       ? setlocationName(value)
@@ -38,9 +46,14 @@ function Incident() {
   // If all fields are populated then enable the submit button
   useEffect(() => {
     setAreAllFieldsFilled(
-      name.trim() !== "" && locationName.trim() !== "" && telNo.trim() !== "" && subject.trim() !== "" && body.trim() !== ""
+      name.trim() !== "" &&
+        locationName.trim() !== "" &&
+        telNo.trim() !== "" &&
+        subject.trim() !== "" &&
+        isUrgent.trim() !== "" &&
+        body.trim() !== ""
     );
-  }, [name, locationName, telNo, subject, body]);
+  }, [name, locationName, telNo, subject, isUrgent, body]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -50,8 +63,9 @@ function Incident() {
 
   // Open preferred email provide and proppulate
   const launchEmailPlatform = () => {
+    console.log(isUrgent);
     window.open(
-      `mailto:callasteven@gmail.com?name=${name}&telNo=${telNo}&subject=${subject}&body=Employee Name: ${name}%0D%0A%0D%0AEmployee Phone: ${telNo}%0D%0A%0D%0ALocation Name: ${locationName}%0D%0A%0D%0AIncident Information: ${body}`
+      `mailto:colinmichael89@gmail.com?name=${name}&telNo=${telNo}&subject=${isUrgent}: ${subject}&body=Status: ${isUrgent}%0D%0A%0D%0Employee Name: ${name}%0D%0A%0D%0AEmployee Phone: ${telNo}%0D%0A%0D%0ALocation Name: ${locationName}%0D%0A%0D%0AIncident Information: ${body}`
     );
     return false;
   };
@@ -69,11 +83,31 @@ function Incident() {
   const handleBlurChange = (e) => {
     const { name, value } = e.target;
 
-    name === "name" && value.trim() === "" ? setShowNameValidation (true) : setShowNameValidation(false);
-    name === "locationName" && value.trim() === "" ? setShowlocationNameValidation (true) : setShowlocationNameValidation(false);
-    name === "telNo" && value.trim() === "" ? setShowTelNoValidation (true) : setShowTelNoValidation(false);
-    name === "subject" && value.trim() === "" ? setShowSubjectValidation (true) : setShowSubjectValidation(false);
-    name === "body" && value.trim() === "" ? setShowBodyValidation (true) : setShowBodyValidation(false); 
+    name === "name" && value.trim() === ""
+      ? setShowNameValidation(true)
+      : setShowNameValidation(false);
+    name === "locationName" && value.trim() === ""
+      ? setShowlocationNameValidation(true)
+      : setShowlocationNameValidation(false);
+    name === "telNo" && value.trim() === ""
+      ? setShowTelNoValidation(true)
+      : setShowTelNoValidation(false);
+    name === "subject" && value.trim() === ""
+      ? setShowSubjectValidation(true)
+      : setShowSubjectValidation(false);
+    name === "body" && value.trim() === ""
+      ? setShowBodyValidation(true)
+      : setShowBodyValidation(false);
+  };
+
+  const handleChecked = (e) => {
+    setIsUrgent((current) => !current);
+
+    if (e.target.checked) {
+      console.log("✅ Checkbox is checked", isUrgent);
+    } else {
+      console.log("⛔️ Checkbox is NOT checked", isUrgent);
+    }
   };
 
   return (
@@ -86,7 +120,13 @@ function Incident() {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <div className="form-label">
           <Form.Label>Employee Name</Form.Label>
-          <Form.Label className={`validation-color ${showNameValidation ? "show": "hide"}`}>* field is required</Form.Label>
+          <Form.Label
+            className={`validation-color ${
+              showNameValidation ? "show" : "hide"
+            }`}
+          >
+            * field is required
+          </Form.Label>
         </div>
         <Form.Control
           className="custom-border"
@@ -103,7 +143,13 @@ function Incident() {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <div className="form-label">
           <Form.Label>Location Name</Form.Label>
-          <Form.Label className={`validation-color ${showlocationNameValidation ? "show": "hide"}`}>* field is required</Form.Label>
+          <Form.Label
+            className={`validation-color ${
+              showlocationNameValidation ? "show" : "hide"
+            }`}
+          >
+            * field is required
+          </Form.Label>
         </div>
         <Form.Control
           className="custom-border"
@@ -120,7 +166,13 @@ function Incident() {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <div className="form-label">
           <Form.Label>Employee Phone</Form.Label>
-          <Form.Label className={`validation-color ${showTelNoValidation ? "show": "hide"}`}>* field is required</Form.Label>
+          <Form.Label
+            className={`validation-color ${
+              showTelNoValidation ? "show" : "hide"
+            }`}
+          >
+            * field is required
+          </Form.Label>
         </div>
         <Form.Control
           className="custom-border"
@@ -138,7 +190,13 @@ function Incident() {
       <Form.Group className="mb-3" controlId="formBasicName">
         <div className="form-label">
           <Form.Label>Subject</Form.Label>
-          <Form.Label className={`validation-color ${showSubjectValidation ? "show": "hide"}`}>* field is required</Form.Label>
+          <Form.Label
+            className={`validation-color ${
+              showSubjectValidation ? "show" : "hide"
+            }`}
+          >
+            * field is required
+          </Form.Label>
         </div>
         <Form.Control
           className="custom-border"
@@ -152,10 +210,40 @@ function Incident() {
         />
       </Form.Group>
 
+      <Form.Group className="mb-3" controlId="formBasicName">
+        <div className="form-label">
+          <Form.Label>Urgent</Form.Label>
+          <Form.Label
+            className={`validation-color ${
+              showSubjectValidation ? "show" : "hide"
+            }`}
+          >
+            * field is required
+          </Form.Label>
+        </div>
+        <Form.Control
+          className="custom-border"
+          type="text"
+          placeholder="Urgent / Not Urgent"
+          value={isUrgent}
+          name="urgent"
+          onChange={handleInputChange}
+          onBlur={handleBlurChange}
+          required
+        />
+      </Form.Group>
+
+
       <Form.Group className="mb-3" controlId="formBasicMessage">
         <div className="form-label">
           <Form.Label>Incident Details</Form.Label>
-          <Form.Label className={`validation-color ${showBodyValidation ? "show": "hide"}`}>* field is required</Form.Label>
+          <Form.Label
+            className={`validation-color ${
+              showBodyValidation ? "show" : "hide"
+            }`}
+          >
+            * field is required
+          </Form.Label>
         </div>
         {/* <Form.Label>Message</Form.Label> */}
         <Form.Control
