@@ -57,7 +57,7 @@ const AppNavbar = () => {
                     title="Forms"
                     menuvariant="dark"
                   >
-                    <NavDropdown.Item as={Link} to="/availability" eventKey="5">
+                    <NavDropdown.Item reloadDocument as={Link} to="/availability" eventKey="5">
                       Availability
                     </NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/timeoff" eventKey="6">
