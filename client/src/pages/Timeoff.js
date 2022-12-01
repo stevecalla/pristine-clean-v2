@@ -4,6 +4,15 @@ import Form from "react-bootstrap/Form";
 import "../styles/Contact.css";
 
 function Timeoff() {
+  const today = new Date().toLocaleDateString();
+  var dt = new Date();
+  var mm = dt.getMonth() + 1;
+  var dd = dt.getDate();
+  var yyyy = dt.getFullYear();
+  let yyyyMax = dt.getFullYear() + 1;
+  let calendarMinDate = `${yyyy}-${mm}-${dd}`;
+  let calendarMaxDate = `${yyyyMax}-12-31`;
+
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -25,7 +34,7 @@ function Timeoff() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    console.log(e.target, e.target.checked);
+    // console.log(e.target, e.target.checked);
 
     // Ternary statement that will call either the value of the input upon change
     name === "name"
@@ -153,8 +162,12 @@ function Timeoff() {
           <Form.Control
             className="custom-border"
             type="date"
+            // type="datetime-local"
             value={startDate}
             name="startDate"
+            // min="2022-11-30"
+            min={calendarMinDate}
+            max={calendarMaxDate}
             onChange={handleInputChange}
             onBlur={handleBlurChange}
             required
@@ -177,8 +190,12 @@ function Timeoff() {
           <Form.Control
             className="custom-border"
             type="date"
+            // type="datetime-local"
             value={endDate}
             name="endDate"
+            // min="2022-30-22"
+            min={startDate}
+            max={calendarMaxDate}
             onChange={handleInputChange}
             onBlur={handleBlurChange}
             required
