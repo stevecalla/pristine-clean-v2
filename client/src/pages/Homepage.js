@@ -13,7 +13,7 @@ import Col from "react-bootstrap/Col";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
-import { CleanMop } from "../components/Home/CleanAsset";
+import { CleanAsset } from "../components/Home/CleanAsset";
 
 const Homepage = () => {
   const [key, setKey] = useState("login");
@@ -33,7 +33,7 @@ const Homepage = () => {
         >
           <div className="mx-4 mt-4 mb-4" style={{ height: "150px" }}>
             <div className="d-flex justify-content-center align-content-center align-item-center">
-              <CleanMop />
+              <CleanAsset />
             </div>
           </div>
 
