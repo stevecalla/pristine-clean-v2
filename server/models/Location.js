@@ -21,7 +21,7 @@ const locationSchema = new Schema({
     type: String,
   },
   startTime: {
-    type: Date,
+    type: String,
   },
   laborHours: {
     type: Number,
