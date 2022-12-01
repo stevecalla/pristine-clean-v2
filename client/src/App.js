@@ -17,6 +17,8 @@ import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
 import Location from "./pages/Location";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faTrash,
