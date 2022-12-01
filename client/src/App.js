@@ -26,7 +26,7 @@ import {
   faShareNodes,
   faXmarkCircle,
   faSearch,
-  faSpinner
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -39,7 +39,10 @@ library.add(
 );
 
 const httpLink = new HttpLink({
-  uri: process.env.NODE_ENV === 'development' ? "http://localhost:3001/graphql" : "/graphql"
+  uri:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3001/graphql"
+      : "/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
@@ -87,4 +90,3 @@ function App() {
 }
 
 export default App;
-

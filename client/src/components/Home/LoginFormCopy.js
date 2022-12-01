@@ -1,4 +1,3 @@
-// see SignupForm.js for comments
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
@@ -6,8 +5,6 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
-import { CleanMop } from "./CleanAsset";
-// import { CleanCouple } from "./CleanCouple";
 
 const LoginForm = ({ setShowModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -69,35 +66,19 @@ const LoginForm = ({ setShowModal }) => {
 
   return (
     <div className="d-flex flex-column align-items-center mt-3">
-      <div
-        style={{
-          height: "80vh",
-          width: "380px",
-          margin: "10px",
-          boxShadow: "5px 5px 5px 5px gray",
-        }}
-      >
-        <div className="mx-4 mt-5 mb-4" style={{ height: "150px" }}>
-          <div className="d-flex justify-content-center align-content-center align-item-center">
-            {/* <p className="mb-0" >{<CleanMop />}</p> */}
-            {/* <p className="mb-0" >{<CleanCouple />}</p> */}
-            <CleanMop />
-          </div>
-        </div>
-
         <div className="d-flex flex-column align-items-center">
-          <div className="mx-4" style={{ width: "350px" }}>
-            <p className="mt-2 mb-1">Sign In</p>
+          {/* <div className="mx-4" style={{ width: "350px" }}>
+            <p className="mt-2 mb-1">Log In</p>
             <hr className="my-0 mb-1"></hr>
             <hr className="my-0"></hr>
-          </div>
+          </div> */}
 
           <Form
             noValidate
             validated={validated}
-            className="m-4"
             onSubmit={handleFormSubmit}
-            style={{ width: "350px", height: "375px" }}
+            className="mx-2 mt-2 mb-1"
+            style={{ width: "350px"}}
           >
             <Form.Group>
               <Form.Label htmlFor="email">Email</Form.Label>
@@ -130,6 +111,7 @@ const LoginForm = ({ setShowModal }) => {
             </Form.Group>
             <Button
               disabled={!(userFormData.email && userFormData.password)}
+              className="mb-3"
               type="submit"
               variant="success"
             >
@@ -140,18 +122,20 @@ const LoginForm = ({ setShowModal }) => {
 
         {/* show alert if server response is bad */}
         {error && (
+          <div className="d-flex justify-content-center">
           <Alert
             dismissible
             onClose={() => setShowAlert(false)}
             show={showAlert}
             variant="danger"
-            className="my-3 p-3 bg-danger text-white"
+            className="mb-4 py-1 pl-1 bg-danger text-white"
+            style={{ width: "300px" }}
           >
-            Something went wrong with your login credentials!
+            <p className="" style={{ width: "200px" }}>Something went wrong with your login credentials!</p>
           </Alert>
+          </div>
         )}
       </div>
-    </div>
   );
 };
 

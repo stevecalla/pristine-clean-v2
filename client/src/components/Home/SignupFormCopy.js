@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
-import { ADD_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
+import { ADD_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 import decode from "jwt-decode";
 
 const SignupForm = ({ setShowModal }) => {
@@ -46,7 +46,7 @@ const SignupForm = ({ setShowModal }) => {
       // Auth.login(data.addUser.token);
       Auth.login(data.addUser);
 
-      console.log(data.addUser)
+      console.log(data.addUser);
 
       //section
       let decodedToken = decode(data.addUser.token);
@@ -55,13 +55,14 @@ const SignupForm = ({ setShowModal }) => {
 
       // navigate('/location', {replace: true});
       // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
-      
+
       // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/${userId}`)
 
-      isManager ? navigate(`/managerdash`, {replace: true}) : navigate(`/employeedash`, {replace: true});
+      isManager
+        ? navigate(`/managerdash`, { replace: true })
+        : navigate(`/employeedash`, { replace: true });
 
       setShowModal(false);
-
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -75,9 +76,21 @@ const SignupForm = ({ setShowModal }) => {
   };
 
   return (
-    <>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+    <div className="d-flex flex-column align-items-center mt-3">
+        <div className="d-flex flex-column align-items-center">
+          {/* <div className="mx-4" style={{ width: "350px" }}>
+            <p className="mt-2 mb-1">Sign Up</p>
+            <hr className="my-0 mb-1"></hr>
+            <hr className="my-0"></hr>
+          </div> */}
+          
+      <Form 
+        noValidate 
+        validated={validated} 
+        onSubmit={handleFormSubmit}
+        className="mx-2 mt-2 mb-1"
+        style={{ width: "350px"}}
+      >
         <Form.Group>
           <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control
@@ -130,26 +143,32 @@ const SignupForm = ({ setShowModal }) => {
               userFormData.password
             )
           }
+          className="mb-3"
           type="submit"
           variant="success"
         >
           Submit
         </Button>
       </Form>
+      </div>
 
       {/* show alert if server response is bad */}
       {error && (
+        <div className="d-flex justify-content-center">
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
           variant="danger"
-          className="my-3 p-3 bg-danger text-white"
+            className="mt-0 mb-4 py-1 pl-1 bg-danger text-white"
+            style={{ width: "300px" }}
         >
-          Something went wrong with your signup!
+            <p className="" style={{ width: "200px" }}>Something went wrong with your signup!</p>
         </Alert>
+        </div>
       )}
-    </>
+
+    </div>
   );
 };
 
