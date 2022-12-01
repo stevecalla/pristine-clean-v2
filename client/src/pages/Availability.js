@@ -160,7 +160,9 @@ const Availability = () => {
   } else {
     return (
       <main>
+
         <Container>
+        <h2 className="display-6 custom-text mt-3 mb-0">Availability</h2>
           <Form onSubmit={handleFormSubmit}>
             <Row>
               <Col sm={12}>
