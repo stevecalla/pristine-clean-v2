@@ -1,4 +1,3 @@
-// see SignupForm.js for comments
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
@@ -6,7 +5,6 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
-import { CleanMop } from "./CleanAsset";
 
 const LoginForm = ({ setShowModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -68,20 +66,18 @@ const LoginForm = ({ setShowModal }) => {
 
   return (
     <div className="d-flex flex-column align-items-center mt-3">
-
-
         <div className="d-flex flex-column align-items-center">
-          <div className="mx-4" style={{ width: "350px" }}>
-            <p className="mt-2 mb-1">Sign In</p>
+          {/* <div className="mx-4" style={{ width: "350px" }}>
+            <p className="mt-2 mb-1">Log In</p>
             <hr className="my-0 mb-1"></hr>
             <hr className="my-0"></hr>
-          </div>
+          </div> */}
 
           <Form
             noValidate
             validated={validated}
-            className="mx-2 mt-2 mb-1"
             onSubmit={handleFormSubmit}
+            className="mx-2 mt-2 mb-1"
             style={{ width: "350px"}}
           >
             <Form.Group>
@@ -115,6 +111,7 @@ const LoginForm = ({ setShowModal }) => {
             </Form.Group>
             <Button
               disabled={!(userFormData.email && userFormData.password)}
+              className="mb-3"
               type="submit"
               variant="success"
             >
@@ -131,7 +128,7 @@ const LoginForm = ({ setShowModal }) => {
             onClose={() => setShowAlert(false)}
             show={showAlert}
             variant="danger"
-            className="m-0 py-1 pl-1 bg-danger text-white"
+            className="mb-4 py-1 pl-1 bg-danger text-white"
             style={{ width: "300px" }}
           >
             <p className="" style={{ width: "200px" }}>Something went wrong with your login credentials!</p>

@@ -22,47 +22,42 @@ const Homepage = () => {
     <>
       {/* <MessageBoard /> */}
 
-      {/* <LoginFormCopy /> */}
-
-      {/* <SignupFormCopy /> */}
-
-      <div className="d-flex flex-column align-items-center mt-3">
+      <div className="d-flex flex-column align-items-center mt-3 overflow-auto">
         <div
           style={{
-            height: "80vh",
+            // height: "80vh",
             width: "380px",
             margin: "10px",
             boxShadow: "5px 5px 5px 5px gray",
           }}
         >
-          <div className="mx-4 mt-5 mb-4" style={{ height: "150px" }}>
+          <div className="mx-4 mt-4 mb-4" style={{ height: "150px" }}>
             <div className="d-flex justify-content-center align-content-center align-item-center">
               <CleanMop />
             </div>
           </div>
 
           <Tabs
-        id="justify-tab"
-        activeKey={key}
-        onSelect={(k) => setKey(k)}
-        className="mb-3 border border-secondary rounded"
-        variant="pills"
-        justify
-      >
-        <Tab eventKey="login" title="Login">
-          <Row>
-            <Col>
-              <LoginFormCopy />
-              {/* <FullCalendarApp /> */}
-            </Col>
-          </Row>
-        </Tab>
-        <Tab eventKey="signup" title="Sign Up">
-          {/* <AllEmployeesCont /> */}
-          <SignupFormCopy /> 
-        </Tab>
-      </Tabs>
-      
+            id="justify-tab"
+            activeKey={key}
+            onSelect={(k) => setKey(k)}
+            className=""
+            variant="tabs"
+            justify
+          >
+            <Tab eventKey="login" title="Login">
+              <Row>
+                <Col>
+                  <LoginFormCopy />
+                  {/* <FullCalendarApp /> */}
+                </Col>
+              </Row>
+            </Tab>
+            <Tab eventKey="signup" title="Sign Up">
+              {/* <AllEmployeesCont /> */}
+              <SignupFormCopy />
+            </Tab>
+          </Tabs>
         </div>
       </div>
     </>

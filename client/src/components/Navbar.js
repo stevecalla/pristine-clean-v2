@@ -87,18 +87,18 @@ const AppNavbar = () => {
         aria-labelledby="signup-modal"
       >
         {/* tab container to do either signup or login component */}
-        {/* <Tab.Container defaultActiveKey="login"> */}
-        <Tab.Container>
+        <Tab.Container defaultActiveKey="login">
+        {/* <Tab.Container> */}
           <Modal.Header closeButton>
             <Modal.Title id="signup-modal">
               <Nav variant="pills">
                 <Nav.Item>
-                  <LoginForm setShowModal={setShowModal}/>
-                  {/* <Nav.Link eventKey="login">Login</Nav.Link> */}
+                  {/* <LoginForm setShowModal={setShowModal}/> */}
+                  <Nav.Link eventKey="login">Login</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <SignUpForm  setShowModal={setShowModal}/>
-                  {/* <Nav.Link eventKey="signup">Sign Up</Nav.Link> */}
+                  {/* <SignUpForm  setShowModal={setShowModal}/> */}
+                  <Nav.Link eventKey="signup">Sign Up</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Modal.Title>
