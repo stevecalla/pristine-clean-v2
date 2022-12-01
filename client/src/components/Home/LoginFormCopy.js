@@ -7,7 +7,6 @@ import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
 import { CleanMop } from "./CleanAsset";
-// import { CleanCouple } from "./CleanCouple";
 
 const LoginForm = ({ setShowModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -69,21 +68,7 @@ const LoginForm = ({ setShowModal }) => {
 
   return (
     <div className="d-flex flex-column align-items-center mt-3">
-      <div
-        style={{
-          height: "80vh",
-          width: "380px",
-          margin: "10px",
-          boxShadow: "5px 5px 5px 5px gray",
-        }}
-      >
-        <div className="mx-4 mt-5 mb-4" style={{ height: "150px" }}>
-          <div className="d-flex justify-content-center align-content-center align-item-center">
-            {/* <p className="mb-0" >{<CleanMop />}</p> */}
-            {/* <p className="mb-0" >{<CleanCouple />}</p> */}
-            <CleanMop />
-          </div>
-        </div>
+
 
         <div className="d-flex flex-column align-items-center">
           <div className="mx-4" style={{ width: "350px" }}>
@@ -154,7 +139,6 @@ const LoginForm = ({ setShowModal }) => {
           </div>
         )}
       </div>
-    </div>
   );
 };
 

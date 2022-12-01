@@ -4,18 +4,67 @@ import Carousel from "react-bootstrap/Carousel";
 // import secondslide from "../assets/secondslide.svg";
 // import thirdslide from "../assets/thirdslide.svg";
 import LoginFormCopy from "../components/Home/LoginFormCopy";
-// import SignupFormCopy from "../components/SignupFormCopy";
-import MessageBoard from "../components/MessageBoard";
+import SignupFormCopy from "../components/Home/SignupFormCopy";
+// import MessageBoard from "../components/MessageBoard";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+
+import { CleanMop } from "../components/Home/CleanAsset";
 
 const Homepage = () => {
+  const [key, setKey] = useState("login");
   // set slide prop to true to enable animation
   return (
     <>
       {/* <MessageBoard /> */}
 
-      <LoginFormCopy />
+      {/* <LoginFormCopy /> */}
 
       {/* <SignupFormCopy /> */}
+
+      <div className="d-flex flex-column align-items-center mt-3">
+        <div
+          style={{
+            height: "80vh",
+            width: "380px",
+            margin: "10px",
+            boxShadow: "5px 5px 5px 5px gray",
+          }}
+        >
+          <div className="mx-4 mt-5 mb-4" style={{ height: "150px" }}>
+            <div className="d-flex justify-content-center align-content-center align-item-center">
+              <CleanMop />
+            </div>
+          </div>
+
+          <Tabs
+        id="justify-tab"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+        className="mb-3 border border-secondary rounded"
+        variant="pills"
+        justify
+      >
+        <Tab eventKey="login" title="Login">
+          <Row>
+            <Col>
+              <LoginFormCopy />
+              {/* <FullCalendarApp /> */}
+            </Col>
+          </Row>
+        </Tab>
+        <Tab eventKey="signup" title="Sign Up">
+          {/* <AllEmployeesCont /> */}
+          <SignupFormCopy /> 
+        </Tab>
+      </Tabs>
+      
+        </div>
+      </div>
     </>
   );
 };
