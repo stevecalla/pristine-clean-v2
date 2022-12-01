@@ -19,7 +19,7 @@ const resolvers = {
     },
     me: async (parent, { _id }, context) => {
       // if (context.user) {
-      return User.findById({ _id });
+      return User.findById({ _id }).populate('locations');;
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
@@ -120,8 +120,8 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    updateAvailability: async (parent, { 
-      _id, 
+    updateAvailability: async (parent, {
+      _id,
       username,
       mondayAm,
       mondayPm,
@@ -136,32 +136,32 @@ const resolvers = {
       saturdayAm,
       saturdayPm,
       sundayAm,
-      sundayPm 
-    }, 
-    context) => {
+      sundayPm
+    },
+      context) => {
       // if (context.user) {
-        return User.findOneAndUpdate(
-          {_id},
-          { 
-            availability: { 
-              mondayAm,
-              mondayPm,
-              tuesdayAm,
-              tuesdayPm,
-              wednesdayAm,
-              wednesdayPm,
-              thursdayAm,
-              thursdayPm,
-              fridayAm,
-              fridayPm,
-              saturdayAm,
-              saturdayPm,
-              sundayAm,
-              sundayPm,
-            }
-          },
-          { new: true }
-        );
+      return User.findOneAndUpdate(
+        { _id },
+        {
+          availability: {
+            mondayAm,
+            mondayPm,
+            tuesdayAm,
+            tuesdayPm,
+            wednesdayAm,
+            wednesdayPm,
+            thursdayAm,
+            thursdayPm,
+            fridayAm,
+            fridayPm,
+            saturdayAm,
+            saturdayPm,
+            sundayAm,
+            sundayPm,
+          }
+        },
+        { new: true }
+      );
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
