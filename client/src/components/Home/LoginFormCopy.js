@@ -8,6 +8,9 @@ import decode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const LoginForm = ({ setShowModal }) => {
+
+  console.log(Auth.login, !Auth.login);
+
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 

@@ -7,6 +7,8 @@ import LoginFormCopy from "../components/Home/LoginFormCopy";
 import SignupFormCopy from "../components/Home/SignupFormCopy";
 // import MessageBoard from "../components/MessageBoard";
 
+import Auth from "../utils/auth";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -56,14 +58,14 @@ const Homepage = ({ key2 }) => {
                 </Col>
               </Row>
             </Tab>
-            <Tab eventKey="login" title="Login">
+            <Tab eventKey="login" title="Login" disabled={Auth.loggedIn()}>
               <Row>
                 <Col>
                   <LoginFormCopy />
                 </Col>
               </Row>
             </Tab>
-            <Tab eventKey="signup" title="Sign Up">
+            <Tab eventKey="signup" title="Sign Up" disabled={Auth.loggedIn()}>
               <SignupFormCopy />
             </Tab>
           </Tabs>
