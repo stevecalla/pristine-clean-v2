@@ -9,11 +9,9 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 // import Dropdown from "react-bootstrap/Dropdown";
-import SignUpForm from "./SignupForm";
-import LoginForm from "./LoginForm";
+import SignUpFormOld from "./SignupFormOld";
+import LoginFormOld from "./LoginFormOld";
 import Auth from "../utils/auth";
-// import LoginFormCopy from "./components/Home/LoginFormCopy";
-import LoginFormCopy from "../components/Home/LoginFormCopy";
 
 const AppNavbar = () => {
   // set modal display state
@@ -98,11 +96,11 @@ const AppNavbar = () => {
             <Modal.Title id="signup-modal">
               <Nav variant="pills">
                 <Nav.Item>
-                  <LoginForm setShowModal={setShowModal}/>
+                  <LoginFormOld setShowModal={setShowModal}/>
                   {/* <Nav.Link eventKey="login">Login</Nav.Link> */}
                 </Nav.Item>
                 <Nav.Item>
-                  <SignUpForm  setShowModal={setShowModal}/>
+                  <SignUpFormOld  setShowModal={setShowModal}/>
                   {/* <Nav.Link eventKey="signup">Sign Up</Nav.Link> */}
                 </Nav.Item>
               </Nav>
@@ -111,10 +109,10 @@ const AppNavbar = () => {
           <Modal.Body>
             <Tab.Content>
               <Tab.Pane eventKey="login">
-                <LoginForm />
+                <LoginFormOld />
               </Tab.Pane>
               <Tab.Pane eventKey="signup">
-                <SignUpForm />
+                <SignUpFormOld />
               </Tab.Pane>
             </Tab.Content>
           </Modal.Body>

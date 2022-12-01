@@ -2,16 +2,24 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../utils/mutations";
+import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const LoginForm = ({ setShowModal }) => {
-  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [login, { error }] = useMutation(LOGIN_USER);
+const SignupForm = ({ setShowModal }) => {
+  // set initial form state
+  const [userFormData, setUserFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
+  const [addUser, { error }] = useMutation(ADD_USER);
+
+  // set state for form validation
   const [validated] = useState(false);
+  // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
   const handleInputChange = (event) => {
@@ -32,21 +40,24 @@ const LoginForm = ({ setShowModal }) => {
     }
 
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...userFormData },
       });
 
-      // Auth.login(data.login.token);
-      Auth.login(data.login);
+      // Auth.login(data.addUser.token);
+      Auth.login(data.addUser);
 
-      let decodedToken = decode(data.login.token);
+      console.log(data.addUser);
+
+      //section
+      let decodedToken = decode(data.addUser.token);
       let isManager = decodedToken.data.isManager;
       // let userId = decodedToken.data._id;
 
       // navigate('/location', {replace: true});
       // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
 
-      // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/`)
+      // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/${userId}`)
 
       isManager
         ? navigate(`/managerdash`, { replace: true })
@@ -81,7 +92,7 @@ const LoginForm = ({ setShowModal }) => {
     <div className="d-flex flex-column align-items-center mt-3">
       <div className="d-flex flex-column align-items-center">
         {/* <div className="mx-4" style={{ width: "350px" }}>
-            <p className="mt-2 mb-1">Log In</p>
+            <p className="mt-2 mb-1">Sign Up</p>
             <hr className="my-0 mb-1"></hr>
             <hr className="my-0"></hr>
           </div> */}
@@ -94,10 +105,25 @@ const LoginForm = ({ setShowModal }) => {
           style={{ width: "350px" }}
         >
           <Form.Group>
-            <Form.Label htmlFor="email">Email</Form.Label>
+            <Form.Label htmlFor="username">Username</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Your email"
+              placeholder="Your username"
+              name="username"
+              onChange={handleInputChange}
+              value={userFormData.username}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Username is required!
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label htmlFor="email">Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Your email address"
               name="email"
               onChange={handleInputChange}
               value={userFormData.email}
@@ -110,6 +136,7 @@ const LoginForm = ({ setShowModal }) => {
 
           <Form.Group>
             <Form.Label htmlFor="password">Password</Form.Label>
+
             <InputGroup className="mb-3">
               <Form.Control
                 // type="password"
@@ -122,9 +149,17 @@ const LoginForm = ({ setShowModal }) => {
                 style={{ borderRight: "none" }}
               />
               <Form.Control.Feedback type="invalid">
-                <p>Password is required!</p>
+                Password is required!
               </Form.Control.Feedback>
-              <InputGroup.Text id="basic-addon1" style={{ borderRadius: "0%", background: "white", borderLeft: "none"}}>
+
+              <InputGroup.Text
+                id="basic-addon1"
+                style={{
+                  borderRadius: "0%",
+                  background: "white",
+                  borderLeft: "none",
+                }}
+              >
                 <FontAwesomeIcon
                   icon="fa-eye"
                   style={display ? isDisplayed : isNotDisplayed}
@@ -138,9 +173,14 @@ const LoginForm = ({ setShowModal }) => {
               </InputGroup.Text>
             </InputGroup>
           </Form.Group>
-
           <Button
-            disabled={!(userFormData.email && userFormData.password)}
+            disabled={
+              !(
+                userFormData.username &&
+                userFormData.email &&
+                userFormData.password
+              )
+            }
             className="mb-3"
             type="submit"
             variant="success"
@@ -158,11 +198,11 @@ const LoginForm = ({ setShowModal }) => {
             onClose={() => setShowAlert(false)}
             show={showAlert}
             variant="danger"
-            className="mb-4 py-1 pl-1 bg-danger text-white"
+            className="mt-0 mb-4 py-1 pl-1 bg-danger text-white"
             style={{ width: "300px" }}
           >
             <p className="" style={{ width: "200px" }}>
-              Something went wrong with your login credentials!
+              Something went wrong with your signup!
             </p>
           </Alert>
         </div>
@@ -171,7 +211,7 @@ const LoginForm = ({ setShowModal }) => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
 
 const isDisplayed = {
   display: "block",
