@@ -16,9 +16,12 @@ import Tabs from "react-bootstrap/Tabs";
 import { CleanAsset } from "../components/Home/CleanAsset";
 import Message from "../components/Home/Message";
 
-const Homepage = () => {
-  const [key, setKey] = useState("message");
+const Homepage = ({ key2 }) => {
+  console.log(key2)
+
+  const [key, setKey] = useState(key2 || "message");
   // set slide prop to true to enable animation
+
   return (
     <>
       {/* <MessageBoard /> */}

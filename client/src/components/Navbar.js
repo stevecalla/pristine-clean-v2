@@ -12,6 +12,8 @@ import {
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 import Auth from "../utils/auth";
+// import LoginFormCopy from "./components/Home/LoginFormCopy";
+import LoginFormCopy from "../components/Home/LoginFormCopy";
 
 const AppNavbar = () => {
   // set modal display state
@@ -21,7 +23,7 @@ const AppNavbar = () => {
     <>
       <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
         <Container fluid className="pl-0">
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand as={Link} reloadDocument to="/">
             <h1>Pristine Clean</h1>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
@@ -70,7 +72,10 @@ const AppNavbar = () => {
                   <Nav.Link as={Link} to="/location" eventKey="9">
                     Location Page
                   </Nav.Link>
-                  <Nav.Link onClick={() => setShowModal(true)}>
+                  {/* <Nav.Link onClick={() => setShowModal(true)}>
+                    Login/Sign Up
+                  </Nav.Link> */}
+                  <Nav.Link as={Link} reloadDocument to="/login" eventKey="10">
                     Login/Sign Up
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>

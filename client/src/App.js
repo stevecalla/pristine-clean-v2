@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -16,6 +16,7 @@ import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
 import Location from "./pages/Location";
+import LoginFormCopy from "./components/Home/LoginFormCopy";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -28,8 +29,9 @@ import {
   faSearch,
   faSpinner,
   faEye,
-  faEyeSlash
+  faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
+import LoginForm from "./components/Home/LoginFormCopy";
 
 library.add(
   faTrash,
@@ -69,13 +71,18 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [key2, setKey2] = useState("login");
+  console.log(key2)
+
   return (
     <ApolloProvider client={client}>
       <Router>
         <>
           <Navbar />
           <Routes>
+
             <Route exact path="/" element={<Homepage />} />
+            <Route exact path="/login" element={<Homepage key2={"login"} />} />
             <Route exact path="/employeedash" element={<EmployeeDash />} />
             <Route exact path="/managerdash" element={<ManagerDash />} />
             <Route exact path="/availability" element={<Availability />} />
