@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-// import firstslide from "../assets/firstslide.svg";
-// import secondslide from "../assets/secondslide.svg";
-// import thirdslide from "../assets/thirdslide.svg";
 import LoginForm from "../components/Home/LoginForm";
 import SignupForm from "../components/Home/SignupForm";
-// import MessageBoard from "../components/MessageBoard";
 
 import Auth from "../utils/auth";
 
