@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
+import { LOGIN_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 import decode from "jwt-decode";
+import { CleanMop } from "./CleanAsset";
+// import { CleanCouple } from "./CleanCouple";
 
 const LoginForm = ({ setShowModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -66,15 +68,19 @@ const LoginForm = ({ setShowModal }) => {
 
   return (
     <>
-      <div className="mx-4 mb-0" style={{ height: "150px", border: "1px solid red"}}>
+      <div className="mx-4 mt-4 mb-4" style={{ height: "150px" }}>
         <div className="d-flex justify-content-center align-content-center align-item-center">
-          <p className="mb-0" style={{ height: "150px", width: "50%", border: "1px solid red", borderRadius: "50%"}}>Insert Image</p>
+          {/* <p className="mb-0" >{<CleanMop />}</p> */}
+          {/* <p className="mb-0" >{<CleanCouple />}</p> */}
+          <CleanMop />
         </div>
       </div>
       <div className="mx-4">
         <p className="mb-1">Sign In</p>
+        <hr className="my-0 mb-1"></hr>
         <hr className="my-0"></hr>
       </div>
+
       <Form noValidate validated={validated} className="m-4" onSubmit={handleFormSubmit}>
         <Form.Group>
           <Form.Label htmlFor="email">Email</Form.Label>
