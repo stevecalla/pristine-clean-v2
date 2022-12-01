@@ -16,7 +16,11 @@ import Map from '../components/Map';
 // query a single location
 // import { QUERY_SINGLE_LOCATION } from "../utils/queries";
 
-const Location = () => {
+// const Location = ({ location.id }) => {
+const Location = ({ locationDetails }) => {
+
+  console.log(locationDetails)
+
   // Execute the query on component load
   // const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
   // console.log(loadingLocation);
