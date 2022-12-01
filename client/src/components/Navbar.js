@@ -20,9 +20,9 @@ const AppNavbar = () => {
   return (
     <>
       <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
-        <Container fluid>
+        <Container fluid className="pl-0">
           <Navbar.Brand as={Link} to="/">
-            Google Books Search
+            <h1>Pristine Clean</h1>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar">

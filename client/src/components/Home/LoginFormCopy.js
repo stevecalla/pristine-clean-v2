@@ -40,20 +40,21 @@ const LoginForm = ({ setShowModal }) => {
 
       // Auth.login(data.login.token);
       Auth.login(data.login);
-      
+
       let decodedToken = decode(data.login.token);
       let isManager = decodedToken.data.isManager;
       // let userId = decodedToken.data._id;
 
       // navigate('/location', {replace: true});
       // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
-      
+
       // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/`)
 
-      isManager ? navigate(`/managerdash`, {replace: true}) : navigate(`/employeedash`, {replace: true});
+      isManager
+        ? navigate(`/managerdash`, { replace: true })
+        : navigate(`/employeedash`, { replace: true });
 
       setShowModal(false);
-
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -67,72 +68,90 @@ const LoginForm = ({ setShowModal }) => {
   };
 
   return (
-    <>
-      <div className="mx-4 mt-4 mb-4" style={{ height: "150px" }}>
-        <div className="d-flex justify-content-center align-content-center align-item-center">
-          {/* <p className="mb-0" >{<CleanMop />}</p> */}
-          {/* <p className="mb-0" >{<CleanCouple />}</p> */}
-          <CleanMop />
+    <div className="d-flex flex-column align-items-center mt-3">
+      <div
+        style={{
+          height: "80vh",
+          width: "380px",
+          margin: "10px",
+          boxShadow: "5px 5px 5px 5px gray",
+        }}
+      >
+        <div className="mx-4 mt-5 mb-4" style={{ height: "150px" }}>
+          <div className="d-flex justify-content-center align-content-center align-item-center">
+            {/* <p className="mb-0" >{<CleanMop />}</p> */}
+            {/* <p className="mb-0" >{<CleanCouple />}</p> */}
+            <CleanMop />
+          </div>
         </div>
+
+        <div className="d-flex flex-column align-items-center">
+          <div className="mx-4" style={{ width: "350px" }}>
+            <p className="mt-2 mb-1">Sign In</p>
+            <hr className="my-0 mb-1"></hr>
+            <hr className="my-0"></hr>
+          </div>
+
+          <Form
+            noValidate
+            validated={validated}
+            className="m-4"
+            onSubmit={handleFormSubmit}
+            style={{ width: "350px", height: "375px" }}
+          >
+            <Form.Group>
+              <Form.Label htmlFor="email">Email</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Your email"
+                name="email"
+                onChange={handleInputChange}
+                value={userFormData.email}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Email is required!
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Your password"
+                name="password"
+                onChange={handleInputChange}
+                value={userFormData.password}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Password is required!
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Button
+              disabled={!(userFormData.email && userFormData.password)}
+              type="submit"
+              variant="success"
+            >
+              Submit
+            </Button>
+          </Form>
+        </div>
+
+        {/* show alert if server response is bad */}
+        {error && (
+          <Alert
+            dismissible
+            onClose={() => setShowAlert(false)}
+            show={showAlert}
+            variant="danger"
+            className="my-3 p-3 bg-danger text-white"
+          >
+            Something went wrong with your login credentials!
+          </Alert>
+        )}
       </div>
-      <div className="mx-4">
-        <p className="mb-1">Sign In</p>
-        <hr className="my-0 mb-1"></hr>
-        <hr className="my-0"></hr>
-      </div>
-
-      <Form noValidate validated={validated} className="m-4" onSubmit={handleFormSubmit}>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your email"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
-      </Form>
-
-      {/* show alert if server response is bad */}
-      {error && (
-        <Alert
-          dismissible
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
-          variant="danger"
-          className="my-3 p-3 bg-danger text-white"
-        >
-          Something went wrong with your login credentials!
-        </Alert>
-      )}
-    </>
+    </div>
   );
 };
 

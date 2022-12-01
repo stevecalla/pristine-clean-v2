@@ -116,180 +116,185 @@ function Timeoff() {
   };
 
   return (
-    <Form
-      className="p-3 overflow-auto custom-about"
-      onSubmit={handleFormSubmit}
-    >
-      <h1 className="display-5 custom-text">Time Off Request</h1>
-
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <div className="form-label">
-          <Form.Label>Employee Name</Form.Label>
-          <Form.Label
-            className={`validation-color ${
-              showNameValidation ? "show" : "hide"
-            }`}
-          >
-            * field is required
-          </Form.Label>
-        </div>
-        <Form.Control
-          className="custom-border"
-          type="text"
-          placeholder="Enter Employee Name"
-          value={name}
-          name="name"
-          onChange={handleInputChange}
-          onBlur={handleBlurChange}
-          required
-        />
-      </Form.Group>
-
-      <div className="d-flex justify-content-between">
-
-        <Form.Group className="" controlId="formBasicEmail" 
-            style={{ "width": "50%"}}>
-          <div className="form-label">
-            <Form.Label>Start Date</Form.Label>
-            <Form.Label
-              className={`validation-color ${
-                showStartDateValidation ? "show" : "hide"
-              }`}
-            >
-              * field is required
-            </Form.Label>
-          </div>
-          <Form.Control
-            className="custom-border"
-            type="date"
-            // type="datetime-local"
-            value={startDate}
-            name="startDate"
-            // min="2022-11-30"
-            min={calendarMinDate}
-            max={calendarMaxDate}
-            onChange={handleInputChange}
-            onBlur={handleBlurChange}
-            required
-            style={{ "width": "98%"}}
-          />
-        </Form.Group>
-
-        <Form.Group className="" controlId="formBasicEmail" 
-            style={{ "width": "50%"}}>
-          <div className="form-label">
-            <Form.Label>End Date</Form.Label>
-            <Form.Label
-              className={`validation-color ${
-                showEndDateValidation ? "show" : "hide"
-              }`}
-            >
-              * field is required
-            </Form.Label>
-          </div>
-          <Form.Control
-            className="custom-border"
-            type="date"
-            // type="datetime-local"
-            value={endDate}
-            name="endDate"
-            // min="2022-30-22"
-            min={startDate}
-            max={calendarMaxDate}
-            onChange={handleInputChange}
-            onBlur={handleBlurChange}
-            required
-            style={{ "width": "100%"}}
-          />
-        </Form.Group>
-
-      </div>
-
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <div className="form-label">
-          <Form.Label>Employee Phone</Form.Label>
-          <Form.Label
-            className={`validation-color ${
-              showTelNoValidation ? "show" : "hide"
-            }`}
-          >
-            * field is required
-          </Form.Label>
-        </div>
-        <Form.Control
-          className="custom-border"
-          type="tel"
-          placeholder="Enter phone 123-456-7890"
-          value={telNo}
-          name="telNo"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          onChange={handleInputChange}
-          onBlur={handleBlurChange}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicName">
-        <div className="form-label">
-          <Form.Label>Subject</Form.Label>
-          <Form.Label
-            className={`validation-color ${
-              showSubjectValidation ? "show" : "hide"
-            }`}
-          >
-            * field is required
-          </Form.Label>
-        </div>
-        <Form.Control
-          className="custom-border"
-          type="text"
-          placeholder="Enter subject"
-          value={subject}
-          name="subject"
-          onChange={handleInputChange}
-          onBlur={handleBlurChange}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicMessage">
-        <div className="form-label">
-          <Form.Label>
-            Message
-          </Form.Label>
-          <Form.Label
-            className={`validation-color ${
-              showBodyValidation ? "show" : "hide"
-            }`}
-          >
-            * field is required
-          </Form.Label>
-        </div>
-        {/* <Form.Label>Message</Form.Label> */}
-        <Form.Control
-          className="custom-border"
-          as="textarea"
-          rows={4}
-          type="textarea"
-          placeholder="Enter additional information such as urgency or coverage."
-          value={body}
-          name="body"
-          onChange={handleInputChange}
-          onBlur={handleBlurChange}
-          required
-        />
-      </Form.Group>
-
-      <Button
-        className="button-custom"
-        variant="primary"
-        type="submit"
-        disabled={!areAllFieldsFilled}
-        title="Enter all fields to send email"
+    <div className="d-flex flex-column align-items-center">
+      <Form
+        className="p-3 overflow-auto custom-about"
+        onSubmit={handleFormSubmit}
+        style={{ width: "80vw" }}
       >
-        Send Email
-      </Button>
-    </Form>
+        <h2 className="display-6 custom-text">Time Off Request</h2>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <div className="form-label">
+            <Form.Label>Employee Name</Form.Label>
+            <Form.Label
+              className={`validation-color ${
+                showNameValidation ? "show" : "hide"
+              }`}
+            >
+              * field is required
+            </Form.Label>
+          </div>
+          <Form.Control
+            className="custom-border"
+            type="text"
+            placeholder="Enter Employee Name"
+            value={name}
+            name="name"
+            onChange={handleInputChange}
+            onBlur={handleBlurChange}
+            required
+          />
+        </Form.Group>
+
+        <div className="d-flex justify-content-between">
+          <Form.Group
+            className=""
+            controlId="formBasicEmail"
+            style={{ width: "50%" }}
+          >
+            <div className="form-label">
+              <Form.Label>Start Date</Form.Label>
+              <Form.Label
+                className={`validation-color ${
+                  showStartDateValidation ? "show" : "hide"
+                }`}
+              >
+                * field is required
+              </Form.Label>
+            </div>
+            <Form.Control
+              className="custom-border"
+              type="date"
+              // type="datetime-local"
+              value={startDate}
+              name="startDate"
+              // min="2022-11-30"
+              min={calendarMinDate}
+              max={calendarMaxDate}
+              onChange={handleInputChange}
+              onBlur={handleBlurChange}
+              required
+              style={{ width: "98%" }}
+            />
+          </Form.Group>
+
+          <Form.Group
+            className=""
+            controlId="formBasicEmail"
+            style={{ width: "50%" }}
+          >
+            <div className="form-label">
+              <Form.Label>End Date</Form.Label>
+              <Form.Label
+                className={`validation-color ${
+                  showEndDateValidation ? "show" : "hide"
+                }`}
+              >
+                * field is required
+              </Form.Label>
+            </div>
+            <Form.Control
+              className="custom-border"
+              type="date"
+              // type="datetime-local"
+              value={endDate}
+              name="endDate"
+              // min="2022-30-22"
+              min={startDate}
+              max={calendarMaxDate}
+              onChange={handleInputChange}
+              onBlur={handleBlurChange}
+              required
+              style={{ width: "100%" }}
+            />
+          </Form.Group>
+        </div>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <div className="form-label">
+            <Form.Label>Employee Phone</Form.Label>
+            <Form.Label
+              className={`validation-color ${
+                showTelNoValidation ? "show" : "hide"
+              }`}
+            >
+              * field is required
+            </Form.Label>
+          </div>
+          <Form.Control
+            className="custom-border"
+            type="tel"
+            placeholder="Enter phone 123-456-7890"
+            value={telNo}
+            name="telNo"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            onChange={handleInputChange}
+            onBlur={handleBlurChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <div className="form-label">
+            <Form.Label>Subject</Form.Label>
+            <Form.Label
+              className={`validation-color ${
+                showSubjectValidation ? "show" : "hide"
+              }`}
+            >
+              * field is required
+            </Form.Label>
+          </div>
+          <Form.Control
+            className="custom-border"
+            type="text"
+            placeholder="Enter subject"
+            value={subject}
+            name="subject"
+            onChange={handleInputChange}
+            onBlur={handleBlurChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicMessage">
+          <div className="form-label">
+            <Form.Label>Message</Form.Label>
+            <Form.Label
+              className={`validation-color ${
+                showBodyValidation ? "show" : "hide"
+              }`}
+            >
+              * field is required
+            </Form.Label>
+          </div>
+          {/* <Form.Label>Message</Form.Label> */}
+          <Form.Control
+            className="custom-border"
+            as="textarea"
+            rows={4}
+            type="textarea"
+            placeholder="Enter additional information such as urgency or coverage."
+            value={body}
+            name="body"
+            onChange={handleInputChange}
+            onBlur={handleBlurChange}
+            required
+          />
+        </Form.Group>
+
+        <Button
+          className="button-custom"
+          variant="primary"
+          type="submit"
+          disabled={!areAllFieldsFilled}
+          title="Enter all fields to send email"
+        >
+          Send Email
+        </Button>
+      </Form>
+    </div>
   );
 }
 
