@@ -1,4 +1,5 @@
-# MERN: Book - Search Engine
+# Pristine Clean
+
 [![License:  MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Index
@@ -13,9 +14,15 @@
 8. [License](#license)
 
 ## Description
-AS AN avid reader
-I WANT to search for new books to read
-SO THAT I can keep a list of books to purchase
+
+AS the owner of a commercial cleaning business
+I WANT:
+A seperate login for (1) Managers and (2) Employees
+Managers to be able to view all the locations that they manage on their dashboard
+Employees to be able to view all the locations that they have shifts at on their own dashboard
+
+SO THAT manage the business through a single page application
+
 ```
 This app is a search engine that allows users to find/search and save books that the user would like to read (or purchase or share).
 
@@ -25,8 +32,9 @@ The objective of this project was to convert a RESTful MERN (Mongo, Express, Rea
 
 ## Installation
 
-Setup: 
-- (1) Fork the repo, (2) Clone the forked repo locally, (3) Run `npm i` to install dependancies, and (4) "npm run develop" to build the app, deploy the local server and open the app.
+Setup:
+
+- (1) Fork the repo, (2) Clone the forked repo locally, (3) Run `npm i` to install dependencies, and (4) `npm run develop` to build the app, deploy the local server and open the app.
 
 ## Usage
 
@@ -39,7 +47,7 @@ This app includes a variety of API routes (see list below). In addition, the fol
 1. `Single-page app` built using React.
 2. `Component` based approach which breaks down each page and major function. For example, the header, footer and each navigation bar link is a unique component.
 3. `Bootstap` is used for the majority of the html and css including the nav bar, cards, and form.
-4. `Search Book` and `Saved Book` pages. 
+4. `Search Book` and `Saved Book` pages.
 5. `Saved Book` presents cards for each saved book with cover image, title, author, description and link to google books.
 6. `Search Book` presnets a `search box` search functionality that accepts user input then uses a `fetch` to search the google book api using the user input.
 7. `Login`, `Signup`, and `Logout` functionality using a bootstrap modal, jsonwebtoken for authentication and alert messaging for invalid login.
@@ -47,7 +55,8 @@ This app includes a variety of API routes (see list below). In addition, the fol
 9. `User` login information is used to `save` books to a specific user rather than expose the user information in the URL via parameters (params).
 10. `Heroku` deployment.
 
-## Future Enhancements: 
+## Future Enhancements:
+
 1. Breakdown code into `smaller components` for readability, maintainability and reduce duplication.
 2. Enhance to a `PWA` to work both on- and off-line.
 3. Enhance search options and google api with more `customized google search results` (newest, max results, author et al).
@@ -67,6 +76,7 @@ This app includes a variety of API routes (see list below). In addition, the fol
 6. `bcrypt`: To encrypt the user password.
 7. `jsonwebtoken/jwt decoe`: For user authentication and token decoding.
 8. `Heroku`: Deployment.
+
 ---
 
 ## App Preview - WalkThrough Video
@@ -92,11 +102,11 @@ Contributor Covenant Code of Conduct
 1. Project Manager: [Steve Calla - GitHub Profile](https://github.com/stevecalla)
 2. GitHub Repo #1 - Deployed: [LINK](https://github.com/stevecalla/book-search-engine-v2)
 3. GitHub Repo #2 - Original: [LINK](https://github.com/stevecalla/book-search-engine)
-    * Note Repo #2 would not deploy to Heroku. After multiple attempts, repo was rebuilt in most recent version of create react as represented by Repo #1 above. Repo #2 includes the vast majority of the development commit information.
+   - Note Repo #2 would not deploy to Heroku. After multiple attempts, repo was rebuilt in most recent version of create react as represented by Repo #1 above. Repo #2 includes the vast majority of the development commit information.
 4. Deployed Site URL - Heroku: [LINK](https://book-search-engine-calla.herokuapp.com/)
 5. Contact: [Email Steve](mailto:callasteven@gmail.com)
 
-## License 
+## License
 
 [![License:  MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 This project is licensed under the terms of the <span style="color:red">The MIT License</span>. Please click on the license badge for more information.
