@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const LoginForm = ({ setShowModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -64,65 +65,94 @@ const LoginForm = ({ setShowModal }) => {
     });
   };
 
+  const [display, setDisplay] = useState(true);
+  const [showHidePassword, setShowHidePassword] = useState("password");
+
+  const handlePassClick = () => {
+    setDisplay(!display);
+    if (showHidePassword === "password") {
+      setShowHidePassword("test");
+    } else {
+      setShowHidePassword("password");
+    }
+  };
+
   return (
     <div className="d-flex flex-column align-items-center mt-3">
-        <div className="d-flex flex-column align-items-center">
-          {/* <div className="mx-4" style={{ width: "350px" }}>
+      <div className="d-flex flex-column align-items-center">
+        {/* <div className="mx-4" style={{ width: "350px" }}>
             <p className="mt-2 mb-1">Log In</p>
             <hr className="my-0 mb-1"></hr>
             <hr className="my-0"></hr>
           </div> */}
 
-          <Form
-            noValidate
-            validated={validated}
-            onSubmit={handleFormSubmit}
-            className="mx-2 mt-2 mb-1"
-            style={{ width: "350px"}}
-          >
-            <Form.Group>
-              <Form.Label htmlFor="email">Email</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Your email"
-                name="email"
-                onChange={handleInputChange}
-                value={userFormData.email}
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Email is required!
-              </Form.Control.Feedback>
-            </Form.Group>
+        <Form
+          noValidate
+          validated={validated}
+          onSubmit={handleFormSubmit}
+          className="mx-2 mt-2 mb-1"
+          style={{ width: "350px" }}
+        >
+          <Form.Group>
+            <Form.Label htmlFor="email">Email</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Your email"
+              name="email"
+              onChange={handleInputChange}
+              value={userFormData.email}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Email is required!
+            </Form.Control.Feedback>
+          </Form.Group>
 
-            <Form.Group>
-              <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Group>
+            <Form.Label htmlFor="password">Password</Form.Label>
+            <InputGroup className="mb-3">
               <Form.Control
-                type="password"
+                // type="password"
+                type={showHidePassword}
                 placeholder="Your password"
                 name="password"
                 onChange={handleInputChange}
                 value={userFormData.password}
                 required
+                style={{ borderRight: "none" }}
               />
               <Form.Control.Feedback type="invalid">
-                Password is required!
+                <p>Password is required!</p>
               </Form.Control.Feedback>
-            </Form.Group>
-            <Button
-              disabled={!(userFormData.email && userFormData.password)}
-              className="mb-3"
-              type="submit"
-              variant="success"
-            >
-              Submit
-            </Button>
-          </Form>
-        </div>
+              <InputGroup.Text id="basic-addon1" style={{ borderRadius: "0%", background: "white", borderLeft: "none"}}>
+                <FontAwesomeIcon
+                  icon="fa-eye"
+                  style={display ? isDisplayed : isNotDisplayed}
+                  onClick={() => handlePassClick()}
+                />
+                <FontAwesomeIcon
+                  icon="fa-eye-slash"
+                  style={!display ? isDisplayed : isNotDisplayed}
+                  onClick={() => handlePassClick()}
+                />
+              </InputGroup.Text>
+            </InputGroup>
+          </Form.Group>
 
-        {/* show alert if server response is bad */}
-        {error && (
-          <div className="d-flex justify-content-center">
+          <Button
+            disabled={!(userFormData.email && userFormData.password)}
+            className="mb-3"
+            type="submit"
+            variant="success"
+          >
+            Submit
+          </Button>
+        </Form>
+      </div>
+
+      {/* show alert if server response is bad */}
+      {error && (
+        <div className="d-flex justify-content-center">
           <Alert
             dismissible
             onClose={() => setShowAlert(false)}
@@ -131,12 +161,22 @@ const LoginForm = ({ setShowModal }) => {
             className="mb-4 py-1 pl-1 bg-danger text-white"
             style={{ width: "300px" }}
           >
-            <p className="" style={{ width: "200px" }}>Something went wrong with your login credentials!</p>
+            <p className="" style={{ width: "200px" }}>
+              Something went wrong with your login credentials!
+            </p>
           </Alert>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
+    </div>
   );
 };
 
 export default LoginForm;
+
+const isDisplayed = {
+  display: "block",
+};
+
+const isNotDisplayed = {
+  display: "none",
+};

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SignupForm = ({ setShowModal }) => {
   // set initial form state
@@ -75,6 +76,18 @@ const SignupForm = ({ setShowModal }) => {
     });
   };
 
+  const [display, setDisplay] = useState(true);
+  const [showHidePassword, setShowHidePassword] = useState("password");
+
+  const handlePassClick = () => {
+    setDisplay(!display);
+    if (showHidePassword === "password") {
+      setShowHidePassword("test");
+    } else {
+      setShowHidePassword("password");
+    }
+  };
+
   return (
     <div className="d-flex flex-column align-items-center mt-3">
         <div className="d-flex flex-column align-items-center">
@@ -123,17 +136,35 @@ const SignupForm = ({ setShowModal }) => {
 
         <Form.Group>
           <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
+
+          <InputGroup className="mb-3">
+              <Form.Control
+                // type="password"
+                type={showHidePassword}
+                placeholder="Your password"
+                name="password"
+                onChange={handleInputChange}
+                value={userFormData.password}
+                required
+                style={{ borderRight: "none" }}
+              />
           <Form.Control.Feedback type="invalid">
             Password is required!
           </Form.Control.Feedback>
+
+          <InputGroup.Text id="basic-addon1" style={{ borderRadius: "0%", background: "white", borderLeft: "none"}}>
+                <FontAwesomeIcon
+                  icon="fa-eye"
+                  style={display ? isDisplayed : isNotDisplayed}
+                  onClick={() => handlePassClick()}
+                />
+                <FontAwesomeIcon
+                  icon="fa-eye-slash"
+                  style={!display ? isDisplayed : isNotDisplayed}
+                  onClick={() => handlePassClick()}
+                />
+              </InputGroup.Text>
+            </InputGroup>
         </Form.Group>
         <Button
           disabled={
@@ -173,3 +204,12 @@ const SignupForm = ({ setShowModal }) => {
 };
 
 export default SignupForm;
+
+const isDisplayed = {
+  display: "block",
+};
+
+const isNotDisplayed = {
+  display: "none",
+};
+

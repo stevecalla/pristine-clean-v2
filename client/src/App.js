@@ -27,6 +27,8 @@ import {
   faXmarkCircle,
   faSearch,
   faSpinner,
+  faEye,
+  faEyeSlash
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -35,7 +37,9 @@ library.add(
   faShareNodes,
   faXmarkCircle,
   faSearch,
-  faSpinner
+  faSpinner,
+  faEye,
+  faEyeSlash
 );
 
 const httpLink = new HttpLink({
