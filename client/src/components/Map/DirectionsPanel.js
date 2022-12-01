@@ -7,11 +7,11 @@ export const DirectionsPanel = () => {
   return (
     <>
       <div id="accordion">
-        <div className="card p-2 mb-1" style={{ "backgroundColor": "#0E6DFD"}}  >
-          <div className="" id="headingOne">
+        <div className="card p-2 mb-1"   >
+          <div className="rounded" id="headingOne" style={{ "backgroundColor": "#0E6DFD"}}>
             <h5 className="mb-0">
               <button
-                className="btn btn-link p-0"
+                className="btn btn-link pl-1"
                 onClick={() => setOpen(!open)}
                 aria-controls="collapse-text-directions"
                 aria-expanded={open}
