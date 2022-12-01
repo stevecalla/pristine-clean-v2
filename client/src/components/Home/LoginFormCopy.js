@@ -55,7 +55,7 @@ const LoginForm = ({ setShowModal }) => {
         ? navigate(`/managerdash`, { replace: true })
         : navigate(`/employeedash`, { replace: true });
 
-      setShowModal(false);
+      // setShowModal(false);
     } catch (e) {
       console.error(e);
       setShowAlert(true);

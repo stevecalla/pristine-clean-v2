@@ -16,7 +16,9 @@ import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
 import Location from "./pages/Location";
-import LoginFormCopy from "./components/Home/LoginFormCopy";
+// import LoginFormCopy from "./components/Home/LoginFormCopy";
+// import LoginForm from "./components/Home/LoginFormCopy";
+import Auth from "./utils/auth";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -31,7 +33,6 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import LoginForm from "./components/Home/LoginFormCopy";
 
 library.add(
   faTrash,
@@ -82,7 +83,7 @@ function App() {
           <Routes>
 
             <Route exact path="/" element={<Homepage />} />
-            <Route exact path="/login" element={<Homepage key2={"login"} />} />
+            <Route exact path="/login" element={Auth.loggedIn() ? <Homepage /> : <Homepage key2={"login"} />} />
             <Route exact path="/employeedash" element={<EmployeeDash />} />
             <Route exact path="/managerdash" element={<ManagerDash />} />
             <Route exact path="/availability" element={<Availability />} />
