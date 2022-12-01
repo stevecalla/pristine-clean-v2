@@ -96,7 +96,7 @@ const userSchema = new Schema(
 
     locations: {
       type: Schema.Types.Array,
-      ref: "Location",
+      ref: 'Location',
     },
   },
 

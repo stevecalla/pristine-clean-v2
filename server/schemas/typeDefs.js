@@ -76,6 +76,8 @@ const typeDefs = gql`
     address: String
     businessContact: String
     shifts: String
+    daysOfWeek: String
+    startTime: String
     laborHours: Float
     instructions: Instructions
   }
