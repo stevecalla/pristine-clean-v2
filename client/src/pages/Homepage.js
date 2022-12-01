@@ -14,9 +14,10 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
 import { CleanAsset } from "../components/Home/CleanAsset";
+import Message from "../components/Home/Message";
 
 const Homepage = () => {
-  const [key, setKey] = useState("login");
+  const [key, setKey] = useState("message");
   // set slide prop to true to enable animation
   return (
     <>
@@ -45,16 +46,21 @@ const Homepage = () => {
             variant="tabs"
             justify
           >
+            <Tab eventKey="message" title="Message">
+              <Row>
+                <Col>
+                  <Message />
+                </Col>
+              </Row>
+            </Tab>
             <Tab eventKey="login" title="Login">
               <Row>
                 <Col>
                   <LoginFormCopy />
-                  {/* <FullCalendarApp /> */}
                 </Col>
               </Row>
             </Tab>
             <Tab eventKey="signup" title="Sign Up">
-              {/* <AllEmployeesCont /> */}
               <SignupFormCopy />
             </Tab>
           </Tabs>
