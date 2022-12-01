@@ -3,8 +3,8 @@ import Carousel from "react-bootstrap/Carousel";
 // import firstslide from "../assets/firstslide.svg";
 // import secondslide from "../assets/secondslide.svg";
 // import thirdslide from "../assets/thirdslide.svg";
-import LoginFormCopy from "../components/Home/LoginFormCopy";
-import SignupFormCopy from "../components/Home/SignupFormCopy";
+import LoginForm from "../components/Home/LoginForm";
+import SignupForm from "../components/Home/SignupForm";
 // import MessageBoard from "../components/MessageBoard";
 
 import Auth from "../utils/auth";
@@ -18,10 +18,10 @@ import Tabs from "react-bootstrap/Tabs";
 import { CleanAsset } from "../components/Home/CleanAsset";
 import Message from "../components/Home/Message";
 
-const Homepage = ({ key2 }) => {
-  console.log(key2)
+const Homepage = ({ tabDisplay }) => {
+  // console.log(tabDisplay)
 
-  const [key, setKey] = useState(key2 || "message");
+  const [key, setKey] = useState(tabDisplay || "message");
   // set slide prop to true to enable animation
 
   return (
@@ -61,12 +61,12 @@ const Homepage = ({ key2 }) => {
             <Tab eventKey="login" title="Login" disabled={Auth.loggedIn()}>
               <Row>
                 <Col>
-                  <LoginFormCopy />
+                  <LoginForm />
                 </Col>
               </Row>
             </Tab>
             <Tab eventKey="signup" title="Sign Up" disabled={Auth.loggedIn()}>
-              <SignupFormCopy />
+              <SignupForm />
             </Tab>
           </Tabs>
         </div>

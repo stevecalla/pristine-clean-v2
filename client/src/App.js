@@ -16,8 +16,6 @@ import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
 import Location from "./pages/Location";
-// import LoginFormCopy from "./components/Home/LoginFormCopy";
-// import LoginForm from "./components/Home/LoginFormCopy";
 import Auth from "./utils/auth";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -72,8 +70,8 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [key2, setKey2] = useState("login");
-  console.log(key2)
+  const [tabDisplay, setTabDisplay] = useState("login");
+  // console.log(tabDisplay)
 
   return (
     <ApolloProvider client={client}>
@@ -81,9 +79,18 @@ function App() {
         <>
           <Navbar />
           <Routes>
-
             <Route exact path="/" element={<Homepage />} />
-            <Route exact path="/login" element={Auth.loggedIn() ? <Homepage /> : <Homepage key2={"login"} />} />
+            <Route
+              exact
+              path="/login"
+              element={
+                Auth.loggedIn() ? (
+                  <Homepage />
+                ) : (
+                  <Homepage tabDisplay={"login"} />
+                )
+              }
+            />
             <Route exact path="/employeedash" element={<EmployeeDash />} />
             <Route exact path="/managerdash" element={<ManagerDash />} />
             <Route exact path="/availability" element={<Availability />} />

@@ -12,8 +12,6 @@ import {
 import SignUpFormOld from "./SignupFormOld";
 import LoginFormOld from "./LoginFormOld";
 import Auth from "../utils/auth";
-// import LoginFormCopy from "./components/Home/LoginFormCopy";
-import LoginFormCopy from "../components/Home/LoginFormCopy";
 
 const AppNavbar = () => {
   // set modal display state
