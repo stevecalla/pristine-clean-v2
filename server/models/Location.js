@@ -17,6 +17,12 @@ const locationSchema = new Schema({
   shifts: {
     type: String,
   },
+  daysOfWeek: {
+    type: String,
+  },
+  startTime: {
+    type: Date,
+  },
   laborHours: {
     type: Number,
     required: true,
