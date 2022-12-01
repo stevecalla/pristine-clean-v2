@@ -30,8 +30,8 @@ const AllEmployeesCont = () => {
 
     return (
       <>
-        {data.users.map((employee) => (
-          <Card className="m-2">
+        {data.users.map((employee, index) => (
+          <Card key={index} className="m-2">
             <Card.Header>
               {employee.firstName}, {employee.lastName}
             </Card.Header>

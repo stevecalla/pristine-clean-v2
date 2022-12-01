@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
-import FullCalendarApp from '../components/FullCalendarApp'
+import FullCalendarApp from "../components/FullCalendarApp";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
@@ -31,15 +31,16 @@ const ManagerDash = () => {
     // if skip is true, this query will not be executed; in this instance, if the user is not logged in this query will be skipped when the component mounts
     skip: !Auth.loggedIn(),
   });
-  console.log({ data }, loading);
+
+  // console.log({ data }, loading);
 
   return (
     <Container>
       <Row>
-                <Col>
-                    <FullCalendarApp />
-                </Col>
-            </Row>
+        <Col>
+          <FullCalendarApp />
+        </Col>
+      </Row>
       <Row>
         <Col>
           <Button

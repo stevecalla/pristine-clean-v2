@@ -18,8 +18,11 @@ const AllLocationsCont = () => {
     skip: !Auth.loggedIn(),
   });
 
-  const locations = data.me.locations;
-  console.log(locations);
+  let locations;
+  if (!loading) {
+    locations = data.me.locations;
+  }
+  // console.log(locations);
 
   if (!loading) {
     return (
@@ -28,8 +31,8 @@ const AllLocationsCont = () => {
         {/*  li location.manager */}
         {/*  li location.cleaners */}
         {/*  li location.cleaners */}
-        {locations.map((location) => (
-          <Card>
+        {locations.map((location, index) => (
+          <Card key={index}>
             <Card.Header>{location.businessName}</Card.Header>
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
@@ -85,8 +88,8 @@ const AllLocationsCont = () => {
           </Card.Body>
         </Card> */}
       </>
-    )
-  };
+    );
+  }
 };
 
 export default AllLocationsCont;
