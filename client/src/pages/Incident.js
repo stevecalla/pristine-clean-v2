@@ -115,7 +115,7 @@ function Incident() {
       className='p-3 overflow-auto custom-about'
       onSubmit={handleFormSubmit}
     >
-      <h1 className='display-4 custom-text'>Incident Form</h1>
+      <h1 className='display-5 custom-text'>Incident Form</h1>
 
       <Form.Group className='mb-3' controlId='formBasicEmail'>
         <div className='form-label'>
@@ -248,7 +248,7 @@ function Incident() {
         <Form.Control
           className='custom-border'
           as='textarea'
-          rows={2}
+          rows={4}
           type='textarea'
           placeholder='Enter incident details such as date, time, importance, client interaction, and details'
           value={body}
@@ -266,7 +266,7 @@ function Incident() {
         disabled={!areAllFieldsFilled}
         title='Enter all fields to send email'
       >
-        Email Incident Information
+        Send Email
       </Button>
     </Form>
   );
