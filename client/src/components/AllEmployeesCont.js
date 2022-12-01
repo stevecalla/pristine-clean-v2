@@ -5,6 +5,9 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import Table from 'react-bootstrap/Table';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { PersonX } from 'react-bootstrap-icons';
 import { XSquareFill, Check2Circle } from 'react-bootstrap-icons';
 
 
@@ -32,8 +35,15 @@ const AllEmployeesCont = () => {
       <>
         {data.users.map((employee, index) => (
           <Card key={index} className="m-2">
-            <Card.Header>
-              {employee.firstName}, {employee.lastName}
+            <Card.Header className="container">
+              <Row className="justify-content-between">
+                <Col xs={10}>
+                  {employee.firstName}, {employee.lastName}
+                </Col>
+                <Col xs={1.5}>
+                    <PersonX id="delete-employee" color="red" size="24px" className="mr-2" />
+                </Col>
+              </Row>
             </Card.Header>
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">

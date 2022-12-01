@@ -3,15 +3,17 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
 import FullCalendarApp from "../components/FullCalendarApp";
+
+import "../styles/spinner.css";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
@@ -34,57 +36,50 @@ const ManagerDash = () => {
 
   // console.log({ data }, loading);
 
-  return (
-    <Container>
-      <Row>
-        <Col>
-          <FullCalendarApp />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button
-            onClick={() => setOpenEmployee(!openEmployee)}
-            aria-controls="example-fade-text"
-            aria-expanded={openEmployee}
-            size="lg"
-            className="btn-block my-2"
-          >
-            View Locations
-          </Button>
-          <Collapse
-            // style={{'height': '300px', 'overflow': 'scroll!important'}}
-            in={openEmployee}
-          >
-            <div id="collapse-employee-bar">
-              <AllLocationsCont />
-            </div>
-          </Collapse>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button
-            onClick={() => setOpenLocation(!openLocation)}
-            aria-controls="example-fade-text"
-            aria-expanded={openLocation}
-            size="lg"
-            className="btn-block my-2"
-          >
-            View All Employees
-          </Button>
-          <Collapse
-            // style={{'height': '500px', 'overflow': 'scroll!important'}}
-            in={openLocation}
-          >
-            <div id="collapse-location-bar">
-              <AllEmployeesCont />
-            </div>
-          </Collapse>
-        </Col>
-      </Row>
-    </Container>
-  );
+  // control usestate default tab
+  const [key, setKey] = useState('calendar');
+
+  if (loading) {
+    return (
+      <div
+        style={{ height: "200px", width: "100vw" }}
+        className="d-flex justify-content-center align-items-center align-content-center m-0"
+      >
+        <div className="lds-hourglass"></div>
+      </div>
+    );
+  } else {
+    return (
+      <Container className="my-3">
+        <Row>
+          <Col>
+            <Tabs
+              id="justify-tab"
+              activeKey={key}
+              onSelect={(k) => setKey(k)}
+              className="mb-3 border border-secondary rounded"
+              variant="pills"
+              justify
+            >
+              <Tab eventKey="calendar" title="View Calendar">
+                <Row>
+                  <Col>
+                    <FullCalendarApp />
+                  </Col>
+                </Row>
+              </Tab>
+              <Tab eventKey="employees" title="View Employees">
+                <AllEmployeesCont />
+              </Tab>
+              <Tab eventKey="locations" title="View All Locations">
+                <AllLocationsCont />
+              </Tab>
+            </Tabs>
+          </Col>
+        </Row>
+      </Container>
+    );
+  };
 };
 
 export default ManagerDash;
