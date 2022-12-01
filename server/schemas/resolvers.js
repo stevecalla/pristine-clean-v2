@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Book, Thought, Location } = require('../models');
+const { User, Location } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -13,23 +13,12 @@ const resolvers = {
     user: async (parent, { userId }) => {
       return User.findOne({ _id: userId });
     },
-    books: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Book.find(params).sort({ createdAt: -1 });
-    },
+
     me: async (parent, { _id }, context) => {
       // if (context.user) {
-      return User.findById({ _id }).populate('locations');;
+      return User.findById({ _id }).populate('locations');
       // }
       // throw new AuthenticationError("You need to be logged in!");
-    },
-
-    thoughts: async () => {
-      return Thought.find().sort({ createdAt: -1 });
-    },
-
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
     },
 
     locations: async () => {
@@ -50,7 +39,7 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email }).populate('books');
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
@@ -66,79 +55,29 @@ const resolvers = {
 
       return { token, user };
     },
-    addBook: async (
+
+    updateAvailability: async (
       parent,
       {
         _id,
-        bookId,
-        authors,
-        description,
-        image,
-        title,
-        infoLink,
-        previewLink,
-        publishedDate,
+        username,
+        mondayAm,
+        mondayPm,
+        tuesdayAm,
+        tuesdayPm,
+        wednesdayAm,
+        wednesdayPm,
+        thursdayAm,
+        thursdayPm,
+        fridayAm,
+        fridayPm,
+        saturdayAm,
+        saturdayPm,
+        sundayAm,
+        sundayPm,
       },
       context
     ) => {
-      if (context.user) {
-        return User.findOneAndUpdate(
-          { _id },
-          {
-            $addToSet: {
-              savedBooks: {
-                bookId: bookId,
-                authors,
-                description,
-                image,
-                title,
-                infoLink,
-                previewLink,
-                publishedDate,
-              },
-            },
-          },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeBook: async (parent, { _id, bookId }, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate(
-          { _id },
-          {
-            $pull: {
-              savedBooks: {
-                bookId: bookId,
-              },
-            },
-          },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
-    updateAvailability: async (parent, {
-      _id,
-      username,
-      mondayAm,
-      mondayPm,
-      tuesdayAm,
-      tuesdayPm,
-      wednesdayAm,
-      wednesdayPm,
-      thursdayAm,
-      thursdayPm,
-      fridayAm,
-      fridayPm,
-      saturdayAm,
-      saturdayPm,
-      sundayAm,
-      sundayPm
-    },
-      context) => {
       // if (context.user) {
       return User.findOneAndUpdate(
         { _id },
@@ -158,7 +97,7 @@ const resolvers = {
             saturdayPm,
             sundayAm,
             sundayPm,
-          }
+          },
         },
         { new: true }
       );

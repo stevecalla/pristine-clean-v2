@@ -1,17 +1,6 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Employee {
-    _id: ID
-    firstName: String
-    lastName: String
-    cell: String
-    email: String
-    isManager: Boolean
-    availability: [Availability]
-    schedule: [Schedule]
-  }
-
   type Schedule {
     _id: ID
   }
@@ -46,28 +35,9 @@ const typeDefs = gql`
     sundayPm: Boolean
   }
 
-  type Book {
-    _id: ID
-    bookId: String
-    authors: [String]
-    description: String
-    image: String
-    title: String
-    infoLink: String
-    previewLink: String
-    publishedDate: String
-  }
-
   type Auth {
     token: ID!
     user: User
-  }
-
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
   }
 
   type Location {
@@ -103,12 +73,7 @@ const typeDefs = gql`
   type Query {
     users: [User]!
     user(email: String!): User
-    books(username: String): [Book]
     me(_id: ID!): User
-
-    thoughts: [Thought]!
-    thought(thoughtId: ID!): Thought
-
     locations: [Location]!
     location(locationId: ID!): Location
   }
@@ -116,18 +81,6 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addBook(
-      _id: ID!
-      bookId: ID!
-      authors: [String]
-      description: String
-      image: String
-      title: String
-      infoLink: String
-      previewLink: String
-      publishedDate: String
-    ): User
-    removeBook(_id: ID!, bookId: ID!): User
     updateAvailability(
       _id: ID!
       mondayAm: Boolean
