@@ -25,7 +25,7 @@ const Homepage = () => {
       <div className="d-flex flex-column align-items-center mt-3 overflow-auto">
         <div
           style={{
-            // height: "80vh",
+            minHeight: "600px",
             width: "380px",
             margin: "10px",
             boxShadow: "5px 5px 5px 5px gray",
