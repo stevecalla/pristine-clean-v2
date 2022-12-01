@@ -95,9 +95,9 @@ const LoginForm = ({ setShowModal }) => {
           <Form
             noValidate
             validated={validated}
-            className="m-4"
+            className="mx-2 mt-2 mb-1"
             onSubmit={handleFormSubmit}
-            style={{ width: "350px", height: "375px" }}
+            style={{ width: "350px"}}
           >
             <Form.Group>
               <Form.Label htmlFor="email">Email</Form.Label>
@@ -140,15 +140,18 @@ const LoginForm = ({ setShowModal }) => {
 
         {/* show alert if server response is bad */}
         {error && (
+          <div className="d-flex justify-content-center">
           <Alert
             dismissible
             onClose={() => setShowAlert(false)}
             show={showAlert}
             variant="danger"
-            className="my-3 p-3 bg-danger text-white"
+            className="m-0 py-1 pl-1 bg-danger text-white"
+            style={{ width: "300px" }}
           >
-            Something went wrong with your login credentials!
+            <p className="" style={{ width: "200px" }}>Something went wrong with your login credentials!</p>
           </Alert>
+          </div>
         )}
       </div>
     </div>
