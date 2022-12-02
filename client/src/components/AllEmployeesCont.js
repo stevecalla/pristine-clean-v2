@@ -16,13 +16,15 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USERS } from "../utils/queries";
 
 const AllEmployeesCont = () => {
-
   const [openAvailability, setOpenAvailability] = useState(false);
+  // const []
 
   const { loading, data } = useQuery(QUERY_USERS);
-  // if (!loading) {
-  //   console.log(data.users)
-  // };
+  if (!loading) {
+    console.log(data.users)
+  };
+
+
 
   // // const { loadingEmployees, employeesData } = useQuery(QUERY_USERS);
   // const { employees } = useQuery({ query: QUERY_USERS });
@@ -30,7 +32,6 @@ const AllEmployeesCont = () => {
 
   // // const employees = employeesData?.employees || [];
   if (!loading) {
-
     return (
       <>
         {data.users.map((employee, index) => (
@@ -38,7 +39,7 @@ const AllEmployeesCont = () => {
             <Card.Header className="container">
               <Row className="justify-content-between">
                 <Col xs={10}>
-                  {employee.firstName}, {employee.lastName}
+                  <p>{employee.firstName ? employee.firstName : "No First Name"} {employee.lastName ? employee.lastName : "No Last Name"} (UserName: {employee.username})</p>
                 </Col>
                 <Col xs={1.5}>
                     <PersonX id="delete-employee" color="red" size="24px" className="mr-2" />
@@ -47,8 +48,8 @@ const AllEmployeesCont = () => {
             </Card.Header>
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
-                <ListGroup.Item>Phone: {employee.cell}</ListGroup.Item>
-                <ListGroup.Item>Email: {employee.email}</ListGroup.Item>
+                <ListGroup.Item>Phone: {employee.cell ? employee.cell : "No Phone Yet"}</ListGroup.Item>
+                <ListGroup.Item>Email: {employee.email ? employee.email: "No Email Yet"}</ListGroup.Item>
                 <ListGroup.Item>
                   {/* TODO: View Availability Button opens all availability tables, need to open only target */}
                   <Button
