@@ -35,7 +35,7 @@ db.once('open', async () => {
 
     await User.create(userSeeds);
     await Location.create(locationSeeds);
-    await Incident.creat(incidentSeeds);
+    await Incident.create(incidentSeeds);
 
 
 
