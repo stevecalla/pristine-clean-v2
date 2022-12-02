@@ -78,9 +78,20 @@ export const QUERY_LOCATIONS = gql`
       instructions
       manager
       cleaners
-    }
+    } }`;
+
+export const QUERY_INCIDENTS = gql`
+query allIncidents {
+  incidents {
+    _id
+    employeeName
+    locationName
+    employeePhone
+    subject
+    urgent
+    incidentDetails
   }
-`;
+} `
 
 // export const QUERY_SINGLE_LOCATION = gql`
 //   query singleLocation($locationId: ID!) {

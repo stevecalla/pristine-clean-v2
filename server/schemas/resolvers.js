@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Location } = require('../models');
+const { User, Location, Incident } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -30,6 +30,13 @@ const resolvers = {
 
       return Location.findOne({ _id: locationId });
     },
+
+    incidents: async (parent, args, context) => {
+      // if (context.user) {
+      return Incident.find()
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
+    },
   },
 
   Mutation: {
@@ -38,6 +45,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
+    addIncident: async (parent, { employeeName, locationName, employeePhone, subject, urgent, incidentDetails }) => {
+      return Incident.create({ employeeName, locationName, employeePhone, subject, urgent, incidentDetails });
+    },
+
+    deleteIncident: async (parent, { incidentId }) => {
+      return Incident.findOneAndDelete({ _id: incidentId });
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -104,6 +120,12 @@ const resolvers = {
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
+
+
+
+
+
+
   },
 };
 

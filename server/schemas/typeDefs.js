@@ -71,6 +71,7 @@ const typeDefs = gql`
   }
 
   type Incident {
+    _id: ID
     employeeName: String
     locationName: String
     employeePhone: String
@@ -85,6 +86,7 @@ const typeDefs = gql`
     me(_id: ID!): User
     locations: [Location]!
     location(locationId: ID!): Location
+    incidents: [Incident]!
   }
 
   type Mutation {
@@ -107,6 +109,8 @@ const typeDefs = gql`
       sundayAm: Boolean
       sundayPm: Boolean
     ): User
+    addIncident(employeeName: String!, locationName: String!, employeePhone: String!, subject: String!, urgent: String!, incidentDetails: String!): Incident
+    deleteIncident(incidentId: ID!): Incident
   }
 `;
 
