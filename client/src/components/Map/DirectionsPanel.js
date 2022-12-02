@@ -17,7 +17,7 @@ export const DirectionsPanel = () => {
                 aria-expanded={open}
                 style={{ "color": "white"}}
               >
-                Directions - Step by Step
+                Directions: Step-by-Step
               </button>
             </h5>
           </div>
