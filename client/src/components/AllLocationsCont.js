@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const AllLocationsCont = ({ allLocations }) => {
   const userId = getUserId();
 
-  console.log(!Auth.loggedIn());
+  // console.log(!Auth.loggedIn());
 
   const { loading, data } = useQuery(QUERY_ME, {
     variables: { id: userId },
@@ -34,7 +34,7 @@ const AllLocationsCont = ({ allLocations }) => {
   const [locationPage, setLocationPage] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState({});
 
-  console.log(allLocations);
+  // console.log(allLocations);
 
   const handleInfoClick = (event) => {
     // console.log('info click')
