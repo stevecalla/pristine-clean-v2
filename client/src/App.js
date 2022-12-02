@@ -97,6 +97,17 @@ function App() {
                 )
               }
             />
+            <Route
+              exact
+              path="/signup"
+              element={
+                Auth.loggedIn() ? (
+                  <Homepage />
+                ) : (
+                  <Homepage tabDisplay={"signup"} />
+                )
+              }
+            />
             <Route exact path="/dashboard" element={<ManagerDash />} />
             <Route exact path="/availability" element={<Availability />} />
             <Route exact path="/timeoff" element={<Timeoff />} />

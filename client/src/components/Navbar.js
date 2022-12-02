@@ -25,7 +25,12 @@ const AppNavbar = () => {
   console.log(!Auth.loggedIn);
   return (
     <>
-      <Navbar collapseOnSelect style={{ backgroundColor: 'black' }} variant="dark" expand="lg">
+      <Navbar
+        collapseOnSelect
+        style={{ backgroundColor: "black" }}
+        variant="dark"
+        expand="lg"
+      >
         <Container fluid className="pl-0">
           <Navbar.Brand as={Link} reloadDocument to="/">
             <h1>Pristine Clean</h1>
@@ -33,36 +38,45 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls="navbar" className="white" />
           <Navbar.Collapse id="navbar">
             <Nav className="ml-auto">
-            {/* section */}
-              {Auth.loggedIn() ? (
-                  <>
-                    <Nav.Link as={Link} to="/dashboard" eventKey="4">
-                      Dashboard
-                    </Nav.Link>
-                    <NavDropdown
-                      id="nav-dropdown-example"
-                      title="Forms"
-                      menuvariant="dark"
-                    >
-                      <NavDropdown.Item reloadDocument as={Link} to="/availability" eventKey="5">
-                        Availability
-                      </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/timeoff" eventKey="6">
-                        Request Time-Off
-                      </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/incident" eventKey="7">
-                        Incident Report
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                    <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                  </>
-                ) : (
-                  <Nav.Link as={Link} to="/login" eventKey="10">
-                    Login/Sign Up
-                  </Nav.Link>
-                )}
               {/* section */}
-
+              {Auth.loggedIn() ? (
+                <>
+                  <Nav.Link as={Link} to="/dashboard" eventKey="4">
+                    Dashboard
+                  </Nav.Link>
+                  <NavDropdown
+                    id="nav-dropdown-example"
+                    title="Forms"
+                    menuvariant="dark"
+                  >
+                    <NavDropdown.Item
+                      reloadDocument
+                      as={Link}
+                      to="/availability"
+                      eventKey="5"
+                    >
+                      Availability
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/timeoff" eventKey="6">
+                      Request Time-Off
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/incident" eventKey="7">
+                      Incident Report
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                </>
+              ) : (
+                <>
+                <Nav.Link reloadDocument as={Link} to="/login" eventKey="10">
+                  Login
+                </Nav.Link>
+                <Nav.Link reloadDocument as={Link} to="/signup" eventKey="10">
+                  Sign Up
+                </Nav.Link>
+                </>
+              )}
+              {/* section */}
             </Nav>
           </Navbar.Collapse>
         </Container>
