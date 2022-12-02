@@ -113,12 +113,12 @@ function Incident() {
       : setShowBodyValidation(false);
   };
 
-  // const { loading, data } = useQuery(QUERY_INCIDENTS);
-  // let incidents;
-  // if (!loading) {
-  //   incidents = data;
-  //   console.log(incidents);
-  // }
+  const { loading, data } = useQuery(QUERY_INCIDENTS);
+  let incidents;
+  if (!loading) {
+    incidents = data;
+    console.log(incidents);
+  }
 
   // const handleChecked = (e) => {
   //   setIsUrgent((current) => !current);
