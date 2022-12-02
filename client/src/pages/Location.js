@@ -53,25 +53,23 @@ const Location = ({ locationDetails }) => {
                   id="link-location-page"
                   color="white"
                   size="28px"
-                  ariaHidden="true"
-                  transform="grow-9"
+                  aria-hidden="true"
+                  // transform="grow-9"
                   onClick={() => handleAllLocationsClick()}
                 />
               </div>
             </Col>
-            <Col xs={8}>
-              Location Details
-            </Col>
+            <Col xs={8}>Location Details</Col>
             <Col xs={1.25} className="mr-1">
               <div>
-            <SkipBackwardCircle
+                <SkipBackwardCircle
                   id="filler"
                   color="transparent"
                   size="28px"
-                  ariaHidden="true"
-                  transform="grow-9"
+                  aria-hidden="true"
+                  // transform="grow-9"
                 />
-                </div>
+              </div>
             </Col>
           </Row>
         </Button>
@@ -193,13 +191,16 @@ const Location = ({ locationDetails }) => {
         <Row>
           <Col>
             {/* <Card className="px-0 mx-0"> */}
-              {/* <Card.Body className="pb-1 p-0 mx-1"> */}
-                <ResponsiveEmbed className="mt-1 rounded" style={{ height: "1000px" }}>
-                  <div>
-                    <Map />
-                  </div>
-                </ResponsiveEmbed>
-              {/* </Card.Body> */}
+            {/* <Card.Body className="pb-1 p-0 mx-1"> */}
+            <ResponsiveEmbed
+              className="mt-1 rounded"
+              style={{ height: "1000px" }}
+            >
+              <div>
+                <Map />
+              </div>
+            </ResponsiveEmbed>
+            {/* </Card.Body> */}
             {/* </Card> */}
           </Col>
         </Row>

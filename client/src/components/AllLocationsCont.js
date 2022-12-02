@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const AllLocationsCont = ({ allLocations }) => {
   const userId = getUserId();
 
-  console.log(!Auth.loggedIn())
+  console.log(!Auth.loggedIn());
 
   const { loading, data } = useQuery(QUERY_ME, {
     variables: { id: userId },
@@ -31,32 +31,31 @@ const AllLocationsCont = ({ allLocations }) => {
     // console.log(locations);
   }
 
-  const [ locationPage, setLocationPage ] = useState(false);
-  const [ selectedLocation, setSelectedLocation ] = useState({});
+  const [locationPage, setLocationPage] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState({});
 
   console.log(allLocations);
-  
 
   const handleInfoClick = (event) => {
     // console.log('info click')
     // console.log(event)
     // console.log(event.currentTarget.getAttribute("data-location"));
-    let locationId = event.currentTarget.getAttribute("data-location")
+    let locationId = event.currentTarget.getAttribute("data-location");
 
     // console.log(locations.map((element) => console.log(element._id, locationId)));
 
-    let filteredLocation = locations.filter((element) => element._id === locationId);
-    console.log('selected location = ', filteredLocation[0]);
+    let filteredLocation = locations.filter(
+      (element) => element._id === locationId
+    );
+    console.log("selected location = ", filteredLocation[0]);
     setSelectedLocation(filteredLocation[0]);
-    setLocationPage(true)
-  }
+    setLocationPage(true);
+  };
 
   if (locationPage) {
-    console.log('yes 1');
+    console.log("yes 1");
 
-    return (
-      <Location locationDetails={selectedLocation} />
-    )
+    return <Location locationDetails={selectedLocation} />;
   }
 
   if (!loading) {
@@ -71,10 +70,10 @@ const AllLocationsCont = ({ allLocations }) => {
                   {/* TODO: NOT SURE THIS LINK IS GOING TO WORK */}
                   {/* <Link to={'/location'} component={location._id} replace={true}> */}
                   {/* <Link to={"/location"} component={"hello"}> */}
-                    {/* <Location /> */}
-                    {/* <Button className="p-2" style={{ color: "transparent" }}> */}
-                    <div>
-                      {/* <FontAwesomeIcon
+                  {/* <Location /> */}
+                  {/* <Button className="p-2" style={{ color: "transparent" }}> */}
+                  <div>
+                    {/* <FontAwesomeIcon
                         className="pl-2 mr-2 "
                         icon="fa-info-circle"
                         transform="grow-9"
@@ -84,16 +83,17 @@ const AllLocationsCont = ({ allLocations }) => {
                         // style={display ? isDisplayed : isNotDisplayed}
                         onClick={(event) => handleInfoClick(event)}
                       /> */}
-                      <InfoCircleFill 
+                    <InfoCircleFill
                       id="link-location-page"
-                      color="orange" 
-                      size="28px" 
+                      color="orange"
+                      size="28px"
                       className="mr-2"
-                      transform="grow-9"
+                      // transform="grow-9"
                       data-location={location._id}
-                      onClick={(event) => handleInfoClick(event)} /> 
-                    </div>
-                    {/* </Button> */}
+                      onClick={(event) => handleInfoClick(event)}
+                    />
+                  </div>
+                  {/* </Button> */}
                   {/* </Link> */}
                 </Col>
               </Row>
@@ -107,6 +107,8 @@ const AllLocationsCont = ({ allLocations }) => {
           </Card>
         ))}
       </>
+
+      
       // <>
       //        <Card className="m-2">
       //     <Card.Header>Walmart</Card.Header>
