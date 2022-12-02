@@ -10,9 +10,9 @@ const Message = () => {
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src={qrcode_dry_sands} />
         <Card.Body className="pt-0">
-          <Card.Title>Download</Card.Title>
+          <Card.Title className="d-flex justify-content-center" style={{ fontStyle: "bold", fontFamily: 'Georgia, Times New Roman, serif'}}>Cleaning at its finest</Card.Title>
           <Card.Text>
-            Amazing employee app!!
+            {/* Cleaning at its finest. */}
           </Card.Text>
           {/* <Button variant="primary">Go somewhere</Button> */}
           <Card.Link
@@ -20,7 +20,7 @@ const Message = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Pristine Clean
+            <p className="d-flex justify-content-center mb-0" style={{ fontStyle: "bold", fontFamily: 'Georgia, Times New Roman, serif'}}>Pristine Clean</p>
           </Card.Link>
         </Card.Body>
       </Card>
