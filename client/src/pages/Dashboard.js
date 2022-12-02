@@ -47,7 +47,7 @@ const ManagerDash = () => {
     );
   } else {
     return (
-      <Container className="my-3">
+      <Container className="my-1">
         <Row>
           <Col>
             <Tabs
@@ -58,17 +58,17 @@ const ManagerDash = () => {
               variant="pills"
               justify
             >
-              <Tab eventKey="calendar" title="View Calendar">
+              <Tab eventKey="calendar" title="Calendar">
                 <Row>
                   <Col>
                     <FullCalendarApp />
                   </Col>
                 </Row>
               </Tab>
-              <Tab eventKey="employees" title="View Employees">
+              <Tab eventKey="employees" title="Employees">
                 <AllEmployeesCont />
               </Tab>
-              <Tab eventKey="locations" title="View All Locations">
+              <Tab eventKey="locations" title="Locations">
                 <AllLocationsCont allLocations={false}/>
               </Tab>
             </Tabs>

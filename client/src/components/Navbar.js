@@ -4,9 +4,14 @@ import {
   Navbar,
   Nav,
   Container,
+  Row,
+  Modal,
+  Tab,
   NavDropdown,
 } from "react-bootstrap";
 import Auth from "../utils/auth";
+
+import { NavStarsAsset } from "../components/NavStarsAsset"
 
 const AppNavbar = () => {
   return (
@@ -18,21 +23,26 @@ const AppNavbar = () => {
         expand="lg"
       >
         <Container fluid className="pl-0">
+          
           <Navbar.Brand as={Link} reloadDocument to="/">
-            <h1>Pristine Clean</h1>
+            <Row>
+            <NavStarsAsset className="mb-1"/>
+            <h2 className="m-0 pt-1" style={{ fontFamily: 'Georgia, Times New Roman, serif'}}>Pristine Clean</h2>
+            </Row>
           </Navbar.Brand>
+          
           <Navbar.Toggle aria-controls="navbar" className="white" />
           <Navbar.Collapse id="navbar">
             <Nav className="ml-auto">
               {/* if user is logged in show saved books & logout nav links else show login/signup modal */}
               {Auth.loggedIn() ? (
                 <>
-                  <Nav.Link as={Link} to="/dashboard" eventKey="4">
+                  <Nav.Link as={Link} to="/dashboard" eventKey="4" className="text-white" >
                     Dashboard
                   </Nav.Link>
                   <NavDropdown
                     id="nav-dropdown-example"
-                    title="Forms"
+                    title={<span className="text-white">Forms</span>}
                     menuvariant="dark"
                   >
                     <NavDropdown.Item
@@ -50,15 +60,15 @@ const AppNavbar = () => {
                       Incident Report
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  <Nav.Link onClick={Auth.logout} className="text-white" >Logout</Nav.Link>
                 </>
               ) : (
                 <>
                   (
-                  <Nav.Link reloadDocument as={Link} to="/login" eventKey="10">
+                  <Nav.Link reloadDocument as={Link} to="/login" eventKey="10" className="text-white" >
                     Login
                   </Nav.Link>
-                  <Nav.Link reloadDocument as={Link} to="/signup" eventKey="10">
+                  <Nav.Link reloadDocument as={Link} to="/signup" eventKey="10" className="text-white" >
                     Sign Up
                   </Nav.Link>
                 </>
