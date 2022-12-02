@@ -72,7 +72,7 @@ const ManagerDash = () => {
                 <AllEmployeesCont />
               </Tab>
               <Tab eventKey="locations" title="View All Locations">
-                <AllLocationsCont />
+                <AllLocationsCont allLocations={false}/>
               </Tab>
             </Tabs>
           </Col>
