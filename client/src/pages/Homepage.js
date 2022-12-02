@@ -27,10 +27,12 @@ const Homepage = ({ tabDisplay }) => {
       <div className="d-flex flex-column align-items-center mt-3 overflow-auto">
         <div
           style={{
+            height: "600px",
             minHeight: "600px",
             width: "380px",
             margin: "10px",
             boxShadow: "5px 5px 5px 5px gray",
+            overflow: "scroll"
           }}
         >
           <div className="mx-4 mt-4 mb-4" style={{ height: "150px" }}>
