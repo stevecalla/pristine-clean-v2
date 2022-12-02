@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
@@ -22,7 +22,7 @@ const LoginForm = ({ setShowModal }) => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -55,7 +55,8 @@ const LoginForm = ({ setShowModal }) => {
       //   ? navigate(`/managerdash`, { replace: true })
       //   : navigate(`/employeedash`, { replace: true });
 
-      navigate(`/dashboard`, { replace: true });
+      window.location.assign(`/dashboard`);
+      // navigate(`/dashboard`, { replace: true });
 
       // setShowModal(false);
     } catch (e) {

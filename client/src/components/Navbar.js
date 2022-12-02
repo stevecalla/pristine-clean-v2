@@ -25,7 +25,12 @@ const AppNavbar = () => {
   console.log(!Auth.loggedIn);
   return (
     <>
-      <Navbar collapseOnSelect style={{ backgroundColor: 'black' }} variant="dark" expand="lg">
+      <Navbar
+        collapseOnSelect
+        style={{ backgroundColor: "black" }}
+        variant="dark"
+        expand="lg"
+      >
         <Container fluid className="pl-0">
           <Navbar.Brand as={Link} reloadDocument to="/">
             <h1>Pristine Clean</h1>
@@ -33,34 +38,23 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls="navbar" className="white" />
           <Navbar.Collapse id="navbar">
             <Nav className="ml-auto">
-              {/* if user is logged in show saved books & logout nav links else show login/signup modal */}
-              {/* {Auth.loggedIn() ? ( */}
-              <>
-                {/* <Nav.Link as={Link} to="/" eventKey="1">
-                    Search For Books
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/saved" eventKey="2">
-                    See Your Books
-                  </Nav.Link> */}
-                {/* <Nav.Link onClick={Auth.logout}>Logout</Nav.Link> */}
-              </>
-              {/* ) : ( */}
-              <>
-                { !Auth.loggedIn ? (
-                  <Nav.Link as={Link} to="/login" eventKey="10">
-                  Login/Sign Up
-                </Nav.Link>
-                ) : (
+              {/* section */}
+              {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to="/dashboard" eventKey="4">
-                      Dashboard
+                    Dashboard
                   </Nav.Link>
                   <NavDropdown
                     id="nav-dropdown-example"
                     title="Forms"
                     menuvariant="dark"
                   >
-                    <NavDropdown.Item reloadDocument as={Link} to="/availability" eventKey="5">
+                    <NavDropdown.Item
+                      reloadDocument
+                      as={Link}
+                      to="/availability"
+                      eventKey="5"
+                    >
                       Availability
                     </NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/timeoff" eventKey="6">
@@ -71,8 +65,18 @@ const AppNavbar = () => {
                     </NavDropdown.Item>
                   </NavDropdown>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                  </>)}
-              </>
+                </>
+              ) : (
+                <>
+                <Nav.Link reloadDocument as={Link} to="/login" eventKey="10">
+                  Login
+                </Nav.Link>
+                <Nav.Link reloadDocument as={Link} to="/signup" eventKey="10">
+                  Sign Up
+                </Nav.Link>
+                </>
+              )}
+              {/* section */}
             </Nav>
           </Navbar.Collapse>
         </Container>
