@@ -51,9 +51,11 @@ const LoginForm = ({ setShowModal }) => {
 
       // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/`)
 
-      isManager
-        ? navigate(`/managerdash`, { replace: true })
-        : navigate(`/employeedash`, { replace: true });
+      // isManager
+      //   ? navigate(`/managerdash`, { replace: true })
+      //   : navigate(`/employeedash`, { replace: true });
+
+      navigate(`/dashboard`, { replace: true });
 
       // setShowModal(false);
     } catch (e) {

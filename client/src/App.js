@@ -97,8 +97,7 @@ function App() {
                 )
               }
             />
-            <Route exact path="/employeedash" element={<EmployeeDash />} />
-            <Route exact path="/managerdash" element={<ManagerDash />} />
+            <Route exact path="/dashboard" element={<ManagerDash />} />
             <Route exact path="/availability" element={<Availability />} />
             <Route exact path="/timeoff" element={<Timeoff />} />
             <Route exact path="/incident" element={<Incident />} />

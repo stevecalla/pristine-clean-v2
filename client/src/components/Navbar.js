@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Navbar,
@@ -16,42 +16,45 @@ import Auth from "../utils/auth";
 const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false)
 
+  // useEffect(() => {
+  //     Auth.loggedIn()
+  // },[loggedIn])
+  console.log(Auth.loggedIn);
+  console.log(!Auth.loggedIn);
   return (
     <>
-      <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
+      <Navbar collapseOnSelect style={{ backgroundColor: 'black' }} variant="dark" expand="lg">
         <Container fluid className="pl-0">
           <Navbar.Brand as={Link} reloadDocument to="/">
             <h1>Pristine Clean</h1>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar" />
+          <Navbar.Toggle aria-controls="navbar" className="white" />
           <Navbar.Collapse id="navbar">
             <Nav className="ml-auto">
               {/* if user is logged in show saved books & logout nav links else show login/signup modal */}
               {/* {Auth.loggedIn() ? ( */}
-                <>
-                  {/* <Nav.Link as={Link} to="/" eventKey="1">
+              <>
+                {/* <Nav.Link as={Link} to="/" eventKey="1">
                     Search For Books
                   </Nav.Link>
                   <Nav.Link as={Link} to="/saved" eventKey="2">
                     See Your Books
                   </Nav.Link> */}
-                  {/* <Nav.Link onClick={Auth.logout}>Logout</Nav.Link> */}
-                </>
+                {/* <Nav.Link onClick={Auth.logout}>Logout</Nav.Link> */}
+              </>
               {/* ) : ( */}
+              <>
+                { !Auth.loggedIn ? (
+                  <Nav.Link as={Link} to="/login" eventKey="10">
+                  Login/Sign Up
+                </Nav.Link>
+                ) : (
                 <>
-                  <NavDropdown
-                    id="nav-dropdown-example"
-                    title="Dashboard"
-                    menuvariant="dark"
-                  >
-                    <NavDropdown.Item as={Link} to="/employeedash" eventKey="3">
-                      Employee
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/managerdash" eventKey="4">
-                      Manager
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                  <Nav.Link as={Link} to="/dashboard" eventKey="4">
+                      Dashboard
+                  </Nav.Link>
                   <NavDropdown
                     id="nav-dropdown-example"
                     title="Forms"
@@ -67,17 +70,9 @@ const AppNavbar = () => {
                       Incident Report
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link as={Link} to="/location" eventKey="9">
-                    Location Page
-                  </Nav.Link>
-                  {/* <Nav.Link onClick={() => setShowModal(true)}>
-                    Login/Sign Up
-                  </Nav.Link> */}
-                  <Nav.Link as={Link} reloadDocument to="/login" eventKey="10">
-                    Login/Sign Up
-                  </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                </>
+                  </>)}
+              </>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -96,11 +91,11 @@ const AppNavbar = () => {
             <Modal.Title id="signup-modal">
               <Nav variant="pills">
                 <Nav.Item>
-                  <LoginFormOld setShowModal={setShowModal}/>
+                  <LoginFormOld setShowModal={setShowModal} />
                   {/* <Nav.Link eventKey="login">Login</Nav.Link> */}
                 </Nav.Item>
                 <Nav.Item>
-                  <SignUpFormOld  setShowModal={setShowModal}/>
+                  <SignUpFormOld setShowModal={setShowModal} />
                   {/* <Nav.Link eventKey="signup">Sign Up</Nav.Link> */}
                 </Nav.Item>
               </Nav>

@@ -6,9 +6,6 @@ import Col from "react-bootstrap/Col";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
-import Button from "react-bootstrap/Button";
-import Collapse from "react-bootstrap/Collapse";
-
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
 import FullCalendarApp from "../components/FullCalendarApp";
@@ -21,8 +18,8 @@ import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 
 const ManagerDash = () => {
-  const [openEmployee, setOpenEmployee] = useState(false);
-  const [openLocation, setOpenLocation] = useState(false);
+  // const [openEmployee, setOpenEmployee] = useState(false);
+  // const [openLocation, setOpenLocation] = useState(false);
 
   const userId = getUserId();
   console.log(userId);
