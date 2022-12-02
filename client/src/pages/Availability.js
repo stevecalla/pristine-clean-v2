@@ -171,8 +171,8 @@ const Availability = () => {
                   <thead>
                     <tr>
                       <th>Day of the Week</th>
-                      <th>AM</th>
-                      <th>PM</th>
+                      <th style={{ textAlign: "center" }}>AM</th>
+                      <th style={{ textAlign: "center" }}>PM</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -185,6 +185,7 @@ const Availability = () => {
                           id="sundayAm-switch"
                           checked={sundayAm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                       <td>
@@ -194,6 +195,7 @@ const Availability = () => {
                           id="sundayPm-switch"
                           checked={sundayPm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                     </tr>
@@ -207,6 +209,7 @@ const Availability = () => {
                           checked={mondayAm || false}
                           // onClick={loadChange}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                       <td>
@@ -216,6 +219,7 @@ const Availability = () => {
                           id="mondayPm-switch"
                           checked={mondayPm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                     </tr>
@@ -228,6 +232,7 @@ const Availability = () => {
                           id="tuesdayAm-switch"
                           checked={tuesdayAm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                       <td>
@@ -237,6 +242,7 @@ const Availability = () => {
                           id="tuesdayPm-switch"
                           checked={tuesdayPm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                     </tr>
@@ -249,6 +255,7 @@ const Availability = () => {
                           id="wednesdayAm-switch"
                           checked={wednesdayAm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                       <td>
@@ -258,6 +265,7 @@ const Availability = () => {
                           id="wednesdayPm-switch"
                           checked={wednesdayPm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                     </tr>
@@ -270,6 +278,7 @@ const Availability = () => {
                           id="thursdayAm-switch"
                           checked={thursdayAm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                       <td>
@@ -279,6 +288,7 @@ const Availability = () => {
                           id="thursdayPm-switch"
                           checked={thursdayPm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                     </tr>
@@ -291,6 +301,7 @@ const Availability = () => {
                           id="fridayAm-switch"
                           checked={fridayAm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                       <td>
@@ -300,6 +311,7 @@ const Availability = () => {
                           id="fridayPm-switch"
                           checked={fridayPm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                     </tr>
@@ -312,6 +324,7 @@ const Availability = () => {
                           id="saturdayAm-switch"
                           checked={saturdayAm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                       <td>
@@ -321,6 +334,7 @@ const Availability = () => {
                           id="saturdayPm-switch"
                           checked={saturdayPm || false}
                           onChange={handleChange}
+                          style={{ textAlign: "center" }}
                         />
                       </td>
                     </tr>
