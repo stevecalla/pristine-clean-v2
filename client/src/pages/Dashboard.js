@@ -22,7 +22,7 @@ const ManagerDash = () => {
   // const [openLocation, setOpenLocation] = useState(false);
 
   const userId = getUserId();
-  console.log(userId);
+  // console.log(userId);
 
   // get user info to render to page
   const { loading, data } = useQuery(QUERY_ME, {
