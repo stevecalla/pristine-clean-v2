@@ -192,15 +192,15 @@ const Location = ({ locationDetails }) => {
         </Collapse>
         <Row>
           <Col>
-            <Card>
-              <Card.Body>
-                <ResponsiveEmbed className="mt-1" style={{ height: "1000px" }}>
+            {/* <Card className="px-0 mx-0"> */}
+              {/* <Card.Body className="pb-1 p-0 mx-1"> */}
+                <ResponsiveEmbed className="mt-1 rounded" style={{ height: "1000px" }}>
                   <div>
                     <Map />
                   </div>
                 </ResponsiveEmbed>
-              </Card.Body>
-            </Card>
+              {/* </Card.Body> */}
+            {/* </Card> */}
           </Col>
         </Row>
       </Container>

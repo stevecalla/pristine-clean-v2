@@ -47,7 +47,7 @@ const ManagerDash = () => {
     );
   } else {
     return (
-      <Container className="my-3">
+      <Container className="my-1">
         <Row>
           <Col>
             <Tabs
