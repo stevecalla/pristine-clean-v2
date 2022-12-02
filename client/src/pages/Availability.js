@@ -49,8 +49,9 @@ const Availability = () => {
     // if skip is true, this query will not be executed; in this instance, if the user is not logged in this query will be skipped when the component mounts
     skip: !Auth.loggedIn(),
     onCompleted: (data) => {
-      let availability = data.me.availability;
+      let availability = data?.me?.availability;
 
+      if (availability) {
       Object.keys(availability).map((key) => {
         return key === "mondayAm"
           ? setMondayAm(availability[key])
@@ -79,7 +80,7 @@ const Availability = () => {
           : key === "sundayAm"
           ? setSundayAm(availability[key])
           : setSundayPm(availability[key]);
-      });
+      })};
     },
   });
 
