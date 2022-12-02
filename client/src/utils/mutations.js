@@ -24,6 +24,26 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_INCIDENT = gql`
+mutation Mutation($employeeName: String!, $locationName: String!, $employeePhone: String!, $subject: String!, $urgent: String!, $incidentDetails: String!) {
+  addIncident(employeeName: $employeeName, locationName: $locationName, employeePhone: $employeePhone, subject: $subject, urgent: $urgent, incidentDetails: $incidentDetails) {
+    employeeName
+    locationName
+    employeePhone
+    subject
+    urgent
+    incidentDetails
+  }
+}`
+
+export const DELETE_INCIDENT = gql`
+mutation DeleteIncident($incidentId: ID!) {
+  deleteIncident(incidentId: $incidentId) {
+    _id
+   
+  }
+}`
+
 export const UPDATE_AVAILABILITY = gql`
   mutation updateAvailability(
     $id: ID!
