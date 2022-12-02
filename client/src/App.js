@@ -75,52 +75,98 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [tabDisplay, setTabDisplay] = useState("login");
+  // const [tabDisplay, setTabDisplay] = useState("login");
   // console.log(tabDisplay)
 
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <>
-          <Navbar />
-          <Routes>
-            <Route exact path="/" element={<Homepage />} />
-            <Route
-              exact
-              path="/login"
-              element={
-                Auth.loggedIn() ? (
-                  <Homepage />
-                ) : (
-                  <Homepage tabDisplay={"login"} />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/signup"
-              element={
-                Auth.loggedIn() ? (
-                  <Homepage />
-                ) : (
-                  <Homepage tabDisplay={"signup"} />
-                )
-              }
-            />
-            <Route exact path="/dashboard" element={<ManagerDash />} />
-            <Route exact path="/availability" element={<Availability />} />
-            <Route exact path="/timeoff" element={<Timeoff />} />
-            <Route exact path="/incident" element={<Incident />} />
-            <Route exact path="/location" element={<Location />} />
-            <Route
-              path="*"
-              element={<h1 className="display-2">Wrong page!</h1>}
-            />
-          </Routes>
-        </>
-      </Router>
-    </ApolloProvider>
-  );
+  if (!Auth.loggedIn()) {
+    return (
+      console.log("not logged in"),
+
+      <ApolloProvider client={client}>
+        <Router>
+          <>
+            <Navbar />
+            {Auth.loggedIn() ? console.log(true) : console.log(false)};
+            <Routes>
+              {/* <Route exact path="/" element={<Homepage />} /> */}
+              <Route
+                exact
+                path="/login"
+                element={
+                  Auth.loggedIn() ? (
+                    <Homepage />
+                  ) : (
+                    <Homepage tabDisplay={"login"} />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup"
+                element={
+                  Auth.loggedIn() ? (
+                    <Homepage />
+                  ) : (
+                    <Homepage tabDisplay={"signup"} />
+                  )
+                }
+              />
+              <Route
+                path="*"
+                element={<Homepage />}
+                // element={<h1 className="display-2">Wrong page!</h1>}
+              />
+            </Routes>
+          </>
+        </Router>
+      </ApolloProvider>
+    )
+  } else {
+    return (
+      <ApolloProvider client={client}>
+        <Router>
+          <>
+            <Navbar />
+            {Auth.loggedIn() ? console.log(true) : console.log(false)};
+            <Routes>
+              <Route exact path="/" element={<Homepage />} />
+              <Route
+                exact
+                path="/login"
+                element={
+                  Auth.loggedIn() ? (
+                    <Homepage />
+                  ) : (
+                    <Homepage tabDisplay={"login"} />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/signup"
+                element={
+                  Auth.loggedIn() ? (
+                    <Homepage />
+                  ) : (
+                    <Homepage tabDisplay={"signup"} />
+                  )
+                }
+              />
+              <Route exact path="/dashboard" element={<ManagerDash />} />
+              <Route exact path="/availability" element={<Availability />} />
+              <Route exact path="/timeoff" element={<Timeoff />} />
+              <Route exact path="/incident" element={<Incident />} />
+              <Route exact path="/location" element={<Location />} />
+              <Route
+                path="*"
+                element={<h1 className="display-2">Wrong page!</h1>}
+              />
+            </Routes>
+          </>
+        </Router>
+      </ApolloProvider>
+    );
+  }
 }
 
 export default App;
