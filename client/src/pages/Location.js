@@ -9,12 +9,13 @@ import Collapse from "react-bootstrap/Collapse";
 // import Ratio from 'react-bootstrap/Ratio';
 import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed';
 // import Frame from "react-frame-component";
+import AllLocationsCont from "../components/AllLocationsCont";
 
 import Map from '../components/Map';
 
 const Location = ({ locationDetails }) => {
 
-  console.log(locationDetails)
+  // console.log(locationDetails)
 
   // Execute the query on component load
   // const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
@@ -25,8 +26,30 @@ const Location = ({ locationDetails }) => {
   const [openDetails, setOpenDetails] = useState(true);
   const [openInstructions, setOpenInstruction] = useState(false);
 
+
+  const [ locationPage, setLocationPage ] = useState(false);
+  const handleAllLocationsClick = (e) => {
+    setLocationPage(true)
+  }
+
+  if (locationPage) {
+    console.log('yes 1000');
+    return (
+      <AllLocationsCont />
+    )
+  }
+
   return (
     <main>
+
+      <button
+        onClick={() => (
+          console.log('go back'),
+          console.log('go back2'),
+          handleAllLocationsClick()
+        )}
+        >Go Back Button
+      </button>
 
       <Container className="my-2">
         <Button

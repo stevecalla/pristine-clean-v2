@@ -15,7 +15,7 @@ import { QUERY_ME } from "../utils/queries";
 import Location from "../pages/Location";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AllLocationsCont = () => {
+const AllLocationsCont = ({ allLocations }) => {
   const userId = getUserId();
 
   const { loading, data } = useQuery(QUERY_ME, {
@@ -32,13 +32,16 @@ const AllLocationsCont = () => {
   const [ locationPage, setLocationPage ] = useState(false);
   const [ selectedLocation, setSelectedLocation ] = useState({});
 
+  console.log(allLocations);
+  
+
   const handleInfoClick = (event) => {
-    console.log('info click')
-    console.log(event)
-    console.log(event.currentTarget.getAttribute("data-location"));
+    // console.log('info click')
+    // console.log(event)
+    // console.log(event.currentTarget.getAttribute("data-location"));
     let locationId = event.currentTarget.getAttribute("data-location")
 
-    console.log(locations.map((element) => console.log(element._id, locationId)));
+    // console.log(locations.map((element) => console.log(element._id, locationId)));
 
     let filteredLocation = locations.filter((element) => element._id === locationId);
     console.log('selected location = ', filteredLocation[0]);
@@ -48,7 +51,7 @@ const AllLocationsCont = () => {
 
   if (locationPage) {
     console.log('yes 1');
-    // setLocationPage(false);
+
     return (
       <Location locationDetails={selectedLocation} />
     )
