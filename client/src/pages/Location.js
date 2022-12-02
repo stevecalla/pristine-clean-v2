@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 import Collapse from "react-bootstrap/Collapse";
 // import Ratio from 'react-bootstrap/Ratio';
-import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed';
+import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 // import Frame from "react-frame-component";
 import AllLocationsCont from "../components/AllLocationsCont";
 
-import Map from '../components/Map';
+import Map from "../components/Map";
 
 const Location = ({ locationDetails }) => {
-
   // console.log(locationDetails)
 
   // Execute the query on component load
@@ -26,30 +25,19 @@ const Location = ({ locationDetails }) => {
   const [openDetails, setOpenDetails] = useState(true);
   const [openInstructions, setOpenInstruction] = useState(false);
 
-
-  const [ locationPage, setLocationPage ] = useState(false);
+  const [locationPage, setLocationPage] = useState(false);
   const handleAllLocationsClick = (e) => {
-    setLocationPage(true)
-  }
+    setLocationPage(true);
+  };
 
   if (locationPage) {
-    console.log('yes 1000');
-    return (
-      <AllLocationsCont />
-    )
+    console.log("yes 1000");
+    return <AllLocationsCont />;
   }
 
   return (
     <main>
-
-      <button
-        onClick={() => (
-          console.log('go back'),
-          console.log('go back2'),
-          handleAllLocationsClick()
-        )}
-        >Go Back Button
-      </button>
+      <button onClick={() => handleAllLocationsClick()}>Go Back Button</button>
 
       <Container className="my-2">
         <Button
@@ -61,9 +49,7 @@ const Location = ({ locationDetails }) => {
         >
           View Location Details
         </Button>
-        <Collapse
-          in={openDetails}
-        >
+        <Collapse in={openDetails}>
           <div id="collapse-details-bar">
             <Row>
               <Col>
@@ -72,10 +58,18 @@ const Location = ({ locationDetails }) => {
                   <Card.Body className=" bg-light">
                     <ListGroup variant="flush">
                       <ListGroup.Item>Manager: McNatt, Colin</ListGroup.Item>
-                      <ListGroup.Item>Address: {locationDetails.address}</ListGroup.Item>
-                      <ListGroup.Item>Contact #: {locationDetails.businessContact}</ListGroup.Item>
-                      <ListGroup.Item>Cleaners: Patrick, Steve, Alex</ListGroup.Item>
-                      <ListGroup.Item>Frequency: {locationDetails.shifts}</ListGroup.Item>
+                      <ListGroup.Item>
+                        Address: {locationDetails.address}
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        Contact #: {locationDetails.businessContact}
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        Cleaners: Patrick, Steve, Alex
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        Frequency: {locationDetails.shifts}
+                      </ListGroup.Item>
                       <Button
                         onClick={() => setOpenInstruction(!openInstructions)}
                         aria-controls="instructions-fade-text"
@@ -86,33 +80,83 @@ const Location = ({ locationDetails }) => {
                         View Instructions
                       </Button>
                       <Collapse
-                        style={{ 'height': '300px', 'overflow': 'scroll!important' }}
+                        style={{
+                          height: "300px",
+                          overflow: "scroll!important",
+                        }}
                         in={openInstructions}
                       >
                         <div id="collapse-instructions-bar">
                           <Card>
                             <Card.Body className=" bg-light">
                               <ListGroup variant="flush">
-                                <ListGroup.Item><b>Facility Type:</b> {locationDetails.instructions.facilityType}</ListGroup.Item>
-                                <ListGroup.Item><b>Cleaning Type:</b> {locationDetails.instructions.cleaningType}</ListGroup.Item>
-                                <ListGroup.Item><b>Bathrooms:</b> {locationDetails.instructions.bathrooms}</ListGroup.Item>
-                                <ListGroup.Item><b>Lobby:</b> {locationDetails.instructions.lobby}</ListGroup.Item>
-                                <ListGroup.Item><b>Sitting-Area:</b> {locationDetails.instructions.sittingArea}</ListGroup.Item>
-                                <ListGroup.Item><b>Break-Room:</b> {locationDetails.instructions.breakRoom}</ListGroup.Item>
-                                <ListGroup.Item><b>Fornt-Desk:</b> {locationDetails.instructions.frontdesk}</ListGroup.Item>
-                                <ListGroup.Item><b>Appliances:</b> {locationDetails.instructions.appliances}</ListGroup.Item>
-                                <ListGroup.Item><b>Dusting:</b> {locationDetails.instructions.dusting}</ListGroup.Item>
-                                <ListGroup.Item><b>Windows:</b> {locationDetails.instructions.exclusions}</ListGroup.Item>
-                                <ListGroup.Item><b>Trash:</b> {locationDetails.instructions.trash}</ListGroup.Item>
-                                <ListGroup.Item><b>Vacuum:</b> {locationDetails.instructions.vacuum}</ListGroup.Item>
-                                <ListGroup.Item><b>Mop:</b> {locationDetails.instructions.mop}</ListGroup.Item>
-                                <ListGroup.Item><b>Additional Services:</b> {locationDetails.instructions.additionalServices}</ListGroup.Item>
-                                <ListGroup.Item><b>Exclusions:</b> {locationDetails.instructions.exclusions}</ListGroup.Item>
-                              </ListGroup >
-                            </Card.Body >
-                          </Card >
-                        </div >
-                      </Collapse >
+                                <ListGroup.Item>
+                                  <b>Facility Type:</b>{" "}
+                                  {locationDetails.instructions.facilityType}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Cleaning Type:</b>{" "}
+                                  {locationDetails.instructions.cleaningType}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Bathrooms:</b>{" "}
+                                  {locationDetails.instructions.bathrooms}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Lobby:</b>{" "}
+                                  {locationDetails.instructions.lobby}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Sitting-Area:</b>{" "}
+                                  {locationDetails.instructions.sittingArea}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Break-Room:</b>{" "}
+                                  {locationDetails.instructions.breakRoom}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Fornt-Desk:</b>{" "}
+                                  {locationDetails.instructions.frontdesk}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Appliances:</b>{" "}
+                                  {locationDetails.instructions.appliances}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Dusting:</b>{" "}
+                                  {locationDetails.instructions.dusting}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Windows:</b>{" "}
+                                  {locationDetails.instructions.exclusions}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Trash:</b>{" "}
+                                  {locationDetails.instructions.trash}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Vacuum:</b>{" "}
+                                  {locationDetails.instructions.vacuum}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Mop:</b> {locationDetails.instructions.mop}
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Additional Services:</b>{" "}
+                                  {
+                                    locationDetails.instructions
+                                      .additionalServices
+                                  }
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                  <b>Exclusions:</b>{" "}
+                                  {locationDetails.instructions.exclusions}
+                                </ListGroup.Item>
+                              </ListGroup>
+                            </Card.Body>
+                          </Card>
+                        </div>
+                      </Collapse>
                     </ListGroup>
                   </Card.Body>
                 </Card>
@@ -124,7 +168,7 @@ const Location = ({ locationDetails }) => {
           <Col>
             <Card>
               <Card.Body>
-                <ResponsiveEmbed className='mt-1' style={{ height: '1000px' }}>
+                <ResponsiveEmbed className="mt-1" style={{ height: "1000px" }}>
                   <div>
                     <Map />
                   </div>
@@ -134,7 +178,7 @@ const Location = ({ locationDetails }) => {
           </Col>
         </Row>
       </Container>
-    </main >
+    </main>
   );
 };
 
