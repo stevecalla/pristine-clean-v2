@@ -27,7 +27,7 @@ const AllLocationsCont = ({ allLocations }) => {
 
   let locations;
   if (!loading) {
-    locations = data?.me.locations;
+    locations = data?.me?.locations;
     // console.log(locations);
   }
 
