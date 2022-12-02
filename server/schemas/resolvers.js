@@ -1,12 +1,12 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Location, Incident } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Location, Incident } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async (parent, args, context) => {
       // if (context.user) {
-      return User.find().populate('locations');
+      return User.find().populate("locations");
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
@@ -15,10 +15,10 @@ const resolvers = {
     },
 
     me: async (parent, { _id }, context) => {
-      // if (context.user) {
-      return User.findById({ _id }).populate('locations');
-      // }
-      // throw new AuthenticationError("You need to be logged in!");
+      if (context.user) {
+        return User.findById({ _id }).populate("locations");
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     locations: async () => {
@@ -26,14 +26,14 @@ const resolvers = {
     },
 
     location: async (parent, { locationId }) => {
-      console.log('resolve js line 38 = ', locationId);
+      console.log("resolve js line 38 = ", locationId);
 
       return Location.findOne({ _id: locationId });
     },
 
     incidents: async (parent, args, context) => {
       // if (context.user) {
-      return Incident.find()
+      return Incident.find();
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
@@ -46,8 +46,25 @@ const resolvers = {
       return { token, user };
     },
 
-    addIncident: async (parent, { employeeName, locationName, employeePhone, subject, urgent, incidentDetails }) => {
-      return Incident.create({ employeeName, locationName, employeePhone, subject, urgent, incidentDetails });
+    addIncident: async (
+      parent,
+      {
+        employeeName,
+        locationName,
+        employeePhone,
+        subject,
+        urgent,
+        incidentDetails,
+      }
+    ) => {
+      return Incident.create({
+        employeeName,
+        locationName,
+        employeePhone,
+        subject,
+        urgent,
+        incidentDetails,
+      });
     },
 
     deleteIncident: async (parent, { incidentId }) => {
@@ -58,13 +75,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const token = signToken(user);
@@ -120,12 +137,6 @@ const resolvers = {
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
-
-
-
-
-
-
   },
 };
 

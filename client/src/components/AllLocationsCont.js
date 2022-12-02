@@ -18,6 +18,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const AllLocationsCont = ({ allLocations }) => {
   const userId = getUserId();
 
+  console.log(!Auth.loggedIn())
+
   const { loading, data } = useQuery(QUERY_ME, {
     variables: { id: userId },
     skip: !Auth.loggedIn(),
@@ -25,8 +27,8 @@ const AllLocationsCont = ({ allLocations }) => {
 
   let locations;
   if (!loading) {
-    locations = data.me.locations;
-    console.log(locations);
+    locations = data?.me.locations;
+    // console.log(locations);
   }
 
   const [ locationPage, setLocationPage ] = useState(false);
@@ -60,7 +62,7 @@ const AllLocationsCont = ({ allLocations }) => {
   if (!loading) {
     return (
       <>
-        {locations.map((location, index) => (
+        {locations?.map((location, index) => (
           <Card key={index}>
             <Card.Header className="container">
               <Row className="justify-content-between">
