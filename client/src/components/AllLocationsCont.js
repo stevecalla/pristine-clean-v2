@@ -74,16 +74,24 @@ const AllLocationsCont = ({ allLocations }) => {
                     {/* <Location /> */}
                     {/* <Button className="p-2" style={{ color: "transparent" }}> */}
                     <div>
-                      <FontAwesomeIcon
-                        className="pl-2"
+                      {/* <FontAwesomeIcon
+                        className="pl-2 mr-2 "
                         icon="fa-info-circle"
                         transform="grow-9"
+                        // color='orange'
                         data-location={location._id}
                         // style={{ background: "blue" }}
                         // style={display ? isDisplayed : isNotDisplayed}
                         onClick={(event) => handleInfoClick(event)}
-                      />
-                      {/* <InfoCircleFill id="link-location-page" color="lightBlue" size="22px" className="mr-2" /> */}
+                      /> */}
+                      <InfoCircleFill 
+                      id="link-location-page"
+                      color="orange" 
+                      size="28px" 
+                      className="mr-2"
+                      transform="grow-9"
+                      data-location={location._id}
+                      onClick={(event) => handleInfoClick(event)} /> 
                     </div>
                     {/* </Button> */}
                   {/* </Link> */}

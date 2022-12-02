@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Collapse from "react-bootstrap/Collapse";
+import { SkipBackwardCircle } from "react-bootstrap-icons";
 // import Ratio from 'react-bootstrap/Ratio';
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 // import Frame from "react-frame-component";
@@ -37,8 +38,6 @@ const Location = ({ locationDetails }) => {
 
   return (
     <main>
-      <button onClick={() => handleAllLocationsClick()}>Go Back Button</button>
-
       <Container className="my-2">
         <Button
           onClick={() => setOpenDetails(!openDetails)}
@@ -47,7 +46,34 @@ const Location = ({ locationDetails }) => {
           size="lg"
           className="btn-block my-2"
         >
-          View Location Details
+          <Row className="justify-content-between">
+            <Col xs={1.25} className="ml-1">
+              <div>
+                <SkipBackwardCircle
+                  id="link-location-page"
+                  color="white"
+                  size="28px"
+                  ariaHidden="true"
+                  transform="grow-9"
+                  onClick={() => handleAllLocationsClick()}
+                />
+              </div>
+            </Col>
+            <Col xs={8}>
+              Location Details
+            </Col>
+            <Col xs={1.25} className="mr-1">
+              <div>
+            <SkipBackwardCircle
+                  id="filler"
+                  color="transparent"
+                  size="28px"
+                  ariaHidden="true"
+                  transform="grow-9"
+                />
+                </div>
+            </Col>
+          </Row>
         </Button>
         <Collapse in={openDetails}>
           <div id="collapse-details-bar">
@@ -77,7 +103,7 @@ const Location = ({ locationDetails }) => {
                         size="lg"
                         className="btn-block my-2"
                       >
-                        View Instructions
+                        Instructions
                       </Button>
                       <Collapse
                         style={{
