@@ -55,7 +55,8 @@ const LoginForm = ({ setShowModal }) => {
       //   ? navigate(`/managerdash`, { replace: true })
       //   : navigate(`/employeedash`, { replace: true });
 
-      navigate(`/dashboard`, { replace: true });
+      window.location.assign(`/dashboard`)
+      // navigate(`/dashboard`, { replace: true });
 
       // setShowModal(false);
     } catch (e) {
