@@ -15,10 +15,10 @@ const resolvers = {
     },
 
     me: async (parent, { _id }, context) => {
-      if (context.user) {
+      // if (context.user) {
         return User.findById({ _id }).populate("locations");
-      }
-      throw new AuthenticationError("You need to be logged in!");
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
     },
 
     locations: async () => {

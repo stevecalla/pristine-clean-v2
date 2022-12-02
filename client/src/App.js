@@ -10,8 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
 // import MapPage from "./pages/MapPage";
-import EmployeeDash from "./pages/EmployeeDash";
-import ManagerDash from "./pages/ManagerDash";
+import ManagerDash from "./pages/Dashboard";
 import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
@@ -32,7 +31,7 @@ import {
   faEyeSlash,
   faInfo,
   faCircleInfo,
-  faInfoCircle
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -46,7 +45,7 @@ library.add(
   faEyeSlash,
   faInfo,
   faCircleInfo,
-  faInfoCircle,
+  faInfoCircle
 );
 
 const httpLink = new HttpLink({
