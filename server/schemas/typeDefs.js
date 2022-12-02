@@ -70,6 +70,15 @@ const typeDefs = gql`
     exclusions: String
   }
 
+  type Incident {
+    employeeName: String
+    locationName: String
+    employeePhone: String
+    subject: String
+    urgent: String
+    incidentDetails: String
+  }
+
   type Query {
     users: [User]!
     user(email: String!): User

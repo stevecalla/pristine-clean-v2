@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
@@ -37,7 +37,7 @@ const ManagerDash = () => {
   // console.log({ data }, loading);
 
   // control usestate default tab
-  const [key, setKey] = useState('calendar');
+  const [key, setKey] = useState("calendar");
 
   if (loading) {
     return (
@@ -79,7 +79,7 @@ const ManagerDash = () => {
         </Row>
       </Container>
     );
-  };
+  }
 };
 
 export default ManagerDash;

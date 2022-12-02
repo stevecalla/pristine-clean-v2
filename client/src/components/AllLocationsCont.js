@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,11 +7,13 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { InfoCircleFill } from 'react-bootstrap-icons';
+import { InfoCircleFill } from "react-bootstrap-icons";
 import Auth from "../utils/auth";
 import { getUserId } from "../utils/getUserId";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import Location from "../pages/Location";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AllLocationsCont = () => {
   const userId = getUserId();
@@ -24,8 +26,33 @@ const AllLocationsCont = () => {
   let locations;
   if (!loading) {
     locations = data.me.locations;
+    console.log(locations);
   }
-  // // console.log(locations);
+
+  const [ locationPage, setLocationPage ] = useState(false);
+  const [ selectedLocation, setSelectedLocation ] = useState({});
+
+  const handleInfoClick = (event) => {
+    console.log('info click')
+    console.log(event)
+    console.log(event.currentTarget.getAttribute("data-location"));
+    let locationId = event.currentTarget.getAttribute("data-location")
+
+    console.log(locations.map((element) => console.log(element._id, locationId)));
+
+    let filteredLocation = locations.filter((element) => element._id === locationId);
+    console.log('selected location = ', filteredLocation[0]);
+    setSelectedLocation(filteredLocation[0]);
+    setLocationPage(true)
+  }
+
+  if (locationPage) {
+    console.log('yes 1');
+    // setLocationPage(false);
+    return (
+      <Location locationDetails={selectedLocation} />
+    )
+  }
 
   if (!loading) {
     return (
@@ -34,16 +61,27 @@ const AllLocationsCont = () => {
           <Card key={index}>
             <Card.Header className="container">
               <Row className="justify-content-between">
-                <Col xs={10}>
-                  {location.businessName}
-                </Col>
+                <Col xs={10}>{location.businessName}</Col>
                 <Col xs={1.5}>
                   {/* TODO: NOT SURE THIS LINK IS GOING TO WORK */}
-                  <Link to={'/location'} component={location._id} replace={true}>
-                    <Button>
-                      <InfoCircleFill id="link-location-page" color="lightBlue" size="22px" className="mr-2" />
-                    </Button>
-                  </Link>
+                  {/* <Link to={'/location'} component={location._id} replace={true}> */}
+                  {/* <Link to={"/location"} component={"hello"}> */}
+                    {/* <Location /> */}
+                    {/* <Button className="p-2" style={{ color: "transparent" }}> */}
+                    <div>
+                      <FontAwesomeIcon
+                        className="pl-2"
+                        icon="fa-info-circle"
+                        transform="grow-9"
+                        data-location={location._id}
+                        // style={{ background: "blue" }}
+                        // style={display ? isDisplayed : isNotDisplayed}
+                        onClick={(event) => handleInfoClick(event)}
+                      />
+                      {/* <InfoCircleFill id="link-location-page" color="lightBlue" size="22px" className="mr-2" /> */}
+                    </div>
+                    {/* </Button> */}
+                  {/* </Link> */}
                 </Col>
               </Row>
             </Card.Header>
@@ -111,7 +149,7 @@ const AllLocationsCont = () => {
       //       </ListGroup>
       //     </Card.Body>
       //   </Card>
-      // </> 
+      // </>
     );
   }
 };

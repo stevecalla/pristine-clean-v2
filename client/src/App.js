@@ -30,6 +30,9 @@ import {
   faSpinner,
   faEye,
   faEyeSlash,
+  faInfo,
+  faCircleInfo,
+  faInfoCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -40,7 +43,10 @@ library.add(
   faSearch,
   faSpinner,
   faEye,
-  faEyeSlash
+  faEyeSlash,
+  faInfo,
+  faCircleInfo,
+  faInfoCircle,
 );
 
 const httpLink = new HttpLink({
