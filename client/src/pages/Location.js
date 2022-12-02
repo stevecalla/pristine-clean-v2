@@ -136,14 +136,14 @@ const Location = ({ locationDetails }) => {
             <Row>
               <Col>
                 <Card>
-                  <Card.Header>Wal-mart</Card.Header>
+                  <Card.Header>{locationDetails.businessName}</Card.Header>
                   <Card.Body className=" bg-light">
                     <ListGroup variant="flush">
                       <ListGroup.Item>Manager: McNatt, Colin</ListGroup.Item>
-                      <ListGroup.Item>Address12345 Place Dr</ListGroup.Item>
-                      <ListGroup.Item>Contact #: 123-456-7890</ListGroup.Item>
+                      <ListGroup.Item>Address: {locationDetails.address}</ListGroup.Item>
+                      <ListGroup.Item>Contact #: {locationDetails.businessnContact}</ListGroup.Item>
                       <ListGroup.Item>Cleaners: Patrick, Steve, Alex</ListGroup.Item>
-                      <ListGroup.Item>FrequencyMonday, Tuesday, Friday</ListGroup.Item>
+                      <ListGroup.Item>Frequency: {locationDetails.shifts}</ListGroup.Item>
                       <Button
                         onClick={() => setOpenInstruction(!openInstructions)}
                         aria-controls="instructions-fade-text"
@@ -161,21 +161,21 @@ const Location = ({ locationDetails }) => {
                           <Card>
                             <Card.Body className=" bg-light">
                               <ListGroup variant="flush">
-                                <ListGroup.Item>Facility Type: Retail</ListGroup.Item>
-                                <ListGroup.Item>Cleaning Type: Deep</ListGroup.Item>
-                                <ListGroup.Item>Bathrooms: Flush the toilet!</ListGroup.Item>
-                                <ListGroup.Item>Lobby: Gonna be here a while</ListGroup.Item>
-                                <ListGroup.Item>Sitting-Area: Standing room only</ListGroup.Item>
-                                <ListGroup.Item>Break-Room: Try the salsa</ListGroup.Item>
-                                <ListGroup.Item>Fornt-Desk: Speak clearly</ListGroup.Item>
-                                <ListGroup.Item>Appliances: Yes, please!</ListGroup.Item>
-                                <ListGroup.Item>Dusting: Aplly liberally</ListGroup.Item>
-                                <ListGroup.Item>Windows: Write your Name</ListGroup.Item>
-                                <ListGroup.Item>Trash: Excuse me!?</ListGroup.Item>
-                                <ListGroup.Item>Vacuum: Has feelings too</ListGroup.Item>
-                                <ListGroup.Item>Mop: It's a swab</ListGroup.Item>
-                                <ListGroup.Item>Additional Services: All of them</ListGroup.Item>
-                                <ListGroup.Item>Exclusions: Everybody is special</ListGroup.Item>
+                                <ListGroup.Item><b>Facility Type:</b> {locationDetails.instructions.facilityType}</ListGroup.Item>
+                                <ListGroup.Item><b>Cleaning Type:</b> {locationDetails.instructions.cleaningType}</ListGroup.Item>
+                                <ListGroup.Item><b>Bathrooms:</b> {locationDetails.instructions.bathrooms}</ListGroup.Item>
+                                <ListGroup.Item><b>Lobby:</b> {locationDetails.instructions.lobby}</ListGroup.Item>
+                                <ListGroup.Item><b>Sitting-Area:</b> {locationDetails.instructions.sittingArea}</ListGroup.Item>
+                                <ListGroup.Item><b>Break-Room:</b> {locationDetails.instructions.breakRoom}</ListGroup.Item>
+                                <ListGroup.Item><b>Fornt-Desk:</b> {locationDetails.instructions.frontdesk}</ListGroup.Item>
+                                <ListGroup.Item><b>Appliances:</b> {locationDetails.instructions.appliances}</ListGroup.Item>
+                                <ListGroup.Item><b>Dusting:</b> {locationDetails.instructions.dusting}</ListGroup.Item>
+                                <ListGroup.Item><b>Windows:</b> {locationDetails.instructions.exclusions}</ListGroup.Item>
+                                <ListGroup.Item><b>Trash:</b> {locationDetails.instructions.trash}</ListGroup.Item>
+                                <ListGroup.Item><b>Vacuum:</b> {locationDetails.instructions.vacuum}</ListGroup.Item>
+                                <ListGroup.Item><b>Mop:</b> {locationDetails.instructions.mop}</ListGroup.Item>
+                                <ListGroup.Item><b>Additional Services:</b> {locationDetails.instructions.additionalServices}</ListGroup.Item>
+                                <ListGroup.Item><b>Exclusions:</b> {locationDetails.instructions.exclusions}</ListGroup.Item>
                               </ListGroup >
                             </Card.Body >
                           </Card >
