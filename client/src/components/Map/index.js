@@ -17,7 +17,6 @@ const center = { lat: 40.1672, lng: -105.1019 };
 const libraries = ["places"];
 
 function Map({ destinationDb }) {
-
   //section
   const [coords, setCoords] = useState("");
   const [originDb, setOriginDb] = useState("");
@@ -46,7 +45,7 @@ function Map({ destinationDb }) {
             response.json().then((data) => {
               // console.log(data.results[0].formatted_address);
               setOriginDb(data.results[0].formatted_address);
-              console.log({ originDb });
+              // console.log({ originDb });
             });
           } else {
             // launchValidationModal(
@@ -70,11 +69,11 @@ function Map({ destinationDb }) {
 
   //section end
 
-  console.log({originDb}, destinationDb.address)
+  // console.log({ originDb }, destinationDb.address);
 
   // const [originTest, setOriginTest] = useState();
   // const [destinationTest, setDestinationTest] = useState();
-  console.log({ seed });
+  // console.log({ seed });
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -82,28 +81,19 @@ function Map({ destinationDb }) {
     libraries,
   });
 
-  const [map, setMap] = useState((null)); /** @type google.maps.Map */ 
+  const [map, setMap] = useState(null);
+  /** @type google.maps.Map */
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
 
+  const [renderMap, setRenderMap] = useState(false); //section
+
   let origin = useRef();
   let destination = useRef();
 
-  if (!isLoaded) {
-    return (
-      <div 
-        className="d-flex justify-content-center" 
-        style={{ "height": "200px", "color": "red"}}
-        transform="grow-7"
-      >
-        <Spinner animation="border" />;  
-      </div>
-    )  
-  }
-
-  if ( originDb && destinationDb ) {
-    console.log(originDb, destinationDb)
+  if (originDb && destinationDb) {
+    // console.log(originDb, destinationDb);
     calculateRoute();
   }
 
@@ -118,7 +108,7 @@ function Map({ destinationDb }) {
 
   // section (#2) to stop the db query comment out this function
   async function calculateRoute(event) {
-    console.log('cal route 1')
+    // console.log("cal route 1");
     event && event.preventDefault();
 
     // console.log(origin.current.value === "", destination.current.value === "")
@@ -126,16 +116,16 @@ function Map({ destinationDb }) {
     // if (origin.current.value === "" || destination.current.value === "") {
     //   return;
     // }
-    
-    console.log('cal route 2')
+
+    // console.log("cal route 2");
 
     let originSubmitted = "";
     let destinationSubmitted = "";
 
-    console.log( origin.current?.value );
-    console.log( destination.current?.value );
-    console.log({ originDb });
-    console.log({ destinationDb })
+    // console.log(origin.current?.value);
+    // console.log(destination.current?.value);
+    // console.log({ originDb });
+    // console.log({ destinationDb });
 
     if (origin.current?.value && destination.current?.value) {
       originSubmitted = origin.current?.value;
@@ -162,6 +152,7 @@ function Map({ destinationDb }) {
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
+    setRenderMap(true); //section
   }
 
   function clearRoute() {
@@ -172,43 +163,50 @@ function Map({ destinationDb }) {
     destination.current.value = "";
   }
 
-  if (!isLoaded) {
-    return <Spinner animation="border" />;
-  } else {
-
+  // if (!renderMap) {
+    //section
     return (
-      <div>
-        <DirectionsPanel />
-
-        <div style={containerStyle} className="d-flex align-items-center">
-
-          <LoadMap
-            center={center}
-            directionsResponse={directionsResponse}
-            setMap={setMap}
-          />
-
-          <Share />
-
-          <CenterIcon center={center} map={map} />
-
-          <div style={lineBreakStyle}></div>
-
-          <SearchIcon
-            calculateRoute={calculateRoute}
-            center={center}
-            clearRoute={clearRoute}
-            destination={destination}
-            distance={distance}
-            duration={duration}
-            map={map}
-            origin={origin}
-          />
-        </div>
+      <div
+        style={{ height: "200px", width: "100vw" }}
+        // className="d-flex justify-content-center align-items-center align-content-center m-0"
+      >
+        <div className="lds-hourglass"></div>
       </div>
     );
-  }
-}
+  } 
+  // else {
+//     return (
+//       <div>
+//         <DirectionsPanel />
+
+//         <div style={containerStyle} className="d-flex align-items-center">
+//           <LoadMap
+//             center={center}
+//             directionsResponse={directionsResponse}
+//             setMap={setMap}
+//           />
+
+//           <Share />
+
+//           <CenterIcon center={center} map={map} />
+
+//           <div style={lineBreakStyle}></div>
+
+//           <SearchIcon
+//             calculateRoute={calculateRoute}
+//             center={center}
+//             clearRoute={clearRoute}
+//             destination={destination}
+//             distance={distance}
+//             duration={duration}
+//             map={map}
+//             origin={origin}
+//           />
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
 export default memo(Map);
 

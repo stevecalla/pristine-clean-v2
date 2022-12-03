@@ -12,9 +12,9 @@ import AllLocationsCont from "../components/AllLocationsCont";
 import Map from "../components/Map";
 
 const Location = ({ locationDetails }) => {
-  console.log(locationDetails);
+  // console.log(locationDetails);
   // let locationAddress = locationDetails.address;
-  console.log(locationDetails.address);
+  // console.log(locationDetails.address);
   const [showMap, setShowMap] = useState(false);
 
   // Execute the query on component load
@@ -192,7 +192,7 @@ const Location = ({ locationDetails }) => {
         {/* <Row> */}
           <Button
             onClick={() => {
-              console.log("click");
+              // console.log("click");
               setShowMap(!showMap);
             }}
             aria-controls="details-fade-text"
