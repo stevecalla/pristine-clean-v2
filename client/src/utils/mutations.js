@@ -24,6 +24,13 @@ export const ADD_USER = gql`
   }
 `;
 
+export const DELETE_USER = gql`
+mutation deleteUser($id: ID!) {
+  deleteUser(_id: $id) {
+    _id
+  }
+}`
+
 export const ADD_INCIDENT = gql`
 mutation Mutation($employeeName: String!, $locationName: String!, $employeePhone: String!, $subject: String!, $urgent: String!, $incidentDetails: String!) {
   addIncident(employeeName: $employeeName, locationName: $locationName, employeePhone: $employeePhone, subject: $subject, urgent: $urgent, incidentDetails: $incidentDetails) {

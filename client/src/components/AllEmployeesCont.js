@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import format_phone from "../utils/helpers"
+import format_phone from "../utils/helpers";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
@@ -14,10 +14,35 @@ import { useQuery } from "@apollo/client";
 // // query all employees and locations
 import { QUERY_USERS } from "../utils/queries";
 
+import { DELETE_USER } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
+
 const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
   // const []
 
+  // delete User query
+  const [deleteUser] = useMutation(DELETE_USER);
+
+  // delete USER
+  const handleDeleteUSER = async (userId) => {
+    try {
+      const { data } = await deleteUser({
+        variables: {
+          id: userId,
+        },
+      });
+
+      console.log(data); //to eliminate console warning
+
+      window.location.reload();
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // get User query
   const { loading, data } = useQuery(QUERY_USERS);
   if (!loading) {
     // console.log(data.users)
@@ -40,10 +65,17 @@ const AllEmployeesCont = () => {
   };
 
   // // const employees = employeesData?.employees || [];
-  if (!loading) {
+  if (loading) {
+    return (
+      <div>
+        No employees
+      </div>
+    )
+  } else if (!loading) {
+  // if (!loading) {
     return (
       <>
-        {data.users.map((employee, index) => (
+        {data.users?.map((employee, index) => (
           <Card key={index} className="m-2 shadow border border-secondary">
             <Card.Header className="container">
               <Row className="justify-content-between">
@@ -60,6 +92,16 @@ const AllEmployeesCont = () => {
                     color="red"
                     size="24px"
                     className="mr-2"
+                    data-user={employee._id}
+                    //section
+
+                    onClick={(event) => {
+                      console.log(event.currentTarget.getAttribute('data-user'));
+                      let userId = event.currentTarget.getAttribute('data-user');
+                      handleDeleteUSER(userId)
+                    }}
+
+                    //section
                   />
                 </Col>
               </Row>
@@ -67,15 +109,16 @@ const AllEmployeesCont = () => {
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  Phone #: {employee.cell && format_phone(employee.cell) ? format_phone(employee.cell) : "No Phone Yet"}
+                  Phone #:{" "}
+                  {employee.cell && format_phone(employee.cell)
+                    ? format_phone(employee.cell)
+                    : "No Phone Yet"}
                   {/* Phone #: {employee.cell ? employee.cell : "No Phone Yet"} */}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   Email: {employee.email ? employee.email : "No Email Yet"}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  {/* TODO: View Availability Button opens all availability tables, need to open only target */}
-
                   <Button
                     // onClick={() => setOpenAvailability(!openAvailability)}
                     onClick={(event) => getElement(event)}
