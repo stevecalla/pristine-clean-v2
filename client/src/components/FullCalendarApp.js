@@ -30,7 +30,7 @@ export default class FullCalendarApp extends React.Component {
             }}
             initialView='dayGridMonth'
             titleFormat='MM/YYYY'
-            minTime='06:00:00'
+            // minTime='06:00:00'
             editable={true}
             selectable={true}
             selectMirror={true}

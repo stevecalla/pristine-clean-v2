@@ -7,21 +7,17 @@ import qrcode_dry_sands from "../../assets/qrcode_dry_sands.png";
 const Message = () => {
   return (
     <div className="d-flex flex-column align-items-center mt-3 mb-3">
-      <Card
+    <Card
         style={{ width: "18rem" }}
         className="d-flex align-items-center mb-1"
       >
-        <Card.Img
-          variant="top"
-          style={{ width: "150px", height: "150px" }}
-          src={qrcode_dry_sands}
-        />
-        <Card.Body className="pt-0">
+        <Card.Body className="p-2">
           <Card.Title
-            className="d-flex justify-content-center"
+            className="d-flex justify-content-center m-0"
             style={{
               fontStyle: "bold",
-              fontFamily: "Georgia, Times New Roman, serif",
+              fontSize: "26px",
+              fontFamily: 'cursive, Georgia, Times New Roman, serif',
             }}
           >
             Cleaning at its finest
@@ -38,6 +34,7 @@ const Message = () => {
               style={{
                 fontStyle: "bold",
                 fontFamily: "Georgia, Times New Roman, serif",
+                fontSize: "20px",
               }}
             >
               Pristine Clean
@@ -69,6 +66,30 @@ const Message = () => {
           <p style={{ marginTop: "8px", marginBottom: "0px" }}>
             Contact Colin at 720-123-4567
           </p>
+        </Card.Body>
+      </Card>
+
+
+      <Card
+        style={{ width: "18rem" }}
+        className="d-flex align-items-center mb-1"
+      >
+        <Card.Img
+          variant="top"
+          style={{ width: "150px", height: "150px" }}
+          src={qrcode_dry_sands}
+        />
+        <Card.Body className="p-0">
+          <Card.Title
+            className="d-flex justify-content-center"
+            style={{
+              fontStyle: "bold",
+              fontSize: "26px",
+              fontFamily: 'cursive, Georgia, Times New Roman, serif',
+            }}
+          >
+            Get the app!
+          </Card.Title>
         </Card.Body>
       </Card>
     </div>
