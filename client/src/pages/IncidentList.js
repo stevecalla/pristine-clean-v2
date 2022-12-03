@@ -1,11 +1,8 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import Collapse from "react-bootstrap/Collapse";
 import { X } from "react-bootstrap-icons";
 import { useQuery } from "@apollo/client";
 import { QUERY_INCIDENTS } from "../utils/queries";
@@ -38,7 +35,7 @@ const IncidentList = () => {
                                             color="red"
                                             size="28px"
                                             className="mr-2"
-                                        // transform="grow-9"
+
                                         // onClick={ }
                                         />
                                     </div>
