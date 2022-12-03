@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
+// import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+// import Col from "react-bootstrap/Col";
+// import Card from "react-bootstrap/Card";
+// import ListGroup from "react-bootstrap/ListGroup";
 import "../styles/Contact.css";
-import { useQuery } from "@apollo/client";
-import { QUERY_INCIDENTS } from "../utils/queries";
-// import { ADD_INCIDENT, DELETE_INCIDENT } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
+import { ADD_INCIDENT } from "../utils/mutations";
 
 function Incident() {
   const [name, setName] = useState("");
@@ -36,16 +35,16 @@ function Incident() {
     name === "name"
       ? setName(value)
       : name === "telNo"
-      ? setTelNo(value)
-      : name === "subject"
-      ? setSubject(value)
-      : name === "urgent"
-      ? setIsUrgent(value)
-      : name === "urgent"
-      ? setSubject(value)
-      : name === "locationName"
-      ? setlocationName(value)
-      : setBody(value);
+        ? setTelNo(value)
+        : name === "subject"
+          ? setSubject(value)
+          : name === "urgent"
+            ? setIsUrgent(value)
+            : name === "urgent"
+              ? setSubject(value)
+              : name === "locationName"
+                ? setlocationName(value)
+                : setBody(value);
 
     return name;
   };
@@ -54,11 +53,11 @@ function Incident() {
   useEffect(() => {
     setAreAllFieldsFilled(
       name.trim() !== "" &&
-        locationName.trim() !== "" &&
-        telNo.trim() !== "" &&
-        subject.trim() !== "" &&
-        isUrgent.trim() !== "" &&
-        body.trim() !== ""
+      locationName.trim() !== "" &&
+      telNo.trim() !== "" &&
+      subject.trim() !== "" &&
+      isUrgent.trim() !== "" &&
+      body.trim() !== ""
     );
   }, [name, locationName, telNo, subject, isUrgent, body]);
 
@@ -68,10 +67,21 @@ function Incident() {
   //   resetForm();
   // };
 
+  const [addIncident] = useMutation(ADD_INCIDENT);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     launchEmailPlatform();
     resetForm();
+    try {
+      const { data } = addIncident({
+        variables: { employeeName: name, locationName, employeePhone: telNo, subject, urgent: isUrgent, incidentDetails: body }
+      }
+      );
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   // Open preferred email provide and proppulate
@@ -113,12 +123,7 @@ function Incident() {
       : setShowBodyValidation(false);
   };
 
-  const { loading, data } = useQuery(QUERY_INCIDENTS);
-  let incidents;
-  if (!loading) {
-    incidents = data;
-    console.log(incidents);
-  }
+
 
   // const handleChecked = (e) => {
   //   setIsUrgent((current) => !current);
@@ -143,9 +148,8 @@ function Incident() {
           <div className="form-label">
             <Form.Label>Employee Name</Form.Label>
             <Form.Label
-              className={`validation-color ${
-                showNameValidation ? "show" : "hide"
-              }`}
+              className={`validation-color ${showNameValidation ? "show" : "hide"
+                }`}
             >
               * field is required
             </Form.Label>
@@ -166,9 +170,8 @@ function Incident() {
           <div className="form-label">
             <Form.Label>Location Name</Form.Label>
             <Form.Label
-              className={`validation-color ${
-                showlocationNameValidation ? "show" : "hide"
-              }`}
+              className={`validation-color ${showlocationNameValidation ? "show" : "hide"
+                }`}
             >
               * field is required
             </Form.Label>
@@ -189,9 +192,8 @@ function Incident() {
           <div className="form-label">
             <Form.Label>Employee Phone</Form.Label>
             <Form.Label
-              className={`validation-color ${
-                showTelNoValidation ? "show" : "hide"
-              }`}
+              className={`validation-color ${showTelNoValidation ? "show" : "hide"
+                }`}
             >
               * field is required
             </Form.Label>
@@ -213,9 +215,8 @@ function Incident() {
           <div className="form-label">
             <Form.Label>Subject</Form.Label>
             <Form.Label
-              className={`validation-color ${
-                showSubjectValidation ? "show" : "hide"
-              }`}
+              className={`validation-color ${showSubjectValidation ? "show" : "hide"
+                }`}
             >
               * field is required
             </Form.Label>
@@ -236,9 +237,8 @@ function Incident() {
           <div className="form-label">
             <Form.Label>Urgent</Form.Label>
             <Form.Label
-              className={`validation-color ${
-                showSubjectValidation ? "show" : "hide"
-              }`}
+              className={`validation-color ${showSubjectValidation ? "show" : "hide"
+                }`}
             >
               * field is required
             </Form.Label>
@@ -259,9 +259,8 @@ function Incident() {
           <div className="form-label">
             <Form.Label>Incident Details</Form.Label>
             <Form.Label
-              className={`validation-color ${
-                showBodyValidation ? "show" : "hide"
-              }`}
+              className={`validation-color ${showBodyValidation ? "show" : "hide"
+                }`}
             >
               * field is required
             </Form.Label>

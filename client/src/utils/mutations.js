@@ -44,7 +44,7 @@ mutation Mutation($employeeName: String!, $locationName: String!, $employeePhone
 }`
 
 export const DELETE_INCIDENT = gql`
-mutation DeleteIncident($incidentId: ID!) {
+mutation deleteIncident($incidentId: ID!) {
   deleteIncident(incidentId: $incidentId) {
     _id
    

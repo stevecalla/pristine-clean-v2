@@ -60,6 +60,9 @@ const AppNavbar = () => {
                     <NavDropdown.Item as={Link} to="/incident" eventKey="7" style={{ fontFamily: 'Georgia, Times New Roman, serif' }}>
                       Incident Report
                     </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/incidentlist" eventKey="8" style={{ fontFamily: 'Georgia, Times New Roman, serif' }}>
+                      Incident List
+                    </NavDropdown.Item>
                   </NavDropdown>
                   <Nav.Link onClick={Auth.logout} className="text-white" >Logout</Nav.Link>
                 </>
