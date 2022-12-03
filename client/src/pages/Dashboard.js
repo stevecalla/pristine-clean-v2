@@ -51,7 +51,7 @@ const ManagerDash = () => {
         <Container >
           <Row className="justify-content-center mt-1">
             <p style={{ fontSize: '12px' }}>
-              Welcome {data.me.firstName} {data.me.lastName}!
+              Welcome {data.me?.firstName} {data.me?.lastName}!
             </p>
           </Row>
         </Container>

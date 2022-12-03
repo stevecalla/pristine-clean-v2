@@ -46,6 +46,10 @@ const resolvers = {
       return { token, user };
     },
 
+    deleteUser: async (parent, { _id }) => {
+      return User.findOneAndDelete({ _id });
+    },
+
     addIncident: async (
       parent,
       {
