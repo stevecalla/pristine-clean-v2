@@ -15,7 +15,8 @@ import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
 import Location from "./pages/Location";
-import WrongPage from './pages/WrongPage'
+import WrongPage from './pages/WrongPage';
+import IncidentList from "./pages/IncidentList";
 import Auth from "./utils/auth";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -115,7 +116,7 @@ function App() {
               <Route
                 path="*"
                 element={<Homepage />}
-                // element={<h1 className="display-2">Wrong page!</h1>}
+              // element={<h1 className="display-2">Wrong page!</h1>}
               />
             </Routes>
           </>
@@ -158,6 +159,7 @@ function App() {
               <Route exact path="/timeoff" element={<Timeoff />} />
               <Route exact path="/incident" element={<Incident />} />
               <Route exact path="/location" element={<Location />} />
+              <Route exact path="/incidentlist" element={<IncidentList />} />
               <Route
                 path="*"
                 element={<WrongPage />}

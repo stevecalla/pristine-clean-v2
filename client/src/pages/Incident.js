@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
+// import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+// import Col from "react-bootstrap/Col";
+// import Card from "react-bootstrap/Card";
+// import ListGroup from "react-bootstrap/ListGroup";
 import "../styles/Contact.css";
-import { useQuery, useMutation } from "@apollo/client";
-
-import { QUERY_INCIDENTS } from "../utils/queries";
+import { useMutation } from "@apollo/client";
 import { ADD_INCIDENT } from "../utils/mutations";
 
 function Incident() {
@@ -69,7 +67,7 @@ function Incident() {
   //   resetForm();
   // };
 
-  const [addIncident, { error }] = useMutation(ADD_INCIDENT);
+  const [addIncident] = useMutation(ADD_INCIDENT);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -80,7 +78,7 @@ function Incident() {
         variables: { employeeName: name, locationName, employeePhone: telNo, subject, urgent: isUrgent, incidentDetails: body }
       }
       );
-      console.log(name)
+      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -125,12 +123,7 @@ function Incident() {
       : setShowBodyValidation(false);
   };
 
-  const { loading, data } = useQuery(QUERY_INCIDENTS);
-  let incidents;
-  if (!loading) {
-    incidents = data;
-    console.log(incidents);
-  }
+
 
   // const handleChecked = (e) => {
   //   setIsUrgent((current) => !current);
