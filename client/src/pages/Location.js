@@ -7,20 +7,19 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Collapse from "react-bootstrap/Collapse";
 import { SkipBackwardCircle } from "react-bootstrap-icons";
-// import Ratio from 'react-bootstrap/Ratio';
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
-// import Frame from "react-frame-component";
 import AllLocationsCont from "../components/AllLocationsCont";
-
 import Map from "../components/Map";
 
 const Location = ({ locationDetails }) => {
-  // console.log(locationDetails)
+  console.log(locationDetails)
+  // let locationAddress = locationDetails.address;
+  console.log(locationDetails.address)
 
   // Execute the query on component load
   // const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
   // console.log(loadingLocation);
-  // Use Form.Optional chaining to check if data exists and if it has an business property. If not, return an empty array to use.
+  // Use Form.Optional chaining to check if data exists and if it has a business property. If not, return an empty array to use.
   // const location = locationData?.businessName || [];
 
   const [openDetails, setOpenDetails] = useState(true);
@@ -32,7 +31,7 @@ const Location = ({ locationDetails }) => {
   };
 
   if (locationPage) {
-    console.log("yes 1000");
+    // console.log("yes 1000");
     return <AllLocationsCont />;
   }
 
@@ -197,7 +196,7 @@ const Location = ({ locationDetails }) => {
               style={{ height: "1000px" }}
             >
               <div>
-                <Map />
+                <Map destinationDb={ locationDetails.address } />
               </div>
             </ResponsiveEmbed>
             {/* </Card.Body> */}
