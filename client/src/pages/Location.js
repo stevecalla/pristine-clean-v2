@@ -16,7 +16,6 @@ const Location = ({ locationDetails }) => {
   // let locationAddress = locationDetails.address;
   console.log(locationDetails.address);
   const [showMap, setShowMap] = useState(false);
-  const [openMap, setOpenMap] = useState(true);
 
   // Execute the query on component load
   // const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
@@ -197,7 +196,7 @@ const Location = ({ locationDetails }) => {
               setShowMap(true);
             }}
             aria-controls="details-fade-text"
-            aria-expanded={openDetails}
+            aria-expanded={showMap}
             size="lg"
             className="btn-block my-2"
           >
@@ -206,7 +205,7 @@ const Location = ({ locationDetails }) => {
         {/* </Row> */}
 
         {showMap && (
-          <Collapse in={openDetails}>
+          <Collapse in={showMap}>
             <div id="collapse-map">
               <ResponsiveEmbed
                 className="mt-1 rounded"
