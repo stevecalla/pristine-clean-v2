@@ -1,8 +1,5 @@
 import React, { useRef, useState, memo, useEffect } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
-
-import Spinner from "react-bootstrap/Spinner";
-
 import "../../styles/spinner.css";
 
 import SearchIcon from "./SearchIcon";
@@ -12,6 +9,7 @@ import seed from "./responseSeed";
 import { DirectionsPanel } from "./DirectionsPanel";
 import { Share } from "./Share";
 import { CenterIcon } from "./CenterIcon";
+import Container from "react-bootstrap/esm/Container";
 
 const center = { lat: 40.1672, lng: -105.1019 };
 const libraries = ["places"];
@@ -69,12 +67,6 @@ function Map({ destinationDb }) {
 
   //section end
 
-  // console.log({ originDb }, destinationDb.address);
-
-  // const [originTest, setOriginTest] = useState();
-  // const [destinationTest, setDestinationTest] = useState();
-  // console.log({ seed });
-
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -108,25 +100,10 @@ function Map({ destinationDb }) {
 
   // section (#2) to stop the db query comment out this function
   async function calculateRoute(event) {
-    // console.log("cal route 1");
     event && event.preventDefault();
-
-    // console.log(origin.current.value === "", destination.current.value === "")
-
-    // if (origin.current.value === "" || destination.current.value === "") {
-    //   return;
-    // }
-
-    // console.log("cal route 2");
 
     let originSubmitted = "";
     let destinationSubmitted = "";
-
-    // console.log(origin.current?.value);
-    // console.log(destination.current?.value);
-    // console.log({ originDb });
-    // console.log({ destinationDb });
-
     if (origin.current?.value && destination.current?.value) {
       originSubmitted = origin.current?.value;
       destinationSubmitted = destination.current?.value;
@@ -163,50 +140,48 @@ function Map({ destinationDb }) {
     destination.current.value = "";
   }
 
-  // if (!renderMap) {
-    //section
-    return (
-      <div
-        style={{ height: "200px", width: "100vw" }}
-        // className="d-flex justify-content-center align-items-center align-content-center m-0"
-      >
+  //section spinner - wait for google map to return route
+  if (!renderMap) {
+  return (
+      <div className="d-flex justify-content-center">
         <div className="lds-hourglass"></div>
       </div>
+  );
+}
+// section comment out this section to avoid pulling map
+else {
+    return (
+      <div>
+        <DirectionsPanel />
+
+        <div style={containerStyle} className="d-flex align-items-center">
+          <LoadMap
+            center={center}
+            directionsResponse={directionsResponse}
+            setMap={setMap}
+          />
+
+          <Share />
+
+          <CenterIcon center={center} map={map} />
+
+          <div style={lineBreakStyle}></div>
+
+          <SearchIcon
+            calculateRoute={calculateRoute}
+            center={center}
+            clearRoute={clearRoute}
+            destination={destination}
+            distance={distance}
+            duration={duration}
+            map={map}
+            origin={origin}
+          />
+        </div>
+      </div>
     );
-  } 
-  // else {
-//     return (
-//       <div>
-//         <DirectionsPanel />
-
-//         <div style={containerStyle} className="d-flex align-items-center">
-//           <LoadMap
-//             center={center}
-//             directionsResponse={directionsResponse}
-//             setMap={setMap}
-//           />
-
-//           <Share />
-
-//           <CenterIcon center={center} map={map} />
-
-//           <div style={lineBreakStyle}></div>
-
-//           <SearchIcon
-//             calculateRoute={calculateRoute}
-//             center={center}
-//             clearRoute={clearRoute}
-//             destination={destination}
-//             distance={distance}
-//             duration={duration}
-//             map={map}
-//             origin={origin}
-//           />
-//         </div>
-//       </div>
-//     );
-//   }
-// }
+  }
+}
 
 export default memo(Map);
 
