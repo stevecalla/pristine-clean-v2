@@ -9,7 +9,6 @@ import momentPlugin from '@fullcalendar/moment'
 // import { INITIAL_EVENTS, createEventId } from '../utils/event-utils'
 import { INITIAL_EVENTS } from '../utils/event-utils'
 
-
 export default class FullCalendarApp extends React.Component {
 
   state = {

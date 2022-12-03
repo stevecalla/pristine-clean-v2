@@ -47,13 +47,13 @@ const AllLocationsCont = ({ allLocations }) => {
     let filteredLocation = locations.filter(
       (element) => element._id === locationId
     );
-    console.log("selected location = ", filteredLocation[0]);
+    // console.log("selected location = ", filteredLocation[0]);
     setSelectedLocation(filteredLocation[0]);
     setLocationPage(true);
   };
 
   if (locationPage) {
-    console.log("yes 1");
+    // console.log("yes 1");
 
     return <Location locationDetails={selectedLocation} />;
   }

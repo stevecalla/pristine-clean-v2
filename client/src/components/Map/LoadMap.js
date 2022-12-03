@@ -2,7 +2,8 @@ import React from "react";
 import { GoogleMap, DirectionsRenderer } from "@react-google-maps/api";
 
 export const LoadMap = ({ center, directionsResponse, setMap }) => {
-  console.log({ directionsResponse });
+  
+  // console.log({ center }, { directionsResponse }, { setMap });
 
   return (
     <GoogleMap
@@ -69,7 +70,7 @@ export const LoadMap = ({ center, directionsResponse, setMap }) => {
         <DirectionsRenderer
           directions={directionsResponse}
           routeIndex={0}
-          onDirectionsChanged={console.log("changed")}
+          // onDirectionsChanged={console.log("changed")}
           options={{ draggable: true }}
           panel={document.getElementById("panel")}
         />

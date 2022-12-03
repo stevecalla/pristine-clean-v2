@@ -7,9 +7,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Collapse from "react-bootstrap/Collapse";
 import { SkipBackwardCircle } from "react-bootstrap-icons";
-// import Ratio from 'react-bootstrap/Ratio';
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
-// import Frame from "react-frame-component";
 import AllLocationsCont from "../components/AllLocationsCont";
 import format_phone from "../utils/helpers"
 import Map from "../components/Map";
@@ -19,12 +17,15 @@ import { useQuery } from "@apollo/client";
 import { QUERY_LOCATIONS } from "../utils/queries";
 
 const Location = ({ locationDetails }) => {
-  // console.log(locationDetails)
+  // console.log(locationDetails);
+  // let locationAddress = locationDetails.address;
+  // console.log(locationDetails.address);
+  const [showMap, setShowMap] = useState(false);
 
   // Execute the query on component load
   // const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
   // console.log(loadingLocation);
-  // Use Form.Optional chaining to check if data exists and if it has an business property. If not, return an empty array to use.
+  // Use Form.Optional chaining to check if data exists and if it has a business property. If not, return an empty array to use.
   // const location = locationData?.businessName || [];
 
   const [openDetails, setOpenDetails] = useState(true);
@@ -32,7 +33,7 @@ const Location = ({ locationDetails }) => {
 
   const [locationPage, setLocationPage] = useState(false);
   const handleAllLocationsClick = (e) => {
-    setLocationPage(true);
+    setLocationPage(!locationPage);
   };
   // TODO: throwing errors, why not returning trying to map through property that is not defined as array? 
   // const { loading, data } = useQuery(QUERY_LOCATIONS);
@@ -50,7 +51,7 @@ const Location = ({ locationDetails }) => {
   // }
 
   if (locationPage) {
-    console.log("yes 1000");
+    // console.log("yes 1000");
     return <AllLocationsCont />;
   }
 
@@ -217,22 +218,37 @@ const Location = ({ locationDetails }) => {
             </Row>
           </div>
         </Collapse>
-        <Row>
-          <Col>
-            {/* <Card className="px-0 mx-0"> */}
-            {/* <Card.Body className="pb-1 p-0 mx-1"> */}
-            <ResponsiveEmbed
-              className="mt-1 rounded"
-              style={{ height: "1000px" }}
-            >
-              <div>
-                <Map />
-              </div>
-            </ResponsiveEmbed>
-            {/* </Card.Body> */}
-            {/* </Card> */}
-          </Col>
-        </Row>
+
+        {/* <Row> */}
+          <Button
+            onClick={() => {
+              // console.log("click");
+              setShowMap(!showMap);
+            }}
+            aria-controls="details-fade-text"
+            aria-expanded={showMap}
+            size="lg"
+            className="btn-block my-2"
+          >
+            Get Directions
+          </Button>
+        {/* </Row> */}
+
+        {showMap && (
+          <Collapse in={showMap}>
+            <div id="collapse-map">
+              <ResponsiveEmbed
+                className="mt-1 rounded"
+                style={{ height: "1000px" }}
+              >
+                <div>
+                  <Map destinationDb={locationDetails.address} />
+                </div>
+              </ResponsiveEmbed>
+            </div>
+          </Collapse>
+        )}
+
       </Container>
     </main>
   );
