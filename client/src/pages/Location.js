@@ -193,7 +193,7 @@ const Location = ({ locationDetails }) => {
           <Button
             onClick={() => {
               console.log("click");
-              setShowMap(true);
+              setShowMap(!showMap);
             }}
             aria-controls="details-fade-text"
             aria-expanded={showMap}
