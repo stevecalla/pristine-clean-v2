@@ -12,9 +12,11 @@ import AllLocationsCont from "../components/AllLocationsCont";
 import Map from "../components/Map";
 
 const Location = ({ locationDetails }) => {
-  console.log(locationDetails)
+  console.log(locationDetails);
   // let locationAddress = locationDetails.address;
-  console.log(locationDetails.address)
+  console.log(locationDetails.address);
+  const [showMap, setShowMap] = useState(false);
+  const [openMap, setOpenMap] = useState(true);
 
   // Execute the query on component load
   // const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
@@ -27,7 +29,7 @@ const Location = ({ locationDetails }) => {
 
   const [locationPage, setLocationPage] = useState(false);
   const handleAllLocationsClick = (e) => {
-    setLocationPage(true);
+    setLocationPage(!locationPage);
   };
 
   if (locationPage) {
@@ -187,22 +189,37 @@ const Location = ({ locationDetails }) => {
             </Row>
           </div>
         </Collapse>
-        <Row>
-          <Col>
-            {/* <Card className="px-0 mx-0"> */}
-            {/* <Card.Body className="pb-1 p-0 mx-1"> */}
-            <ResponsiveEmbed
-              className="mt-1 rounded"
-              style={{ height: "1000px" }}
-            >
-              <div>
-                <Map destinationDb={ locationDetails.address } />
-              </div>
-            </ResponsiveEmbed>
-            {/* </Card.Body> */}
-            {/* </Card> */}
-          </Col>
-        </Row>
+
+        {/* <Row> */}
+          <Button
+            onClick={() => {
+              console.log("click");
+              setShowMap(true);
+            }}
+            aria-controls="details-fade-text"
+            aria-expanded={openDetails}
+            size="lg"
+            className="btn-block my-2"
+          >
+            Get Directions
+          </Button>
+        {/* </Row> */}
+
+        {showMap && (
+          <Collapse in={openDetails}>
+            <div id="collapse-map">
+              <ResponsiveEmbed
+                className="mt-1 rounded"
+                style={{ height: "1000px" }}
+              >
+                <div>
+                  <Map destinationDb={locationDetails.address} />
+                </div>
+              </ResponsiveEmbed>
+            </div>
+          </Collapse>
+        )}
+
       </Container>
     </main>
   );
