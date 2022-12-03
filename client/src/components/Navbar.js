@@ -50,6 +50,7 @@ const AppNavbar = () => {
                       as={Link}
                       to="/availability"
                       eventKey="5"
+                      style={{ fontFamily: 'Georgia, Times New Roman, serif' }}
                     >
                       Availability
                     </NavDropdown.Item>

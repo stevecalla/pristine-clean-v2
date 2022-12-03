@@ -67,7 +67,7 @@ const AllEmployeesCont = () => {
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  Phone #: {employee.cell ? format_phone(employee.cell) : "No Phone Yet"}
+                  Phone #: {employee.cell && format_phone(employee.cell) ? format_phone(employee.cell) : "No Phone Yet"}
                   {/* Phone #: {employee.cell ? employee.cell : "No Phone Yet"} */}
                 </ListGroup.Item>
                 <ListGroup.Item>
