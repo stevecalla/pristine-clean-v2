@@ -6,7 +6,7 @@
     "bookCount": "0",
     "firstName": "Colin",
     "lastName": "McNatt",
-    "cell": "8675309",
+    "cell": "3038675309",
     "isManager": "true",
     "availability": {
       "userEmail": "colinmichael89@gmail.com",
@@ -45,7 +45,7 @@
     "bookCount": "0",
     "firstName": "first",
     "lastName": "last",
-    "cell": "8675309",
+    "cell": "9708675309",
     "isManager": "true",
     "availability": {
       "userEmail": "b@b.com",
@@ -84,7 +84,7 @@
     "bookCount": "0",
     "firstName": "first",
     "lastName": "last",
-    "cell": "8675309",
+    "cell": "7198675309",
     "isManager": "false",
     "availability": {
       "userEmail": "a@a.com",

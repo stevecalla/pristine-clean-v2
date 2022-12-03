@@ -5,15 +5,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+// import Button from "react-bootstrap/Button";
+// import { Link } from "react-router-dom";
 import { InfoCircleFill } from "react-bootstrap-icons";
 import Auth from "../utils/auth";
 import { getUserId } from "../utils/getUserId";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import Location from "../pages/Location";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AllLocationsCont = ({ allLocations }) => {
   const userId = getUserId();
@@ -62,16 +62,11 @@ const AllLocationsCont = ({ allLocations }) => {
     return (
       <>
         {locations?.map((location, index) => (
-          <Card key={index}>
+          <Card key={index} className="shadow border border-secondary">
             <Card.Header className="container">
               <Row className="justify-content-between">
                 <Col xs={10}>{location.businessName}</Col>
                 <Col xs={1.5}>
-                  {/* TODO: NOT SURE THIS LINK IS GOING TO WORK */}
-                  {/* <Link to={'/location'} component={location._id} replace={true}> */}
-                  {/* <Link to={"/location"} component={"hello"}> */}
-                  {/* <Location /> */}
-                  {/* <Button className="p-2" style={{ color: "transparent" }}> */}
                   <div>
                     {/* <FontAwesomeIcon
                         className="pl-2 mr-2 "
@@ -107,64 +102,6 @@ const AllLocationsCont = ({ allLocations }) => {
           </Card>
         ))}
       </>
-
-      
-      // <>
-      //        <Card className="m-2">
-      //     <Card.Header>Walmart</Card.Header>
-      //     <Card.Body className=" bg-light">
-      //       <ListGroup variant="flush">
-      //         <ListGroup.Item>ID: 123456</ListGroup.Item>
-      //         <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-      //       </ListGroup>
-      //     </Card.Body>
-      //   </Card>
-      //   <Card className="m-2">
-      //     <Card.Header>Target</Card.Header>
-      //     <Card.Body className=" bg-light">
-      //       <ListGroup variant="flush">
-      //         <ListGroup.Item>ID: 123456</ListGroup.Item>
-      //         <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-      //       </ListGroup>
-      //     </Card.Body>
-      //   </Card>
-      //   <Card className="m-2">
-      //     <Card.Header>K-Mart</Card.Header>
-      //     <Card.Body className=" bg-light">
-      //       <ListGroup variant="flush">
-      //         <ListGroup.Item>ID: 123456</ListGroup.Item>
-      //         <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-      //       </ListGroup>
-      //     </Card.Body>
-      //   </Card>
-      //   <Card className="m-2">
-      //     <Card.Header>Big Lots</Card.Header>
-      //     <Card.Body className=" bg-light">
-      //       <ListGroup variant="flush">
-      //         <ListGroup.Item>ID: 123456</ListGroup.Item>
-      //         <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-      //       </ListGroup>
-      //     </Card.Body>
-      //   </Card>
-      //   <Card className="m-2">
-      //     <Card.Header className="container">
-      //       <Row className="justify-content-between">
-      //         <Col xs={10}>
-      //           Dollar General
-      //         </Col>
-      //         <Col xs={1.5}>
-      //         <InfoCircleFill color="lightBlue" size="22px" className="mr-2" />
-      //         </Col>
-      //       </Row>
-      //     </Card.Header>
-      //     <Card.Body className=" bg-light">
-      //       <ListGroup variant="flush">
-      //         <ListGroup.Item>ID: 123456</ListGroup.Item>
-      //         <ListGroup.Item>1234 Cedar Wood Ln</ListGroup.Item>
-      //       </ListGroup>
-      //     </Card.Body>
-      //   </Card>
-      // </>
     );
   }
 };

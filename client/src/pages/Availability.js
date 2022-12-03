@@ -167,7 +167,7 @@ const Availability = () => {
           <Form onSubmit={handleFormSubmit}>
             <Row>
               <Col sm={12}>
-                <Table striped bordered hover variant="dark" className="mt-3">
+                <Table striped bordered hover variant="dark" className="mt-3 shadow">
                   <thead>
                     <tr>
                       <th>Day of the Week</th>

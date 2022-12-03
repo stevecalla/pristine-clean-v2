@@ -1,11 +1,13 @@
 import React from 'react'
+import '../styles/calendar.css'
 // import FullCalendar, { formatDate } from '@fullcalendar/react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import momentPlugin from '@fullcalendar/moment'
 // import { INITIAL_EVENTS, createEventId } from '../utils/event-utils'
-import { INITIAL_EVENTS }from '../utils/event-utils'
+import { INITIAL_EVENTS } from '../utils/event-utils'
 
 
 export default class FullCalendarApp extends React.Component {
@@ -17,32 +19,34 @@ export default class FullCalendarApp extends React.Component {
 
   render() {
     return (
-      <div className='cal-app my-3'>
+      <div className='cal-app my-3 p-1 shadow border border-secondary rounded-lg'>
         {/* {this.renderSidebar()} */}
         <div id="calendar" className='cal-app-main'>
           <FullCalendar
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, momentPlugin]}
             headerToolbar={{
-              left: 'prev,next today',
-              center: 'title',
-              right: 'dayGridMonth,timeGridDay'
+              left: 'prev,next,today,dayGridMonth',
+              center: '',
+              right: 'title'
             }}
             initialView='dayGridMonth'
+            titleFormat='MM/YYYY'
+            minTime='06:00:00'
             editable={true}
             selectable={true}
             selectMirror={true}
             dayMaxEvents={true}
             weekends={this.state.weekendsVisible}
             initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-            // select={this.handleDateSelect}
+            // select{this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
             eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
             navLinks={true} // allows for navigation to day-view of selected date
           /* you can update a remote database when these fire:
-          eventAdd={function(){}}
-          eventChange={function(){}}
-          eventRemove={function(){}}
+          eventAdd={function () { }}
+          eventChange={function () { }}
+          eventRemove={function () { }}
           */
           />
         </div>
@@ -63,11 +67,11 @@ export default class FullCalendarApp extends React.Component {
   //   )
   // }
 
-  handleWeekendsToggle = () => {
-    this.setState({
-      weekendsVisible: !this.state.weekendsVisible
-    })
-  }
+  // handleWeekendsToggle = () => {
+  //   this.setState({
+  //     weekendsVisible: !this.state.weekendsVisible
+  //   })
+  // }
 
   // handleDateSelect = (selectInfo) => {
   //   let title = prompt('Please enter a new title for your event')
@@ -89,7 +93,7 @@ export default class FullCalendarApp extends React.Component {
   handleEventClick = (info) => {
     // TODO: Nav.Link to location page
     alert('Event: ' + info.event.title
-            );
+    );
     // change the border color just for fun
     info.el.style.borderColor = 'red';
   };
