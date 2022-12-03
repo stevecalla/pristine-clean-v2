@@ -9,7 +9,12 @@ import Collapse from "react-bootstrap/Collapse";
 import { SkipBackwardCircle } from "react-bootstrap-icons";
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 import AllLocationsCont from "../components/AllLocationsCont";
+import format_phone from "../utils/helpers"
 import Map from "../components/Map";
+
+import { useQuery } from "@apollo/client";
+// // query all locations
+import { QUERY_LOCATIONS } from "../utils/queries";
 
 const Location = ({ locationDetails }) => {
   // console.log(locationDetails);
@@ -30,6 +35,20 @@ const Location = ({ locationDetails }) => {
   const handleAllLocationsClick = (e) => {
     setLocationPage(!locationPage);
   };
+  // TODO: throwing errors, why not returning trying to map through property that is not defined as array? 
+  // const { loading, data } = useQuery(QUERY_LOCATIONS);
+  // const cleaners = data.locations.cleaners;
+
+  // if (loading) {
+  //   return (
+  //     <div
+  //       style={{ height: "200px", width: "100vw" }}
+  //       className="d-flex justify-content-center align-items-center align-content-center m-0"
+  //     >
+  //       <div className="lds-hourglass"></div>
+  //     </div>
+  //   );
+  // }
 
   if (locationPage) {
     // console.log("yes 1000");
@@ -38,7 +57,7 @@ const Location = ({ locationDetails }) => {
 
   return (
     <main>
-      <Container className="my-2">
+      <Container className="my-2 shadow rounded-lg py-1 border border-secondary">
         <Button
           onClick={() => setOpenDetails(!openDetails)}
           aria-controls="details-fade-text"
@@ -67,7 +86,7 @@ const Location = ({ locationDetails }) => {
                   color="transparent"
                   size="28px"
                   aria-hidden="true"
-                  // transform="grow-9"
+                // transform="grow-9"
                 />
               </div>
             </Col>
@@ -86,10 +105,21 @@ const Location = ({ locationDetails }) => {
                         Address: {locationDetails.address}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        Contact #: {locationDetails.businessContact}
+                        Contact #: {format_phone(locationDetails.businessContact)}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        Cleaners: Patrick, Steve, Alex
+                        {/* list group for cleaners */}
+                        Cleaners
+                        <ListGroup variant="flush">
+                          {/* TODO: throwing errors, why not returning? */}
+                          {/* {cleaners.map((cleaner, index) => (
+                            <>
+                              <ListGroup.Item>
+                                {cleaner.firstName}, {cleaner.lastName}
+                              </ListGroup.Item>
+                            </>
+                          ))}; */}
+                        </ListGroup>
                       </ListGroup.Item>
                       <ListGroup.Item>
                         Frequency: {locationDetails.shifts}

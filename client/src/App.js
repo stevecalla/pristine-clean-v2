@@ -15,6 +15,7 @@ import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
 import Location from "./pages/Location";
+import WrongPage from './pages/WrongPage'
 import Auth from "./utils/auth";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -159,7 +160,7 @@ function App() {
               <Route exact path="/location" element={<Location />} />
               <Route
                 path="*"
-                element={<h1 className="display-2">Wrong page!</h1>}
+                element={<WrongPage />}
               />
             </Routes>
           </>
