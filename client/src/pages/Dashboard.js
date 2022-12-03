@@ -47,34 +47,43 @@ const ManagerDash = () => {
     );
   } else {
     return (
-      <Container className="my-1">
-        <Row>
-          <Col>
-            <Tabs
-              id="justify-tab"
-              activeKey={key}
-              onSelect={(k) => setKey(k)}
-              className="mb-3 border border-secondary rounded"
-              variant="pills"
-              justify
-            >
-              <Tab eventKey="calendar" title="Calendar">
-                <Row>
-                  <Col>
-                    <FullCalendarApp />
-                  </Col>
-                </Row>
-              </Tab>
-              <Tab eventKey="employees" title="Employees">
-                <AllEmployeesCont />
-              </Tab>
-              <Tab eventKey="locations" title="Locations">
-                <AllLocationsCont allLocations={false}/>
-              </Tab>
-            </Tabs>
-          </Col>
-        </Row>
-      </Container>
+      <>
+        <Container >
+          <Row className="justify-content-center mt-1">
+            <p style={{ fontSize: '12px' }}>
+              Welcome {data.me.firstName} {data.me.lastName}!
+            </p>
+          </Row>
+        </Container>
+        <Container className="mb-1">
+          <Row>
+            <Col>
+              <Tabs
+                id="justify-tab"
+                activeKey={key}
+                onSelect={(k) => setKey(k)}
+                className="mb-3 border border-secondary rounded-lg shadow"
+                variant="pills"
+                justify
+              >
+                <Tab eventKey="calendar" title="Calendar">
+                  <Row>
+                    <Col>
+                      <FullCalendarApp className="shadow-sm"/>
+                    </Col>
+                  </Row>
+                </Tab>
+                <Tab eventKey="employees" title="Employees">
+                  <AllEmployeesCont />
+                </Tab>
+                <Tab eventKey="locations" title="Locations">
+                  <AllLocationsCont allLocations={false} />
+                </Tab>
+              </Tabs>
+            </Col>
+          </Row>
+        </Container>
+      </>
     );
   }
 };
