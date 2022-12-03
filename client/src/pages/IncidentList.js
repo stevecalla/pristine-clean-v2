@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Collapse from "react-bootstrap/Collapse";
+import { X } from "react-bootstrap-icons";
 import { useQuery } from "@apollo/client";
 import { QUERY_INCIDENTS } from "../utils/queries";
 
@@ -30,6 +31,20 @@ const IncidentList = () => {
                         <Card.Header className="container">
                             <Row className="justify-content-between">
                                 <Col xs={10}>{incident.locationName}</Col>
+                                <Col xs={1.5}>
+                                    <div>
+
+                                        <X
+                                            color="red"
+                                            size="28px"
+                                            className="mr-2"
+                                        // transform="grow-9"
+                                        // onClick={ }
+                                        />
+                                    </div>
+                                    {/* </Button> */}
+                                    {/* </Link> */}
+                                </Col>
 
                             </Row>
                         </Card.Header>
