@@ -88,7 +88,7 @@ function Incident() {
   const launchEmailPlatform = () => {
     console.log(isUrgent);
     window.open(
-      `mailto:colinmichael89@gmail.com?name=${name}&telNo=${telNo}&subject=${isUrgent}: ${subject}&body=Status: ${isUrgent}%0D%0A%0D%0Employee Name: ${name}%0D%0A%0D%0AEmployee Phone: ${telNo}%0D%0A%0D%0ALocation Name: ${locationName}%0D%0A%0D%0AIncident Information: ${body}`
+      `mailto:colinmichael89@gmail.com?name=${name}&telNo=${telNo}&subject=${isUrgent}: ${subject}&body=Status: ${isUrgent}%0D%0A%0D%0AEmployee Name: ${name}%0D%0A%0D%0AEmployee Phone: ${telNo}%0D%0A%0D%0ALocation Name: ${locationName}%0D%0A%0D%0AIncident Information: ${body}`
     );
     return false;
   };

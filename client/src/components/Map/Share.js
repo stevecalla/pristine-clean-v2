@@ -61,7 +61,7 @@ export const Share = ({ origin, destination }) => {
     url: tinyURI,
   };
 
-  let emailShareData = `mailto:?subject=Pristine Clean Job Directions: ${destination}&body=Directions from ${origin} to ${destination}. Map Link: ${tinyURI}`;
+  let emailShareData = `mailto:?subject=Pristine Clean Directions: ${destination}&body=Starting Point: ${origin}%0D%0A%0D%0AEnding Point: ${destination}.%0D%0A%0D%0AMap Link: ${tinyURI}`;
 
   // URL would not post properly in email with "&". Use tiny URL to get around the issue.
   async function postData(url = "", data = {}) {
