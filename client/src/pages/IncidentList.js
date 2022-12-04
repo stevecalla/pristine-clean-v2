@@ -4,14 +4,35 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { X } from "react-bootstrap-icons";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+
+// query incidents & delete incidents
 import { QUERY_INCIDENTS } from "../utils/queries";
-
-
+import { DELETE_INCIDENT } from "../utils/mutations";
 
 
 const IncidentList = () => {
 
+    // delete incident query
+    const [deleteIncident] = useMutation(DELETE_INCIDENT);
+
+    // delete incident
+    const handleDeleteIncident = async (incidentId) => {
+        try {
+            const { data } = await deleteIncident({
+                variables: {
+                    id: incidentId,
+                },
+            });
+            console.log(data);
+            window.location.reload();
+
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
+    // get incidents query
     const { loading, data } = useQuery(QUERY_INCIDENTS);
     let incidents;
     if (!loading) {
@@ -20,7 +41,13 @@ const IncidentList = () => {
     }
 
 
-    if (!loading) {
+    if (loading) {
+        return (
+            <div>
+                No Incidents
+            </div>
+        )
+    } else if (!loading) {
         return (
             <>
                 {incidents.map((incident) => (
@@ -32,11 +59,17 @@ const IncidentList = () => {
                                     <div>
 
                                         <X
+                                            id="delete-incident"
                                             color="red"
                                             size="28px"
                                             className="mr-2"
+                                            data-incident={incident._id}
+                                            onClick={(event) => {
+                                                console.log(event.currentTarget.getAttribute('data-incident'));
+                                                let incidentId = event.currentTarget.getAttribute('data-incident');
+                                                handleDeleteIncident(incidentId)
+                                            }}
 
-                                        // onClick={ }
                                         />
                                     </div>
                                     {/* </Button> */}
