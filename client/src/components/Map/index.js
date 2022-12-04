@@ -9,7 +9,7 @@ import seed from "./responseSeed";
 import { DirectionsPanel } from "./DirectionsPanel";
 import { Share } from "./Share";
 import { CenterIcon } from "./CenterIcon";
-import Container from "react-bootstrap/esm/Container";
+import { GoToGoogleMaps } from "./GoToGoogleMaps";
 
 const center = { lat: 40.1672, lng: -105.1019 };
 const libraries = ["places"];
@@ -175,6 +175,8 @@ function Map({ destinationDb }) {
           />
 
           <Share origin={originSubmitted} destination={destinationSubmitted} />
+
+          <GoToGoogleMaps origin={originSubmitted} destination={destinationSubmitted} />
 
           <CenterIcon center={center} map={map} />
 

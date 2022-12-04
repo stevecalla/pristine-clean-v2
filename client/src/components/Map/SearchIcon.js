@@ -22,7 +22,6 @@ function SearchIcon({
     <>
       <FontAwesomeIcon
         icon="fa-search"
-        // icon="fa-search"
         className=""
         style={searchStyle}
         onClick={() => setOpen(!open)}
