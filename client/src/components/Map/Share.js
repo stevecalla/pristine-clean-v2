@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Share = ({ origin, destination }) => {
-  console.log(origin, destination);
+  // console.log(origin, destination);
 
   //section need to pass in location info
   const [show, setShow] = useState(false);
