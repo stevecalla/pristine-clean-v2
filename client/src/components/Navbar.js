@@ -13,6 +13,7 @@ import {
 import Auth from "../utils/auth";
 
 import { NavStarsAsset } from "../components/NavStarsAsset"
+import '../styles/nav-bar-style.css'
 
 
 const AppNavbar = () => {
@@ -21,17 +22,20 @@ const AppNavbar = () => {
       <Navbar
         collapseOnSelect
         style={{ backgroundColor: "black" }}
+        fixed="top"
         variant="dark"
         expand="lg"
       >
         <Container fluid className="pl-0">
           <Navbar.Brand as={Link} reloadDocument to="/">
             <Row>
-              <NavStarsAsset className="mb-1" style={NavStarsStyle} />
-              <h2 className="m-0 pt-1" style={HeadingStyle}>Pristine Clean</h2>
+              <NavStarsAsset className="mb-1 ml-0 pl-0 nav-stars-style" />
+              <h2 className="m-0 pt-1 heading-style" >Pristine Clean</h2>
             </Row>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar" className="white" />
+          <Row>
+            <Navbar.Toggle aria-controls="navbar" className="white toggle-style mr-3" />
+          </Row>
           <Navbar.Collapse id="navbar" className="text-white">
             <Nav className="ml-auto">
               {/* if user is logged in show saved books & logout nav links else show login/signup modal */}
@@ -50,17 +54,16 @@ const AppNavbar = () => {
                       as={Link}
                       to="/availability"
                       eventKey="5"
-                      style={{ fontFamily: 'Georgia, Times New Roman, serif' }}
                     >
                       Availability
                     </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/timeoff" eventKey="6" style={{ fontFamily: 'Georgia, Times New Roman, serif' }}>
-                      Request Time-Off
+                    <NavDropdown.Item as={Link} to="/timeoff" eventKey="6" >
+                      Time Off Request
                     </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/incident" eventKey="7" style={{ fontFamily: 'Georgia, Times New Roman, serif' }}>
+                    <NavDropdown.Item as={Link} to="/incident" eventKey="7" >
                       Incident Report
                     </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/incidentlist" eventKey="8" style={{ fontFamily: 'Georgia, Times New Roman, serif' }}>
+                    <NavDropdown.Item as={Link} to="/incidentlist" eventKey="8">
                       Incident List
                     </NavDropdown.Item>
                   </NavDropdown>
@@ -86,18 +89,5 @@ const AppNavbar = () => {
   )
 }
 
-const NavStarsStyle = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-}
-
-const HeadingStyle =
-{
-  fontFamily: 'Georgia, Times New Roman, serif',
-  position: "relative",
-  left: -25,
-  zIndex: 5
-}
 
 export default AppNavbar;

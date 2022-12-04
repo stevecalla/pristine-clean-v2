@@ -21,10 +21,10 @@ const Homepage = ({ tabDisplay }) => {
   // set slide prop to true to enable animation
 
   return (
-    <>
+    <Container style={{ marginTop: '85px' }}>
       {/* <MessageBoard /> */}
 
-      <div className="d-flex flex-column align-items-center mt-3 overflow-auto">
+      <div className="d-flex flex-column align-items-center mt-3 overflow-auto" >
         <div
           style={{
             height: "600px",
@@ -69,7 +69,7 @@ const Homepage = ({ tabDisplay }) => {
           </Tabs>
         </div>
       </div>
-    </>
+    </Container>
   );
 };
 
