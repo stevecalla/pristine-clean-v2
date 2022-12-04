@@ -10,9 +10,15 @@ import format_phone from "../utils/helpers";
 import { QUERY_USERS } from "../utils/queries";
 import { DELETE_USER } from "../utils/mutations";
 
+import { getManagerStatus } from "../utils/getManager";
+
 
 const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
+
+  const manager = getManagerStatus();
+  console.log(manager)
+
 
   // delete User query
   const [deleteUser] = useMutation(DELETE_USER);
@@ -83,7 +89,7 @@ const AllEmployeesCont = () => {
                   </p>
                 </Col>
                 <Col xs={1.5}>
-                  <PersonX
+                  {manager && <PersonX
                     id="delete-employee"
                     color="red"
                     size="24px"
@@ -99,6 +105,7 @@ const AllEmployeesCont = () => {
 
                   //section
                   />
+                  }
                 </Col>
               </Row>
             </Card.Header>
