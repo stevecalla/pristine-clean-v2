@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import format_phone from "../utils/helpers";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
-import Collapse from "react-bootstrap/Collapse";
-import Table from "react-bootstrap/Table";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { ListGroup, Card, Button, Collapse, Table, Row, Col } from "react-bootstrap/";
 import { PersonX } from "react-bootstrap-icons";
 import { XSquareFill, Check2Circle } from "react-bootstrap-icons";
 import { useQuery, useMutation } from "@apollo/client";
+import '../styles/button-style.css'
+import format_phone from "../utils/helpers";
 
 // query all employees and locations
 import { QUERY_USERS } from "../utils/queries";
@@ -65,8 +60,11 @@ const AllEmployeesCont = () => {
   // // const employees = employeesData?.employees || [];
   if (loading) {
     return (
-      <div>
-        No employees
+      <div
+        style={{ minHeight: '80vh', width: "100vw" }}
+        className="d-flex justify-content-center align-items-center align-content-center m-0"
+      >
+        <div className="lds-hourglass"></div>
       </div>
     )
   } else if (!loading) {
@@ -89,7 +87,7 @@ const AllEmployeesCont = () => {
                     id="delete-employee"
                     color="red"
                     size="24px"
-                    className="mr-2"
+                    className="mr-2 button-style"
                     data-user={employee._id}
                     //section
 
@@ -123,7 +121,7 @@ const AllEmployeesCont = () => {
                     aria-controls="example-fade-text"
                     aria-expanded={openAvailability}
                     size="lg"
-                    className="btn-block my-2"
+                    className="btn-block my-2 collapse-button"
                     data-target={`#collapseTarget-${index}`}
                   >
                     View Availability

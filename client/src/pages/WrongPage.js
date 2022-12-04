@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import wrongPageImg from "../assets/wrongPage.png";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
+import wrongPageImg from "../assets/WrongPage.png";
+import { Container, Row, Button } from "react-bootstrap/";
+import '../styles/button-style.css'
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -23,7 +22,7 @@ const WrongPage = () => {
         <Button
           as={Link}
           to="/dashboard"
-          className="rounded-pill shadow-lg"
+          className="rounded-pill shadow-lg wrong-page-button"
           style={{ backgroundColor: "black" }}
         >
           <img

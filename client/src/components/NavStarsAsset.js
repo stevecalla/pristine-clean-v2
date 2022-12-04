@@ -38,12 +38,12 @@ export const NavStarsAsset = () => {
         width: "2.75rem",
         height: "2.75rem",
         display: "none",
-        zIndex: "5",
+        zIndex: "3",
       };
       
       const isNotDisplayed = {
         // width: "5rem",
         height: "2.75rem",
         display: "block",
-        zIndex: "5",
+        zIndex: "3",
       };
