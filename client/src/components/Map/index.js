@@ -139,11 +139,23 @@ function Map({ destinationDb }) {
       // provideRouteAlternatives: true,
     });
 
+    // section prevent multiple queries this code prevents multiple queries by forcing quit if responses are valid and result is equal to direct response
+    if ((directionsResponse?.request?.destination && previousValue.current?.request?.destination) && (results?.request?.destination.query === directionsResponse?.request?.destination.query)) {
+      return;
+    }
+
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
-    setRenderMap(true); //section
+    setRenderMap(true);
+
   }
+
+  // section prevent multiple queries: this code prevents multiple queries by forcing quit if responses are valid and result is equal to direct response
+  const previousValue = useRef(null);
+  useEffect(() => {
+    previousValue.current = directionsResponse;
+  }, [directionsResponse]);
 
   function clearRoute() {
     setDirectionsResponse(null);
