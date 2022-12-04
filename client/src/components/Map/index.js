@@ -15,23 +15,33 @@ const center = { lat: 40.1672, lng: -105.1019 };
 const libraries = ["places"];
 
 function Map({ destinationDb }) {
-  //section
+  let originSubmitted = ""; // origin submitted to google maps to get route
+  let destinationSubmitted = ""; // destination submited to google maps to get route
+
+  const [renderMap, setRenderMap] = useState(false); //section
+  let origin = useRef();
+  let destination = useRef();
+
+  //section get user current coordinates
   const [coords, setCoords] = useState("");
   const [originDb, setOriginDb] = useState("");
-  let originSubmitted = "";
-  let destinationSubmitted = "";
-  // const [originSubmitted, setOriginSubmitted] = useState("");
-  // const [destinationSubmitted, setDestinationSubmitted] = useState("");
 
   // get user location from navigator api
   useEffect(() => {
-    try {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let crds = position.coords;
-        return setCoords(`${crds.latitude},${crds.longitude}`);
-      });
-    } catch (error) {
-      console.warn(`ERROR(${error.code}): ${error.message}`);
+    function success(position) {
+      setCoords(`${position.coords.latitude},${position.coords.longitude}`);
+    }
+
+    function error() {
+      alert("Sorry, no position available. Using default of Longmont");
+      //todo change to modal
+      setCoords(`40.1672, -105.1019`);
+    }
+
+    if (!navigator.geolocation) {
+      console.log("Geolocation is not supported by your browser");
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
     }
   }, []);
 
@@ -50,6 +60,7 @@ function Map({ destinationDb }) {
               // console.log({ originDb });
             });
           } else {
+            //todo add modal?
             // launchValidationModal(
             //   "Error: Weather Not found",
             //   // `Try Again at a Later Date: ${response.statusText}`
@@ -58,6 +69,8 @@ function Map({ destinationDb }) {
           }
         })
         .catch((error) => {
+          alert("Sorry, google maps not available. Try again later.");
+          //todo add modal?
           // launchValidationModal(
           //   "Error: Weather Not found",
           //   // `Try again later, please`,: ${response.statusText}`
@@ -83,11 +96,6 @@ function Map({ destinationDb }) {
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
 
-  const [renderMap, setRenderMap] = useState(false); //section
-
-  let origin = useRef();
-  let destination = useRef();
-
   if (originDb && destinationDb) {
     // console.log(originDb, destinationDb);
     calculateRoute();
@@ -109,13 +117,12 @@ function Map({ destinationDb }) {
     if (origin.current?.value && destination.current?.value) {
       originSubmitted = origin.current?.value;
       destinationSubmitted = destination.current?.value;
-      // setOriginSubmitted(origin.current?.value);
-      // setDestinationSubmitted(destination.current?.value);
-    } else {
+    } else if (originDb && destinationDb) {
       originSubmitted = originDb;
       destinationSubmitted = destinationDb;
-      // setOriginSubmitted(originDb);
-      // setDestinationSubmitted(destinationDb);
+    } else {
+      originSubmitted = "Longmont, CO, USA";
+      destinationSubmitted = "Denver, CO, USA";
     }
 
     // eslint-disable-next-line no-undef
@@ -148,14 +155,14 @@ function Map({ destinationDb }) {
 
   //section spinner - wait for google map to return route
   if (!renderMap) {
-  return (
+    return (
       <div className="d-flex justify-content-center">
         <div className="lds-hourglass"></div>
       </div>
-  );
-}
-// section comment out this section to avoid pulling map
-else {
+    );
+  }
+  // section comment out this section to avoid pulling map
+  else {
     return (
       <div>
         <DirectionsPanel />
