@@ -9,17 +9,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { PersonX } from "react-bootstrap-icons";
 import { XSquareFill, Check2Circle } from "react-bootstrap-icons";
+import { useQuery, useMutation } from "@apollo/client";
 
-import { useQuery } from "@apollo/client";
-// // query all employees and locations
+// query all employees and locations
 import { QUERY_USERS } from "../utils/queries";
-
 import { DELETE_USER } from "../utils/mutations";
-import { useMutation } from "@apollo/client";
+
 
 const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
-  // const []
 
   // delete User query
   const [deleteUser] = useMutation(DELETE_USER);
@@ -72,7 +70,7 @@ const AllEmployeesCont = () => {
       </div>
     )
   } else if (!loading) {
-  // if (!loading) {
+    // if (!loading) {
     return (
       <>
         {data.users?.map((employee, index) => (
@@ -101,7 +99,7 @@ const AllEmployeesCont = () => {
                       handleDeleteUSER(userId)
                     }}
 
-                    //section
+                  //section
                   />
                 </Col>
               </Row>

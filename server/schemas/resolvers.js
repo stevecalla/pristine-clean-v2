@@ -16,7 +16,7 @@ const resolvers = {
 
     me: async (parent, { _id }, context) => {
       // if (context.user) {
-        return User.findById({ _id }).populate("locations");
+      return User.findById({ _id }).populate("locations");
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
@@ -71,8 +71,8 @@ const resolvers = {
       });
     },
 
-    deleteIncident: async (parent, { incidentId }) => {
-      return Incident.findOneAndDelete({ _id: incidentId });
+    deleteIncident: async (parent, { _id }) => {
+      return Incident.findOneAndDelete({ _id });
     },
 
     login: async (parent, { email, password }) => {
