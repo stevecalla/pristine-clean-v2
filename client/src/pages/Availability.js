@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Table from "react-bootstrap/Table";
-// import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Container, Row, Col, Table, Form } from "react-bootstrap/";
 
 import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
-
-import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { UPDATE_AVAILABILITY } from "../utils/mutations";
+
+import { useQuery, useMutation } from "@apollo/client";
+
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/spinner.css";
@@ -152,7 +148,7 @@ const Availability = () => {
   if (loading) {
     return (
       <div
-        style={{ height: "200px", width: "100vw" }}
+        style={{ minHeight: '80vh', width: "100vw" }}
         className="d-flex justify-content-center align-items-center align-content-center m-0"
       >
         <div className="lds-hourglass"></div>
@@ -162,7 +158,7 @@ const Availability = () => {
     return (
       <main>
 
-        <Container>
+        <Container className="shadow rounded-lg  border border-secondary" style={{ marginTop: '85px' }}>
         <h2 className="display-6 custom-text mt-3 mb-0">Availability</h2>
           <Form onSubmit={handleFormSubmit}>
             <Row>

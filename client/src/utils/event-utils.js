@@ -8,7 +8,7 @@ const dateStr = "Novemeber 29 2022 18:00:00 (MST)"
 
 export const INITIAL_EVENTS = [
   {
-    id: createEventId(),
+    id: "313233343536373839303132",
     title: 'The Station Hair Studio',
     startTime: "18:00:00 (MST)",
     endTime: "20:15:00 (MST)",

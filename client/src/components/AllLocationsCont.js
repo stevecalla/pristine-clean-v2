@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-
-// import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+import { Row, Col, Card, ListGroup } from "react-bootstrap/";
 // import Button from "react-bootstrap/Button";
 // import { Link } from "react-router-dom";
 import { InfoCircleFill } from "react-bootstrap-icons";
@@ -14,6 +9,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import Location from "../pages/Location";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../styles/button-style.css'
 
 const AllLocationsCont = ({ allLocations }) => {
   const userId = getUserId();
@@ -57,7 +53,7 @@ const AllLocationsCont = ({ allLocations }) => {
 
     return <Location locationDetails={selectedLocation} />;
   }
-
+  
   if (!loading) {
     return (
       <>
@@ -82,7 +78,7 @@ const AllLocationsCont = ({ allLocations }) => {
                       id="link-location-page"
                       color="orange"
                       size="28px"
-                      className="mr-2"
+                      className="mr-2 info-button-style"
                       // transform="grow-9"
                       data-location={location._id}
                       onClick={(event) => handleInfoClick(event)}

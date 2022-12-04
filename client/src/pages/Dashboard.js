@@ -1,17 +1,9 @@
 import React, { useState } from "react";
-
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-
+import { Container, Col, Row, Tab, Tabs } from "react-bootstrap/";
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
 import FullCalendarApp from "../components/FullCalendarApp";
-
 import "../styles/spinner.css";
-
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { getUserId } from "../utils/getUserId";
@@ -39,8 +31,8 @@ const ManagerDash = () => {
   if (loading) {
     return (
       <div
-        style={{ height: "200px", width: "100vw" }}
-        className="d-flex justify-content-center align-items-center align-content-center m-0"
+        style={{ minHeight: '80vh', width: "100vw" }}
+        className="d-flex justify-content-center align-items-center align-content-center mt-5"
       >
         <div className="lds-hourglass"></div>
       </div>
@@ -48,10 +40,10 @@ const ManagerDash = () => {
   } else {
     return (
       <>
-        <Container >
-          <Row className="justify-content-center mt-1">
-            <p style={{ fontSize: '12px' }}>
-              Welcome {data.me?.firstName} {data.me?.lastName}!
+        <Container style={{ marginTop: '85px' }}>
+          <Row className="justify-content-center">
+            <p style={{ fontSize: '16px' }}>
+              <b>Welcome {data.me?.firstName} {data.me?.lastName}!</b>
             </p>
           </Row>
         </Container>

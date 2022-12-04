@@ -1,0 +1,19 @@
+.nav-stars-stylesStyle {
+    position: absolute;
+    top: 0px;
+    left: -50px;
+    display: inline-block;
+    z-index: 3;
+  }
+  
+.heading-style {
+    font-family: Georgia, "Times New Roman", serif;
+    position: absolute;
+    left: 55px;
+    z-index: 4;
+    display: inline-block;
+  }
+
+  .toggle-style {
+    z-index: 5;
+  }
