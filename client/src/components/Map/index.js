@@ -18,6 +18,10 @@ function Map({ destinationDb }) {
   //section
   const [coords, setCoords] = useState("");
   const [originDb, setOriginDb] = useState("");
+  let originSubmitted = "";
+  let destinationSubmitted = "";
+  // const [originSubmitted, setOriginSubmitted] = useState("");
+  // const [destinationSubmitted, setDestinationSubmitted] = useState("");
 
   // get user location from navigator api
   useEffect(() => {
@@ -102,14 +106,16 @@ function Map({ destinationDb }) {
   async function calculateRoute(event) {
     event && event.preventDefault();
 
-    let originSubmitted = "";
-    let destinationSubmitted = "";
     if (origin.current?.value && destination.current?.value) {
       originSubmitted = origin.current?.value;
       destinationSubmitted = destination.current?.value;
+      // setOriginSubmitted(origin.current?.value);
+      // setDestinationSubmitted(destination.current?.value);
     } else {
       originSubmitted = originDb;
       destinationSubmitted = destinationDb;
+      // setOriginSubmitted(originDb);
+      // setDestinationSubmitted(destinationDb);
     }
 
     // eslint-disable-next-line no-undef
@@ -161,7 +167,7 @@ else {
             setMap={setMap}
           />
 
-          <Share />
+          <Share origin={originSubmitted} destination={destinationSubmitted} />
 
           <CenterIcon center={center} map={map} />
 
