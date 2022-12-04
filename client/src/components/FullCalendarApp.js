@@ -24,13 +24,18 @@ export default class FullCalendarApp extends React.Component {
         <div id="calendar" className='cal-app-main'>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, momentPlugin]}
+            // headerToolbar={{
+            //   left: 'prev,next,today,dayGridMonth',
+            //   center: '',
+            //   right: 'title'
+            // }}
             headerToolbar={{
-              left: 'prev,next,today,dayGridMonth',
+              left: 'title',
               center: '',
-              right: 'title'
+              right: 'prev,next,today,dayGridMonth',
             }}
+            titleFormat='MMM-YY'
             initialView='dayGridMonth'
-            titleFormat='MM/YY'
             // minTime='06:00:00'
             editable={true}
             selectable={true}
@@ -72,8 +77,6 @@ export default class FullCalendarApp extends React.Component {
     }
   }
 
-
-
   handleEventClick = (e) => {
     // change the border color just for fun
 
@@ -93,7 +96,6 @@ export default class FullCalendarApp extends React.Component {
     }
   }
 };
-
 
 // handleEvents = (events) => {
 //   this.setState({

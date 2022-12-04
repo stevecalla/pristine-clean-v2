@@ -72,7 +72,7 @@ function Timeoff() {
     resetForm();
   };
 
-  // Open preferred email provide and proppulate
+  // Open preferred email provide and preppulate
   const launchEmailPlatform = () => {
     console.log(startDate, endDate);
     window.open(
