@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import mopClean from "../../assets/mopClean.png";
-import qrcode_dry_sands from "../../assets/qrcode_dry_sands.png";
+import qrcode_pristine_clean from "../../assets/qrcode_pristine_clean.png";
 
 const Message = () => {
   return (
@@ -77,7 +77,7 @@ const Message = () => {
         <Card.Img
           variant="top"
           style={{ width: "150px", height: "150px" }}
-          src={qrcode_dry_sands}
+          src={qrcode_pristine_clean}
         />
         <Card.Body className="p-0">
           <Card.Title
