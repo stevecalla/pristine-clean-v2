@@ -8,12 +8,10 @@ import Collapse from "react-bootstrap/Collapse";
 
 function SearchIcon({
   calculateRoute,
-  center,
   clearRoute,
   destination,
   distance,
   duration,
-  map,
   origin,
 }) {
   const [open, setOpen] = useState(false);
@@ -22,7 +20,6 @@ function SearchIcon({
     <>
       <FontAwesomeIcon
         icon="fa-search"
-        // icon="fa-search"
         className=""
         style={searchStyle}
         onClick={() => setOpen(!open)}
@@ -106,7 +103,7 @@ function SearchIcon({
                 alt="Delete input"
                 style={{ color: "grey" }}
                 onClick={() => {
-                  clearRoute();
+                  // clearRoute();
                   setOpen(false);
                 }}
                 aria-controls="collapse-search-bar"

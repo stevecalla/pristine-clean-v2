@@ -22,6 +22,8 @@ import Auth from "./utils/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
+// import { fab } from '@fortawesome/free-brands-svg-icons'
+
 import {
   faTrash,
   faLocation,
@@ -31,9 +33,7 @@ import {
   faSpinner,
   faEye,
   faEyeSlash,
-  faInfo,
-  faCircleInfo,
-  faInfoCircle,
+  faMap,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -45,9 +45,7 @@ library.add(
   faSpinner,
   faEye,
   faEyeSlash,
-  faInfo,
-  faCircleInfo,
-  faInfoCircle
+  faMap
 );
 
 const httpLink = new HttpLink({

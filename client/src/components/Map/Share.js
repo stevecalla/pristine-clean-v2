@@ -3,7 +3,9 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const Share = () => {
+export const Share = ({ origin, destination }) => {
+  console.log(origin, destination);
+
   //section need to pass in location info
   const [show, setShow] = useState(false);
   const [tinyURI, setTinyURI] = useState("");
@@ -11,8 +13,8 @@ export const Share = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  let origin = "Boulder, CO, USA"; //origin
-  let destination = "Longmont, CO, USA"; //destination
+  origin = origin || "Longmont, CO, USA"; //origin
+  destination = destination || "Denver, CO, USA"; //destination
 
   let encodedURI = "";
 
@@ -59,7 +61,7 @@ export const Share = () => {
     url: tinyURI,
   };
 
-  let emailShareData = `mailto:?subject=Pristine Clean Job Directions: ${destination}&body=Directions from ${origin} to ${destination}. Map Link: ${tinyURI}`;
+  let emailShareData = `mailto:?subject=Pristine Clean Directions: ${destination}&body=Starting Point: ${origin}%0D%0A%0D%0AEnding Point: ${destination}.%0D%0A%0D%0AMap Link: ${tinyURI}`;
 
   // URL would not post properly in email with "&". Use tiny URL to get around the issue.
   async function postData(url = "", data = {}) {
