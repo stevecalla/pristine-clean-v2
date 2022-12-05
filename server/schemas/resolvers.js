@@ -26,7 +26,6 @@ const resolvers = {
     },
 
     location: async (parent, { locationId }) => {
-
       return Location.findOne({ _id: locationId });
     },
 
