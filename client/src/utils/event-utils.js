@@ -5,7 +5,6 @@ let eventGuid = 0
 // let end = new Date().toISOString().replace(/T.*$/, '')
 const dateStr = "Novemeber 29 2022 18:00:00 (MST)"
 
-
 export const INITIAL_EVENTS = [
   {
     id: "313233343536373839303132",
@@ -18,7 +17,7 @@ export const INITIAL_EVENTS = [
     backgroundColor: 'red'
   },
   {
-    id: createEventId(),
+    id: '323233343536373839303132',
     title: 'DECO',
     startTime: "18:00:00 (MST)",
     endTime: "18:15:00 (MST)",
@@ -28,7 +27,7 @@ export const INITIAL_EVENTS = [
     backgroundColor: 'green'
   },
   {
-    id: createEventId(),
+    id: '333233343536373839303132',
     title: 'Zandi K Denver West',
     startTime: "18:00:00 (MST)",
     endTime: "19:45:00 (MST)",
@@ -38,7 +37,7 @@ export const INITIAL_EVENTS = [
     backgroundColor: 'blue'
   },
   {
-    id: createEventId(),
+    id: "343233343536373839303132",
     title: 'Urban Luxury Salon',
     startTime: "18:00:00 (MST)",
     endTime: "21:30:00 (MST)",
@@ -49,7 +48,7 @@ export const INITIAL_EVENTS = [
     textColor: 'black'
   },
   {
-    id: createEventId(),
+    id: "353233343536373839303132",
     title: 'Pure Power Engineering',
     startTime: "18:00:00 (MST)",
     endTime: "20:00:00 (MST)",
@@ -59,7 +58,7 @@ export const INITIAL_EVENTS = [
     backgroundColor: 'magenta'
   },
   {
-    id: createEventId(),
+    id: "363233343536373839303132",
     title: 'Glosshouz',
     startTime: "18:00:00 (MST)",
     endTime: "20:00:00 (MST)",
@@ -70,7 +69,7 @@ export const INITIAL_EVENTS = [
     textColor: 'black'
   },
   {
-    id: createEventId(),
+    id: "373233343536373839303132",
     title: 'Do The Bang Thing',
     startTime: "18:00:00 (MST)",
     endTime: "22:00:00 (MST)",
@@ -80,7 +79,7 @@ export const INITIAL_EVENTS = [
     backgroundColor: 'black'
   },
   {
-    id: createEventId(),
+    id: "383233343536373839303132",
     title: 'Cardiology Now',
     startTime: "18:00:00 (MST)",
     endTime: "20:30:00 (MST)",
@@ -90,7 +89,7 @@ export const INITIAL_EVENTS = [
     backgroundColor: 'grey'
   },
   {
-    id: createEventId(),
+    id: "393233343536373839303132",
     title: 'Cedar Hair Studio',
     startTime: "18:00:00 (MST)",
     endTime: "20:30:00 (MST)",
@@ -100,7 +99,7 @@ export const INITIAL_EVENTS = [
     backgroundColor: 'purple'
   },
   {
-    id: createEventId(),
+    id: "303233343536373839303132",
     title: 'One 2 One Studio Salon',
     startTime: "18:00:00 (MST)",
     endTime: "20:00:00 (MST)",
