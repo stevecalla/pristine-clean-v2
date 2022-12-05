@@ -48,10 +48,15 @@ const AllLocationsCont = ({ allLocations }) => {
     setLocationPage(true);
   };
 
+  // if (locationPage) {
+  //   // console.log("yes 1");
+
+  //   return <Location locationDetails={selectedLocation} />;
+  // }
+  
   if (locationPage) {
     // console.log("yes 1");
-
-    return <Location locationDetails={selectedLocation} />;
+    return <Location locationDetails={selectedLocation} selectedPage={"location"}/>;
   }
   
   if (!loading) {

@@ -12,13 +12,14 @@ import AllLocationsCont from "../components/AllLocationsCont";
 import format_phone from "../utils/helpers"
 import Map from "../components/Map";
 import '../styles/button-style.css'
+import FullCalendarApp from '../components/FullCalendarApp'
 
 import { useQuery } from "@apollo/client";
 // // query all locations
 import { QUERY_LOCATIONS } from "../utils/queries";
 
-const Location = ({ locationDetails }) => {
-  // console.log(locationDetails);
+const Location = ({ locationDetails, selectedPage }) => {
+  console.log(locationDetails, selectedPage);
   // let locationAddress = locationDetails.address;
   // console.log(locationDetails.address);
   const [showMap, setShowMap] = useState(false);
@@ -34,7 +35,10 @@ const Location = ({ locationDetails }) => {
 
   const [locationPage, setLocationPage] = useState(false);
   const handleAllLocationsClick = (e) => {
-    setLocationPage(!locationPage);
+    // setLocationPage(!locationPage)
+    setLocationPage(true)
+
+
   };
   // TODO: throwing errors, why not returning trying to map through property that is not defined as array? 
   // const { loading, data } = useQuery(QUERY_LOCATIONS);
@@ -51,8 +55,14 @@ const Location = ({ locationDetails }) => {
   //   );
   // }
 
-  if (locationPage) {
-    // console.log("yes 1000");
+  // if (locationPage) {
+  //   // console.log("yes 1000");
+  //   return <AllLocationsCont />;
+  // }
+
+  if (locationPage && selectedPage === "calendar") {
+    return <FullCalendarApp />
+  } else if (locationPage && selectedPage === "location") {
     return <AllLocationsCont />;
   }
 
