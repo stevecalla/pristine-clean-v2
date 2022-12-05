@@ -56,9 +56,9 @@
 //       // navigate('/location', {replace: true});
 //       // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
       
-//       // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/${userId}`)
+//       // isManager ? window.location.assign("/Dashboard") : window.location.assign(`/employeedash/${userId}`)
 
-//       isManager ? navigate(`/managerdash`, {replace: true}) : navigate(`/employeedash`, {replace: true});
+//       isManager ? navigate(`/Dashboard`, {replace: true}) : navigate(`/employeedash`, {replace: true});
 
 //       setShowModal(false);
 

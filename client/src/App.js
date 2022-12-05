@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
 // import MapPage from "./pages/MapPage";
-import ManagerDash from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
@@ -152,7 +152,7 @@ function App() {
                   )
                 }
               />
-              <Route exact path="/dashboard" element={<ManagerDash />} />
+              <Route exact path="/dashboard" element={<Dashboard />} />
               <Route exact path="/availability" element={<Availability />} />
               <Route exact path="/timeoff" element={<Timeoff />} />
               <Route exact path="/incident" element={<Incident />} />

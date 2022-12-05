@@ -9,7 +9,7 @@ import { QUERY_ME } from "../utils/queries";
 import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 
-const ManagerDash = () => {
+const Dashboard = () => {
   // const [openEmployee, setOpenEmployee] = useState(false);
   // const [openLocation, setOpenLocation] = useState(false);
 
@@ -80,4 +80,4 @@ const ManagerDash = () => {
   }
 };
 
-export default ManagerDash;
+export default Dashboard;

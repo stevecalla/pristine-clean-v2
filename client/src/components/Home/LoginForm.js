@@ -50,10 +50,10 @@ const LoginForm = ({ setShowModal }) => {
       // navigate('/location', {replace: true});
       // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
 
-      // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/`)
+      // isManager ? window.location.assign("/Dashboard") : window.location.assign(`/employeedash/`)
 
       // isManager
-      //   ? navigate(`/managerdash`, { replace: true })
+      //   ? navigate(`/Dashboard`, { replace: true })
       //   : navigate(`/employeedash`, { replace: true });
 
       window.location.assign(`/dashboard`);
