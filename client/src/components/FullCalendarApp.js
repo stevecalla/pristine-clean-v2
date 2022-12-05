@@ -29,13 +29,13 @@ const FullCalendarApp = () => {
   };
   // 
   useEffect(() => {
-    console.log("View Changed", activeView);
+    // console.log("View Changed", activeView);
     setActiveView('listDay')
   }, [activeView]);
 
   const handleDateSelect = () => {
     
-    console.log("View Changed", activeView);
+    // console.log("View Changed", activeView);
     setActiveView('listWeek')
   }
 
@@ -102,7 +102,7 @@ const FullCalendarApp = () => {
             center: '',
             right: 'prev,next,today',
           }}
-          footer={true}
+          // footer={true}
           footerToolbar={{
             left: '',
             center: 'dayGridMonth,listWeek',

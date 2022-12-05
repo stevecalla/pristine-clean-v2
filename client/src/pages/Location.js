@@ -19,7 +19,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_LOCATIONS } from "../utils/queries";
 
 const Location = ({ locationDetails, selectedPage }) => {
-  console.log(locationDetails, selectedPage);
+  // console.log(locationDetails, selectedPage);
   // let locationAddress = locationDetails.address;
   // console.log(locationDetails.address);
   const [showMap, setShowMap] = useState(false);

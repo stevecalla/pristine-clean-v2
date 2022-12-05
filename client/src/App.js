@@ -127,7 +127,7 @@ function App() {
         <Router>
           <>
             <Navbar />
-            {Auth.loggedIn() ? console.log(true) : console.log(false)}
+            {/* {Auth.loggedIn() ? console.log(true) : console.log(false)} */}
             <Routes>
               <Route exact path="/" element={<Homepage />} />
               <Route
