@@ -1,8 +1,4 @@
-
 let eventGuid = 0
-// let todayStr = new Date().toISOString().replace(/T.*$/, '') // YYYY-MM-DD of today
-// let start = new Date().toISOString().replace(/T.*$/, '')
-// let end = new Date().toISOString().replace(/T.*$/, '')
 const dateStr = "Novemeber 29 2022 18:00:00 (MST)"
 
 export const INITIAL_EVENTS = [

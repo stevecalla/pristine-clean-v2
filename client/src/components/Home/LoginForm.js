@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import '../../styles/button-style.css'
+import "../../styles/button-style.css";
 
 const LoginForm = ({ setShowModal }) => {
-
-  // console.log(Auth.loggedin(), !Auth.loggedin());
-
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -45,21 +41,10 @@ const LoginForm = ({ setShowModal }) => {
 
       let decodedToken = decode(data.login.token);
       let isManager = decodedToken.data.isManager;
-      // let userId = decodedToken.data._id;
-
-      // navigate('/location', {replace: true});
-      // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
-
-      // isManager ? window.location.assign("/managerdash") : window.location.assign(`/employeedash/`)
-
-      // isManager
-      //   ? navigate(`/managerdash`, { replace: true })
-      //   : navigate(`/employeedash`, { replace: true });
 
       window.location.assign(`/dashboard`);
-      // navigate(`/dashboard`, { replace: true });
 
-      // setShowModal(false);
+      // navigate(`/dashboard`, { replace: true }); //todo
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -87,12 +72,6 @@ const LoginForm = ({ setShowModal }) => {
   return (
     <div className="d-flex flex-column align-items-center mt-3">
       <div className="d-flex flex-column align-items-center">
-        {/* <div className="mx-4" style={{ width: "350px" }}>
-            <p className="mt-2 mb-1">Log In</p>
-            <hr className="my-0 mb-1"></hr>
-            <hr className="my-0"></hr>
-          </div> */}
-
         <Form
           noValidate
           validated={validated}
@@ -119,7 +98,6 @@ const LoginForm = ({ setShowModal }) => {
             <Form.Label htmlFor="password">Password</Form.Label>
             <InputGroup className="mb-3">
               <Form.Control
-                // type="password"
                 type={showHidePassword}
                 placeholder="Your password"
                 name="password"
@@ -131,7 +109,14 @@ const LoginForm = ({ setShowModal }) => {
               <Form.Control.Feedback type="invalid">
                 <p>Password is required!</p>
               </Form.Control.Feedback>
-              <InputGroup.Text id="basic-addon1" style={{ borderRadius: "0%", background: "white", borderLeft: "none"}}>
+              <InputGroup.Text
+                id="basic-addon1"
+                style={{
+                  borderRadius: "0%",
+                  background: "white",
+                  borderLeft: "none",
+                }}
+              >
                 <FontAwesomeIcon
                   icon="fa-eye"
                   style={display ? isDisplayed : isNotDisplayed}

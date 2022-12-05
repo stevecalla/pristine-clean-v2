@@ -1,8 +1,8 @@
-const phoneNumberFormatter = require('phone-number-formats');
+const phoneNumberFormatter = require("phone-number-formats");
 
 const format_phone = (phone) => {
   let phoneFormatted = new phoneNumberFormatter(`3-${phone}`).format({
-    type: 'domestic',
+    type: "domestic",
   });
   return phoneFormatted.toString();
 };

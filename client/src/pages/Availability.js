@@ -1,22 +1,12 @@
 import React, { useState } from "react";
-
 import { Container, Row, Col, Table, Form } from "react-bootstrap/";
-
 import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 import { QUERY_ME } from "../utils/queries";
 import { UPDATE_AVAILABILITY } from "../utils/mutations";
-
 import { useQuery, useMutation } from "@apollo/client";
-
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/spinner.css";
-import "../styles/heading-style.css"
-
-// import { useQuery } from "@apollo/client";
-
-// import { QUERY_SINGLE_EMPLOYEE } from '../utils/queries';
+import "../styles/heading-style.css";
 
 const Availability = () => {
   const [mondayAm, setMondayAm] = useState();
@@ -33,7 +23,6 @@ const Availability = () => {
   const [saturdayPm, setSaturdayPm] = useState();
   const [sundayAm, setSundayAm] = useState();
   const [sundayPm, setSundayPm] = useState();
-  // const [availability, setAvailability] = useState();
 
   // setup update availability upon toggle
   const [updateAvailability] = useMutation(UPDATE_AVAILABILITY);
@@ -49,41 +38,40 @@ const Availability = () => {
       let availability = data?.me?.availability;
 
       if (availability) {
-      Object.keys(availability).map((key) => {
-        return key === "mondayAm"
-          ? setMondayAm(availability[key])
-          : key === "mondayPm"
-          ? setMondayPm(availability[key])
-          : key === "tuesdayAm"
-          ? setTuesdayAm(availability[key])
-          : key === "tuesdayPm"
-          ? setTuesdayPm(availability[key])
-          : key === "wednesdayAm"
-          ? setWednesdayAm(availability[key])
-          : key === "wednesdayPm"
-          ? setWednesdayPm(availability[key])
-          : key === "thursdayAm"
-          ? setThursdayAm(availability[key])
-          : key === "thursdayPm"
-          ? setThursdayPm(availability[key])
-          : key === "fridayAm"
-          ? setFridayAm(availability[key])
-          : key === "fridayPm"
-          ? setFridayPm(availability[key])
-          : key === "saturdayAm"
-          ? setSaturdayAm(availability[key])
-          : key === "saturdayPm"
-          ? setSaturdayPm(availability[key])
-          : key === "sundayAm"
-          ? setSundayAm(availability[key])
-          : setSundayPm(availability[key]);
-      })};
+        Object.keys(availability).map((key) => {
+          return key === "mondayAm"
+            ? setMondayAm(availability[key])
+            : key === "mondayPm"
+            ? setMondayPm(availability[key])
+            : key === "tuesdayAm"
+            ? setTuesdayAm(availability[key])
+            : key === "tuesdayPm"
+            ? setTuesdayPm(availability[key])
+            : key === "wednesdayAm"
+            ? setWednesdayAm(availability[key])
+            : key === "wednesdayPm"
+            ? setWednesdayPm(availability[key])
+            : key === "thursdayAm"
+            ? setThursdayAm(availability[key])
+            : key === "thursdayPm"
+            ? setThursdayPm(availability[key])
+            : key === "fridayAm"
+            ? setFridayAm(availability[key])
+            : key === "fridayPm"
+            ? setFridayPm(availability[key])
+            : key === "saturdayAm"
+            ? setSaturdayAm(availability[key])
+            : key === "saturdayPm"
+            ? setSaturdayPm(availability[key])
+            : key === "sundayAm"
+            ? setSundayAm(availability[key])
+            : setSundayPm(availability[key]);
+        });
+      }
     },
   });
 
   async function handleChange(evt) {
-    // console.log(evt.target.name, evt.target.name === "mondayAm");
-
     let name = evt.target.name;
 
     evt.target.name === "mondayAm"
@@ -141,15 +129,10 @@ const Availability = () => {
     }
   }
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    //mutation to edit this employees "Availability"
-  };
-
   if (loading) {
     return (
       <div
-        style={{ minHeight: '80vh', width: "100vw" }}
+        style={{ minHeight: "80vh", width: "100vw" }}
         className="d-flex justify-content-center align-items-center align-content-center m-0"
       >
         <div className="lds-hourglass"></div>
@@ -158,13 +141,24 @@ const Availability = () => {
   } else {
     return (
       <main>
-
-        <Container className="shadow rounded-lg  border border-secondary" style={{ marginTop: '85px' }}>
-        <h2 className="display-6 custom-text mt-3 mb-0 heading">Availability</h2>
-          <Form onSubmit={handleFormSubmit}>
+        <Container
+          className="shadow rounded-lg  border border-secondary"
+          style={{ marginTop: "85px" }}
+        >
+          <h2 className="display-6 custom-text mt-3 mb-0 heading">
+            Availability
+          </h2>
+          {/* <Form onSubmit={handleFormSubmit}> */}
+          <Form>
             <Row>
               <Col sm={12}>
-                <Table striped bordered hover variant="dark" className="mt-3 shadow">
+                <Table
+                  striped
+                  bordered
+                  hover
+                  variant="dark"
+                  className="mt-3 shadow"
+                >
                   <thead>
                     <tr>
                       <th>Day of the Week</th>

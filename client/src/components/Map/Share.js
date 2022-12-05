@@ -4,9 +4,6 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Share = ({ origin, destination }) => {
-  // console.log(origin, destination);
-
-  //section need to pass in location info
   const [show, setShow] = useState(false);
   const [tinyURI, setTinyURI] = useState("");
 
@@ -28,15 +25,9 @@ export const Share = ({ origin, destination }) => {
 
     postData(tinyUrlApiPath).then((data) => {
       setTinyURI(data.data.tiny_url);
-      // console.log({data})
-      // console.log(data.data.tiny_url)
     });
 
-    // console.log(tinyURI)
-
     shareNavigator();
-    // setTimeout(() => {
-    // }, 5000);
   };
 
   async function shareNavigator() {
@@ -52,8 +43,6 @@ export const Share = ({ origin, destination }) => {
       handleShow();
     }
   }
-
-  // let iphoneInfo = `Pristine Clean Directions\n\nJob Location: ${destination}\n\nMap Link: ${tinyURI}\n\nCleaning at it's finest!!`;
 
   const shareData = {
     title: `Pristine Clean Job Directions: ${destination}`,

@@ -1,41 +1,40 @@
 import React, { useState } from "react";
-import { ListGroup, Card, Button, Collapse, Table, Row, Col } from "react-bootstrap/";
+import {
+  ListGroup,
+  Card,
+  Button,
+  Collapse,
+  Table,
+  Row,
+  Col,
+} from "react-bootstrap/";
 import { PersonX } from "react-bootstrap-icons";
 import { XSquareFill, Check2Circle } from "react-bootstrap-icons";
 import { useQuery, useMutation } from "@apollo/client";
-import '../styles/button-style.css'
+import "../styles/button-style.css";
 import format_phone from "../utils/helpers";
-
-// query all employees and locations
 import { QUERY_USERS } from "../utils/queries";
 import { DELETE_USER } from "../utils/mutations";
-
 import { getManagerStatus } from "../utils/getManager";
-
 
 const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
-
   const manager = getManagerStatus();
-  // console.log(manager)
-
 
   // delete User query
   const [deleteUser] = useMutation(DELETE_USER);
 
   // delete USER
-  const handleDeleteUSER = async (userId) => {
+  const handleDeleteUser = async (userId) => {
     try {
+      // eslint-disable-next-line no-undef
       const { data } = await deleteUser({
         variables: {
           id: userId,
         },
       });
 
-      console.log(data); //to eliminate console warning
-
       window.location.reload();
-
     } catch (err) {
       console.log(err);
     }
@@ -49,7 +48,6 @@ const AllEmployeesCont = () => {
 
   // // const { loadingEmployees, employeesData } = useQuery(QUERY_USERS);
   // const { employees } = useQuery({ query: QUERY_USERS });
-  // console.log(employees);
 
   const getElement = (event) => {
     let currentAvailTarget = event.currentTarget.getAttribute("data-target");
@@ -67,12 +65,12 @@ const AllEmployeesCont = () => {
   if (loading) {
     return (
       <div
-        style={{ minHeight: '80vh', width: "100vw" }}
+        style={{ minHeight: "80vh", width: "100vw" }}
         className="d-flex justify-content-center align-items-center align-content-center m-0"
       >
         <div className="lds-hourglass"></div>
       </div>
-    )
+    );
   } else if (!loading) {
     // if (!loading) {
     return (
@@ -89,23 +87,24 @@ const AllEmployeesCont = () => {
                   </p>
                 </Col>
                 <Col xs={1.5} className="py-0">
-                  {manager && <PersonX
-                    id="delete-employee"
-                    color="red"
-                    size="24px"
-                    className="mr-2 button-style"
-                    data-user={employee._id}
-                    //section
+                  {manager && (
+                    <PersonX
+                      id="delete-employee"
+                      color="red"
+                      size="24px"
+                      className="mr-2 button-style"
+                      data-user={employee._id}
+                      //section
 
-                    onClick={(event) => {
-                      console.log(event.currentTarget.getAttribute('data-user'));
-                      let userId = event.currentTarget.getAttribute('data-user');
-                      handleDeleteUSER(userId)
-                    }}
+                      onClick={(event) => {
+                        let userId =
+                          event.currentTarget.getAttribute("data-user");
+                        handleDeleteUser(userId);
+                      }}
 
-                  //section
-                  />
-                  }
+                      //section
+                    />
+                  )}
                 </Col>
               </Row>
             </Card.Header>
@@ -116,14 +115,13 @@ const AllEmployeesCont = () => {
                   {employee.cell && format_phone(employee.cell)
                     ? format_phone(employee.cell)
                     : "No Phone Yet"}
-                  {/* Phone #: {employee.cell ? employee.cell : "No Phone Yet"} */}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <b>Email:</b> {employee.email ? employee.email : "No Email Yet"}
+                  <b>Email:</b>{" "}
+                  {employee.email ? employee.email : "No Email Yet"}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button
-                    // onClick={() => setOpenAvailability(!openAvailability)}
                     onClick={(event) => getElement(event)}
                     aria-controls="example-fade-text"
                     aria-expanded={openAvailability}
@@ -134,12 +132,8 @@ const AllEmployeesCont = () => {
                     View Availability
                   </Button>
 
-                  <Collapse
-                  // style={{'height': '300px', 'overflow': 'scroll!important'}}
-                  // in={openAvailability}
-                  >
+                  <Collapse>
                     <div id={`#collapseTarget-${index}`}>
-                      {/* <div id={`collapse-availability-bar-${index}`}> */}
                       <Table striped bordered hover size="sm">
                         <thead>
                           <tr>

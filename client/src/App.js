@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,20 +9,16 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
-// import MapPage from "./pages/MapPage";
-import ManagerDash from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
 import Location from "./pages/Location";
-import WrongPage from './pages/WrongPage';
+import WrongPage from "./pages/WrongPage";
 import IncidentList from "./pages/IncidentList";
 import Auth from "./utils/auth";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import { library } from "@fortawesome/fontawesome-svg-core";
-// import { fab } from '@fortawesome/free-brands-svg-icons'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
   faTrash,
@@ -75,20 +71,13 @@ const client = new ApolloClient({
 });
 
 function App() {
-  // const [tabDisplay, setTabDisplay] = useState("login");
-  // console.log(tabDisplay)
-
   if (!Auth.loggedIn()) {
     return (
-      // console.log("not logged in"),
-
       <ApolloProvider client={client}>
         <Router>
           <>
             <Navbar />
-            {Auth.loggedIn() ? console.log(true) : console.log(false)}
             <Routes>
-              {/* <Route exact path="/" element={<Homepage />} /> */}
               <Route
                 exact
                 path="/login"
@@ -111,23 +100,18 @@ function App() {
                   )
                 }
               />
-              <Route
-                path="*"
-                element={<Homepage />}
-              // element={<h1 className="display-2">Wrong page!</h1>}
-              />
+              <Route path="*" element={<Homepage />} />
             </Routes>
           </>
         </Router>
       </ApolloProvider>
-    )
+    );
   } else {
     return (
       <ApolloProvider client={client}>
         <Router>
           <>
             <Navbar />
-            {/* {Auth.loggedIn() ? console.log(true) : console.log(false)} */}
             <Routes>
               <Route exact path="/" element={<Homepage />} />
               <Route
@@ -152,16 +136,13 @@ function App() {
                   )
                 }
               />
-              <Route exact path="/dashboard" element={<ManagerDash />} />
+              <Route exact path="/dashboard" element={<Dashboard />} />
               <Route exact path="/availability" element={<Availability />} />
               <Route exact path="/timeoff" element={<Timeoff />} />
               <Route exact path="/incident" element={<Incident />} />
               <Route exact path="/location" element={<Location />} />
               <Route exact path="/incidentlist" element={<IncidentList />} />
-              <Route
-                path="*"
-                element={<WrongPage />}
-              />
+              <Route path="*" element={<WrongPage />} />
             </Routes>
           </>
         </Router>

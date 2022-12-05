@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Schedule {
@@ -94,7 +94,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
 
     deleteUser(_id: ID!): User
-    
+
     updateAvailability(
       _id: ID!
       mondayAm: Boolean
@@ -112,7 +112,14 @@ const typeDefs = gql`
       sundayAm: Boolean
       sundayPm: Boolean
     ): User
-    addIncident(employeeName: String!, locationName: String!, employeePhone: String!, subject: String!, urgent: String!, incidentDetails: String!): Incident
+    addIncident(
+      employeeName: String!
+      locationName: String!
+      employeePhone: String!
+      subject: String!
+      urgent: String!
+      incidentDetails: String!
+    ): Incident
     deleteIncident(_id: ID!): Incident
   }
 `;

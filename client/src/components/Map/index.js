@@ -1,14 +1,11 @@
 import React, { useRef, useState, memo, useEffect } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
 import "../../styles/spinner.css";
-
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-
 import SearchIcon from "./SearchIcon";
 import { LoadMap } from "./LoadMap";
-
-import seed from "./responseSeed";
+import seed from "./responseSeed"; // saved for seed if necesary
 import { DirectionsPanel } from "./DirectionsPanel";
 import { Share } from "./Share";
 import { CenterIcon } from "./CenterIcon";
@@ -53,8 +50,6 @@ function Map({ destinationDb }) {
   }, []);
 
   useEffect(() => {
-    // coords && console.log(coords);
-
     async function postData(url = "", data = {}) {
       let reverseGeoCodeURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords}&result_type=street_address&key=AIzaSyBGXIaFo3Dhmjo6RcGyEKYi3KqXN0sYt2I`;
 
@@ -62,9 +57,7 @@ function Map({ destinationDb }) {
         .then((response) => {
           if (response.ok) {
             response.json().then((data) => {
-              // console.log(data.results[0].formatted_address);
               setOriginDb(data.results[0].formatted_address);
-              // console.log({ originDb });
             });
           } else {
             handleShow();
@@ -73,7 +66,6 @@ function Map({ destinationDb }) {
         .catch((error) => {
           handleShow();
           console.log(error);
-          // alert("Sorry, google maps not available. Try again later.");
         });
     }
 
@@ -95,7 +87,6 @@ function Map({ destinationDb }) {
   const [duration, setDuration] = useState("");
 
   if (originDb && destinationDb) {
-    // console.log(originDb, destinationDb);
     calculateRoute();
   }
 
@@ -128,22 +119,23 @@ function Map({ destinationDb }) {
 
     let results;
     let errorMessage;
-    
-    await directionsService.route({
+
+    await directionsService
+      .route({
         origin: originSubmitted,
         destination: destinationSubmitted,
         // eslint-disable-next-line no-undef
-        travelMode: google.maps.TravelMode.DRIVING
-      // origin: originDb || origin.current.value,
-      // destination: destinationDb || destination.current.value,
-      // optimizeWaypoints: true,
-      // provideRouteAlternatives: true,
-    })
-    .then((data) => results = data)
-    .catch((err) => {
-      console.log(err);
-      errorMessage = err;
-    });
+        travelMode: google.maps.TravelMode.DRIVING,
+        // origin: originDb || origin.current.value,
+        // destination: destinationDb || destination.current.value,
+        // optimizeWaypoints: true,
+        // provideRouteAlternatives: true,
+      })
+      .then((data) => (results = data))
+      .catch((err) => {
+        console.log(err);
+        errorMessage = err;
+      });
 
     if (errorMessage) {
       console.log(errorMessage);
@@ -181,6 +173,7 @@ function Map({ destinationDb }) {
     destination.current.value = "";
   }
 
+  // set modal if necessary
   // function testModal() {
   //   handleShow();
   // }
@@ -197,6 +190,7 @@ function Map({ destinationDb }) {
   else {
     return (
       <div>
+        {/* test modal if necessary */}
         {/* <Button onClick={() => testModal()}>SHOW MODAL</Button> */}
 
         <DirectionsPanel />
@@ -249,7 +243,6 @@ function Map({ destinationDb }) {
             <Button variant="secondary" onClick={handleClose}>
               Understood
             </Button>
-            {/* <Button variant="primary">Understood</Button> */}
           </Modal.Footer>
         </Modal>
       </div>
@@ -267,10 +260,8 @@ const containerStyle = {
 };
 
 const lineBreakStyle = {
-  // heigth: "1px",
   heigth: ".25px",
   width: "33px",
-  // bottom: "135px",
   bottom: "28px",
   left: "64px",
   padding: "1px",

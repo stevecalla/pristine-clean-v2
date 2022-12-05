@@ -5,25 +5,21 @@ export const GoToGoogleMaps = ({ origin, destination }) => {
   origin = origin || "Longmont, CO, USA"; // origin
   destination = destination || "Denver, CO, USA"; // destination
 
-  let encodedURI = encodeURI(`https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`);
-
-  // console.log(encodedURI)
+  let encodedURI = encodeURI(
+    `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`
+  );
 
   return (
     <>
-      <a
-        href={encodedURI}
-        target="_blank"
-        rel="noreferrer"
-      >
-          <FontAwesomeIcon
-            icon="fa-map"
-            className=""
-            style={shareStyle}
-            title="Go To Google Maps"
-            alt="Link to google maps"
-            transform="grow-5"
-          />
+      <a href={encodedURI} target="_blank" rel="noreferrer">
+        <FontAwesomeIcon
+          icon="fa-map"
+          className=""
+          style={shareStyle}
+          title="Go To Google Maps"
+          alt="Link to google maps"
+          transform="grow-5"
+        />
       </a>
     </>
   );

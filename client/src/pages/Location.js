@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import AllLocationsCont from "../components/AllLocationsCont";
+import Map from "../components/Map";
+import FullCalendarApp from "../components/FullCalendarApp";
+import format_phone from "../utils/helpers";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,62 +10,22 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Collapse from "react-bootstrap/Collapse";
-import { SkipBackwardCircle } from "react-bootstrap-icons";
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
-import AllLocationsCont from "../components/AllLocationsCont";
-import format_phone from "../utils/helpers"
-import Map from "../components/Map";
-import '../styles/button-style.css'
-import FullCalendarApp from '../components/FullCalendarApp'
-
-import { useQuery } from "@apollo/client";
-// // query all locations
-import { QUERY_LOCATIONS } from "../utils/queries";
+import { SkipBackwardCircle } from "react-bootstrap-icons";
+import "../styles/button-style.css";
 
 const Location = ({ locationDetails, selectedPage }) => {
-  // console.log(locationDetails, selectedPage);
-  // let locationAddress = locationDetails.address;
-  // console.log(locationDetails.address);
   const [showMap, setShowMap] = useState(false);
-
-  // Execute the query on component load
-  // const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
-  // console.log(loadingLocation);
-  // Use Form.Optional chaining to check if data exists and if it has a business property. If not, return an empty array to use.
-  // const location = locationData?.businessName || [];
-
   const [openDetails, setOpenDetails] = useState(true);
   const [openInstructions, setOpenInstruction] = useState(false);
-
   const [locationPage, setLocationPage] = useState(false);
+
   const handleAllLocationsClick = (e) => {
-    // setLocationPage(!locationPage)
-    setLocationPage(true)
-
-
+    setLocationPage(true);
   };
-  // TODO: throwing errors, why not returning trying to map through property that is not defined as array? 
-  // const { loading, data } = useQuery(QUERY_LOCATIONS);
-  // const cleaners = data.locations.cleaners;
-
-  // if (loading) {
-  //   return (
-  //     <div
-  //       style={{ height: "200px", width: "100vw" }}
-  //       className="d-flex justify-content-center align-items-center align-content-center m-0"
-  //     >
-  //       <div className="lds-hourglass"></div>
-  //     </div>
-  //   );
-  // }
-
-  // if (locationPage) {
-  //   // console.log("yes 1000");
-  //   return <AllLocationsCont />;
-  // }
 
   if (locationPage && selectedPage === "calendar") {
-    return <FullCalendarApp />
+    return <FullCalendarApp />;
   } else if (locationPage && selectedPage === "location") {
     return <AllLocationsCont />;
   }
@@ -85,7 +49,6 @@ const Location = ({ locationDetails, selectedPage }) => {
                   color="white"
                   size="28px"
                   aria-hidden="true"
-                  // transform="grow-9"
                   onClick={() => handleAllLocationsClick()}
                 />
               </div>
@@ -98,7 +61,6 @@ const Location = ({ locationDetails, selectedPage }) => {
                   color="transparent"
                   size="28px"
                   aria-hidden="true"
-                // transform="grow-9"
                 />
               </div>
             </Col>
@@ -112,27 +74,16 @@ const Location = ({ locationDetails, selectedPage }) => {
                   <Card.Header>{locationDetails.businessName}</Card.Header>
                   <Card.Body className=" bg-light">
                     <ListGroup variant="flush">
-                      <ListGroup.Item><b>Manager:</b> McNatt, Colin</ListGroup.Item>
+                      <ListGroup.Item>
+                        <b>Manager:</b> McNatt, Colin
+                      </ListGroup.Item>
                       <ListGroup.Item>
                         <b>Address:</b> {locationDetails.address}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <b>Contact #:</b> {format_phone(locationDetails.businessContact)}
+                        <b>Contact #:</b>{" "}
+                        {format_phone(locationDetails.businessContact)}
                       </ListGroup.Item>
-                      {/* <ListGroup.Item> */}
-                        {/* list group for cleaners */}
-                        {/* Cleaners
-                        <ListGroup variant="flush"> */}
-                          {/* TODO: throwing errors, why not returning? */}
-                          {/* {cleaners.map((cleaner, index) => (
-                            <>
-                              <ListGroup.Item>
-                                {cleaner.firstName}, {cleaner.lastName}
-                              </ListGroup.Item>
-                            </>
-                          ))}; */}
-                        {/* </ListGroup> */}
-                      {/* </ListGroup.Item> */}
                       <ListGroup.Item>
                         <b>Frequency:</b> {locationDetails.shifts}
                       </ListGroup.Item>
@@ -230,22 +181,17 @@ const Location = ({ locationDetails, selectedPage }) => {
             </Row>
           </div>
         </Collapse>
-
-        {/* <Row> */}
-          <Button
-            onClick={() => {
-              // console.log("click");
-              setShowMap(!showMap);
-            }}
-            aria-controls="details-fade-text"
-            aria-expanded={showMap}
-            size="lg"
-            className="btn-block my-2 collapse-button"
-          >
-            Get Directions
-          </Button>
-        {/* </Row> */}
-
+        <Button
+          onClick={() => {
+            setShowMap(!showMap);
+          }}
+          aria-controls="details-fade-text"
+          aria-expanded={showMap}
+          size="lg"
+          className="btn-block my-2 collapse-button"
+        >
+          Get Directions
+        </Button>
         {showMap && (
           <Collapse in={showMap}>
             <div id="collapse-map">
@@ -260,17 +206,9 @@ const Location = ({ locationDetails, selectedPage }) => {
             </div>
           </Collapse>
         )}
-
       </Container>
     </main>
   );
 };
 
 export default Location;
-
-// const mapContainer = {
-//   flexDirection: "column",
-//   width: "100%",
-//   height: "100%",
-//   position: "relative",
-// };

@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_ME = gql`
   query me($id: ID!) {
@@ -78,30 +78,23 @@ export const QUERY_LOCATIONS = gql`
       instructions
       manager
       cleaners
-    } }`;
+    }
+  }
+`;
 
 export const QUERY_INCIDENTS = gql`
-query allIncidents {
-  incidents {
-    _id
-    employeeName
-    locationName
-    employeePhone
-    subject
-    urgent
-    incidentDetails
+  query allIncidents {
+    incidents {
+      _id
+      employeeName
+      locationName
+      employeePhone
+      subject
+      urgent
+      incidentDetails
+    }
   }
-} `
-
-// export const QUERY_SINGLE_LOCATION = gql`
-//   query singleLocation($locationId: ID!) {
-//     location(locationId: $locationId) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;
+`;
 
 export const QUERY_USERS = gql`
   query allUsers {
@@ -133,13 +126,3 @@ export const QUERY_USERS = gql`
     }
   }
 `;
-
-// export const QUERY_SINGLE_EMPLOYEE = gql`
-//   query singleEmployee($employeeId: ID!) {
-//     employee(employeeId: $employeeId) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;

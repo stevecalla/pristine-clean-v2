@@ -9,12 +9,8 @@ import { QUERY_ME } from "../utils/queries";
 import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 
-const ManagerDash = () => {
-  // const [openEmployee, setOpenEmployee] = useState(false);
-  // const [openLocation, setOpenLocation] = useState(false);
-
+const Dashboard = () => {
   const userId = getUserId();
-  // console.log(userId);
 
   // get user info to render to page
   const { loading, data } = useQuery(QUERY_ME, {
@@ -23,15 +19,13 @@ const ManagerDash = () => {
     skip: !Auth.loggedIn(),
   });
 
-  // console.log({ data }, loading);
-
   // control usestate default tab
   const [key, setKey] = useState("calendar");
 
   if (loading) {
     return (
       <div
-        style={{ minHeight: '80vh', width: "100vw" }}
+        style={{ minHeight: "80vh", width: "100vw" }}
         className="d-flex justify-content-center align-items-center align-content-center mt-5"
       >
         <div className="lds-hourglass"></div>
@@ -40,10 +34,12 @@ const ManagerDash = () => {
   } else {
     return (
       <>
-        <Container style={{ marginTop: '85px' }}>
+        <Container style={{ marginTop: "85px" }}>
           <Row className="justify-content-center">
-            <p style={{ fontSize: '16px' }}>
-              <b>Welcome {data.me?.firstName} {data.me?.lastName}!</b>
+            <p style={{ fontSize: "16px" }}>
+              <b>
+                Welcome {data.me?.firstName} {data.me?.lastName}!
+              </b>
             </p>
           </Row>
         </Container>
@@ -61,7 +57,7 @@ const ManagerDash = () => {
                 <Tab eventKey="calendar" title="Calendar">
                   <Row>
                     <Col>
-                      <FullCalendarApp className="shadow-sm"/>
+                      <FullCalendarApp className="shadow-sm" />
                     </Col>
                   </Row>
                 </Tab>
@@ -80,4 +76,4 @@ const ManagerDash = () => {
   }
 };
 
-export default ManagerDash;
+export default Dashboard;
