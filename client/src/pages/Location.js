@@ -14,10 +14,6 @@ import Map from "../components/Map";
 import '../styles/button-style.css'
 import FullCalendarApp from '../components/FullCalendarApp'
 
-import { useQuery } from "@apollo/client";
-// // query all locations
-import { QUERY_LOCATIONS } from "../utils/queries";
-
 const Location = ({ locationDetails, selectedPage }) => {
   const [showMap, setShowMap] = useState(false);
   const [openDetails, setOpenDetails] = useState(true);
