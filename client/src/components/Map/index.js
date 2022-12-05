@@ -126,7 +126,10 @@ function Map({ destinationDb }) {
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
 
-    const results = await directionsService.route({
+    let results;
+    let errorMessage;
+    
+    await directionsService.route({
         origin: originSubmitted,
         destination: destinationSubmitted,
         // eslint-disable-next-line no-undef
@@ -135,7 +138,18 @@ function Map({ destinationDb }) {
       // destination: destinationDb || destination.current.value,
       // optimizeWaypoints: true,
       // provideRouteAlternatives: true,
+    })
+    .then((data) => results = data)
+    .catch((err) => {
+      console.log(err);
+      errorMessage = err;
     });
+
+    if (errorMessage) {
+      console.log(errorMessage);
+      alert(errorMessage);
+      // attempts to use either alert or a modal resulted in infinate loop; proceed with caution; alert was the least loopy
+    }
 
     // section prevent multiple queries this code prevents multiple queries by forcing quit if responses are valid and result is equal to direct response
     if (
@@ -167,9 +181,9 @@ function Map({ destinationDb }) {
     destination.current.value = "";
   }
 
-  function testModal() {
-    handleShow();
-  }
+  // function testModal() {
+  //   handleShow();
+  // }
 
   //section spinner - wait for google map to return route
   if (!renderMap) {
@@ -183,7 +197,7 @@ function Map({ destinationDb }) {
   else {
     return (
       <div>
-        <Button onClick={() => testModal()}>SHOW MODAL</Button>
+        {/* <Button onClick={() => testModal()}>SHOW MODAL</Button> */}
 
         <DirectionsPanel />
 
@@ -238,22 +252,6 @@ function Map({ destinationDb }) {
             {/* <Button variant="primary">Understood</Button> */}
           </Modal.Footer>
         </Modal>
-
-        {/* <Modal size="sm" show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title className="">Directions</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className="d-flex justify-content-center">
-            <Button
-              className="btn btn-primary"
-              variant="primary"
-              title="Email share"
-              // onClick={() => window.open(emailShareData)}
-            >
-              Click to Email the Directions
-            </Button>
-          </Modal.Body>
-        </Modal> */}
       </div>
     );
   }
