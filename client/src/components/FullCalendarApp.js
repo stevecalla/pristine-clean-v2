@@ -18,7 +18,7 @@ import Location from "../pages/Location";
 
 const FullCalendarApp = () => { 
   // set state of sctive view through day# click
-  const [activeView, setActiveView] = useState("dayGridDay");
+  const [activeView, setActiveView] = useState("dayGridMonth");
   // const calendarRef = useRef(null);
   const [ weekendsVisible ] = useState(true);
   // check for mobile device to set initial view
@@ -33,11 +33,11 @@ const FullCalendarApp = () => {
     setActiveView('listDay')
   }, [activeView]);
 
-  const handleDateSelect = () => {
+  // const handleDateSelect = () => {
     
-    // console.log("View Changed", activeView);
-    setActiveView('listWeek')
-  }
+  //   // console.log("View Changed", activeView);
+  //   setActiveView('listWeek')
+  // }
 
   function renderEventContent(eventInfo) {
 
@@ -117,7 +117,7 @@ const FullCalendarApp = () => {
           listDayFormat={{day: 'numeric', weekday: 'short', month: 'short',  omitCommas: false}}
           navLinkDayClick={activeView}
           slotMinTime='06:00:00'
-          initialView={window.mobilecheck() ? "listMonth" : "dayGridMonth"}
+          initialView={window.mobilecheck() ? "listWeek" : "dayGridMonth"}
           initialDate={moment().format()}
           editable={true}
           selectable={true}
@@ -125,7 +125,7 @@ const FullCalendarApp = () => {
           dayMaxEvents={true}
           weekends={weekendsVisible}
           initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-          select={handleDateSelect}
+          // select={handleDateSelect}
           eventContent={renderEventContent} // custom render function
           // eventClick={handleEventClick}
           eventClick={handleEventClick} //section
