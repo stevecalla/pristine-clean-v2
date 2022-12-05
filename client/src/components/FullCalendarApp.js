@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Location from "../pages/Location";
 
-import { INITIAL_EVENTS } from "../utils/event-utils";
+// import { INITIAL_EVENTS } from "../utils/event-utils";
+
 import Auth from "../utils/auth";
 import { getUserId } from "../utils/getUserId";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { QUERY_EVENTS } from "../utils/queries";
 
-import FullCalendar from "@fullcalendar/react";
+import FullCalendar, { render } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -20,6 +21,41 @@ import "../styles/calendar.css";
 const FullCalendarApp = () => {
   // set state of sctive view through day# click
   const [activeView, setActiveView] = useState("dayGridMonth");
+
+  //SECTION START
+  let rawEvents;
+  // let INITIAL_EVENTS;
+  // let events;
+  const [INITIAL_EVENTS, setINITIAL_EVENTS] = useState(null);
+
+  const previousValue = useRef(null);
+
+  if (INITIAL_EVENTS) {
+
+    //   console.log('---------------')
+
+    previousValue.current = INITIAL_EVENTS;
+
+  }
+  // useEffect(() => {
+  //   console.log('useEffect')
+  //   console.log('---------------')
+
+  //   previousValue.current = INITIAL_EVENTS;
+
+  // }, [INITIAL_EVENTS]);
+  //SECTION END
+
+  const userId = getUserId();
+
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { id: userId },
+    skip: !Auth.loggedIn(),
+  });
+
+
+  const [locationPage, setLocationPage] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState({});
 
   // const calendarRef = useRef(null);
   const [weekendsVisible] = useState(true);
@@ -54,44 +90,69 @@ const FullCalendarApp = () => {
     );
   }
 
-  //section
+  //section START
+  const [renderCalendar, setRenderCalendar] = useState(false); //section
+
   // guery events
-  const { loadingEvents, data: eventData } = useQuery(QUERY_EVENTS);
+  const { loading: eventLoad, data: eventData } = useQuery(QUERY_EVENTS);
 
-  let rawEvents;
-  let events;
+  let results = [];
+  console.log(eventLoad);
 
-  if (!loadingEvents) {
-    console.log(eventData);
-    rawEvents = eventData.events;
+  if (!eventLoad) {
+    rawEvents = eventData?.events;
+    
+    results = rawEvents?.map(event => {
+    // events = rawEvents?.map(event => {
+      return {
+        id: event._id,
+        title: event.title,
+        startTime: event.startTime,
+        endTime: event.endTime,
+        daysOfWeek: event.daysOfWeek,
+        startRecur: new Date(event.startRecur).toISOString(),
+        display: event.display,
+        backgroundColor: event.backgroundColor,
+        textColor: event.textColor
+      };
+    })
+    
+    // console.log({eventData});
+    // console.log({rawEvents});
+    // console.log({events})
+    console.log({results});
+    console.log('initial is valid = ', results !== undefined);
 
-    events = [
-      ...events,
-      startRecur[startRecur]
-    ]
+    console.log('prev value = ', previousValue.current);
+    console.log('prev is valid = ', previousValue.current !== undefined);
+    console.log('prev is valid = ', previousValue !== null);
 
-    console.log(rawEvents);
-    console.log(INITIAL_EVENTS);
+    console.log('length = ', results?.length === previousValue.current?.length)
+
+    console.log('all true = ', 
+          results !== undefined &&
+          previousValue.current !== undefined &&
+          previousValue !== null &&
+          results?.length === previousValue.current?.length 
+    );
+    
+    if ( 
+      results !== undefined &&
+      previousValue.current !== undefined &&
+      previousValue !== null &&
+      results?.length === previousValue.current?.length )
+      {
+      return;
+    }
+    setINITIAL_EVENTS(results);
+    setRenderCalendar(true);
   }
-
-  //section
-
-  const userId = getUserId();
-
-  const { loading, data } = useQuery(QUERY_ME, {
-    variables: { id: userId },
-    skip: !Auth.loggedIn(),
-  });
-
+  //section END
   let locations;
   if (!loading) {
     console.log(data);
     locations = data?.me?.locations;
   }
-
-  const [locationPage, setLocationPage] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState({});
-
   const handleEventClick = (event) => {
     let eventId = event.event._def.publicId;
 
@@ -109,7 +170,17 @@ const FullCalendarApp = () => {
     );
   }
 
-  if (!loadingEvents) {
+  // spinner - wait for query to return event data
+
+
+  if (!renderCalendar) {
+    return (
+      <div className="d-flex justify-content-center">
+        <div className="lds-hourglass"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="cal-app my-3 p-1 shadow border border-secondary rounded-lg">
       <div id="calendar" className="cal-app-main">
@@ -153,7 +224,6 @@ const FullCalendarApp = () => {
           dayMaxEvents={true}
           weekends={weekendsVisible}
           initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-          // initialEvents={INITIAL_EVENTS_V2} // alternatively, use the `events` setting to fetch from a feed
           eventContent={renderEventContent} // custom render function
           eventClick={handleEventClick} //section
           navLinks={true} // allows for navigation to day-view of selected date
@@ -162,6 +232,5 @@ const FullCalendarApp = () => {
     </div>
   );
 };
-}
 
 export default FullCalendarApp;

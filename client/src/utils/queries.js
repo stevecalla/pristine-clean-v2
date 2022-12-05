@@ -132,6 +132,7 @@ export const QUERY_EVENTS = gql`
     events {
       _id
       title
+      startTime
       endTime
       daysOfWeek
       startRecur

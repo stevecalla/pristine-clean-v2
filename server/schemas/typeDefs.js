@@ -73,6 +73,7 @@ const typeDefs = gql`
   type Event {
     _id: ID!
     title: String
+    startTime: String
     endTime: String
     daysOfWeek: [Int]
     startRecur: String
