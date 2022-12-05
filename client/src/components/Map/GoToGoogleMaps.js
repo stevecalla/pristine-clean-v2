@@ -39,7 +39,7 @@ const shareStyle = {
   backgroundColor: "white",
   cursor: "grab",
   position: "absolute",
-  zIndex: "1",
+  zIndex: "10",
   borderRadius: "2px",
   boxShadow: "rgb(0 0 0 / 30%) 0px 1px 4px -1px",
 };

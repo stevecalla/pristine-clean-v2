@@ -92,7 +92,7 @@ export const Share = ({ origin, destination }) => {
         onClick={() => webShareAPI()}
         title="Share"
         alt="Share my profile"
-        transform="grow-5"
+        transform="grow-4"
       />
 
       <Modal size="sm" show={show} onHide={handleClose}>
@@ -124,7 +124,7 @@ const shareStyle = {
   backgroundColor: "white",
   cursor: "grab",
   position: "absolute",
-  zIndex: "1",
+  zIndex: "10",
   borderRadius: "2px",
   boxShadow: "rgb(0 0 0 / 30%) 0px 1px 4px -1px",
 };
