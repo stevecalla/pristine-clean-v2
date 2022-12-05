@@ -17,8 +17,6 @@ const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
 
   const manager = getManagerStatus();
-  // console.log(manager)
-
 
   // delete User query
   const [deleteUser] = useMutation(DELETE_USER);
@@ -32,7 +30,7 @@ const AllEmployeesCont = () => {
         },
       });
 
-      console.log(data); //to eliminate console warning
+      console.log('Eliminate warning'); //to eliminate console warning
       window.location.reload();
 
     } catch (err) {
@@ -48,7 +46,6 @@ const AllEmployeesCont = () => {
 
   // // const { loadingEmployees, employeesData } = useQuery(QUERY_USERS);
   // const { employees } = useQuery({ query: QUERY_USERS });
-  // console.log(employees);
 
   const getElement = (event) => {
     let currentAvailTarget = event.currentTarget.getAttribute("data-target");
@@ -97,7 +94,6 @@ const AllEmployeesCont = () => {
                     //section
 
                     onClick={(event) => {
-                      console.log(event.currentTarget.getAttribute('data-user'));
                       let userId = event.currentTarget.getAttribute('data-user');
                       handleDeleteUser(userId);
                     }}
@@ -115,14 +111,12 @@ const AllEmployeesCont = () => {
                   {employee.cell && format_phone(employee.cell)
                     ? format_phone(employee.cell)
                     : "No Phone Yet"}
-                  {/* Phone #: {employee.cell ? employee.cell : "No Phone Yet"} */}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <b>Email:</b> {employee.email ? employee.email : "No Email Yet"}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button
-                    // onClick={() => setOpenAvailability(!openAvailability)}
                     onClick={(event) => getElement(event)}
                     aria-controls="example-fade-text"
                     aria-expanded={openAvailability}
@@ -133,12 +127,8 @@ const AllEmployeesCont = () => {
                     View Availability
                   </Button>
 
-                  <Collapse
-                  // style={{'height': '300px', 'overflow': 'scroll!important'}}
-                  // in={openAvailability}
-                  >
+                  <Collapse>
                     <div id={`#collapseTarget-${index}`}>
-                      {/* <div id={`collapse-availability-bar-${index}`}> */}
                       <Table striped bordered hover size="sm">
                         <thead>
                           <tr>

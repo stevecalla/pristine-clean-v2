@@ -15,7 +15,6 @@ import { CleanAsset } from "../components/Home/CleanAsset";
 import Message from "../components/Home/Message";
 
 const Homepage = ({ tabDisplay }) => {
-  // console.log(tabDisplay)
 
   const [key, setKey] = useState(tabDisplay || "message");
   // set slide prop to true to enable animation

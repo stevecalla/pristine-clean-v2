@@ -29,15 +29,8 @@ const FullCalendarApp = () => {
   };
   // 
   useEffect(() => {
-    // console.log("View Changed", activeView);
     setActiveView('listDay')
   }, [activeView]);
-
-  // const handleDateSelect = () => {
-    
-  //   // console.log("View Changed", activeView);
-  //   setActiveView('listWeek')
-  // }
 
   function renderEventContent(eventInfo) {
 
@@ -63,32 +56,23 @@ const FullCalendarApp = () => {
 
   if (!loading) {
     locations = data?.me?.locations;
-    // console.log(locations)
   }
 
   const [locationPage, setLocationPage] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState({});
 
   const handleEventClick = (event) => {
-    console.log(locations)
-
     let eventId = event.event._def.publicId;
-    console.log(event)
-    console.log(eventId)
 
     let filteredLocation = locations?.filter(
-      // (element) => element._id === locationId
       (element) => element._id === eventId
     );
 
-    console.log(filteredLocation)
-    // console.log("selected location = ", filteredLocation[0]);
     setSelectedLocation(filteredLocation[0]);
     setLocationPage(true);
   };
 
   if (locationPage) {
-    // console.log("yes 1");
     return <Location locationDetails={selectedLocation} selectedPage={"calendar"} />;
   }
   

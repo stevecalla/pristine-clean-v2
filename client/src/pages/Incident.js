@@ -75,7 +75,6 @@ function Incident() {
         variables: { employeeName: name, locationName, employeePhone: telNo, subject, urgent: isUrgent, incidentDetails: body }
       }
       );
-      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -119,18 +118,6 @@ function Incident() {
       ? setShowBodyValidation(true)
       : setShowBodyValidation(false);
   };
-
-
-
-  // const handleChecked = (e) => {
-  //   setIsUrgent((current) => !current);
-
-  //   if (e.target.checked) {
-  //     console.log("✅ Checkbox is checked", isUrgent);
-  //   } else {
-  //     console.log("⛔️ Checkbox is NOT checked", isUrgent);
-  //   }
-  // };
 
   return (
     <div className="mx-3 pb-2 d-flex flex-column align-self-center align-items-center shadow rounded-lg border border-secondary" style={{ marginTop: '85px' }}>

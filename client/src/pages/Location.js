@@ -19,46 +19,14 @@ import { useQuery } from "@apollo/client";
 import { QUERY_LOCATIONS } from "../utils/queries";
 
 const Location = ({ locationDetails, selectedPage }) => {
-  // console.log(locationDetails, selectedPage);
-  // let locationAddress = locationDetails.address;
-  // console.log(locationDetails.address);
   const [showMap, setShowMap] = useState(false);
-
-  // Execute the query on component load
-  // const { loadingLocation, locationData } = useQuery(QUERY_SINGLE_LOCATION);
-  // console.log(loadingLocation);
-  // Use Form.Optional chaining to check if data exists and if it has a business property. If not, return an empty array to use.
-  // const location = locationData?.businessName || [];
-
   const [openDetails, setOpenDetails] = useState(true);
   const [openInstructions, setOpenInstruction] = useState(false);
-
   const [locationPage, setLocationPage] = useState(false);
+
   const handleAllLocationsClick = (e) => {
-    // setLocationPage(!locationPage)
     setLocationPage(true)
-
-
   };
-  // TODO: throwing errors, why not returning trying to map through property that is not defined as array? 
-  // const { loading, data } = useQuery(QUERY_LOCATIONS);
-  // const cleaners = data.locations.cleaners;
-
-  // if (loading) {
-  //   return (
-  //     <div
-  //       style={{ height: "200px", width: "100vw" }}
-  //       className="d-flex justify-content-center align-items-center align-content-center m-0"
-  //     >
-  //       <div className="lds-hourglass"></div>
-  //     </div>
-  //   );
-  // }
-
-  // if (locationPage) {
-  //   // console.log("yes 1000");
-  //   return <AllLocationsCont />;
-  // }
 
   if (locationPage && selectedPage === "calendar") {
     return <FullCalendarApp />

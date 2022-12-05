@@ -7,8 +7,6 @@ export const GoToGoogleMaps = ({ origin, destination }) => {
 
   let encodedURI = encodeURI(`https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`);
 
-  // console.log(encodedURI)
-
   return (
     <>
       <a

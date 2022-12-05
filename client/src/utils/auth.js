@@ -34,12 +34,8 @@ class AuthService {
   }
 
   login({ token, user }) {
-    console.log({ token, user });
     // Saves user token to localStorage
-    // localStorage.setItem("id_token", idToken);
     localStorage.setItem('id_token', token);
-    // Returns to root url
-    // window.location.assign("/");
   }
 
   logout() {

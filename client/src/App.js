@@ -75,20 +75,14 @@ const client = new ApolloClient({
 });
 
 function App() {
-  // const [tabDisplay, setTabDisplay] = useState("login");
-  // console.log(tabDisplay)
-
   if (!Auth.loggedIn()) {
     return (
-      // console.log("not logged in"),
 
       <ApolloProvider client={client}>
         <Router>
           <>
             <Navbar />
-            {Auth.loggedIn() ? console.log(true) : console.log(false)}
             <Routes>
-              {/* <Route exact path="/" element={<Homepage />} /> */}
               <Route
                 exact
                 path="/login"
@@ -114,7 +108,6 @@ function App() {
               <Route
                 path="*"
                 element={<Homepage />}
-              // element={<h1 className="display-2">Wrong page!</h1>}
               />
             </Routes>
           </>
@@ -127,7 +120,6 @@ function App() {
         <Router>
           <>
             <Navbar />
-            {/* {Auth.loggedIn() ? console.log(true) : console.log(false)} */}
             <Routes>
               <Route exact path="/" element={<Homepage />} />
               <Route

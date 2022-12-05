@@ -10,11 +10,7 @@ import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 
 const Dashboard = () => {
-  // const [openEmployee, setOpenEmployee] = useState(false);
-  // const [openLocation, setOpenLocation] = useState(false);
-
   const userId = getUserId();
-  // console.log(userId);
 
   // get user info to render to page
   const { loading, data } = useQuery(QUERY_ME, {
@@ -22,8 +18,6 @@ const Dashboard = () => {
     // if skip is true, this query will not be executed; in this instance, if the user is not logged in this query will be skipped when the component mounts
     skip: !Auth.loggedIn(),
   });
-
-  // console.log({ data }, loading);
 
   // control usestate default tab
   const [key, setKey] = useState("calendar");

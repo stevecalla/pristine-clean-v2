@@ -53,8 +53,6 @@ function Map({ destinationDb }) {
   }, []);
 
   useEffect(() => {
-    // coords && console.log(coords);
-
     async function postData(url = "", data = {}) {
       let reverseGeoCodeURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords}&result_type=street_address&key=AIzaSyBGXIaFo3Dhmjo6RcGyEKYi3KqXN0sYt2I`;
 
@@ -62,9 +60,7 @@ function Map({ destinationDb }) {
         .then((response) => {
           if (response.ok) {
             response.json().then((data) => {
-              // console.log(data.results[0].formatted_address);
               setOriginDb(data.results[0].formatted_address);
-              // console.log({ originDb });
             });
           } else {
             handleShow();
@@ -73,7 +69,6 @@ function Map({ destinationDb }) {
         .catch((error) => {
           handleShow();
           console.log(error);
-          // alert("Sorry, google maps not available. Try again later.");
         });
     }
 
@@ -95,7 +90,6 @@ function Map({ destinationDb }) {
   const [duration, setDuration] = useState("");
 
   if (originDb && destinationDb) {
-    // console.log(originDb, destinationDb);
     calculateRoute();
   }
 

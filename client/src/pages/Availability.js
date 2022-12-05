@@ -82,8 +82,6 @@ const Availability = () => {
   });
 
   async function handleChange(evt) {
-    // console.log(evt.target.name, evt.target.name === "mondayAm");
-
     let name = evt.target.name;
 
     evt.target.name === "mondayAm"

@@ -45,21 +45,11 @@ const LoginForm = ({ setShowModal }) => {
 
       let decodedToken = decode(data.login.token);
       let isManager = decodedToken.data.isManager;
-      // let userId = decodedToken.data._id;
-
-      // navigate('/location', {replace: true});
-      // console.log(decode(data.login.token), data.login.user, {decodedToken}, {isManager}, {userId})
-
-      // isManager ? window.location.assign("/Dashboard") : window.location.assign(`/employeedash/`)
-
-      // isManager
-      //   ? navigate(`/Dashboard`, { replace: true })
-      //   : navigate(`/employeedash`, { replace: true });
 
       window.location.assign(`/dashboard`);
-      // navigate(`/dashboard`, { replace: true });
 
-      // setShowModal(false);
+      // navigate(`/dashboard`, { replace: true }); //todo
+
     } catch (e) {
       console.error(e);
       setShowAlert(true);

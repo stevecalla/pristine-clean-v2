@@ -28,15 +28,9 @@ export const Share = ({ origin, destination }) => {
 
     postData(tinyUrlApiPath).then((data) => {
       setTinyURI(data.data.tiny_url);
-      // console.log({data})
-      // console.log(data.data.tiny_url)
     });
 
-    // console.log(tinyURI)
-
     shareNavigator();
-    // setTimeout(() => {
-    // }, 5000);
   };
 
   async function shareNavigator() {
