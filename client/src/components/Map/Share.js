@@ -7,9 +7,8 @@ export const Share = ({ origin, destination }) => {
   // console.log(origin, destination);
 
   //section need to pass in location info
-  const [show, setShow] = useState(false);
   const [tinyURI, setTinyURI] = useState("");
-
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
