@@ -20,6 +20,7 @@ const AppNavbar = () => {
     <>
       <Navbar
         collapseOnSelect
+        className="shadow-sm"
         style={{ backgroundColor: "black" }}
         fixed="top"
         variant="dark"

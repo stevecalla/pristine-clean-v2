@@ -10,7 +10,7 @@ const WrongPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => navigate("/dashboard"), 5000);
+    setTimeout(() => navigate("/dashboard"), 7000);
   }, []);
 
   return (
@@ -22,8 +22,8 @@ const WrongPage = () => {
         <Button
           as={Link}
           to="/dashboard"
-          className="rounded-pill shadow-lg wrong-page-button"
-          style={{ backgroundColor: "black" }}
+          className="rounded-pill wrong-page-button"
+          style={{ backgroundColor: "white", border: 'none' }}
         >
           <img
             src={wrongPageImg}

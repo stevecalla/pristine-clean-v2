@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import mopClean from "../../assets/mopClean.png";
 import qrcode_pristine_clean from "../../assets/qrcode_pristine_clean.png";
+import '../../styles/button-style.css'
 
 const Message = () => {
   const handleShiftEmail = (e) => {

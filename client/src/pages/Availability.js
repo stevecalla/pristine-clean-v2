@@ -12,6 +12,7 @@ import { useQuery, useMutation } from "@apollo/client";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/spinner.css";
+import "../styles/heading-style.css"
 
 // import { useQuery } from "@apollo/client";
 
@@ -159,7 +160,7 @@ const Availability = () => {
       <main>
 
         <Container className="shadow rounded-lg  border border-secondary" style={{ marginTop: '85px' }}>
-        <h2 className="display-6 custom-text mt-3 mb-0">Availability</h2>
+        <h2 className="display-6 custom-text mt-3 mb-0 heading">Availability</h2>
           <Form onSubmit={handleFormSubmit}>
             <Row>
               <Col sm={12}>

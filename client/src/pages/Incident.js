@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap/";
 import "../styles/Contact.css";
 import '../styles/button-style.css'
+import "../styles/heading-style.css"
 import { useMutation } from "@apollo/client";
 import { ADD_INCIDENT } from "../utils/mutations";
 
@@ -140,7 +141,7 @@ function Incident() {
             onSubmit={handleFormSubmit}
             style={{ width: "80vw" }}
           >
-            <h1 className="display-5 custom-text">Incident Form</h1>
+            <h2 className="display-5 custom-text heading">Incident Form</h2>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <div className="form-label">

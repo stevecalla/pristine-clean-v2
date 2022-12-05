@@ -88,7 +88,7 @@ const AllEmployeesCont = () => {
                     (Username: {employee.username})
                   </p>
                 </Col>
-                <Col xs={1.5}>
+                <Col xs={1.5} className="py-0">
                   {manager && <PersonX
                     id="delete-employee"
                     color="red"
@@ -112,14 +112,14 @@ const AllEmployeesCont = () => {
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  Phone #:{" "}
+                  <b>Phone #:</b>{" "}
                   {employee.cell && format_phone(employee.cell)
                     ? format_phone(employee.cell)
                     : "No Phone Yet"}
                   {/* Phone #: {employee.cell ? employee.cell : "No Phone Yet"} */}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Email: {employee.email ? employee.email : "No Email Yet"}
+                  <b>Email:</b> {employee.email ? employee.email : "No Email Yet"}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button

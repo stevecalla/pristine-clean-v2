@@ -6,6 +6,7 @@ import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../../styles/button-style.css'
 
 const LoginForm = ({ setShowModal }) => {
 
@@ -147,7 +148,7 @@ const LoginForm = ({ setShowModal }) => {
 
           <Button
             disabled={!(userFormData.email && userFormData.password)}
-            className="mb-3"
+            className="mb-3 submit-button-style"
             type="submit"
             variant="success"
           >
