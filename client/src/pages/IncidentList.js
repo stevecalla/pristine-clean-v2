@@ -37,7 +37,7 @@ const IncidentList = () => {
     let incidents;
     if (!loading) {
         incidents = data.incidents;
-        console.log(incidents);
+        // console.log(incidents);
     }
 
 

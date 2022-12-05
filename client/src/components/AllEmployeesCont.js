@@ -17,7 +17,7 @@ const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
 
   const manager = getManagerStatus();
-  console.log(manager)
+  // console.log(manager)
 
 
   // delete User query

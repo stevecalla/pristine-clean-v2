@@ -2,6 +2,9 @@ import React, { useRef, useState, memo, useEffect } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
 import "../../styles/spinner.css";
 
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
 import SearchIcon from "./SearchIcon";
 import { LoadMap } from "./LoadMap";
 
@@ -15,6 +18,10 @@ const center = { lat: 40.1672, lng: -105.1019 };
 const libraries = ["places"];
 
 function Map({ destinationDb }) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   let originSubmitted = ""; // origin submitted to google maps to get route
   let destinationSubmitted = ""; // destination submited to google maps to get route
 
@@ -33,9 +40,9 @@ function Map({ destinationDb }) {
     }
 
     function error() {
-      alert("Sorry, no position available. Using default of Longmont");
-      //todo change to modal
+      handleShow();
       setCoords(`40.1672, -105.1019`);
+      // alert("Sorry, no position available. Using default of Longmont");
     }
 
     if (!navigator.geolocation) {
@@ -60,22 +67,13 @@ function Map({ destinationDb }) {
               // console.log({ originDb });
             });
           } else {
-            //todo add modal?
-            // launchValidationModal(
-            //   "Error: Weather Not found",
-            //   // `Try Again at a Later Date: ${response.statusText}`
-            //   "weather"
-            // );
+            handleShow();
           }
         })
         .catch((error) => {
-          alert("Sorry, google maps not available. Try again later.");
-          //todo add modal?
-          // launchValidationModal(
-          //   "Error: Weather Not found",
-          //   // `Try again later, please`,: ${response.statusText}`
-          //   "weather"
-          // );
+          handleShow();
+          console.log(error);
+          // alert("Sorry, google maps not available. Try again later.");
         });
     }
 
@@ -128,19 +126,38 @@ function Map({ destinationDb }) {
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
 
-    const results = await directionsService.route({
+    let results;
+    let errorMessage;
+    
+    await directionsService.route({
+        origin: originSubmitted,
+        destination: destinationSubmitted,
+        // eslint-disable-next-line no-undef
+        travelMode: google.maps.TravelMode.DRIVING
       // origin: originDb || origin.current.value,
       // destination: destinationDb || destination.current.value,
-      origin: originSubmitted,
-      destination: destinationSubmitted,
-      // eslint-disable-next-line no-undef
-      travelMode: google.maps.TravelMode.DRIVING,
       // optimizeWaypoints: true,
       // provideRouteAlternatives: true,
+    })
+    .then((data) => results = data)
+    .catch((err) => {
+      console.log(err);
+      errorMessage = err;
     });
 
+    if (errorMessage) {
+      console.log(errorMessage);
+      alert(errorMessage);
+      // attempts to use either alert or a modal resulted in infinate loop; proceed with caution; alert was the least loopy
+    }
+
     // section prevent multiple queries this code prevents multiple queries by forcing quit if responses are valid and result is equal to direct response
-    if ((directionsResponse?.request?.destination && previousValue.current?.request?.destination) && (results?.request?.destination.query === directionsResponse?.request?.destination.query)) {
+    if (
+      directionsResponse?.request?.destination &&
+      previousValue.current?.request?.destination &&
+      results?.request?.destination.query ===
+        directionsResponse?.request?.destination.query
+    ) {
       return;
     }
 
@@ -148,7 +165,6 @@ function Map({ destinationDb }) {
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
     setRenderMap(true);
-
   }
 
   // section prevent multiple queries: this code prevents multiple queries by forcing quit if responses are valid and result is equal to direct response
@@ -165,6 +181,10 @@ function Map({ destinationDb }) {
     destination.current.value = "";
   }
 
+  // function testModal() {
+  //   handleShow();
+  // }
+
   //section spinner - wait for google map to return route
   if (!renderMap) {
     return (
@@ -177,6 +197,8 @@ function Map({ destinationDb }) {
   else {
     return (
       <div>
+        {/* <Button onClick={() => testModal()}>SHOW MODAL</Button> */}
+
         <DirectionsPanel />
 
         <div style={containerStyle} className="d-flex align-items-center">
@@ -188,7 +210,10 @@ function Map({ destinationDb }) {
 
           <Share origin={originSubmitted} destination={destinationSubmitted} />
 
-          <GoToGoogleMaps origin={originSubmitted} destination={destinationSubmitted} />
+          <GoToGoogleMaps
+            origin={originSubmitted}
+            destination={destinationSubmitted}
+          />
 
           <CenterIcon center={center} map={map} />
 
@@ -205,6 +230,28 @@ function Map({ destinationDb }) {
             origin={origin}
           />
         </div>
+
+        <Modal
+          show={show}
+          size="sm"
+          onHide={handleClose}
+          // backdrop="static"
+          keyboard={true}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Directions</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>Currently not available.</p>
+            <p>Try again later.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Understood
+            </Button>
+            {/* <Button variant="primary">Understood</Button> */}
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
