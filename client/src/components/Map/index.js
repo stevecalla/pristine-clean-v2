@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import SearchIcon from "./SearchIcon";
 import { LoadMap } from "./LoadMap";
+// eslint-disable-next-line
 import seed from "./responseSeed"; // saved for seed if necesary
 import { DirectionsPanel } from "./DirectionsPanel";
 import { Share } from "./Share";
@@ -74,6 +75,7 @@ function Map({ destinationDb }) {
 
   //section end
 
+  // eslint-disable-next-line
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,

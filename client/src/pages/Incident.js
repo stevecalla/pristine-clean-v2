@@ -65,6 +65,7 @@ function Incident() {
     launchEmailPlatform();
     resetForm();
     try {
+      // eslint-disable-next-line
       const { data } = addIncident({
         variables: {
           employeeName: name,

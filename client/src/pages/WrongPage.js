@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import wrongPageImg from "../assets/wrongPage.png";
+import wrongPageImg from "../assets/WrongPage.png";
 import { Container, Row, Button } from "react-bootstrap/";
 import "../styles/button-style.css";
 
 const WrongPage = () => {
   const navigate = useNavigate();
 
+
   useEffect(() => {
     setTimeout(() => navigate("/dashboard"), 7000);
+  // eslint-disable-next-line
   }, []);
 
   return (

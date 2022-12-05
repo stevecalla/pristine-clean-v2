@@ -3,11 +3,10 @@ import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
-import decode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/button-style.css";
 
-const LoginForm = ({ setShowModal }) => {
+const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -38,9 +37,6 @@ const LoginForm = ({ setShowModal }) => {
 
       // Auth.login(data.login.token);
       Auth.login(data.login);
-
-      let decodedToken = decode(data.login.token);
-      let isManager = decodedToken.data.isManager;
 
       window.location.assign(`/dashboard`);
 
