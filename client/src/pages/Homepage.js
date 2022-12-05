@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 import LoginForm from "../components/Home/LoginForm";
 import SignupForm from "../components/Home/SignupForm";
 
@@ -29,10 +29,11 @@ const Homepage = ({ tabDisplay }) => {
           style={{
             height: "600px",
             minHeight: "600px",
-            width: "380px",
+            width: "330px",
             margin: "10px",
             boxShadow: "5px 5px 5px 5px gray",
-            overflow: "scroll"
+            // overflow: "hidden",
+            overflowY: "scroll",
           }}
         >
           <div className="mx-4 mt-4 mb-4" style={{ height: "150px" }}>

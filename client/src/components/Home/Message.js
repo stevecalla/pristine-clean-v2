@@ -79,7 +79,8 @@ const Message = () => {
               className="d-flex justify-content-center"
           >
             <Button
-              variant="primary"
+              // variant="primary"
+              className="btn btn-sm btn-primary p-1"
               onClick={(e) => handleShiftEmail(e)}
             >
               Email Colin
