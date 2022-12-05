@@ -24,7 +24,7 @@ const AllEmployeesCont = () => {
   const [deleteUser] = useMutation(DELETE_USER);
 
   // delete USER
-  const handleDeleteUSER = async (userId) => {
+  const handleDeleteUser = async (userId) => {
     try {
       const { data } = await deleteUser({
         variables: {
@@ -33,7 +33,6 @@ const AllEmployeesCont = () => {
       });
 
       console.log(data); //to eliminate console warning
-
       window.location.reload();
 
     } catch (err) {
@@ -100,7 +99,7 @@ const AllEmployeesCont = () => {
                     onClick={(event) => {
                       console.log(event.currentTarget.getAttribute('data-user'));
                       let userId = event.currentTarget.getAttribute('data-user');
-                      handleDeleteUSER(userId)
+                      handleDeleteUser(userId);
                     }}
 
                   //section
