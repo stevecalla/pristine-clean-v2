@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Location, Incident } = require("../models");
+const { User, Location, Incident, Event } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -34,6 +34,9 @@ const resolvers = {
       return Incident.find();
       // }
       // throw new AuthenticationError("You need to be logged in!");
+    },
+    event: async () => {
+      return Event.find();
     },
   },
 

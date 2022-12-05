@@ -70,6 +70,17 @@ const typeDefs = gql`
     exclusions: String
   }
 
+  type Event {
+    _id: ID!
+    title: String
+    endTime: String
+    daysOfWeek: String
+    startRecur: String
+    display: String
+    backgroundColor: String
+    textColor: String
+  }
+
   type Incident {
     _id: ID
     employeeName: String
@@ -87,14 +98,13 @@ const typeDefs = gql`
     locations: [Location]!
     location(locationId: ID!): Location
     incidents: [Incident]!
+    event: [Event]!
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-
     deleteUser(_id: ID!): User
-
     updateAvailability(
       _id: ID!
       mondayAm: Boolean
