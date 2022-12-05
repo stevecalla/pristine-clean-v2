@@ -2,6 +2,9 @@ import React, { useRef, useState, memo, useEffect } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
 import "../../styles/spinner.css";
 
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
 import SearchIcon from "./SearchIcon";
 import { LoadMap } from "./LoadMap";
 
@@ -9,25 +12,43 @@ import seed from "./responseSeed";
 import { DirectionsPanel } from "./DirectionsPanel";
 import { Share } from "./Share";
 import { CenterIcon } from "./CenterIcon";
-import Container from "react-bootstrap/esm/Container";
+import { GoToGoogleMaps } from "./GoToGoogleMaps";
 
 const center = { lat: 40.1672, lng: -105.1019 };
 const libraries = ["places"];
 
 function Map({ destinationDb }) {
-  //section
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  let originSubmitted = ""; // origin submitted to google maps to get route
+  let destinationSubmitted = ""; // destination submited to google maps to get route
+
+  const [renderMap, setRenderMap] = useState(false); //section
+  let origin = useRef();
+  let destination = useRef();
+
+  //section get user current coordinates
   const [coords, setCoords] = useState("");
   const [originDb, setOriginDb] = useState("");
 
   // get user location from navigator api
   useEffect(() => {
-    try {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let crds = position.coords;
-        return setCoords(`${crds.latitude},${crds.longitude}`);
-      });
-    } catch (error) {
-      console.warn(`ERROR(${error.code}): ${error.message}`);
+    function success(position) {
+      setCoords(`${position.coords.latitude},${position.coords.longitude}`);
+    }
+
+    function error() {
+      handleShow();
+      setCoords(`40.1672, -105.1019`);
+      // alert("Sorry, no position available. Using default of Longmont");
+    }
+
+    if (!navigator.geolocation) {
+      console.log("Geolocation is not supported by your browser");
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
     }
   }, []);
 
@@ -46,19 +67,13 @@ function Map({ destinationDb }) {
               // console.log({ originDb });
             });
           } else {
-            // launchValidationModal(
-            //   "Error: Weather Not found",
-            //   // `Try Again at a Later Date: ${response.statusText}`
-            //   "weather"
-            // );
+            handleShow();
           }
         })
         .catch((error) => {
-          // launchValidationModal(
-          //   "Error: Weather Not found",
-          //   // `Try again later, please`,: ${response.statusText}`
-          //   "weather"
-          // );
+          handleShow();
+          console.log(error);
+          // alert("Sorry, google maps not available. Try again later.");
         });
     }
 
@@ -79,11 +94,6 @@ function Map({ destinationDb }) {
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
 
-  const [renderMap, setRenderMap] = useState(false); //section
-
-  let origin = useRef();
-  let destination = useRef();
-
   if (originDb && destinationDb) {
     // console.log(originDb, destinationDb);
     calculateRoute();
@@ -102,35 +112,66 @@ function Map({ destinationDb }) {
   async function calculateRoute(event) {
     event && event.preventDefault();
 
-    let originSubmitted = "";
-    let destinationSubmitted = "";
     if (origin.current?.value && destination.current?.value) {
       originSubmitted = origin.current?.value;
       destinationSubmitted = destination.current?.value;
-    } else {
+    } else if (originDb && destinationDb) {
       originSubmitted = originDb;
       destinationSubmitted = destinationDb;
+    } else {
+      originSubmitted = "Longmont, CO, USA";
+      destinationSubmitted = "Denver, CO, USA";
     }
 
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
 
-    const results = await directionsService.route({
+    let results;
+    let errorMessage;
+    
+    await directionsService.route({
+        origin: originSubmitted,
+        destination: destinationSubmitted,
+        // eslint-disable-next-line no-undef
+        travelMode: google.maps.TravelMode.DRIVING
       // origin: originDb || origin.current.value,
       // destination: destinationDb || destination.current.value,
-      origin: originSubmitted,
-      destination: destinationSubmitted,
-      // eslint-disable-next-line no-undef
-      travelMode: google.maps.TravelMode.DRIVING,
       // optimizeWaypoints: true,
       // provideRouteAlternatives: true,
+    })
+    .then((data) => results = data)
+    .catch((err) => {
+      console.log(err);
+      errorMessage = err;
     });
+
+    if (errorMessage) {
+      console.log(errorMessage);
+      alert(errorMessage);
+      // attempts to use either alert or a modal resulted in infinate loop; proceed with caution; alert was the least loopy
+    }
+
+    // section prevent multiple queries this code prevents multiple queries by forcing quit if responses are valid and result is equal to direct response
+    if (
+      directionsResponse?.request?.destination &&
+      previousValue.current?.request?.destination &&
+      results?.request?.destination.query ===
+        directionsResponse?.request?.destination.query
+    ) {
+      return;
+    }
 
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
-    setRenderMap(true); //section
+    setRenderMap(true);
   }
+
+  // section prevent multiple queries: this code prevents multiple queries by forcing quit if responses are valid and result is equal to direct response
+  const previousValue = useRef(null);
+  useEffect(() => {
+    previousValue.current = directionsResponse;
+  }, [directionsResponse]);
 
   function clearRoute() {
     setDirectionsResponse(null);
@@ -140,18 +181,24 @@ function Map({ destinationDb }) {
     destination.current.value = "";
   }
 
+  // function testModal() {
+  //   handleShow();
+  // }
+
   //section spinner - wait for google map to return route
   if (!renderMap) {
-  return (
+    return (
       <div className="d-flex justify-content-center">
         <div className="lds-hourglass"></div>
       </div>
-  );
-}
-// section comment out this section to avoid pulling map
-else {
+    );
+  }
+  // section comment out this section to avoid pulling map
+  else {
     return (
       <div>
+        {/* <Button onClick={() => testModal()}>SHOW MODAL</Button> */}
+
         <DirectionsPanel />
 
         <div style={containerStyle} className="d-flex align-items-center">
@@ -161,7 +208,12 @@ else {
             setMap={setMap}
           />
 
-          <Share />
+          <Share origin={originSubmitted} destination={destinationSubmitted} />
+
+          <GoToGoogleMaps
+            origin={originSubmitted}
+            destination={destinationSubmitted}
+          />
 
           <CenterIcon center={center} map={map} />
 
@@ -178,6 +230,28 @@ else {
             origin={origin}
           />
         </div>
+
+        <Modal
+          show={show}
+          size="sm"
+          onHide={handleClose}
+          // backdrop="static"
+          keyboard={true}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Directions</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>Currently not available.</p>
+            <p>Try again later.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Understood
+            </Button>
+            {/* <Button variant="primary">Understood</Button> */}
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

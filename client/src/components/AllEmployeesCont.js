@@ -1,25 +1,24 @@
 import React, { useState } from "react";
-import format_phone from "../utils/helpers";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
-import Collapse from "react-bootstrap/Collapse";
-import Table from "react-bootstrap/Table";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { ListGroup, Card, Button, Collapse, Table, Row, Col } from "react-bootstrap/";
 import { PersonX } from "react-bootstrap-icons";
 import { XSquareFill, Check2Circle } from "react-bootstrap-icons";
+import { useQuery, useMutation } from "@apollo/client";
+import '../styles/button-style.css'
+import format_phone from "../utils/helpers";
 
-import { useQuery } from "@apollo/client";
-// // query all employees and locations
+// query all employees and locations
 import { QUERY_USERS } from "../utils/queries";
-
 import { DELETE_USER } from "../utils/mutations";
-import { useMutation } from "@apollo/client";
+
+import { getManagerStatus } from "../utils/getManager";
+
 
 const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
-  // const []
+
+  const manager = getManagerStatus();
+  // console.log(manager)
+
 
   // delete User query
   const [deleteUser] = useMutation(DELETE_USER);
@@ -67,12 +66,15 @@ const AllEmployeesCont = () => {
   // // const employees = employeesData?.employees || [];
   if (loading) {
     return (
-      <div>
-        No employees
+      <div
+        style={{ minHeight: '80vh', width: "100vw" }}
+        className="d-flex justify-content-center align-items-center align-content-center m-0"
+      >
+        <div className="lds-hourglass"></div>
       </div>
     )
   } else if (!loading) {
-  // if (!loading) {
+    // if (!loading) {
     return (
       <>
         {data.users?.map((employee, index) => (
@@ -86,12 +88,12 @@ const AllEmployeesCont = () => {
                     (Username: {employee.username})
                   </p>
                 </Col>
-                <Col xs={1.5}>
-                  <PersonX
+                <Col xs={1.5} className="py-0">
+                  {manager && <PersonX
                     id="delete-employee"
                     color="red"
                     size="24px"
-                    className="mr-2"
+                    className="mr-2 button-style"
                     data-user={employee._id}
                     //section
 
@@ -101,22 +103,23 @@ const AllEmployeesCont = () => {
                       handleDeleteUSER(userId)
                     }}
 
-                    //section
+                  //section
                   />
+                  }
                 </Col>
               </Row>
             </Card.Header>
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  Phone #:{" "}
+                  <b>Phone #:</b>{" "}
                   {employee.cell && format_phone(employee.cell)
                     ? format_phone(employee.cell)
                     : "No Phone Yet"}
                   {/* Phone #: {employee.cell ? employee.cell : "No Phone Yet"} */}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Email: {employee.email ? employee.email : "No Email Yet"}
+                  <b>Email:</b> {employee.email ? employee.email : "No Email Yet"}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button
@@ -125,7 +128,7 @@ const AllEmployeesCont = () => {
                     aria-controls="example-fade-text"
                     aria-expanded={openAvailability}
                     size="lg"
-                    className="btn-block my-2"
+                    className="btn-block my-2 collapse-button"
                     data-target={`#collapseTarget-${index}`}
                   >
                     View Availability

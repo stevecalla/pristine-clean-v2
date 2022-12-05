@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 import LoginForm from "../components/Home/LoginForm";
 import SignupForm from "../components/Home/SignupForm";
 
@@ -21,18 +21,19 @@ const Homepage = ({ tabDisplay }) => {
   // set slide prop to true to enable animation
 
   return (
-    <>
+    <Container style={{ marginTop: '85px' }}>
       {/* <MessageBoard /> */}
 
-      <div className="d-flex flex-column align-items-center mt-3 overflow-auto">
+      <div className="d-flex flex-column align-items-center mt-3 overflow-auto" >
         <div
           style={{
             height: "600px",
             minHeight: "600px",
-            width: "380px",
+            width: "330px",
             margin: "10px",
             boxShadow: "5px 5px 5px 5px gray",
-            overflow: "scroll"
+            // overflow: "hidden",
+            overflowY: "scroll",
           }}
         >
           <div className="mx-4 mt-4 mb-4" style={{ height: "150px" }}>
@@ -69,7 +70,7 @@ const Homepage = ({ tabDisplay }) => {
           </Tabs>
         </div>
       </div>
-    </>
+    </Container>
   );
 };
 

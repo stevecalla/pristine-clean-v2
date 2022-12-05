@@ -6,6 +6,7 @@ import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../../styles/button-style.css'
 
 const SignupForm = ({ setShowModal }) => {
   // set initial form state
@@ -104,7 +105,7 @@ const SignupForm = ({ setShowModal }) => {
           validated={validated}
           onSubmit={handleFormSubmit}
           className="mx-2 mt-2 mb-1"
-          style={{ width: "350px" }}
+          style={{ width: "280px" }}
         >
           <Form.Group>
             <Form.Label htmlFor="username">Username</Form.Label>
@@ -183,7 +184,7 @@ const SignupForm = ({ setShowModal }) => {
                 userFormData.password
               )
             }
-            className="mb-3"
+            className="mb-3 submit-button-style"
             type="submit"
             variant="success"
           >

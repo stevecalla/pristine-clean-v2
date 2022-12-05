@@ -11,13 +11,15 @@ import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 import AllLocationsCont from "../components/AllLocationsCont";
 import format_phone from "../utils/helpers"
 import Map from "../components/Map";
+import '../styles/button-style.css'
+import FullCalendarApp from '../components/FullCalendarApp'
 
 import { useQuery } from "@apollo/client";
 // // query all locations
 import { QUERY_LOCATIONS } from "../utils/queries";
 
-const Location = ({ locationDetails }) => {
-  // console.log(locationDetails);
+const Location = ({ locationDetails, selectedPage }) => {
+  // console.log(locationDetails, selectedPage);
   // let locationAddress = locationDetails.address;
   // console.log(locationDetails.address);
   const [showMap, setShowMap] = useState(false);
@@ -33,7 +35,10 @@ const Location = ({ locationDetails }) => {
 
   const [locationPage, setLocationPage] = useState(false);
   const handleAllLocationsClick = (e) => {
-    setLocationPage(!locationPage);
+    // setLocationPage(!locationPage)
+    setLocationPage(true)
+
+
   };
   // TODO: throwing errors, why not returning trying to map through property that is not defined as array? 
   // const { loading, data } = useQuery(QUERY_LOCATIONS);
@@ -50,26 +55,33 @@ const Location = ({ locationDetails }) => {
   //   );
   // }
 
-  if (locationPage) {
-    // console.log("yes 1000");
+  // if (locationPage) {
+  //   // console.log("yes 1000");
+  //   return <AllLocationsCont />;
+  // }
+
+  if (locationPage && selectedPage === "calendar") {
+    return <FullCalendarApp />
+  } else if (locationPage && selectedPage === "location") {
     return <AllLocationsCont />;
   }
 
   return (
     <main>
-      <Container className="my-2 shadow rounded-lg py-1 border border-secondary">
+      <Container className="my-2 py-1 shadow rounded-lg  border border-secondary">
         <Button
           onClick={() => setOpenDetails(!openDetails)}
           aria-controls="details-fade-text"
           aria-expanded={openDetails}
           size="lg"
-          className="btn-block my-2"
+          className="btn-block my-2 collapse-button"
         >
           <Row className="justify-content-between">
             <Col xs={1.25} className="ml-1">
               <div>
                 <SkipBackwardCircle
                   id="link-location-page"
+                  className="back-button-style"
                   color="white"
                   size="28px"
                   aria-hidden="true"
@@ -100,17 +112,17 @@ const Location = ({ locationDetails }) => {
                   <Card.Header>{locationDetails.businessName}</Card.Header>
                   <Card.Body className=" bg-light">
                     <ListGroup variant="flush">
-                      <ListGroup.Item>Manager: McNatt, Colin</ListGroup.Item>
+                      <ListGroup.Item><b>Manager:</b> McNatt, Colin</ListGroup.Item>
                       <ListGroup.Item>
-                        Address: {locationDetails.address}
+                        <b>Address:</b> {locationDetails.address}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        Contact #: {format_phone(locationDetails.businessContact)}
+                        <b>Contact #:</b> {format_phone(locationDetails.businessContact)}
                       </ListGroup.Item>
-                      <ListGroup.Item>
+                      {/* <ListGroup.Item> */}
                         {/* list group for cleaners */}
-                        Cleaners
-                        <ListGroup variant="flush">
+                        {/* Cleaners
+                        <ListGroup variant="flush"> */}
                           {/* TODO: throwing errors, why not returning? */}
                           {/* {cleaners.map((cleaner, index) => (
                             <>
@@ -119,17 +131,17 @@ const Location = ({ locationDetails }) => {
                               </ListGroup.Item>
                             </>
                           ))}; */}
-                        </ListGroup>
-                      </ListGroup.Item>
+                        {/* </ListGroup> */}
+                      {/* </ListGroup.Item> */}
                       <ListGroup.Item>
-                        Frequency: {locationDetails.shifts}
+                        <b>Frequency:</b> {locationDetails.shifts}
                       </ListGroup.Item>
                       <Button
                         onClick={() => setOpenInstruction(!openInstructions)}
                         aria-controls="instructions-fade-text"
                         aria-expanded={openInstructions}
                         size="lg"
-                        className="btn-block my-2"
+                        className="btn-block my-2 collapse-button"
                       >
                         Instructions
                       </Button>
@@ -228,7 +240,7 @@ const Location = ({ locationDetails }) => {
             aria-controls="details-fade-text"
             aria-expanded={showMap}
             size="lg"
-            className="btn-block my-2"
+            className="btn-block my-2 collapse-button"
           >
             Get Directions
           </Button>

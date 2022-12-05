@@ -10,7 +10,7 @@ export const CenterIcon = ({ center, map }) => {
         title="Center"
         alt="Center Map"
         style={centerStyle}
-        transform="grow-7"
+        transform="grow-6"
         onClick={() => {
           map.panTo(center);
           map.setZoom(15);
@@ -30,7 +30,7 @@ const centerStyle = {
   backgroundColor: "white",
   cursor: "grab",
   position: "absolute",
-  zIndex: "2",
+  zIndex: "10",
   borderRadius: "2px",
   boxShadow: "rgb(0 0 0 / 30%) 0px 1px 0px -1px",
 };

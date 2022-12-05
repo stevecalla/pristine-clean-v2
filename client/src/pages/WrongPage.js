@@ -1,31 +1,39 @@
 import React, { useEffect } from "react";
-import WrongPageImg from '../assets/WrongPage.png'
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
+import wrongPageImg from "../assets/WrongPage.png";
+import { Container, Row, Button } from "react-bootstrap/";
+import '../styles/button-style.css'
 import { Link, useNavigate } from "react-router-dom";
 
 
 const WrongPage = () => {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        setTimeout(() => navigate("/dashboard"), 5000);
-    }, [] )
+  useEffect(() => {
+    setTimeout(() => navigate("/dashboard"), 7000);
+  }, []);
 
-
-
-    return (
-        <Container>
-            <Row className=" justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
-                <Button as={Link} to="/dashboard" className="rounded-pill shadow-lg" style={{ backgroundColor: 'black' }}>
-                    <img src={WrongPageImg} alt="404 Wrong Page" style={{ maxHeight: '40vh' }} />
-                </Button>
-            </Row>
-        </Container>
-    )
-}
-
+  return (
+    <Container>
+      <Row
+        className=" justify-content-center align-items-center"
+        style={{ minHeight: "80vh" }}
+      >
+        <Button
+          as={Link}
+          to="/dashboard"
+          className="rounded-pill wrong-page-button"
+          style={{ backgroundColor: "white", border: 'none' }}
+        >
+          <img
+            src={wrongPageImg}
+            alt="404 Wrong Page"
+            style={{ maxHeight: "40vh" }}
+          />
+        </Button>
+      </Row>
+    </Container>
+  );
+};
 
 export default WrongPage;

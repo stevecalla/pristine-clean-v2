@@ -113,7 +113,7 @@ const typeDefs = gql`
       sundayPm: Boolean
     ): User
     addIncident(employeeName: String!, locationName: String!, employeePhone: String!, subject: String!, urgent: String!, incidentDetails: String!): Incident
-    deleteIncident(incidentId: ID!): Incident
+    deleteIncident(_id: ID!): Incident
   }
 `;
 

@@ -12,32 +12,44 @@ import {
 } from "react-bootstrap";
 import Auth from "../utils/auth";
 
-import { NavStarsAsset } from "../components/NavStarsAsset"
-
+import { NavStarsAsset } from "../components/NavStarsAsset";
+import "../styles/nav-bar-style.css";
 
 const AppNavbar = () => {
   return (
     <>
       <Navbar
         collapseOnSelect
+        className="shadow-sm"
         style={{ backgroundColor: "black" }}
+        fixed="top"
         variant="dark"
         expand="lg"
       >
         <Container fluid className="pl-0">
           <Navbar.Brand as={Link} reloadDocument to="/">
             <Row>
-              <NavStarsAsset className="mb-1" style={NavStarsStyle} />
-              <h2 className="m-0 pt-1" style={HeadingStyle}>Pristine Clean</h2>
+              <NavStarsAsset className="mb-1 ml-0 pl-0 nav-stars-style" />
+              <h2 className="m-0 pt-1 heading-style">Pristine Clean</h2>
             </Row>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar" className="white" />
+          <Row>
+            <Navbar.Toggle
+              aria-controls="navbar"
+              className="white toggle-style mr-3"
+            />
+          </Row>
           <Navbar.Collapse id="navbar" className="text-white">
             <Nav className="ml-auto">
               {/* if user is logged in show saved books & logout nav links else show login/signup modal */}
               {Auth.loggedIn() ? (
                 <>
-                  <Nav.Link as={Link} to="/dashboard" eventKey="4" className="text-white" >
+                  <Nav.Link
+                    as={Link}
+                    to="/dashboard"
+                    eventKey="4"
+                    className="text-white"
+                  >
                     Dashboard
                   </Nav.Link>
                   <NavDropdown
@@ -50,51 +62,51 @@ const AppNavbar = () => {
                       as={Link}
                       to="/availability"
                       eventKey="5"
-                      style={{ fontFamily: 'Georgia, Times New Roman, serif' }}
                     >
                       Availability
                     </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/timeoff" eventKey="6" style={{ fontFamily: 'Georgia, Times New Roman, serif' }}>
-                      Request Time-Off
+                    <NavDropdown.Item as={Link} to="/timeoff" eventKey="6">
+                      Time Off Request
                     </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/incident" eventKey="7" style={{ fontFamily: 'Georgia, Times New Roman, serif' }}>
+                    <NavDropdown.Item as={Link} to="/incident" eventKey="7">
                       Incident Report
                     </NavDropdown.Item>
+                    <NavDropdown.Item reloadDocument as={Link} to="/incidentlist" eventKey="8">
+                      Incident List
+                    </NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link onClick={Auth.logout} className="text-white" >Logout</Nav.Link>
+                  <Nav.Link onClick={Auth.logout} className="text-white">
+                    Logout
+                  </Nav.Link>
                 </>
               ) : (
                 <>
-                  <Nav.Link reloadDocument as={Link} to="/login" eventKey="10" className="text-white" >
+                  <Nav.Link
+                    reloadDocument
+                    as={Link}
+                    to="/login"
+                    eventKey="10"
+                    className="text-white"
+                  >
                     Login
                   </Nav.Link>
-                  <Nav.Link reloadDocument as={Link} to="/signup" eventKey="10" className="text-white" >
+                  <Nav.Link
+                    reloadDocument
+                    as={Link}
+                    to="/signup"
+                    eventKey="10"
+                    className="text-white"
+                  >
                     Sign Up
                   </Nav.Link>
                 </>
               )}
             </Nav>
           </Navbar.Collapse>
-
-
         </Container>
       </Navbar>
     </>
-  )
-}
-
-const NavStarsStyle = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-}
-
-const HeadingStyle =
-{
-  fontFamily: 'Georgia, Times New Roman, serif',
-  position: "relative",
-  left: -25,
-  zIndex: 5
-}
+  );
+};
 
 export default AppNavbar;
