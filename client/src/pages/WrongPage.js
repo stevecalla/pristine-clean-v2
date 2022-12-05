@@ -7,8 +7,10 @@ import "../styles/button-style.css";
 const WrongPage = () => {
   const navigate = useNavigate();
 
+
   useEffect(() => {
     setTimeout(() => navigate("/dashboard"), 7000);
+  // eslint-disable-next-line
   }, []);
 
   return (

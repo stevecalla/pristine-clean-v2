@@ -27,7 +27,7 @@ const AllEmployeesCont = () => {
   // delete USER
   const handleDeleteUser = async (userId) => {
     try {
-      // eslint-disable-next-line no-undef
+      // eslint-disable-next-line
       const { data } = await deleteUser({
         variables: {
           id: userId,
