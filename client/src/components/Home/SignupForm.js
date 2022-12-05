@@ -6,7 +6,7 @@ import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import '../../styles/button-style.css'
+import "../../styles/button-style.css";
 
 const SignupForm = ({ setShowModal }) => {
   const [userFormData, setUserFormData] = useState({
@@ -47,7 +47,6 @@ const SignupForm = ({ setShowModal }) => {
       Auth.login(data.addUser);
 
       navigate(`/dashboard`, { replace: true });
-
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -75,7 +74,6 @@ const SignupForm = ({ setShowModal }) => {
   return (
     <div className="d-flex flex-column align-items-center mt-3">
       <div className="d-flex flex-column align-items-center">
-
         <Form
           noValidate
           validated={validated}

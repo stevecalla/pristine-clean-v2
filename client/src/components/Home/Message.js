@@ -2,10 +2,9 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import qrcode_pristine_clean from "../../assets/qrcode_pristine_clean.png";
-import '../../styles/button-style.css'
+import "../../styles/button-style.css";
 
 const Message = () => {
-
   const handleShiftEmail = (e) => {
     e.preventDefault();
     launchEmailPlatform();
@@ -66,17 +65,13 @@ const Message = () => {
           >
             Shifts - Available
           </Card.Title>
-          <Card.Subtitle 
-            className="mb-2 text-muted">
-          </Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
           <Card.Text>
             <li>Company #1, 6:30a, MWF</li>
             <li>Company #1, 6:30a, MWF</li>
             <li>Company #1, 6:30a, MWF</li>
           </Card.Text>
-          <div
-              className="d-flex justify-content-center"
-          >
+          <div className="d-flex justify-content-center">
             <Button
               className="btn btn-sm btn-primary p-1 submit-button-style"
               onClick={(e) => handleShiftEmail(e)}

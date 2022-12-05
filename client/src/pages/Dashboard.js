@@ -25,7 +25,7 @@ const Dashboard = () => {
   if (loading) {
     return (
       <div
-        style={{ minHeight: '80vh', width: "100vw" }}
+        style={{ minHeight: "80vh", width: "100vw" }}
         className="d-flex justify-content-center align-items-center align-content-center mt-5"
       >
         <div className="lds-hourglass"></div>
@@ -34,10 +34,12 @@ const Dashboard = () => {
   } else {
     return (
       <>
-        <Container style={{ marginTop: '85px' }}>
+        <Container style={{ marginTop: "85px" }}>
           <Row className="justify-content-center">
-            <p style={{ fontSize: '16px' }}>
-              <b>Welcome {data.me?.firstName} {data.me?.lastName}!</b>
+            <p style={{ fontSize: "16px" }}>
+              <b>
+                Welcome {data.me?.firstName} {data.me?.lastName}!
+              </b>
             </p>
           </Row>
         </Container>
@@ -55,7 +57,7 @@ const Dashboard = () => {
                 <Tab eventKey="calendar" title="Calendar">
                   <Row>
                     <Col>
-                      <FullCalendarApp className="shadow-sm"/>
+                      <FullCalendarApp className="shadow-sm" />
                     </Col>
                   </Row>
                 </Tab>

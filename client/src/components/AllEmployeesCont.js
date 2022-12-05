@@ -1,9 +1,17 @@
 import React, { useState } from "react";
-import { ListGroup, Card, Button, Collapse, Table, Row, Col } from "react-bootstrap/";
+import {
+  ListGroup,
+  Card,
+  Button,
+  Collapse,
+  Table,
+  Row,
+  Col,
+} from "react-bootstrap/";
 import { PersonX } from "react-bootstrap-icons";
 import { XSquareFill, Check2Circle } from "react-bootstrap-icons";
 import { useQuery, useMutation } from "@apollo/client";
-import '../styles/button-style.css'
+import "../styles/button-style.css";
 import format_phone from "../utils/helpers";
 import { QUERY_USERS } from "../utils/queries";
 import { DELETE_USER } from "../utils/mutations";
@@ -27,7 +35,6 @@ const AllEmployeesCont = () => {
       });
 
       window.location.reload();
-
     } catch (err) {
       console.log(err);
     }
@@ -58,12 +65,12 @@ const AllEmployeesCont = () => {
   if (loading) {
     return (
       <div
-        style={{ minHeight: '80vh', width: "100vw" }}
+        style={{ minHeight: "80vh", width: "100vw" }}
         className="d-flex justify-content-center align-items-center align-content-center m-0"
       >
         <div className="lds-hourglass"></div>
       </div>
-    )
+    );
   } else if (!loading) {
     // if (!loading) {
     return (
@@ -80,22 +87,24 @@ const AllEmployeesCont = () => {
                   </p>
                 </Col>
                 <Col xs={1.5} className="py-0">
-                  {manager && <PersonX
-                    id="delete-employee"
-                    color="red"
-                    size="24px"
-                    className="mr-2 button-style"
-                    data-user={employee._id}
-                    //section
+                  {manager && (
+                    <PersonX
+                      id="delete-employee"
+                      color="red"
+                      size="24px"
+                      className="mr-2 button-style"
+                      data-user={employee._id}
+                      //section
 
-                    onClick={(event) => {
-                      let userId = event.currentTarget.getAttribute('data-user');
-                      handleDeleteUser(userId);
-                    }}
+                      onClick={(event) => {
+                        let userId =
+                          event.currentTarget.getAttribute("data-user");
+                        handleDeleteUser(userId);
+                      }}
 
-                  //section
-                  />
-                  }
+                      //section
+                    />
+                  )}
                 </Col>
               </Row>
             </Card.Header>
@@ -108,7 +117,8 @@ const AllEmployeesCont = () => {
                     : "No Phone Yet"}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <b>Email:</b> {employee.email ? employee.email : "No Email Yet"}
+                  <b>Email:</b>{" "}
+                  {employee.email ? employee.email : "No Email Yet"}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button

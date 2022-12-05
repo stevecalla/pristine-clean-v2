@@ -119,22 +119,23 @@ function Map({ destinationDb }) {
 
     let results;
     let errorMessage;
-    
-    await directionsService.route({
+
+    await directionsService
+      .route({
         origin: originSubmitted,
         destination: destinationSubmitted,
         // eslint-disable-next-line no-undef
-        travelMode: google.maps.TravelMode.DRIVING
-      // origin: originDb || origin.current.value,
-      // destination: destinationDb || destination.current.value,
-      // optimizeWaypoints: true,
-      // provideRouteAlternatives: true,
-    })
-    .then((data) => results = data)
-    .catch((err) => {
-      console.log(err);
-      errorMessage = err;
-    });
+        travelMode: google.maps.TravelMode.DRIVING,
+        // origin: originDb || origin.current.value,
+        // destination: destinationDb || destination.current.value,
+        // optimizeWaypoints: true,
+        // provideRouteAlternatives: true,
+      })
+      .then((data) => (results = data))
+      .catch((err) => {
+        console.log(err);
+        errorMessage = err;
+      });
 
     if (errorMessage) {
       console.log(errorMessage);

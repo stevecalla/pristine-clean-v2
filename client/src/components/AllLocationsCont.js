@@ -9,7 +9,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import Location from "../pages/Location";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import '../styles/button-style.css'
+import "../styles/button-style.css";
 
 const AllLocationsCont = ({ allLocations }) => {
   const userId = getUserId();
@@ -36,11 +36,13 @@ const AllLocationsCont = ({ allLocations }) => {
     setSelectedLocation(filteredLocation[0]);
     setLocationPage(true);
   };
-  
+
   if (locationPage) {
-    return <Location locationDetails={selectedLocation} selectedPage={"location"}/>;
+    return (
+      <Location locationDetails={selectedLocation} selectedPage={"location"} />
+    );
   }
-  
+
   if (!loading) {
     return (
       <>
@@ -66,8 +68,12 @@ const AllLocationsCont = ({ allLocations }) => {
             </Card.Header>
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
-                <ListGroup.Item><b>Address:</b> {location.address}</ListGroup.Item>
-                <ListGroup.Item><b>Days:</b> {location.shifts}</ListGroup.Item>
+                <ListGroup.Item>
+                  <b>Address:</b> {location.address}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <b>Days:</b> {location.shifts}
+                </ListGroup.Item>
               </ListGroup>
             </Card.Body>
           </Card>

@@ -7,4 +7,4 @@ export const getManagerStatus = () => {
   const isManager = token && user.data.isManager;
 
   return isManager;
-}
+};

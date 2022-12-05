@@ -5,7 +5,7 @@ import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import decode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import '../../styles/button-style.css'
+import "../../styles/button-style.css";
 
 const LoginForm = ({ setShowModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -45,7 +45,6 @@ const LoginForm = ({ setShowModal }) => {
       window.location.assign(`/dashboard`);
 
       // navigate(`/dashboard`, { replace: true }); //todo
-
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -73,7 +72,6 @@ const LoginForm = ({ setShowModal }) => {
   return (
     <div className="d-flex flex-column align-items-center mt-3">
       <div className="d-flex flex-column align-items-center">
-
         <Form
           noValidate
           validated={validated}
@@ -111,7 +109,14 @@ const LoginForm = ({ setShowModal }) => {
               <Form.Control.Feedback type="invalid">
                 <p>Password is required!</p>
               </Form.Control.Feedback>
-              <InputGroup.Text id="basic-addon1" style={{ borderRadius: "0%", background: "white", borderLeft: "none"}}>
+              <InputGroup.Text
+                id="basic-addon1"
+                style={{
+                  borderRadius: "0%",
+                  background: "white",
+                  borderLeft: "none",
+                }}
+              >
                 <FontAwesomeIcon
                   icon="fa-eye"
                   style={display ? isDisplayed : isNotDisplayed}

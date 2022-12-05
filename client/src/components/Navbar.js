@@ -1,12 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Navbar,
-  Nav,
-  Container,
-  Row,
-  NavDropdown,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, Row, NavDropdown } from "react-bootstrap";
 import Auth from "../utils/auth";
 
 import { NavStarsAsset } from "../components/NavStarsAsset";
@@ -68,7 +62,12 @@ const AppNavbar = () => {
                     <NavDropdown.Item as={Link} to="/incident" eventKey="7">
                       Incident Report
                     </NavDropdown.Item>
-                    <NavDropdown.Item reloadDocument as={Link} to="/incidentlist" eventKey="8">
+                    <NavDropdown.Item
+                      reloadDocument
+                      as={Link}
+                      to="/incidentlist"
+                      eventKey="8"
+                    >
                       Incident List
                     </NavDropdown.Item>
                   </NavDropdown>
