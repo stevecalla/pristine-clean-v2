@@ -25,7 +25,7 @@ function SearchIcon({
         onClick={() => setOpen(!open)}
         title="Search"
         alt="Share my profile"
-        transform="grow-4"
+        transform="grow-3"
       />
 
       <div style={formStyle} className="">
@@ -140,7 +140,7 @@ const searchStyle = {
   backgroundColor: "white",
   cursor: "grab",
   position: "absolute",
-  zIndex: "1",
+  zIndex: "10",
   borderRadius: "2px",
   boxShadow: "rgb(0 0 0 / 30%) 0px 1px 4px -1px",
 };
