@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Lottie from "react-lottie-player";
-import cleanMop from "../../assets/lf30_editor_bdlq4qxu.json";
+import cleanMop from "../../assets/cleanMop.json";
 import mopClean from "../../assets/mopClean.png";
 
 export const CleanAsset = () => {
@@ -36,7 +36,6 @@ export const CleanAsset = () => {
 const isDisplayed = {
   width: "150px",
   height: "150px",
-  // borderRadius: "50%",
   display: "none",
   zIndex: "5",
 };
