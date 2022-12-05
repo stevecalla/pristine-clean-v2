@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Collapse from "react-bootstrap/Collapse";
+import '../../styles/button-style.css'
 
 export const DirectionsPanel = () => {
   const [open, setOpen] = useState(false);
@@ -8,8 +9,8 @@ export const DirectionsPanel = () => {
     <>
       <div id="accordion">
         <div className="card p-2 mb-1"   >
-          <div className="rounded" id="headingOne" style={{ "backgroundColor": "#0E6DFD"}}>
-            <h5 className="mb-0">
+          <div className="rounded directions-collapse" id="headingOne" style={{ "backgroundColor": "#0E6DFD"}}>
+            <h5 className="mb-0 text-center">
               <button
                 className="btn btn-link pl-1"
                 onClick={() => setOpen(!open)}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import "../styles/Contact.css";
 import '../styles/button-style.css'
+import "../styles/heading-style.css"
 
 function Timeoff() {
   const today = new Date().toLocaleDateString();
@@ -124,7 +125,7 @@ function Timeoff() {
             onSubmit={handleFormSubmit}
             style={{ width: "80vw" }}
           >
-            <h2 className="display-6 custom-text">Time Off Request</h2>
+            <h2 className="display-6 custom-text heading">Time Off Request</h2>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <div className="form-label">

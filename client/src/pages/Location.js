@@ -112,12 +112,12 @@ const Location = ({ locationDetails, selectedPage }) => {
                   <Card.Header>{locationDetails.businessName}</Card.Header>
                   <Card.Body className=" bg-light">
                     <ListGroup variant="flush">
-                      <ListGroup.Item>Manager: McNatt, Colin</ListGroup.Item>
+                      <ListGroup.Item><b>Manager:</b> McNatt, Colin</ListGroup.Item>
                       <ListGroup.Item>
-                        Address: {locationDetails.address}
+                        <b>Address:</b> {locationDetails.address}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        Contact #: {format_phone(locationDetails.businessContact)}
+                        <b>Contact #:</b> {format_phone(locationDetails.businessContact)}
                       </ListGroup.Item>
                       {/* <ListGroup.Item> */}
                         {/* list group for cleaners */}
@@ -134,7 +134,7 @@ const Location = ({ locationDetails, selectedPage }) => {
                         {/* </ListGroup> */}
                       {/* </ListGroup.Item> */}
                       <ListGroup.Item>
-                        Frequency: {locationDetails.shifts}
+                        <b>Frequency:</b> {locationDetails.shifts}
                       </ListGroup.Item>
                       <Button
                         onClick={() => setOpenInstruction(!openInstructions)}

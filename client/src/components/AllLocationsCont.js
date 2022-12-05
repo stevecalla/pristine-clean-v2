@@ -96,8 +96,8 @@ const AllLocationsCont = ({ allLocations }) => {
             </Card.Header>
             <Card.Body className=" bg-light">
               <ListGroup variant="flush">
-                <ListGroup.Item>Address: {location.address}</ListGroup.Item>
-                <ListGroup.Item>Days: {location.shifts}</ListGroup.Item>
+                <ListGroup.Item><b>Address:</b> {location.address}</ListGroup.Item>
+                <ListGroup.Item><b>Days:</b> {location.shifts}</ListGroup.Item>
               </ListGroup>
             </Card.Body>
           </Card>
