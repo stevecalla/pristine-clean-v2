@@ -126,3 +126,18 @@ export const QUERY_USERS = gql`
     }
   }
 `;
+
+export const QUERY_EVENTS = gql`
+  query events {
+    events {
+      _id
+      title
+      endTime
+      daysOfWeek
+      startRecur
+      display
+      backgroundColor
+      textColor
+    }
+  }
+`;

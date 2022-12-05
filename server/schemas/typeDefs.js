@@ -74,7 +74,7 @@ const typeDefs = gql`
     _id: ID!
     title: String
     endTime: String
-    daysOfWeek: String
+    daysOfWeek: [Int]
     startRecur: String
     display: String
     backgroundColor: String
@@ -98,7 +98,7 @@ const typeDefs = gql`
     locations: [Location]!
     location(locationId: ID!): Location
     incidents: [Incident]!
-    event: [Event]!
+    events: [Event]!
   }
 
   type Mutation {

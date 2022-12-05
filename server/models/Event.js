@@ -9,7 +9,7 @@ const eventSchema = new Schema(
       type: String,
     },
     daysOfWeek: {
-      type: String,
+      type: Array,
     },
     startRecur: {
       type: String,

@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
-import "../styles/calendar.css";
+import Location from "../pages/Location";
+
+import { INITIAL_EVENTS } from "../utils/event-utils";
+import Auth from "../utils/auth";
+import { getUserId } from "../utils/getUserId";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import { QUERY_EVENTS } from "../utils/queries";
+
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import momentPlugin from "@fullcalendar/moment";
 import listPlugin from "@fullcalendar/list";
-import { INITIAL_EVENTS } from "../utils/event-utils";
 import moment from "moment";
-
-//section
-import Auth from "../utils/auth";
-import { getUserId } from "../utils/getUserId";
-import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
-import Location from "../pages/Location";
+import "../styles/calendar.css";
 
 const FullCalendarApp = () => {
   // set state of sctive view through day# click
   const [activeView, setActiveView] = useState("dayGridMonth");
+
   // const calendarRef = useRef(null);
   const [weekendsVisible] = useState(true);
+
   // check for mobile device to set initial view
   window.mobilecheck = function () {
     var check = false;
@@ -37,7 +40,7 @@ const FullCalendarApp = () => {
     })(navigator.userAgent || navigator.vendor || window.opera);
     return check;
   };
-  //
+
   useEffect(() => {
     setActiveView("listDay");
   }, [activeView]);
@@ -51,6 +54,28 @@ const FullCalendarApp = () => {
     );
   }
 
+  //section
+  // guery events
+  const { loadingEvents, data: eventData } = useQuery(QUERY_EVENTS);
+
+  let rawEvents;
+  let events;
+
+  if (!loadingEvents) {
+    console.log(eventData);
+    rawEvents = eventData.events;
+
+    events = [
+      ...events,
+      startRecur[startRecur]
+    ]
+
+    console.log(rawEvents);
+    console.log(INITIAL_EVENTS);
+  }
+
+  //section
+
   const userId = getUserId();
 
   const { loading, data } = useQuery(QUERY_ME, {
@@ -60,6 +85,7 @@ const FullCalendarApp = () => {
 
   let locations;
   if (!loading) {
+    console.log(data);
     locations = data?.me?.locations;
   }
 
@@ -83,6 +109,7 @@ const FullCalendarApp = () => {
     );
   }
 
+  if (!loadingEvents) {
   return (
     <div className="cal-app my-3 p-1 shadow border border-secondary rounded-lg">
       <div id="calendar" className="cal-app-main">
@@ -126,6 +153,7 @@ const FullCalendarApp = () => {
           dayMaxEvents={true}
           weekends={weekendsVisible}
           initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+          // initialEvents={INITIAL_EVENTS_V2} // alternatively, use the `events` setting to fetch from a feed
           eventContent={renderEventContent} // custom render function
           eventClick={handleEventClick} //section
           navLinks={true} // allows for navigation to day-view of selected date
@@ -134,5 +162,6 @@ const FullCalendarApp = () => {
     </div>
   );
 };
+}
 
 export default FullCalendarApp;
