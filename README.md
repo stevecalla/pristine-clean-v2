@@ -16,17 +16,37 @@
 ## Description
 
 AS the owner of a commercial cleaning business
-I WANT:
-A seperate login for (1) Managers and (2) Employees
-Managers to be able to view all the locations that they manage on their dashboard
-Employees to be able to view all the locations that they have shifts at on their own dashboard
+
+I WANT employees to be able to log in to an application that gives them all of the tools and information necessary to fullfill all of the requirements of their position.
 
 SO THAT manage the business through a single page application
 
 ```
-This app is a search engine that allows users to find/search and save books that the user would like to read (or purchase or share).
+This application is a single page application built using the MERN stack. When employees first navigate to the page they see a log in box with a (1) message tab (2) login tab and (3) a sign up tab. On the message tab there is a link to the company website, a list of available shifts and the shift information, as well as a QR code that can be scanned to navigate to the application page.
 
-The objective of this project was to convert a RESTful MERN (Mongo, Express, React, Node) API to a GraphQL/Apollo MERN API.
+When employees log in they are taken to their own custom dashboard. On their dashboard they can view (1) their schedule on an interactive calendar (2) locations that they have shifts at (3) and an employees tab.
+
+The calendar is interactive and can viewed by either month or day. When an employee clicks on an event in the calendar they are taken to the locations information page.
+
+To view location information employees can either click the job in their interactive calendar, or go click on the locations tab. Here they will find all of the locations details including the locations manager, address, contact information, how often the facility is cleaned, and detailed instructions. If employees click the Get Directions button at the bottom of the locations page they will be given directions from their current location to that facility. The directions can be changed based on user input and can be opened up in google maps.
+
+On the employees tab is a list of all employees and their contact information. There is also a collapsable View Availabilty tab that lists that employees current availability when clicked.
+
+In the navigation bar when an employee is signed in they will see (1) Dashboard (2) Forms (3) and Logout tabs.
+
+The forms tab that includes (1) Availability (2) Request Time Off (3) Incident Report
+
+When the employeee clicks on availability they are taken to an interactive availabilty form where they can view there current availability and update it if necessary.
+
+When the employee clicks the Request Time Off form, they are taken to a form that can be filled out and is emailed directly to management.
+
+When the emplpoyee clicks the Incident Report form, they are taken to a for, that can also be filled out and is emailed directly to management. This form has an Urgent/Not Urgent box that will populate the subject line to help management know the importance of the incident.
+
+Managers dashboards are similar to employees with additional functionality.
+
+In the employees tab, managers have the ability to delete employees.
+
+In the locations tab, managers will see all locations rather than just the ones that they have shifts at.
 
 ```
 
@@ -47,24 +67,18 @@ This app includes a variety of API routes (see list below). In addition, the fol
 1. `Single-page app` built using React.
 2. `Component` based approach which breaks down each page and major function. For example, the header, footer and each navigation bar link is a unique component.
 3. `Bootstap` is used for the majority of the html and css including the nav bar, cards, and form.
-4. `Search Book` and `Saved Book` pages.
-5. `Saved Book` presents cards for each saved book with cover image, title, author, description and link to google books.
-6. `Search Book` presnets a `search box` search functionality that accepts user input then uses a `fetch` to search the google book api using the user input.
-7. `Login`, `Signup`, and `Logout` functionality using a bootstrap modal, jsonwebtoken for authentication and alert messaging for invalid login.
-8. Upon `login` the user then has the ability to save one or more books based on the search results. After saving a book the book is listed on the "see my books" page via a link in the nav bar. On the "saved book" screen a loggedin user has the option to remove (delete) books.
-9. `User` login information is used to `save` books to a specific user rather than expose the user information in the URL via parameters (params).
-10. `Heroku` deployment.
+4. `Login`, `Signup`, and `Logout` functionality using a bootstrap modal, jsonwebtoken for authentication and alert messaging for invalid login.
+5. `Heroku` deployment.
 
 ## Future Enhancements:
 
-1. Breakdown code into `smaller components` for readability, maintainability and reduce duplication.
+1. Have a list of available shifts that employees can select and they will be added to their schedule.
 2. Enhance to a `PWA` to work both on- and off-line.
-3. Enhance search options and google api with more `customized google search results` (newest, max results, author et al).
-4. Provide user with more advance `self-select search options` (e.g. search by title, author, newest, number of results).
-5. Update `password, username and email verification standards` and functionality.
-6. Upgrade `login` and `signup` to include `tooltip & required field` messages.
-7. Add `Share` functionality so the user can share a book with others via email and/or text message.
-8. Upgrade backend to use `Apollo cache` rather than local storage.
+3. Ability to clock-in at a specific location.
+4. `Geolocation` to ensure that employees are on site when clocking in.
+5. Ability to change/update password or create a new password if it is forgetten.
+6. Store Incident reports in the database for future reference.
+7. Have a message board that is linked to each location that will populate on the employees dashboard upon loggin in.
 
 ## Technology
 
@@ -76,6 +90,7 @@ This app includes a variety of API routes (see list below). In addition, the fol
 6. `bcrypt`: To encrypt the user password.
 7. `jsonwebtoken/jwt decoe`: For user authentication and token decoding.
 8. `Heroku`: Deployment.
+9. `FullCalendar` npm package
 
 ---
 
@@ -83,9 +98,9 @@ This app includes a variety of API routes (see list below). In addition, the fol
 
 Video #1: Demonstrates all of the content, functional and technical acceptance criteria.
 
-[Link to WalkThrough Video](https://youtu.be/XXe5NX0E9NM)
+[Link to WalkThrough Video]()
 
-![Build & deploy video](./assets/demo-video.gif)
+![Build & deploy video](.)
 
 ## Tests
 
@@ -99,12 +114,10 @@ Contributor Covenant Code of Conduct
 
 ## Resources
 
-1. Project Manager: [Steve Calla - GitHub Profile](https://github.com/stevecalla)
-2. GitHub Repo #1 - Deployed: [LINK](https://github.com/stevecalla/book-search-engine-v2)
-3. GitHub Repo #2 - Original: [LINK](https://github.com/stevecalla/book-search-engine)
-   - Note Repo #2 would not deploy to Heroku. After multiple attempts, repo was rebuilt in most recent version of create react as represented by Repo #1 above. Repo #2 includes the vast majority of the development commit information.
-4. Deployed Site URL - Heroku: [LINK](https://book-search-engine-calla.herokuapp.com/)
-5. Contact: [Email Steve](mailto:callasteven@gmail.com)
+1.  [Steve Calla - GitHub Profile](https://github.com/stevecalla)
+2.  [Alex Cleveland - GitHub Profile](https://github.com/AClevel5)
+3.  [Patrick Ratcliff - GitHub Profile](https://github.com/PatrickARatcliff)
+4.  [Colin McNatt - GitHub Profile](https://github.com/colinmichael89)
 
 ## License
 
