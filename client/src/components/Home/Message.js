@@ -81,7 +81,7 @@ const Message = () => {
           >
             <Button
               // variant="primary"
-              className="btn btn-sm btn-primary p-1"
+              className="btn btn-sm btn-primary p-1 submit-button-style"
               onClick={(e) => handleShiftEmail(e)}
             >
               Email Colin
