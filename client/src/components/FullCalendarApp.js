@@ -61,7 +61,7 @@ const FullCalendarApp = () => {
 
   if (!loading) {
     locations = data?.me?.locations;
-    console.log(locations)
+    // console.log(locations)
   }
 
   const [locationPage, setLocationPage] = useState(false);
