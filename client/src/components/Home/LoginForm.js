@@ -97,7 +97,7 @@ const LoginForm = ({ setShowModal }) => {
           validated={validated}
           onSubmit={handleFormSubmit}
           className="mx-2 mt-2 mb-1"
-          style={{ width: "350px" }}
+          style={{ width: "280px" }}
         >
           <Form.Group>
             <Form.Label htmlFor="email">Email</Form.Label>
