@@ -69,11 +69,13 @@ This app includes a variety of API routes (see list below). In addition, the fol
 3. `Bootstap` is used for the majority of the html and css including the nav bar, cards, and form.
 4. `Login`, `Signup`, and `Logout` functionality using a bootstrap modal, jsonwebtoken for authentication and alert messaging for invalid login.
 5. `Heroku` deployment.
+6. `PWA` the application can be installed on users device.
+7. `Maps` user can view a map and get directions from their location.
 
 ## Future Enhancements:
 
 1. Have a list of available shifts that employees can select and they will be added to their schedule.
-2. Enhance to a `PWA` to work both on- and off-line.
+2. Enhance `PWA` to allow users to be able to view location information offline.
 3. Ability to clock-in at a specific location.
 4. `Geolocation` to ensure that employees are on site when clocking in.
 5. Ability to change/update password or create a new password if it is forgetten.
@@ -86,11 +88,13 @@ This app includes a variety of API routes (see list below). In addition, the fol
 2. `Git/Github:` Repo and version management.
 3. `Mongo/Mongoose`: Database.
 4. `React-Bootstrap`: For most of the CSS styling.
-5. `Apollo/GraphQL`: For GraphQL database query.
-6. `bcrypt`: To encrypt the user password.
-7. `jsonwebtoken/jwt decoe`: For user authentication and token decoding.
-8. `Heroku`: Deployment.
-9. `FullCalendar` npm package
+5. `react-fontawesome`: For icons
+6. `Apollo/GraphQL`: For GraphQL database query.
+7. `bcrypt`: To encrypt the user password.
+8. `jsonwebtoken/jwt decode`: For user authentication and token decoding.
+9. `Heroku`: Deployment.
+10. `fullcalendar`: Calendar npm package for schedules
+11. `moment`: For date/time formatting
 
 ---
 
