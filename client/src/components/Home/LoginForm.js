@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
@@ -9,9 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../../styles/button-style.css'
 
 const LoginForm = ({ setShowModal }) => {
-
-  // console.log(Auth.loggedin(), !Auth.loggedin());
-
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -77,11 +73,6 @@ const LoginForm = ({ setShowModal }) => {
   return (
     <div className="d-flex flex-column align-items-center mt-3">
       <div className="d-flex flex-column align-items-center">
-        {/* <div className="mx-4" style={{ width: "350px" }}>
-            <p className="mt-2 mb-1">Log In</p>
-            <hr className="my-0 mb-1"></hr>
-            <hr className="my-0"></hr>
-          </div> */}
 
         <Form
           noValidate
@@ -109,7 +100,6 @@ const LoginForm = ({ setShowModal }) => {
             <Form.Label htmlFor="password">Password</Form.Label>
             <InputGroup className="mb-3">
               <Form.Control
-                // type="password"
                 type={showHidePassword}
                 placeholder="Your password"
                 name="password"

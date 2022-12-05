@@ -5,7 +5,6 @@ import '../styles/button-style.css'
 import "../styles/heading-style.css"
 
 function Timeoff() {
-  const today = new Date().toLocaleDateString();
   var dt = new Date();
   var mm = dt.getMonth() + 1;
   var dd = dt.getDate();
@@ -35,8 +34,6 @@ function Timeoff() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    // console.log(e.target, e.target.checked);
-
     // Ternary statement that will call either the value of the input upon change
     name === "name"
       ? setName(value)
@@ -51,7 +48,6 @@ function Timeoff() {
               : name === "urgent"
                 ? setSubject(value)
                 : setBody(value);
-
     return name;
   };
 
@@ -167,10 +163,8 @@ function Timeoff() {
                 <Form.Control
                   className="custom-border"
                   type="date"
-                  // type="datetime-local"
                   value={startDate}
                   name="startDate"
-                  // min="2022-11-30"
                   min={calendarMinDate}
                   max={calendarMaxDate}
                   onChange={handleInputChange}
@@ -197,10 +191,8 @@ function Timeoff() {
                 <Form.Control
                   className="custom-border"
                   type="date"
-                  // type="datetime-local"
                   value={endDate}
                   name="endDate"
-                  // min="2022-30-22"
                   min={startDate}
                   max={calendarMaxDate}
                   onChange={handleInputChange}
@@ -266,7 +258,6 @@ function Timeoff() {
                   * field is required
                 </Form.Label>
               </div>
-              {/* <Form.Label>Message</Form.Label> */}
               <Form.Control
                 className="custom-border"
                 as="textarea"

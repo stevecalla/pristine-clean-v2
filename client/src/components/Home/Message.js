@@ -1,11 +1,11 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import mopClean from "../../assets/mopClean.png";
 import qrcode_pristine_clean from "../../assets/qrcode_pristine_clean.png";
 import '../../styles/button-style.css'
 
 const Message = () => {
+
   const handleShiftEmail = (e) => {
     e.preventDefault();
     launchEmailPlatform();
@@ -36,8 +36,6 @@ const Message = () => {
           >
             Cleaning at its finest
           </Card.Title>
-          <Card.Text>{/* Cleaning at its finest. */}</Card.Text>
-          {/* <Button variant="primary">Go somewhere</Button> */}
           <Card.Link
             href="https://www.pristinecleanbycolin.com"
             target="_blank"
@@ -68,8 +66,8 @@ const Message = () => {
           >
             Shifts - Available
           </Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-            {/* Card Subtitle */}
+          <Card.Subtitle 
+            className="mb-2 text-muted">
           </Card.Subtitle>
           <Card.Text>
             <li>Company #1, 6:30a, MWF</li>
@@ -80,7 +78,6 @@ const Message = () => {
               className="d-flex justify-content-center"
           >
             <Button
-              // variant="primary"
               className="btn btn-sm btn-primary p-1 submit-button-style"
               onClick={(e) => handleShiftEmail(e)}
             >

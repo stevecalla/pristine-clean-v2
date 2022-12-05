@@ -93,16 +93,6 @@ query allIncidents {
   }
 } `
 
-// export const QUERY_SINGLE_LOCATION = gql`
-//   query singleLocation($locationId: ID!) {
-//     location(locationId: $locationId) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;
-
 export const QUERY_USERS = gql`
   query allUsers {
     users {
@@ -133,13 +123,3 @@ export const QUERY_USERS = gql`
     }
   }
 `;
-
-// export const QUERY_SINGLE_EMPLOYEE = gql`
-//   query singleEmployee($employeeId: ID!) {
-//     employee(employeeId: $employeeId) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;

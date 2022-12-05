@@ -96,7 +96,6 @@ const resolvers = {
       parent,
       {
         _id,
-        username,
         mondayAm,
         mondayPm,
         tuesdayAm,

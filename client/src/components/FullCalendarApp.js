@@ -42,10 +42,7 @@ const FullCalendarApp = () => {
     )
   };
 
-  //section
   const userId = getUserId();
-
-  // console.log(!Auth.loggedIn());
 
   const { loading, data } = useQuery(QUERY_ME, {
     variables: { id: userId },
@@ -53,7 +50,6 @@ const FullCalendarApp = () => {
   });
 
   let locations;
-
   if (!loading) {
     locations = data?.me?.locations;
   }
@@ -86,7 +82,6 @@ const FullCalendarApp = () => {
             center: '',
             right: 'prev,next,today',
           }}
-          // footer={true}
           footerToolbar={{
             left: '',
             center: 'dayGridMonth,listWeek',
@@ -109,17 +104,9 @@ const FullCalendarApp = () => {
           dayMaxEvents={true}
           weekends={weekendsVisible}
           initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-          // select={handleDateSelect}
           eventContent={renderEventContent} // custom render function
-          // eventClick={handleEventClick}
           eventClick={handleEventClick} //section
-          // eventsSet={handleEvents} // called after events are initialized/added/changed/removed
           navLinks={true} // allows for navigation to day-view of selected date
-        /* you can update a remote database when these fire:
-        eventAdd={function () { }}
-        eventChange={function () { }}
-        eventRemove={function () { }}
-        */
         />
       </div>
     </div>

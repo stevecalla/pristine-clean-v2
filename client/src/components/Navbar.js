@@ -5,9 +5,6 @@ import {
   Nav,
   Container,
   Row,
-  Col,
-  Modal,
-  Tab,
   NavDropdown,
 } from "react-bootstrap";
 import Auth from "../utils/auth";

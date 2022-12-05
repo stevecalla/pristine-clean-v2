@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import wrongPageImg from "../assets/wrongPage.png";
 import { Container, Row, Button } from "react-bootstrap/";
 import '../styles/button-style.css'
-import { Link, useNavigate } from "react-router-dom";
-
 
 const WrongPage = () => {
 

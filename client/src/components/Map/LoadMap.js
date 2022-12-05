@@ -40,6 +40,7 @@ export const LoadMap = ({ center, directionsResponse, setMap }) => {
         trafficLayer.setMap(map);
       }}
     >
+      {/* ADD ADDITOINAL ROUTES IF NECESSARY; NEED TO CHANGE OPTION TO ALTERNATIVE ROUTES TRUE */}
       {/* {directionsResponse?.routes[2] && (
         <DirectionsRenderer
           directions={directionsResponse}

@@ -1,14 +1,11 @@
 import React, { useRef, useState, memo, useEffect } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
 import "../../styles/spinner.css";
-
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-
 import SearchIcon from "./SearchIcon";
 import { LoadMap } from "./LoadMap";
-
-import seed from "./responseSeed";
+import seed from "./responseSeed"; // saved for seed if necesary
 import { DirectionsPanel } from "./DirectionsPanel";
 import { Share } from "./Share";
 import { CenterIcon } from "./CenterIcon";
@@ -175,6 +172,7 @@ function Map({ destinationDb }) {
     destination.current.value = "";
   }
 
+  // set modal if necessary
   // function testModal() {
   //   handleShow();
   // }
@@ -191,6 +189,7 @@ function Map({ destinationDb }) {
   else {
     return (
       <div>
+        {/* test modal if necessary */}
         {/* <Button onClick={() => testModal()}>SHOW MODAL</Button> */}
 
         <DirectionsPanel />
@@ -243,7 +242,6 @@ function Map({ destinationDb }) {
             <Button variant="secondary" onClick={handleClose}>
               Understood
             </Button>
-            {/* <Button variant="primary">Understood</Button> */}
           </Modal.Footer>
         </Modal>
       </div>
@@ -261,10 +259,8 @@ const containerStyle = {
 };
 
 const lineBreakStyle = {
-  // heigth: "1px",
   heigth: ".25px",
   width: "33px",
-  // bottom: "135px",
   bottom: "28px",
   left: "64px",
   padding: "1px",

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_INCIDENT } from "../utils/mutations";
 import { Row, Col, Button, Form } from "react-bootstrap/";
 import "../styles/Contact.css";
 import '../styles/button-style.css'
 import "../styles/heading-style.css"
-import { useMutation } from "@apollo/client";
-import { ADD_INCIDENT } from "../utils/mutations";
 
 function Incident() {
   const [name, setName] = useState("");
@@ -57,12 +57,6 @@ function Incident() {
       body.trim() !== ""
     );
   }, [name, locationName, telNo, subject, isUrgent, body]);
-
-  // const handleFormSubmit = (e) => {
-  //   e.preventDefault();
-  //   launchEmailPlatform();
-  //   resetForm();
-  // };
 
   const [addIncident] = useMutation(ADD_INCIDENT);
 
@@ -251,7 +245,6 @@ function Incident() {
                   * field is required
                 </Form.Label>
               </div>
-              {/* <Form.Label>Message</Form.Label> */}
               <Form.Control
                 className="custom-border"
                 as="textarea"
@@ -276,22 +269,6 @@ function Incident() {
               Send Email
             </Button>
           </Form>
-          {/* {incidents.map((incident, index) => ( */}
-          {/* <Card key={2}>
-        <Card.Header className="container">
-          <Row className="justify-content-between">
-            <Col xs={10}>name</Col>
-
-          </Row>
-        </Card.Header>
-        <Card.Body className=" bg-light">
-          <ListGroup variant="flush">
-            <ListGroup.Item>Address: </ListGroup.Item>
-            <ListGroup.Item>Days: </ListGroup.Item>
-          </ListGroup>
-        </Card.Body>
-      </Card> */}
-          {/* ))} */}
         </Col>
       </Row>
     </div>

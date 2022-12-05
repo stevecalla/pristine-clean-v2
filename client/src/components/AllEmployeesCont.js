@@ -5,17 +5,12 @@ import { XSquareFill, Check2Circle } from "react-bootstrap-icons";
 import { useQuery, useMutation } from "@apollo/client";
 import '../styles/button-style.css'
 import format_phone from "../utils/helpers";
-
-// query all employees and locations
 import { QUERY_USERS } from "../utils/queries";
 import { DELETE_USER } from "../utils/mutations";
-
 import { getManagerStatus } from "../utils/getManager";
-
 
 const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
-
   const manager = getManagerStatus();
 
   // delete User query
@@ -24,13 +19,13 @@ const AllEmployeesCont = () => {
   // delete USER
   const handleDeleteUser = async (userId) => {
     try {
+      // eslint-disable-next-line no-undef
       const { data } = await deleteUser({
         variables: {
           id: userId,
         },
       });
 
-      console.log('Eliminate warning'); //to eliminate console warning
       window.location.reload();
 
     } catch (err) {

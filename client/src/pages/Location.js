@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import AllLocationsCont from "../components/AllLocationsCont";
+import Map from "../components/Map";
+import FullCalendarApp from "../components/FullCalendarApp";
+import format_phone from "../utils/helpers";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,13 +10,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Collapse from "react-bootstrap/Collapse";
-import { SkipBackwardCircle } from "react-bootstrap-icons";
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
-import AllLocationsCont from "../components/AllLocationsCont";
-import format_phone from "../utils/helpers"
-import Map from "../components/Map";
-import '../styles/button-style.css'
-import FullCalendarApp from '../components/FullCalendarApp'
+import { SkipBackwardCircle } from "react-bootstrap-icons";
+import "../styles/button-style.css";
 
 const Location = ({ locationDetails, selectedPage }) => {
   const [showMap, setShowMap] = useState(false);
@@ -21,11 +21,11 @@ const Location = ({ locationDetails, selectedPage }) => {
   const [locationPage, setLocationPage] = useState(false);
 
   const handleAllLocationsClick = (e) => {
-    setLocationPage(true)
+    setLocationPage(true);
   };
 
   if (locationPage && selectedPage === "calendar") {
-    return <FullCalendarApp />
+    return <FullCalendarApp />;
   } else if (locationPage && selectedPage === "location") {
     return <AllLocationsCont />;
   }
@@ -49,7 +49,6 @@ const Location = ({ locationDetails, selectedPage }) => {
                   color="white"
                   size="28px"
                   aria-hidden="true"
-                  // transform="grow-9"
                   onClick={() => handleAllLocationsClick()}
                 />
               </div>
@@ -62,7 +61,6 @@ const Location = ({ locationDetails, selectedPage }) => {
                   color="transparent"
                   size="28px"
                   aria-hidden="true"
-                // transform="grow-9"
                 />
               </div>
             </Col>
@@ -76,27 +74,16 @@ const Location = ({ locationDetails, selectedPage }) => {
                   <Card.Header>{locationDetails.businessName}</Card.Header>
                   <Card.Body className=" bg-light">
                     <ListGroup variant="flush">
-                      <ListGroup.Item><b>Manager:</b> McNatt, Colin</ListGroup.Item>
+                      <ListGroup.Item>
+                        <b>Manager:</b> McNatt, Colin
+                      </ListGroup.Item>
                       <ListGroup.Item>
                         <b>Address:</b> {locationDetails.address}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <b>Contact #:</b> {format_phone(locationDetails.businessContact)}
+                        <b>Contact #:</b>{" "}
+                        {format_phone(locationDetails.businessContact)}
                       </ListGroup.Item>
-                      {/* <ListGroup.Item> */}
-                        {/* list group for cleaners */}
-                        {/* Cleaners
-                        <ListGroup variant="flush"> */}
-                          {/* TODO: throwing errors, why not returning? */}
-                          {/* {cleaners.map((cleaner, index) => (
-                            <>
-                              <ListGroup.Item>
-                                {cleaner.firstName}, {cleaner.lastName}
-                              </ListGroup.Item>
-                            </>
-                          ))}; */}
-                        {/* </ListGroup> */}
-                      {/* </ListGroup.Item> */}
                       <ListGroup.Item>
                         <b>Frequency:</b> {locationDetails.shifts}
                       </ListGroup.Item>
@@ -194,22 +181,17 @@ const Location = ({ locationDetails, selectedPage }) => {
             </Row>
           </div>
         </Collapse>
-
-        {/* <Row> */}
-          <Button
-            onClick={() => {
-              // console.log("click");
-              setShowMap(!showMap);
-            }}
-            aria-controls="details-fade-text"
-            aria-expanded={showMap}
-            size="lg"
-            className="btn-block my-2 collapse-button"
-          >
-            Get Directions
-          </Button>
-        {/* </Row> */}
-
+        <Button
+          onClick={() => {
+            setShowMap(!showMap);
+          }}
+          aria-controls="details-fade-text"
+          aria-expanded={showMap}
+          size="lg"
+          className="btn-block my-2 collapse-button"
+        >
+          Get Directions
+        </Button>
         {showMap && (
           <Collapse in={showMap}>
             <div id="collapse-map">
@@ -224,17 +206,9 @@ const Location = ({ locationDetails, selectedPage }) => {
             </div>
           </Collapse>
         )}
-
       </Container>
     </main>
   );
 };
 
 export default Location;
-
-// const mapContainer = {
-//   flexDirection: "column",
-//   width: "100%",
-//   height: "100%",
-//   position: "relative",
-// };

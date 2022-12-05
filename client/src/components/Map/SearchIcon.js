@@ -2,7 +2,6 @@ import React, { useState, memo } from "react";
 import { Autocomplete } from "@react-google-maps/api";
 import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 

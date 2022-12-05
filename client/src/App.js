@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,7 +9,6 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
-// import MapPage from "./pages/MapPage";
 import Dashboard from "./pages/Dashboard";
 import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
@@ -18,11 +17,8 @@ import Location from "./pages/Location";
 import WrongPage from './pages/WrongPage';
 import IncidentList from "./pages/IncidentList";
 import Auth from "./utils/auth";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import { library } from "@fortawesome/fontawesome-svg-core";
-// import { fab } from '@fortawesome/free-brands-svg-icons'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
   faTrash,

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-// import Carousel from "react-bootstrap/Carousel";
+import Auth from "../utils/auth";
 import LoginForm from "../components/Home/LoginForm";
 import SignupForm from "../components/Home/SignupForm";
-
-import Auth from "../utils/auth";
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -21,8 +18,6 @@ const Homepage = ({ tabDisplay }) => {
 
   return (
     <Container style={{ marginTop: '85px' }}>
-      {/* <MessageBoard /> */}
-
       <div className="d-flex flex-column align-items-center mt-3 overflow-auto" >
         <div
           style={{
@@ -31,7 +26,6 @@ const Homepage = ({ tabDisplay }) => {
             width: "330px",
             margin: "10px",
             boxShadow: "5px 5px 5px 5px gray",
-            // overflow: "hidden",
             overflowY: "scroll",
           }}
         >

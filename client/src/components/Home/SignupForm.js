@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../../styles/button-style.css'
 
 const SignupForm = ({ setShowModal }) => {
-  // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: "",
     email: "",
@@ -45,16 +44,10 @@ const SignupForm = ({ setShowModal }) => {
         variables: { ...userFormData },
       });
 
-      // Auth.login(data.addUser.token);
       Auth.login(data.addUser);
-
-      //section
-      let decodedToken = decode(data.addUser.token);
-      let isManager = decodedToken.data.isManager;
 
       navigate(`/dashboard`, { replace: true });
 
-      setShowModal(false);
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -82,11 +75,6 @@ const SignupForm = ({ setShowModal }) => {
   return (
     <div className="d-flex flex-column align-items-center mt-3">
       <div className="d-flex flex-column align-items-center">
-        {/* <div className="mx-4" style={{ width: "350px" }}>
-            <p className="mt-2 mb-1">Sign Up</p>
-            <hr className="my-0 mb-1"></hr>
-            <hr className="my-0"></hr>
-          </div> */}
 
         <Form
           noValidate
@@ -130,7 +118,6 @@ const SignupForm = ({ setShowModal }) => {
 
             <InputGroup className="mb-3">
               <Form.Control
-                // type="password"
                 type={showHidePassword}
                 placeholder="Your password"
                 name="password"

@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// const Location = require('./Location');
-// import schema from Availability.js
-// const availabilitySchema = require("./Availability");
-
 const userSchema = new Schema(
   {
     username: {

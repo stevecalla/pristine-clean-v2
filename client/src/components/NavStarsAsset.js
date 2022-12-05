@@ -6,7 +6,6 @@ import starNav from "../assets/navbar_stars.png"
 export const NavStarsAsset = () => {
     const [display, setDisplay] = useState(true);
     
-
     useEffect(() => {
         setTimeout(() => {
           setDisplay(false);
@@ -42,7 +41,6 @@ export const NavStarsAsset = () => {
       };
       
       const isNotDisplayed = {
-        // width: "5rem",
         height: "2.75rem",
         display: "block",
         zIndex: "3",
