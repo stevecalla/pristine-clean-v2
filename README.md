@@ -48,7 +48,7 @@ The following features exist:
 ## Future Enhancements:
 
 1. Have a list of available shifts that employees can select and they will be added to their schedule.
-2. Enhance to a `PWA` to work both on- and off-line.
+2. Enhance `PWA` to allow users to be able to view location information offline.
 3. Ability to clock-in at a specific location.
 4. `Geolocation` to ensure that employees are on site when clocking in.
 5. Ability to change/update password or create a new password if it is forgetten.
@@ -68,8 +68,6 @@ The following features exist:
 9. `FullCalendar` npm package.
 10. NPM Packages: `FontAwesome`, `moment`, `phone-number-formater`, `react-bootstrap-icons`, 
 11. `API`: Google maps - a) `places`, b) `directions` and c) `reverse geocode` & d) `TinyURL`.
-
----
 
 ## Website Preview
 
