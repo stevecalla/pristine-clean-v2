@@ -15,46 +15,13 @@
 
 ## Description
 
+```
 AS the owner of a commercial cleaning business
 
-I WANT employees to be able to log in to an application that gives them all of the tools and information necessary to fullfill all of the requirements of their position.
+I WANT employees to be able to log in to an application that gives them all of the tools and information necessary to the requirements of their position.
 
 SO THAT manage the business through a single page application
-
-```
-This application is a single page application built using the MERN stack. When employees first navigate to the page they see a log in box with a (1) message tab (2) login tab and (3) a sign up tab. On the message tab there is a link to the company website, a list of available shifts and the shift information, as well as a QR code that can be scanned to navigate to the application page.
-
-When employees log in they are taken to their own custom dashboard. On their dashboard they can view (1) their schedule on an interactive calendar (2) locations that they have shifts at (3) and an employees tab.
-
-The calendar is interactive and can viewed by either month or day. When an employee clicks on an event in the calendar they are taken to the locations information page.
-
-To view location information employees can either click the job in their interactive calendar, or go click on the locations tab. Here they will find all of the locations details including the locations manager, address, contact information, how often the facility is cleaned, and detailed instructions. If employees click the Get Directions button at the bottom of the locations page they will be given directions from their current location to that facility. The directions can be changed based on user input and can be opened up in google maps.
-
-On the employees tab is a list of all employees and their contact information. There is also a collapsable View Availabilty tab that lists that employees current availability when clicked.
-
-In the navigation bar when an employee is signed in they will see (1) Dashboard (2) Forms (3) and Logout tabs.
-
-The forms tab that includes (1) Availability (2) Request Time Off (3) Incident Report
-
-When the employeee clicks on availability they are taken to an interactive availabilty form where they can view there current availability and update it if necessary.
-
-When the employee clicks the Request Time Off form, they are taken to a form that can be filled out and is emailed directly to management.
-
-When the emplpoyee clicks the Incident Report form, they are taken to a for, that can also be filled out and is emailed directly to management. This form has an Urgent/Not Urgent box that will populate the subject line to help management know the importance of the incident.
-
-Managers dashboards are similar to employees with additional functionality.
-
-In the employees tab, managers have the ability to delete employees.
-
-In the locations tab, managers will see all locations rather than just the ones that they have shifts at.
-
-```
-
-## Installation
-
-Setup:
-
-- (1) Fork the repo, (2) Clone the forked repo locally, (3) Run `npm i` to install dependencies, and (4) `npm run develop` to build the app, deploy the local server and open the app.
+````
 
 ## Usage
 
@@ -62,15 +29,21 @@ This app is deployed using Heroku. From a development perspective, this app uses
 
 ## Features
 
-This app includes a variety of API routes (see list below). In addition, the following features exist.
+The following features exist:
 
-1. `Single-page app` built using React.
-2. `Component` based approach which breaks down each page and major function. For example, the header, footer and each navigation bar link is a unique component.
-3. `Bootstap` is used for the majority of the html and css including the nav bar, cards, and form.
-4. `Login`, `Signup`, and `Logout` functionality using a bootstrap modal, jsonwebtoken for authentication and alert messaging for invalid login.
-5. `Heroku` deployment.
-6. `PWA` the application can be installed on users device.
-7. `Maps` user can view a map and get directions from their location.
+1. This application is a single page application built using the MERN stack. When employees first navigate to the page they see a log in box with a (1) message tab (2) login tab and (3) a sign up tab. On the message tab there is a link to the company website, a list of available shifts and the shift information, as well as a QR code that can be scanned to navigate to the application page.
+2. When employees log in they are taken to their own custom dashboard. On their dashboard they can view (1) their schedule on an interactive calendar (2) locations that they have shifts at (3) and an employees tab.
+3, The calendar is interactive and can viewed by either month or day. When an employee clicks on an event in the calendar they are taken to the locations information page.
+4. To view location information employees can either click the job in their interactive calendar, or go click on the locations tab. Here they will find all of the locations details including the locations manager, address, contact information, how often the facility is cleaned, and detailed instructions. If employees click the Get Directions button at the bottom of the locations page they will be given directions from their current location to that facility. The directions can be changed based on user input and can be opened up in google maps.
+5. On the employees tab is a list of all employees and their contact information. There is also a collapsable View Availabilty tab that lists that employees current availability when clicked.
+6. In the navigation bar when an employee is signed in they will see (1) Dashboard (2) Forms (3) and Logout tabs.
+7. The forms tab that includes (1) Availability (2) Request Time Off (3) Incident Report
+8. When the employeee clicks on availability they are taken to an interactive availabilty form where they can view there current availability and update it if necessary.
+9. When the employee clicks the Request Time Off form, they are taken to a form that can be filled out and is emailed directly to management.
+10. When the emplpoyee clicks the Incident Report form, they are taken to a for, that can also be filled out and is emailed directly to management. This form has an Urgent/Not Urgent box that will populate the subject line to help management know the importance of the incident.
+11. Managers dashboards are similar to employees with additional functionality.
+12. In the employees tab, managers have the ability to delete employees.
+13. In the locations tab, managers will see all locations rather than just the ones that they have shifts at.
 
 ## Future Enhancements:
 
@@ -88,27 +61,63 @@ This app includes a variety of API routes (see list below). In addition, the fol
 2. `Git/Github:` Repo and version management.
 3. `Mongo/Mongoose`: Database.
 4. `React-Bootstrap`: For most of the CSS styling.
-5. `react-fontawesome`: For icons
-6. `Apollo/GraphQL`: For GraphQL database query.
-7. `bcrypt`: To encrypt the user password.
-8. `jsonwebtoken/jwt decode`: For user authentication and token decoding.
-9. `Heroku`: Deployment.
-10. `fullcalendar`: Calendar npm package for schedules
-11. `moment`: For date/time formatting
+5. `Apollo/GraphQL`: For GraphQL database query.
+6. `bcrypt`: To encrypt the user password.
+7. `jsonwebtoken/jwt decoe`: For user authentication and token decoding.
+8. `Heroku`: Deployment.
+9. `FullCalendar` npm package.
+10. NPM Packages: `FontAwesome`, `moment`, `phone-number-formater`, `react-bootstrap-icons`, 
+11. `API`: Google maps - a) `places`, b) `directions` and c) `reverse geocode` & d) `TinyURL`.
 
----
+## Website Preview
 
-## App Preview - WalkThrough Video
+### Static Screenshots
 
-Video #1: Demonstrates all of the content, functional and technical acceptance criteria.
+<img width="1327" alt="Screen Shot 2022-10-05 at 5 15 10 PM" src="https://user-images.githubusercontent.com/106923428/194180599-f62091b9-dfd2-4c8c-b4c9-73996da29f41.png">
 
-[Link to WalkThrough Video]()
+<img width="1329" alt="Screen Shot 2022-10-05 at 5 16 04 PM" src="https://user-images.githubusercontent.com/106923428/194180673-1479f802-369e-4328-bf77-c2527a9c2094.png">
 
-![Build & deploy video](.)
+<img width="1337" alt="Screen Shot 2022-10-05 at 5 16 27 PM" src="https://user-images.githubusercontent.com/106923428/194180709-0294e37c-d2fb-45a0-898a-4be2b0d1fcd6.png">
+
+<img width="500" alt="Screen Shot 2022-10-05 at 5 17 39 PM" src="https://user-images.githubusercontent.com/106923428/194180826-135bd1ff-11d6-4c01-875c-636ea7a233c5.png">
+
+<img width="1363" alt="Screen Shot 2022-10-05 at 5 18 57 PM" src="https://user-images.githubusercontent.com/106923428/194180962-0784a12c-83d0-470a-881a-d3ed18e1433d.png">
+
+<img width="1306" alt="Screen Shot 2022-10-05 at 5 20 58 PM" src="https://user-images.githubusercontent.com/106923428/194181158-4b57980a-c36c-45c1-bca2-c65f58a729d4.png">
+
+### Video Preview
+
+[Video Link](https://drive.google.com/file/d/11V0AH0rK7im93RWqo0G6RKKqAfLKrSUx/view)
 
 ## Tests
 
 No tests at this time.
+
+## Installation
+
+Setup: 
+- (1) Fork the repo, (2) Clone the forked repo locally, (3) Run "npm install" (to install the dependencies).
+
+Setup the Database Schema: 
+- (1) Update or add an .env file. Include the fields below in the .env file. Note that the .env variables are used in the conf folder, connection.js file.
+
+  Server-Side '.env`:
+  * DB_NAME=pristine-clean
+
+  Client-Side `.env`:
+  * REACT_APP_GOOGLE_MAPS_API_KEY=<key>
+  * REACT_APP_TINY_URL_KEY=<key>
+
+Seed the Database: 
+- Run Server: From the root directory, run either "npm run watch" to start nodemon or "node server.js".
+- Seed Database: (a) To create the database, run "SOURCE ./db/schema.sql" in mySQL, (b) To create the database tables, from the terminal, run "npm run start" or "npm run watch", (c) To seed the database tables, run "npm run seed" or "node ./seeds/index.js".
+
+Note that the seed will also create entries for the user table including hashed passwords. When loggin into the app these user seeds can be used as test email address. Either obtain an email address from the user table (SELECT * FROM user;) or use an option noted below:
+
+  * email: a@a.com, password: "12" (note role is employee)
+  * email: b@b.com, password: "12" (note role is manager)
+
+If you'd like to use NPM nodemon as/if you make changes to the code, please install nodemon as a development dependency using "npm install --save-dev nodemon" (see https://www.npmjs.com/package//nodemon). 
 
 ## Contributing
 
@@ -116,12 +125,18 @@ Contributor Covenant Code of Conduct
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md)
 
-## Resources
+
+## Collaborators
 
 1.  [Steve Calla - GitHub Profile](https://github.com/stevecalla)
 2.  [Alex Cleveland - GitHub Profile](https://github.com/AClevel5)
 3.  [Patrick Ratcliff - GitHub Profile](https://github.com/PatrickARatcliff)
 4.  [Colin McNatt - GitHub Profile](https://github.com/colinmichael89)
+
+## Resources
+
+1. GitHub Repo: <https://github.com/stevecalla/pristine-clean-v2>
+3. Heroku Deploy: <https://pristine-clean.herokuapp.com/ >
 
 ## License
 
