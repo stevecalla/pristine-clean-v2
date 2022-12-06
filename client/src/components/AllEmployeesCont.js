@@ -21,6 +21,9 @@ const AllEmployeesCont = () => {
   const [openAvailability, setOpenAvailability] = useState(false);
   const manager = getManagerStatus();
 
+  // get User query
+  const { loading, data, error, refetch } = useQuery(QUERY_USERS);
+
   // delete User query
   const [deleteUser] = useMutation(DELETE_USER);
 
@@ -34,20 +37,13 @@ const AllEmployeesCont = () => {
         },
       });
 
-      window.location.reload();
+      // window.location.reload();
+      refetch();
+
     } catch (err) {
       console.log(err);
     }
   };
-
-  // get User query
-  const { loading, data } = useQuery(QUERY_USERS);
-  if (!loading) {
-    // console.log(data.users)
-  }
-
-  // // const { loadingEmployees, employeesData } = useQuery(QUERY_USERS);
-  // const { employees } = useQuery({ query: QUERY_USERS });
 
   const getElement = (event) => {
     let currentAvailTarget = event.currentTarget.getAttribute("data-target");
@@ -61,7 +57,6 @@ const AllEmployeesCont = () => {
     }
   };
 
-  // // const employees = employeesData?.employees || [];
   if (loading) {
     return (
       <div
@@ -72,7 +67,6 @@ const AllEmployeesCont = () => {
       </div>
     );
   } else if (!loading) {
-    // if (!loading) {
     return (
       <>
         {data.users?.map((employee, index) => (

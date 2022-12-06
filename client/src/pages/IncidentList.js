@@ -8,6 +8,13 @@ import "../styles/button-style.css";
 import "../styles/heading-style.css";
 
 const IncidentList = () => {
+  // get incidents query
+  const { loading, data, error, refetch } = useQuery(QUERY_INCIDENTS);
+  let incidents;
+  if (!loading) {
+    incidents = data.incidents;
+  }
+
   // delete incident query
   const [deleteIncident] = useMutation(DELETE_INCIDENT);
 
@@ -19,19 +26,14 @@ const IncidentList = () => {
           id: incidentId,
         },
       });
-      console.log(data);
-      window.location.reload();
+
+      // window.location.reload();
+      refetch();
+      
     } catch (err) {
       console.log(err);
     }
   };
-
-  // get incidents query
-  const { loading, data } = useQuery(QUERY_INCIDENTS);
-  let incidents;
-  if (!loading) {
-    incidents = data.incidents;
-  }
 
   if (loading) {
     return (
