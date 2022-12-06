@@ -102,6 +102,17 @@ Video #1: Demonstrates all of the content, functional and technical acceptance c
 
 ![Build & deploy video]()
 
+<img src="./client/src/assets/images/login.png" width="700" height="400">
+<img src="./client/src/assets/images/calendar.png" width="700" height="400">
+<img src="./client/src/assets/images/allemployees.png" width="700" height="400">
+<img src="./client/src/assets/images/locations.png" width="700" height="400">
+<img src="./client/src/assets/images/location.png" width="700" height="400">
+<img src="./client/src/assets/images/availability.png" width="700" height="400">
+<img src="./client/src/assets/images/incidentform.png" width="700" height="400">
+<img src="./client/src/assets/images/incidentlist.png" width="700" height="400">
+<img src="./client/src/assets/images/timeoff.png" width="700" height="400">
+<img src="./client/src/assets/images/map.png" width="700" height="400">
+
 ## Tests
 
 No tests at this time.
