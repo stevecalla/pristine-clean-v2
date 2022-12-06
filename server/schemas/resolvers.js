@@ -5,35 +5,44 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async (parent, args, context) => {
-      // if (context.user) {
-      return User.find().populate("locations");
-      // }
-      // throw new AuthenticationError("You need to be logged in!");
+      if (context.user) {
+        return User.find().populate("locations");
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
     user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId });
+      if (context.user) {
+        return User.findOne({ _id: userId });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     me: async (parent, { _id }, context) => {
-      // if (context.user) {
-      return User.findById({ _id }).populate("locations");
-      // }
-      // throw new AuthenticationError("You need to be logged in!");
+      if (context.user) {
+        return User.findById({ _id }).populate("locations");
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     locations: async () => {
-      return Location.find().sort({ createdAt: -1 });
+      if (context.user) {
+        return Location.find().sort({ createdAt: -1 });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     location: async (parent, { locationId }) => {
-      return Location.findOne({ _id: locationId });
+      if (context.user) {
+        return Location.findOne({ _id: locationId });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     incidents: async (parent, args, context) => {
-      // if (context.user) {
-      return Incident.find();
-      // }
-      // throw new AuthenticationError("You need to be logged in!");
+      if (context.user) {
+        return Incident.find();
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
     events: async () => {
       return Event.find();
@@ -48,7 +57,10 @@ const resolvers = {
     },
 
     deleteUser: async (parent, { _id }) => {
-      return User.findOneAndDelete({ _id });
+      if (context.user) {
+        return User.findOneAndDelete({ _id });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     addIncident: async (
@@ -62,18 +74,24 @@ const resolvers = {
         incidentDetails,
       }
     ) => {
-      return Incident.create({
-        employeeName,
-        locationName,
-        employeePhone,
-        subject,
-        urgent,
-        incidentDetails,
-      });
+      if (context.user) {
+        return Incident.create({
+          employeeName,
+          locationName,
+          employeePhone,
+          subject,
+          urgent,
+          incidentDetails,
+        });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     deleteIncident: async (parent, { _id }) => {
-      return Incident.findOneAndDelete({ _id });
+      if (context.user) {
+        return Incident.findOneAndDelete({ _id });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     login: async (parent, { email, password }) => {
@@ -115,7 +133,7 @@ const resolvers = {
       },
       context
     ) => {
-      // if (context.user) {
+      if (context.user) {
       return User.findOneAndUpdate(
         { _id },
         {
@@ -138,8 +156,8 @@ const resolvers = {
         },
         { new: true }
       );
-      // }
-      // throw new AuthenticationError("You need to be logged in!");
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 };

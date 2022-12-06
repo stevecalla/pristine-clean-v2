@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
@@ -26,8 +25,6 @@ const SignupForm = ({ setShowModal }) => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  let navigate = useNavigate();
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -45,7 +42,8 @@ const SignupForm = ({ setShowModal }) => {
 
       Auth.login(data.addUser);
 
-      navigate(`/dashboard`, { replace: true });
+      window.location.assign(`/dashboard`);
+
     } catch (e) {
       console.error(e);
       setShowAlert(true);
