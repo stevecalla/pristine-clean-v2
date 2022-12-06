@@ -66,7 +66,7 @@ The following features exist:
 7. `jsonwebtoken/jwt decoe`: For user authentication and token decoding.
 8. `Heroku`: Deployment.
 9. `FullCalendar` npm package.
-10. NPM Packages: `FontAwesome`, `moment`, `phone-number-formater`, `react-bootstrap-icons`, 
+10. NPM Packages: `FontAwesome`, `moment`, `phone-number-formater`, `react-bootstrap-icons`.
 11. `API`: Google maps - a) `places`, b) `directions` and c) `reverse geocode` & d) `TinyURL`.
 
 ## Website Preview
@@ -75,7 +75,7 @@ The following features exist:
 
 [Link to WalkThrough Video](https://drive.google.com/file/d/1w3eswEcDTp-oEddsNW0qHvPi9W9iFht3/view)
 
-![Build & deploy video]()
+![Build & deploy video](https://drive.google.com/file/d/1ZzLVoxGzF3JVj4q5ayudrvb8mLrwxHUR/view)
 
 <img src="./client/src/assets/images/login.png" width="700" height="400">
 <img src="./client/src/assets/images/calendar.png" width="700" height="400">
