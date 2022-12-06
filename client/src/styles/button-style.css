@@ -79,6 +79,7 @@
 
 .wrong-page-button:hover {
   transform: translate(1px, 1px);
+  border: none;
 }
 
 .wrong-page-button:active {
