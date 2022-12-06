@@ -44,6 +44,7 @@ The following features exist:
 11. Managers dashboards are similar to employees with additional functionality.
 12. In the employees tab, managers have the ability to delete employees.
 13. In the locations tab, managers will see all locations rather than just the ones that they have shifts at.
+14. Can be installed as a PWA.
 
 ## Future Enhancements:
 
@@ -68,12 +69,15 @@ The following features exist:
 9. `FullCalendar` npm package.
 10. NPM Packages: `FontAwesome`, `moment`, `phone-number-formater`, `react-bootstrap-icons`.
 11. `API`: Google maps - a) `places`, b) `directions` and c) `reverse geocode` & d) `TinyURL`.
+12. `PWA`: Is intallable as an app via PWA, and works online.
 
 ## Website Preview
 
 ### Static Screenshots
 
 [Link to WalkThrough Video](https://drive.google.com/file/d/1w3eswEcDTp-oEddsNW0qHvPi9W9iFht3/view)
+
+[Link to PWA Video](https://drive.google.com/file/d/1rWCGUOQecJ3C8uZmQWN7CETrSV9fm_bZ/view)
 
 [Build & deploy video](https://drive.google.com/file/d/1ZzLVoxGzF3JVj4q5ayudrvb8mLrwxHUR/view)
 
