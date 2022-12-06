@@ -98,9 +98,9 @@ This app includes a variety of API routes (see list below). In addition, the fol
 
 Video #1: Demonstrates all of the content, functional and technical acceptance criteria.
 
-[Link to WalkThrough Video]()
+[Link to WalkThrough Video](https://drive.google.com/file/d/1w3eswEcDTp-oEddsNW0qHvPi9W9iFht3/view)
 
-![Build & deploy video](.)
+![Build & deploy video]()
 
 ## Tests
 
