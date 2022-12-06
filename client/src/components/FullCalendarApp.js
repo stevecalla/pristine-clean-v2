@@ -109,7 +109,7 @@ const FullCalendarApp = () => {
             month: "Month",
             list: "Week",
           }}
-          titleFormat="MMM-YYYY"
+          titleFormat="MMM-YY"
           listDayFormat={{
             day: "numeric",
             weekday: "short",
