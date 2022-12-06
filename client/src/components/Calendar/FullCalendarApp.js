@@ -2,23 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import Location from "../../pages/Location";
 import LoadFullCalendar from "./LoadFullCalendar";
 // import { INITIAL_EVENTS } from "../utils/event-utils"; // seed data if necessary
-import Auth from "../../utils/auth";
-import { getUserId } from "../../utils/getUserId";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../../utils/queries";
 import { QUERY_EVENTS } from "../../utils/queries";
+import { QUERY_LOCATIONS } from "../../utils/queries";
 import "../../styles/calendar.css";
 
 const FullCalendarApp = () => {
   // set state of sctive view through day# click
   const [activeView, setActiveView] = useState("dayGridMonth");
-
-  const userId = getUserId();
-
-  const { loading, data } = useQuery(QUERY_ME, {
-    variables: { id: userId },
-    skip: !Auth.loggedIn(),
-  });
 
   const [locationPage, setLocationPage] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -38,9 +29,11 @@ const FullCalendarApp = () => {
   // query events
   const { loading: eventLoad, data: eventData } = useQuery(QUERY_EVENTS);
 
+  const { loading: locationLoad, data: locationData } = useQuery(QUERY_LOCATIONS);
+
   let locations;
-  if (!loading) {
-    locations = data?.me?.locations;
+  if (!locationLoad) {
+    locations = locationData.locations;
   }
 
   if (locationPage) {
@@ -52,8 +45,10 @@ const FullCalendarApp = () => {
   const handleEventClick = (event) => {
     let eventId = event.event._def.publicId;
 
-    let filteredLocation = locations?.filter(
-      (element) => element._id === eventId
+    let filteredLocation = locations.filter(
+      element => {
+        return element._id === eventId
+      }
     );
 
     setSelectedLocation(filteredLocation[0]);

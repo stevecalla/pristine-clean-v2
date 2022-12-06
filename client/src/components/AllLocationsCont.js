@@ -1,27 +1,17 @@
 import React, { useState } from "react";
 import { Row, Col, Card, ListGroup } from "react-bootstrap/";
-// import Button from "react-bootstrap/Button";
-// import { Link } from "react-router-dom";
 import { InfoCircleFill } from "react-bootstrap-icons";
-import Auth from "../utils/auth";
-import { getUserId } from "../utils/getUserId";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_LOCATIONS } from "../utils/queries";
 import Location from "../pages/Location";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/button-style.css";
 
 const AllLocationsCont = ({ allLocations }) => {
-  const userId = getUserId();
-
-  const { loading, data } = useQuery(QUERY_ME, {
-    variables: { id: userId },
-    skip: !Auth.loggedIn(),
-  });
+  const { loading: locationLoad, data: locationData } = useQuery(QUERY_LOCATIONS);
 
   let locations;
-  if (!loading) {
-    locations = data?.me?.locations;
+  if (!locationLoad) {
+    locations = locationData.locations;
   }
 
   const [locationPage, setLocationPage] = useState(false);
@@ -43,7 +33,7 @@ const AllLocationsCont = ({ allLocations }) => {
     );
   }
 
-  if (!loading) {
+  if (!locationLoad) {
     return (
       <>
         {locations?.map((location, index) => (
