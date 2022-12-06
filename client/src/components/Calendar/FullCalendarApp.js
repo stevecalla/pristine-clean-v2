@@ -154,5 +154,6 @@ const FullCalendarApp = () => {
       </>
     );
   }
+};
 
 export default FullCalendarApp;
