@@ -26,8 +26,6 @@ function Incident() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    console.log(e.target, e.target.checked);
-
     // Ternary statement that will call either setFirstName or setLastName based on what field the user is typing in
     name === "name"
       ? setName(value)
