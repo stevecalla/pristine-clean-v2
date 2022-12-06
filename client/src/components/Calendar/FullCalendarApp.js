@@ -1,22 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Location from "../../pages/Location";
 import LoadFullCalendar from "./LoadFullCalendar";
-
-// import { INITIAL_EVENTS } from "../utils/event-utils";
-
+// import { INITIAL_EVENTS } from "../utils/event-utils"; // seed data if necessary
 import Auth from "../../utils/auth";
 import { getUserId } from "../../utils/getUserId";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import { QUERY_EVENTS } from "../../utils/queries";
-
-import FullCalendar, { render } from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
-import listPlugin from "@fullcalendar/list";
-import momentPlugin from "@fullcalendar/moment";
-import moment from "moment";
 import "../../styles/calendar.css";
 
 const FullCalendarApp = () => {
@@ -40,22 +30,16 @@ const FullCalendarApp = () => {
     setActiveView("listDay");
   }, [activeView]);
 
-  //SECTION START - - - - - - -
   let rawEvents;
-  // let INITIAL_EVENTS;
-  // let events;
   const [INITIAL_EVENTS, setINITIAL_EVENTS] = useState(null);
   const [renderCalendar, setRenderCalendar] = useState(false);
   const previousValue = useRef(null);
-  //SECTION END - - - - - - - - - - -
 
-  //section START - - - - - -  - -  - -  - -
   // query events
   const { loading: eventLoad, data: eventData } = useQuery(QUERY_EVENTS);
 
   let locations;
   if (!loading) {
-    console.log(data);
     locations = data?.me?.locations;
   }
 
@@ -77,13 +61,11 @@ const FullCalendarApp = () => {
   };
 
   let results = [];
-  console.log(eventLoad);
 
   if (!eventLoad) {
     rawEvents = eventData?.events;
 
     results = rawEvents?.map((event) => {
-      // events = rawEvents?.map(event => {
       return {
         id: event._id,
         title: event.title,
@@ -97,80 +79,23 @@ const FullCalendarApp = () => {
       };
     });
 
-    console.log({ results });
-    console.log({ INITIAL_EVENTS });
-    console.log("initial is valid = ", results !== undefined);
-    console.log("prev value = ", { previousValue });
-    console.log("prev is valid = ", previousValue.current !== undefined);
-    console.log("prev is valid = ", previousValue !== null);
-    console.log("length = ", results?.length === previousValue.current?.length);
-    console.log(
-      "all true = ",
-      results !== undefined &&
-        previousValue.current !== undefined &&
-        previousValue !== null &&
-        results?.length === previousValue.current?.length
-    );
-    console.log("---------------------");
-
+    // prevents infinite render loop by comparing most recent returned query to previous query. if the same, terminates infinate loop
     if (
       results !== undefined &&
       previousValue.current !== undefined &&
       previousValue !== null &&
       results?.length === previousValue.current?.length
     ) {
-      console.log("hello");
-      console.log(renderCalendar);
-      console.log("---------------------");
       return (
-        <div className="cal-app my-3 p-1 shadow border border-secondary rounded-lg">
-          <div id="calendar" className="cal-app-main">
-            <FullCalendar
-              plugins={[
-                dayGridPlugin,
-                timeGridPlugin,
-                listPlugin,
-                interactionPlugin,
-                momentPlugin,
-              ]}
-              headerToolbar={{
-                left: "title",
-                center: "",
-                right: "prev,next,today",
-              }}
-              footerToolbar={{
-                left: "",
-                center: "dayGridMonth,listWeek",
-                right: "",
-              }}
-              buttonText={{
-                today: "Today",
-                month: "Month",
-                list: "Week",
-              }}
-              titleFormat="MMM-YYYY"
-              listDayFormat={{
-                day: "numeric",
-                weekday: "short",
-                month: "short",
-                omitCommas: false,
-              }}
-              navLinkDayClick={activeView}
-              slotMinTime="06:00:00"
-              initialView={window.mobilecheck() ? "listWeek" : "dayGridMonth"}
-              initialDate={moment().format()}
-              editable={true}
-              selectable={true}
-              selectMirror={true}
-              dayMaxEvents={true}
-              weekends={weekendsVisible}
-              initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-              eventContent={renderEventContent} // custom render function
-              eventClick={handleEventClick} //section
-              navLinks={true} // allows for navigation to day-view of selected date
-            />
-          </div>
-        </div>
+        <>
+          <LoadFullCalendar
+            activeView={activeView}
+            weekendsVisible={weekendsVisible}
+            INITIAL_EVENTS={INITIAL_EVENTS}
+            renderEventContent={renderEventContent}
+            handleEventClick={handleEventClick}
+          />
+        </>
       );
     }
 
@@ -178,12 +103,10 @@ const FullCalendarApp = () => {
     setRenderCalendar(true);
   }
 
-  console.log(renderCalendar);
-
+  // creates previous result value to help eliminate re-render loop
   if (INITIAL_EVENTS) {
     previousValue.current = INITIAL_EVENTS;
   }
-  //section END - - - - - - - - -  -
 
   // check for mobile device to set initial view
   window.mobilecheck = function () {
@@ -203,7 +126,6 @@ const FullCalendarApp = () => {
   };
 
   function renderEventContent(eventInfo) {
-    console.log({ eventInfo });
     return (
       <>
         <b>{eventInfo.timeText}</b>
@@ -214,65 +136,22 @@ const FullCalendarApp = () => {
 
   // spinner - wait for query to return event data
   if (!renderCalendar) {
-    // return (
-    //   <div className="d-flex justify-content-center">
-    //     <div className="lds-hourglass"></div>
-    //   </div>
-    // );
+    return (
+      <div className="d-flex justify-content-center">
+        <div className="lds-hourglass"></div>
+      </div>
+    );
   } else {
     return (
-      // <>
-      //   <LoadFullCalendar activeView={activeView},  weekendsVisible={weekendsVisible}, INITIAL_EVENTS={INITIAL_EVENTS}, renderEventContent={renderEventContent}, handleEventClick={handleEventClick} />
-      // </>
-      
-      <div className="cal-app my-3 p-1 shadow border border-secondary rounded-lg">
-        <div id="calendar" className="cal-app-main">
-          <FullCalendar
-            plugins={[
-              dayGridPlugin,
-              timeGridPlugin,
-              listPlugin,
-              interactionPlugin,
-              momentPlugin,
-            ]}
-            headerToolbar={{
-              left: "title",
-              center: "",
-              right: "prev,next,today",
-            }}
-            footerToolbar={{
-              left: "",
-              center: "dayGridMonth,listWeek",
-              right: "",
-            }}
-            buttonText={{
-              today: "Today",
-              month: "Month",
-              list: "Week",
-            }}
-            titleFormat="MMM-YYYY"
-            listDayFormat={{
-              day: "numeric",
-              weekday: "short",
-              month: "short",
-              omitCommas: false,
-            }}
-            navLinkDayClick={activeView}
-            slotMinTime="06:00:00"
-            initialView={window.mobilecheck() ? "listWeek" : "dayGridMonth"}
-            initialDate={moment().format()}
-            editable={true}
-            selectable={true}
-            selectMirror={true}
-            dayMaxEvents={true}
-            weekends={weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-            eventContent={renderEventContent} // custom render function
-            eventClick={handleEventClick} //section
-            navLinks={true} // allows for navigation to day-view of selected date
-          />
-        </div>
-      </div>
+      <>
+        <LoadFullCalendar
+          activeView={activeView}
+          weekendsVisible={weekendsVisible}
+          INITIAL_EVENTS={INITIAL_EVENTS}
+          renderEventContent={renderEventContent}
+          handleEventClick={handleEventClick}
+        />
+      </>
     );
   }
 };
