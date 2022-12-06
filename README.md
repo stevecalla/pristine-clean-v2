@@ -85,9 +85,21 @@ The following features exist:
 
 <img width="1306" alt="Screen Shot 2022-10-05 at 5 20 58 PM" src="https://user-images.githubusercontent.com/106923428/194181158-4b57980a-c36c-45c1-bca2-c65f58a729d4.png">
 
-### Video Preview
 
-[Video Link](https://drive.google.com/file/d/11V0AH0rK7im93RWqo0G6RKKqAfLKrSUx/view)
+[Link to WalkThrough Video](https://drive.google.com/file/d/1w3eswEcDTp-oEddsNW0qHvPi9W9iFht3/view)
+
+![Build & deploy video]()
+
+<img src="./client/src/assets/images/login.png" width="700" height="400">
+<img src="./client/src/assets/images/calendar.png" width="700" height="400">
+<img src="./client/src/assets/images/allemployees.png" width="700" height="400">
+<img src="./client/src/assets/images/locations.png" width="700" height="400">
+<img src="./client/src/assets/images/location.png" width="700" height="400">
+<img src="./client/src/assets/images/availability.png" width="700" height="400">
+<img src="./client/src/assets/images/incidentform.png" width="700" height="400">
+<img src="./client/src/assets/images/incidentlist.png" width="700" height="400">
+<img src="./client/src/assets/images/timeoff.png" width="700" height="400">
+<img src="./client/src/assets/images/map.png" width="700" height="400">
 
 ## Tests
 
