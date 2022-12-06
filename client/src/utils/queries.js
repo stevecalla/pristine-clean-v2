@@ -73,11 +73,28 @@ export const QUERY_LOCATIONS = gql`
       _id
       businessName
       address
-      days
+      businessContact
+      shifts
+      daysOfWeek
+      startTime
       laborHours
-      instructions
-      manager
-      cleaners
+      instructions {
+        facilityType
+        cleaningType
+        bathrooms
+        lobby
+        sittingArea
+        breakRoom
+        frontdesk
+        appliances
+        dusting
+        windows
+        trash
+        vacuum
+        mop
+        additionalServices
+        exclusions
+      }
     }
   }
 `;
