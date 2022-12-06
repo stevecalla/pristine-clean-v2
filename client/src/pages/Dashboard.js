@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Col, Row, Tab, Tabs } from "react-bootstrap/";
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
-import FullCalendarApp from "../components/FullCalendarApp";
+import FullCalendarApp from "../components/Calendar/FullCalendarApp";
 import "../styles/spinner.css";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";

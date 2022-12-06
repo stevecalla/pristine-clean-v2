@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AllLocationsCont from "../components/AllLocationsCont";
 import Map from "../components/Map";
-import FullCalendarApp from "../components/FullCalendarApp";
+import FullCalendarApp from "../components/Calendar/FullCalendarApp";
 import format_phone from "../utils/helpers";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
