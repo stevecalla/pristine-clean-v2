@@ -73,19 +73,6 @@ The following features exist:
 
 ### Static Screenshots
 
-<img width="1327" alt="Screen Shot 2022-10-05 at 5 15 10 PM" src="https://user-images.githubusercontent.com/106923428/194180599-f62091b9-dfd2-4c8c-b4c9-73996da29f41.png">
-
-<img width="1329" alt="Screen Shot 2022-10-05 at 5 16 04 PM" src="https://user-images.githubusercontent.com/106923428/194180673-1479f802-369e-4328-bf77-c2527a9c2094.png">
-
-<img width="1337" alt="Screen Shot 2022-10-05 at 5 16 27 PM" src="https://user-images.githubusercontent.com/106923428/194180709-0294e37c-d2fb-45a0-898a-4be2b0d1fcd6.png">
-
-<img width="500" alt="Screen Shot 2022-10-05 at 5 17 39 PM" src="https://user-images.githubusercontent.com/106923428/194180826-135bd1ff-11d6-4c01-875c-636ea7a233c5.png">
-
-<img width="1363" alt="Screen Shot 2022-10-05 at 5 18 57 PM" src="https://user-images.githubusercontent.com/106923428/194180962-0784a12c-83d0-470a-881a-d3ed18e1433d.png">
-
-<img width="1306" alt="Screen Shot 2022-10-05 at 5 20 58 PM" src="https://user-images.githubusercontent.com/106923428/194181158-4b57980a-c36c-45c1-bca2-c65f58a729d4.png">
-
-
 [Link to WalkThrough Video](https://drive.google.com/file/d/1w3eswEcDTp-oEddsNW0qHvPi9W9iFht3/view)
 
 ![Build & deploy video]()
