@@ -40,7 +40,6 @@ const LoginForm = () => {
 
       window.location.assign(`/dashboard`);
 
-      // navigate(`/dashboard`, { replace: true }); //todo
     } catch (e) {
       console.error(e);
       setShowAlert(true);
