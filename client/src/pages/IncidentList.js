@@ -67,9 +67,6 @@ const IncidentList = () => {
                           className="mr-2 button-style"
                           data-incident={incident._id}
                           onClick={(event) => {
-                            console.log(
-                              event.currentTarget.getAttribute("data-incident")
-                            );
                             let incidentId =
                               event.currentTarget.getAttribute("data-incident");
                             handleDeleteIncident(incidentId);
