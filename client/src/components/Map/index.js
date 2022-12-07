@@ -141,8 +141,8 @@ function Map({ destinationDb }) {
 
     if (errorMessage) {
       console.log(errorMessage);
-      alert(errorMessage);
-      // attempts to use either alert or a modal resulted in infinate loop; proceed with caution; alert was the least loopy
+      // alert(errorMessage);
+      // attempts to use either alert or a modal resulted in infinite loop; proceed with caution; alert was the least loopy
     }
 
     // section prevent multiple queries this code prevents multiple queries by forcing quit if responses are valid and result is equal to direct response
