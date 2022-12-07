@@ -49,7 +49,7 @@ const AppNavbar = () => {
                     menuvariant="dark"
                   >
                     <NavDropdown.Item
-                      reloadDocument
+                      // reloadDocument
                       as={Link}
                       to="/availability"
                       eventKey="5"
