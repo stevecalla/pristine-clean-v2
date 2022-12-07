@@ -30,7 +30,7 @@ const Availability = () => {
   const userId = getUserId();
 
   // eslint-disable-next-line
-  const { loading, data } = useQuery(QUERY_ME, {
+  const { loading, data, error, refetch } = useQuery(QUERY_ME, {
     variables: { id: userId },
     // if skip is true, this query will not be executed; in this instance, if the user is not logged in this query will be skipped when the component mounts
     skip: !Auth.loggedIn(),
@@ -127,6 +127,8 @@ const Availability = () => {
     } catch (err) {
       console.log(err);
     }
+
+    refetch();
   }
 
   if (loading) {
