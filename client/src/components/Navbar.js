@@ -37,7 +37,7 @@ const AppNavbar = () => {
                 <>
                   <Nav.Link
                     as={Link}
-                    to="/dashboard"
+                    to="/calendar"
                     eventKey="4"
                     className="text-white"
                   >

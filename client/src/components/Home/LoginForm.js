@@ -38,7 +38,7 @@ const LoginForm = () => {
       // Auth.login(data.login.token);
       Auth.login(data.login);
 
-      window.location.assign(`/dashboard`);
+      window.location.assign(`/calendar`);
 
     } catch (e) {
       console.error(e);

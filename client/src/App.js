@@ -81,24 +81,12 @@ function App() {
               <Route
                 exact
                 path="/login"
-                element={
-                  Auth.loggedIn() ? (
-                    <Homepage />
-                  ) : (
-                    <Homepage tabDisplay={"login"} />
-                  )
-                }
+                element={<Homepage tabDisplay={"login"} />}
               />
               <Route
                 exact
                 path="/signup"
-                element={
-                  Auth.loggedIn() ? (
-                    <Homepage />
-                  ) : (
-                    <Homepage tabDisplay={"signup"} />
-                  )
-                }
+                element={<Homepage tabDisplay={"signup"} />}
               />
               <Route path="*" element={<Homepage />} />
             </Routes>
@@ -117,32 +105,20 @@ function App() {
               <Route
                 exact
                 path="/login"
-                element={
-                  Auth.loggedIn() ? (
-                    <Homepage />
-                  ) : (
-                    <Homepage tabDisplay={"login"} />
-                  )
-                }
+                element={<Homepage />}
               />
               <Route
                 exact
                 path="/signup"
-                element={
-                  Auth.loggedIn() ? (
-                    <Homepage />
-                  ) : (
-                    <Homepage tabDisplay={"signup"} />
-                  )
-                }
+                element={<Homepage />}
               />
-              <Route 
+              {/* <Route 
                 exact path="/dashboard" 
                 element={
                   <Dashboard 
                     renderPanel={"calendar"}
                   />}
-              />
+              /> */}
               <Route
                 exact
                 path="/calendar"
