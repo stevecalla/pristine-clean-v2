@@ -136,7 +136,37 @@ function App() {
                   )
                 }
               />
-              <Route exact path="/dashboard" element={<Dashboard />} />
+              <Route 
+                exact path="/dashboard" 
+                element={
+                  <Dashboard 
+                    renderPanel={"calendar"}
+                  />}
+              />
+              <Route
+                exact
+                path="/calendar"
+                element={
+                  <Dashboard 
+                    renderPanel={"calendar"}
+                  />}
+              />
+              <Route
+                exact
+                path="/employees"
+                element={
+                  <Dashboard 
+                    renderPanel={"employees"} 
+                  />}
+              />
+              <Route
+                exact
+                path="/locations"
+                element={
+                  <Dashboard
+                    renderPanel={"locations"} 
+                  />}
+              />
               <Route exact path="/availability" element={<Availability />} />
               <Route exact path="/timeoff" element={<Timeoff />} />
               <Route exact path="/incident" element={<Incident />} />
