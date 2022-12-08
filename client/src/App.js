@@ -125,6 +125,9 @@ function App() {
                 element={
                   <Dashboard 
                     renderPanel={"calendar"}
+                    calendarButtonIsActive={true}
+                    employeesButtonIsActive={false}
+                    locationsButtonIsActive={false}
                   />}
               />
               <Route
@@ -132,7 +135,10 @@ function App() {
                 path="/employees"
                 element={
                   <Dashboard 
-                    renderPanel={"employees"} 
+                    renderPanel={"employees"}
+                    calendarButtonIsActive={false}
+                    employeesButtonIsActive={true}
+                    locationsButtonIsActive={false} 
                   />}
               />
               <Route
@@ -141,6 +147,9 @@ function App() {
                 element={
                   <Dashboard
                     renderPanel={"locations"} 
+                    calendarButtonIsActive={false}
+                    employeesButtonIsActive={false}
+                    locationsButtonIsActive={true}
                   />}
               />
               <Route exact path="/availability" element={<Availability />} />
