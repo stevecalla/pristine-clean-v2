@@ -10,11 +10,12 @@ import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 
-const Dashboard = ({ renderPanel }) => {
-  const [ isActiveCalendar, setIsActiveCalendar ] = useState(true);
-  const [ isActiveEmployees, setIsActiveEmployees ] = useState(false);
-  const [ isActiveLocations, setIsActiveLocations ] = useState(false);
-
+const Dashboard = ({
+  renderPanel,
+  calendarButtonIsActive,
+  employeesButtonIsActive,
+  locationsButtonIsActive,
+}) => {
   // get user info to render to page
   const userId = getUserId();
   const { loading, data } = useQuery(QUERY_ME, {
@@ -50,48 +51,41 @@ const Dashboard = ({ renderPanel }) => {
         <Container className="mb-1">
           <Row>
             <Col>
-
-          <div className="d-flex flex-row mb-1 p-0 rounded" style={{ border: "1px solid blue" }} >
-            <Button
-              variant="outline-primary"
-              active={isActiveCalendar}
-              style={{ flex: "auto", border: "none", borderRadius: "0" }}
-              onClick={() => {
-                navigate("/calendar");
-                setIsActiveCalendar(!isActiveCalendar);
-                setIsActiveEmployees(false);
-                setIsActiveLocations(false);
-              }}
-            >
-              Calendar
-            </Button>
-            <Button
-              variant="outline-primary"
-              active={isActiveEmployees}
-              style={{ flex: "auto", border: "none", borderRadius: "0" }}
-              onClick={() => {
-                navigate("/employees");
-                setIsActiveCalendar(false);
-                setIsActiveEmployees(!isActiveEmployees);
-                setIsActiveLocations(false);
-              }}
-            >
-              Employees
-            </Button>
-            <Button
-              variant="outline-primary"
-              active={isActiveLocations}
-              style={{ flex: "auto", border: "none", borderRadius: "0" }}
-              onClick={() => {
-                navigate("/locations");
-                setIsActiveCalendar(false);
-                setIsActiveEmployees(false);
-                setIsActiveLocations(!isActiveLocations);
-              }}
-            >
-              Locations
-            </Button>
-          </div>
+              <div
+                className="d-flex flex-row mb-1 p-0 rounded"
+                style={{ border: "1px solid blue" }}
+              >
+                <Button
+                  variant="outline-primary"
+                  style={calendarButtonIsActive ? isActive : notActive}
+                  active={calendarButtonIsActive}
+                  onClick={() => {
+                    navigate("/calendar");
+                  }}
+                >
+                  Calendar
+                </Button>
+                <Button
+                  variant="outline-primary"
+                  style={employeesButtonIsActive ? isActive : notActive}
+                  active={employeesButtonIsActive}
+                  onClick={() => {
+                    navigate("/employees");
+                  }}
+                >
+                  Employees
+                </Button>
+                <Button
+                  variant="outline-primary"
+                  style={locationsButtonIsActive ? isActive : notActive}
+                  active={locationsButtonIsActive}
+                  onClick={() => {
+                    navigate("/locations");
+                  }}
+                >
+                  Locations
+                </Button>
+              </div>
 
               {renderPanel === "calendar" ? (
                 <FullCalendarApp />
@@ -109,3 +103,17 @@ const Dashboard = ({ renderPanel }) => {
 };
 
 export default Dashboard;
+
+const isActive = {
+  flex: "auto",
+  border: "none",
+  borderRadius: "0",
+};
+
+const notActive = {
+  flex: "auto",
+  border: "none",
+  borderRadius: "0",
+  outline: "none",
+  boxShadow: "none",
+};
