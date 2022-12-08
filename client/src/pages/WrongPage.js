@@ -9,7 +9,7 @@ const WrongPage = () => {
 
 
   useEffect(() => {
-    setTimeout(() => navigate("/dashboard"), 7000);
+    setTimeout(() => navigate("/calendar"), 7000);
   // eslint-disable-next-line
   }, []);
 
@@ -21,7 +21,7 @@ const WrongPage = () => {
       >
         <Button
           as={Link}
-          to="/dashboard"
+          to="/calendar"
           className="rounded-pill wrong-page-button"
           style={{ backgroundColor: "white", border: "none" }}
         >
