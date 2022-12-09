@@ -77,48 +77,57 @@ function App() {
           <>
             <Navbar />
             <Routes>
-              <Route 
-                exact path="/messages" 
+              <Route
+                exact
+                path="/"
                 element={
-                  <Homepage 
+                  <Homepage
                     renderPanel={"messages"}
                     messageButtonIsActive={true}
                     loginButtonIsActive={false}
                     signupButtonIsActive={false}
                   />
-                } 
+                }
               />
-            <Route
-                exact path="/login" 
+              <Route
+                exact
+                path="/messages"
                 element={
-                  <Homepage 
+                  <Homepage
+                    renderPanel={"messages"}
+                    messageButtonIsActive={true}
+                    loginButtonIsActive={false}
+                    signupButtonIsActive={false}
+                  />
+                }
+              />
+              <Route
+                exact
+                path="/login"
+                element={
+                  <Homepage
                     renderPanel={"login"}
                     messageButtonIsActive={false}
                     loginButtonIsActive={true}
                     signupButtonIsActive={false}
                   />
-                } 
+                }
               />
               <Route
-                exact path="/signup" 
+                exact
+                path="/signup"
                 element={
-                  <Homepage 
+                  <Homepage
                     renderPanel={"signup"}
                     messageButtonIsActive={false}
                     loginButtonIsActive={false}
                     signupButtonIsActive={true}
                   />
-                } 
+                }
               />
-              <Route path="*"
-                element={
-                  <Homepage 
-                    renderPanel={"messages"}
-                    messageButtonIsActive={true}
-                    loginButtonIsActive={false}
-                    signupButtonIsActive={false}
-                  />
-                } 
+              <Route
+                path="*"
+                element={<WrongPage />}
               />
             </Routes>
           </>
@@ -132,39 +141,53 @@ function App() {
           <>
             <Navbar />
             <Routes>
-              {/* <Route exact path="/" element={<Homepage />} /> */}
-              <Route 
-                exact path="/messages" 
+              <Route
+                exact
+                path="/"
                 element={
-                  <Homepage 
+                  <Homepage
                     renderPanel={"messages"}
                     messageButtonIsActive={true}
                     loginButtonIsActive={false}
                     signupButtonIsActive={false}
                   />
-                } 
+                }
               />
               <Route
-                exact path="/login" 
+                exact
+                path="/messages"
                 element={
-                  <Homepage 
+                  <Homepage
+                    renderPanel={"messages"}
+                    messageButtonIsActive={true}
+                    loginButtonIsActive={false}
+                    signupButtonIsActive={false}
+                  />
+                }
+              />
+              <Route
+                exact
+                path="/login"
+                element={
+                  <Homepage
                     renderPanel={"login"}
                     messageButtonIsActive={false}
                     loginButtonIsActive={true}
                     signupButtonIsActive={false}
                   />
-                } 
+                }
               />
               <Route
-                exact path="/signup" 
+                exact
+                path="/signup"
                 element={
-                  <Homepage 
+                  <Homepage
                     renderPanel={"signup"}
                     messageButtonIsActive={false}
                     loginButtonIsActive={false}
                     signupButtonIsActive={true}
                   />
-                } 
+                }
               />
               <Route
                 exact
@@ -218,15 +241,9 @@ function App() {
               <Route exact path="/timeoff" element={<Timeoff />} />
               <Route exact path="/incident" element={<Incident />} />
               <Route exact path="/incidentlist" element={<IncidentList />} />
-              <Route path="*"
-                element={
-                  <Homepage 
-                    renderPanel={"messages"}
-                    messageButtonIsActive={true}
-                    loginButtonIsActive={false}
-                    signupButtonIsActive={false}
-                  />
-                } 
+              <Route
+                path="*"
+                element={<WrongPage />}
               />
             </Routes>
           </>
