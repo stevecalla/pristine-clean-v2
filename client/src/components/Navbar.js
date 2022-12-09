@@ -78,7 +78,7 @@ const AppNavbar = () => {
               ) : (
                 <>
                   <Nav.Link
-                    reloadDocument
+                    // reloadDocument
                     as={Link}
                     to="/login"
                     eventKey="10"
@@ -87,7 +87,7 @@ const AppNavbar = () => {
                     Login
                   </Nav.Link>
                   <Nav.Link
-                    reloadDocument
+                    // reloadDocument
                     as={Link}
                     to="/signup"
                     eventKey="10"

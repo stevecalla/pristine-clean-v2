@@ -77,17 +77,49 @@ function App() {
           <>
             <Navbar />
             <Routes>
-              <Route
-                exact
-                path="/login"
-                element={<Homepage tabDisplay={"login"} />}
+              <Route 
+                exact path="/messages" 
+                element={
+                  <Homepage 
+                    renderPanel={"messages"}
+                    messageButtonIsActive={true}
+                    loginButtonIsActive={false}
+                    signupButtonIsActive={false}
+                  />
+                } 
+              />
+            <Route
+                exact path="/login" 
+                element={
+                  <Homepage 
+                    renderPanel={"login"}
+                    messageButtonIsActive={false}
+                    loginButtonIsActive={true}
+                    signupButtonIsActive={false}
+                  />
+                } 
               />
               <Route
-                exact
-                path="/signup"
-                element={<Homepage tabDisplay={"signup"} />}
+                exact path="/signup" 
+                element={
+                  <Homepage 
+                    renderPanel={"signup"}
+                    messageButtonIsActive={false}
+                    loginButtonIsActive={false}
+                    signupButtonIsActive={true}
+                  />
+                } 
               />
-              <Route path="*" element={<Homepage />} />
+              <Route path="*"
+                element={
+                  <Homepage 
+                    renderPanel={"messages"}
+                    messageButtonIsActive={true}
+                    loginButtonIsActive={false}
+                    signupButtonIsActive={false}
+                  />
+                } 
+              />
             </Routes>
           </>
         </Router>
@@ -100,9 +132,40 @@ function App() {
           <>
             <Navbar />
             <Routes>
-              <Route exact path="/" element={<Homepage />} />
-              <Route exact path="/login" element={<Homepage />} />
-              <Route exact path="/signup" element={<Homepage />} />
+              {/* <Route exact path="/" element={<Homepage />} /> */}
+              <Route 
+                exact path="/messages" 
+                element={
+                  <Homepage 
+                    renderPanel={"messages"}
+                    messageButtonIsActive={true}
+                    loginButtonIsActive={false}
+                    signupButtonIsActive={false}
+                  />
+                } 
+              />
+              <Route
+                exact path="/login" 
+                element={
+                  <Homepage 
+                    renderPanel={"login"}
+                    messageButtonIsActive={false}
+                    loginButtonIsActive={true}
+                    signupButtonIsActive={false}
+                  />
+                } 
+              />
+              <Route
+                exact path="/signup" 
+                element={
+                  <Homepage 
+                    renderPanel={"signup"}
+                    messageButtonIsActive={false}
+                    loginButtonIsActive={false}
+                    signupButtonIsActive={true}
+                  />
+                } 
+              />
               <Route
                 exact
                 path="/calendar"
@@ -155,7 +218,16 @@ function App() {
               <Route exact path="/timeoff" element={<Timeoff />} />
               <Route exact path="/incident" element={<Incident />} />
               <Route exact path="/incidentlist" element={<IncidentList />} />
-              <Route path="*" element={<WrongPage />} />
+              <Route path="*"
+                element={
+                  <Homepage 
+                    renderPanel={"messages"}
+                    messageButtonIsActive={true}
+                    loginButtonIsActive={false}
+                    signupButtonIsActive={false}
+                  />
+                } 
+              />
             </Routes>
           </>
         </Router>

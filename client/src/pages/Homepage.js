@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import Auth from "../utils/auth";
+import { useNavigate } from "react-router-dom";
+import Message from "../components/Home/Message";
 import LoginForm from "../components/Home/LoginForm";
 import SignupForm from "../components/Home/SignupForm";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-
 import { CleanAsset } from "../components/Home/CleanAsset";
-import Message from "../components/Home/Message";
+import Container from "react-bootstrap/Container";
+import "../styles/button-home.css";
 
-const Homepage = ({ tabDisplay }) => {
-  const [key, setKey] = useState(tabDisplay || "message");
-  // set slide prop to true to enable animation
+const Homepage = ({
+  renderPanel,
+  messageButtonIsActive,
+  loginButtonIsActive,
+  signupButtonIsActive,
+}) => {
+  
+  let navigate = useNavigate();
 
   return (
     <Container style={{ marginTop: "85px" }}>
@@ -33,33 +35,45 @@ const Homepage = ({ tabDisplay }) => {
               <CleanAsset />
             </div>
           </div>
+          <div style={{ display: "flex", flex: "auto", width: "100%" }}>
+            <button
+              className={`baseline ${messageButtonIsActive && "isActive"}`}
+              onClick={() => {
+                console.log("click1");
+                navigate("/messages");
+              }}
+            >
+              Messages
+            </button>
+            <button
+              disabled={Auth.loggedIn()}
+              className={`baseline ${loginButtonIsActive && "isActive"}`}
+              onClick={() => {
+                console.log("click2");
+                navigate("/login");
+              }}
+            >
+              Login
+            </button>
+            <button
+              disabled={Auth.loggedIn()}
+              className={`baseline ${signupButtonIsActive ? "isActive" : ""}`}
+              onClick={() => {
+                console.log("click3");
+                navigate("/signup");
+              }}
+            >
+              Sign Up
+            </button>
+          </div>
 
-          <Tabs
-            id="justify-tab"
-            activeKey={key}
-            onSelect={(k) => setKey(k)}
-            className=""
-            variant="tabs"
-            justify
-          >
-            <Tab eventKey="message" title="Message">
-              <Row>
-                <Col>
-                  <Message />
-                </Col>
-              </Row>
-            </Tab>
-            <Tab eventKey="login" title="Login" disabled={Auth.loggedIn()}>
-              <Row>
-                <Col>
-                  <LoginForm />
-                </Col>
-              </Row>
-            </Tab>
-            <Tab eventKey="signup" title="Sign Up" disabled={Auth.loggedIn()}>
-              <SignupForm />
-            </Tab>
-          </Tabs>
+          {renderPanel === "messages" ? (
+            <Message />
+          ) : renderPanel === "login" ? (
+            <LoginForm />
+          ) : (
+            <SignupForm />
+          )}
         </div>
       </div>
     </Container>
