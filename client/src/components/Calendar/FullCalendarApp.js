@@ -1,24 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import Location from "../../pages/Location";
-import LoadFullCalendar from "./LoadFullCalendar";
-// import { INITIAL_EVENTS } from "../utils/event-utils"; // seed data if necessary
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_EVENTS } from "../../utils/queries";
 import { QUERY_LOCATIONS } from "../../utils/queries";
+import LoadFullCalendar from "./LoadFullCalendar";
 import "../../styles/calendar.css";
-
-//section start
-import { useNavigate } from "react-router-dom";
-//section end
+// import { INITIAL_EVENTS } from "../utils/event-utils"; // seed data if necessary
 
 const FullCalendarApp = () => {
-  // section start
   const navigate = useNavigate();
-  // section end
   // set state of sctive view through day# click
   const [activeView, setActiveView] = useState("dayGridMonth");
-
-  // const calendarRef = useRef(null);
   const [weekendsVisible] = useState(true);
 
   useEffect(() => {
@@ -33,42 +25,22 @@ const FullCalendarApp = () => {
   // query events
   const { loading: eventLoad, data: eventData } = useQuery(QUERY_EVENTS);
 
-  const { loading: locationLoad, data: locationData } = useQuery(QUERY_LOCATIONS);
+  const { loading: locationLoad, data: locationData } =
+    useQuery(QUERY_LOCATIONS);
 
   let locations;
   if (!locationLoad) {
     locations = locationData.locations;
   }
 
-  // if (locationPage) {
-  //   return (
-  //     <Location locationDetails={selectedLocation} selectedPage={"calendar"} />
-  //   );
-  // }
-
-  const [locationPage, setLocationPage] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState({});
-
   const handleEventClick = (event) => {
     let eventId = event.event._def.publicId;
 
-    let filteredLocation = locations.filter(
-      element => {
-        return element._id === eventId
-      }
-    );
+    let filteredLocation = locations.filter((element) => {
+      return element._id === eventId;
+    });
 
-    setSelectedLocation(filteredLocation[0]);
-    setLocationPage(true);
-
-    
-    //section start
-    console.log({eventId})
-    console.log(filteredLocation[0])
-    console.log(selectedLocation);
-
-    navigate('/location', { state: { locationInfo: filteredLocation[0] }});
-    //section end
+    navigate("/location", { state: { locationInfo: filteredLocation[0] } });
     return;
   };
 

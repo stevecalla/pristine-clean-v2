@@ -11,7 +11,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
-// import Location from "./pages/Location";
 import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
@@ -102,69 +101,55 @@ function App() {
             <Navbar />
             <Routes>
               <Route exact path="/" element={<Homepage />} />
-              <Route
-                exact
-                path="/login"
-                element={<Homepage />}
-              />
-              <Route
-                exact
-                path="/signup"
-                element={<Homepage />}
-              />
-              {/* <Route 
-                exact path="/dashboard" 
-                element={
-                  <Dashboard 
-                    renderPanel={"calendar"}
-                  />}
-              /> */}
+              <Route exact path="/login" element={<Homepage />} />
+              <Route exact path="/signup" element={<Homepage />} />
               <Route
                 exact
                 path="/calendar"
                 element={
-                  <Dashboard 
+                  <Dashboard
                     renderPanel={"calendar"}
                     calendarButtonIsActive={true}
                     employeesButtonIsActive={false}
                     locationsButtonIsActive={false}
-                  />}
+                  />
+                }
               />
               <Route
                 exact
                 path="/employees"
                 element={
-                  <Dashboard 
+                  <Dashboard
                     renderPanel={"employees"}
                     calendarButtonIsActive={false}
                     employeesButtonIsActive={true}
-                    locationsButtonIsActive={false} 
-                  />}
+                    locationsButtonIsActive={false}
+                  />
+                }
               />
               <Route
                 exact
                 path="/locations"
                 element={
                   <Dashboard
-                    renderPanel={"locations"} 
+                    renderPanel={"locations"}
                     calendarButtonIsActive={false}
                     employeesButtonIsActive={false}
                     locationsButtonIsActive={true}
-                  />}
+                  />
+                }
               />
-              <Route 
+              <Route
                 exact
                 path="/location"
                 element={
                   <Dashboard
-                    renderPanel={"location"} 
+                    renderPanel={"location"}
                     calendarButtonIsActive={false}
                     employeesButtonIsActive={false}
                     locationsButtonIsActive={false}
-                  />}
-                // element={
-                //   <Location 
-                // />} 
+                  />
+                }
               />
               <Route exact path="/availability" element={<Availability />} />
               <Route exact path="/timeoff" element={<Timeoff />} />

@@ -1,18 +1,15 @@
 import React from "react";
-import { Button, Container, Col, Row } from "react-bootstrap/";
-import AllEmployeesCont from "../components/AllEmployeesCont";
-import AllLocationsCont from "../components/AllLocationsCont";
-import FullCalendarApp from "../components/Calendar/FullCalendarApp";
-import "../styles/spinner.css";
+import Auth from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { getUserId } from "../utils/getUserId";
-import Auth from "../utils/auth";
-import { useNavigate } from "react-router-dom";
-
-//section start
+import AllEmployeesCont from "../components/AllEmployeesCont";
+import AllLocationsCont from "../components/AllLocationsCont";
+import FullCalendarApp from "../components/Calendar/FullCalendarApp";
 import Location from "../pages/Location";
-//section end
+import { Button, Container, Col, Row } from "react-bootstrap/";
+import "../styles/spinner.css";
 
 const Dashboard = ({
   renderPanel,
@@ -55,10 +52,7 @@ const Dashboard = ({
         <Container className="mb-1">
           <Row>
             <Col>
-              <div
-                className="d-flex flex-row mb-1 p-0 border border-secondary rounded-lg"
-                // style={{ border: "1px solid blue" }}
-              >
+              <div className="d-flex flex-row mb-1 p-0 border border-secondary rounded-lg">
                 <Button
                   variant="outline-primary"
                   style={calendarButtonIsActive ? isActive : notActive}
@@ -91,18 +85,15 @@ const Dashboard = ({
                 </Button>
               </div>
 
-              {
-                renderPanel === "calendar" ? (
-                  <FullCalendarApp />
-                ) : renderPanel === "employees" ? (
-                  <AllEmployeesCont />
-                ) : renderPanel === "locations" ? (
-                  <AllLocationsCont />
-                ) : (
-                  <Location />
-                )
-              }
-
+              {renderPanel === "calendar" ? (
+                <FullCalendarApp />
+              ) : renderPanel === "employees" ? (
+                <AllEmployeesCont />
+              ) : renderPanel === "locations" ? (
+                <AllLocationsCont />
+              ) : (
+                <Location />
+              )}
             </Col>
           </Row>
         </Container>
