@@ -1,21 +1,20 @@
-import React, { useState } from "react";
-import { Row, Col, Card, ListGroup } from "react-bootstrap/";
-import { InfoCircleFill } from "react-bootstrap-icons";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_LOCATIONS } from "../utils/queries";
-import Location from "../pages/Location";
+import { Row, Col, Card, ListGroup } from "react-bootstrap/";
+import { InfoCircleFill } from "react-bootstrap-icons";
 import "../styles/button-style.css";
 
-const AllLocationsCont = ({ allLocations }) => {
-  const { loading: locationLoad, data: locationData } = useQuery(QUERY_LOCATIONS);
+const AllLocationsCont = () => {
+  const navigate = useNavigate();
+  const { loading: locationLoad, data: locationData } =
+    useQuery(QUERY_LOCATIONS);
 
   let locations;
   if (!locationLoad) {
     locations = locationData.locations;
   }
-
-  const [locationPage, setLocationPage] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState({});
 
   const handleInfoClick = (event) => {
     let locationId = event.currentTarget.getAttribute("data-location");
@@ -23,15 +22,10 @@ const AllLocationsCont = ({ allLocations }) => {
     let filteredLocation = locations.filter(
       (element) => element._id === locationId
     );
-    setSelectedLocation(filteredLocation[0]);
-    setLocationPage(true);
-  };
 
-  if (locationPage) {
-    return (
-      <Location locationDetails={selectedLocation} selectedPage={"location"} />
-    );
-  }
+    navigate("/location", { state: { locationInfo: filteredLocation[0] } });
+    return;
+  };
 
   if (!locationLoad) {
     return (
@@ -48,7 +42,6 @@ const AllLocationsCont = ({ allLocations }) => {
                       color="orange"
                       size="28px"
                       className="mr-2 info-button-style"
-                      // transform="grow-9"
                       data-location={location._id}
                       onClick={(event) => handleInfoClick(event)}
                     />

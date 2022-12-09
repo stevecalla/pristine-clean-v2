@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { Button, Container, Col, Row } from "react-bootstrap/";
-import AllEmployeesCont from "../components/AllEmployeesCont";
-import AllLocationsCont from "../components/AllLocationsCont";
-import FullCalendarApp from "../components/Calendar/FullCalendarApp";
-import "../styles/spinner.css";
+import React from "react";
+import Auth from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { getUserId } from "../utils/getUserId";
-import Auth from "../utils/auth";
-import { useNavigate } from "react-router-dom";
+import AllEmployeesCont from "../components/AllEmployeesCont";
+import AllLocationsCont from "../components/AllLocationsCont";
+import FullCalendarApp from "../components/Calendar/FullCalendarApp";
+import Location from "../pages/Location";
+import { Button, Container, Col, Row } from "react-bootstrap/";
+import "../styles/spinner.css";
 
 const Dashboard = ({
   renderPanel,
@@ -51,10 +52,7 @@ const Dashboard = ({
         <Container className="mb-1">
           <Row>
             <Col>
-              <div
-                className="d-flex flex-row mb-1 p-0 border border-secondary rounded-lg"
-                // style={{ border: "1px solid blue" }}
-              >
+              <div className="d-flex flex-row mb-1 p-0 border border-secondary rounded-lg">
                 <Button
                   variant="outline-primary"
                   style={calendarButtonIsActive ? isActive : notActive}
@@ -91,8 +89,10 @@ const Dashboard = ({
                 <FullCalendarApp />
               ) : renderPanel === "employees" ? (
                 <AllEmployeesCont />
-              ) : (
+              ) : renderPanel === "locations" ? (
                 <AllLocationsCont />
+              ) : (
+                <Location />
               )}
             </Col>
           </Row>

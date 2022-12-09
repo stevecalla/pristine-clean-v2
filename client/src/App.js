@@ -1,4 +1,5 @@
 import React from "react";
+import Auth from "./utils/auth";
 import {
   ApolloClient,
   InMemoryCache,
@@ -13,10 +14,8 @@ import Dashboard from "./pages/Dashboard";
 import Availability from "./pages/Availability";
 import Timeoff from "./pages/Timeoff";
 import Incident from "./pages/Incident";
-import Location from "./pages/Location";
 import WrongPage from "./pages/WrongPage";
 import IncidentList from "./pages/IncidentList";
-import Auth from "./utils/auth";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -102,60 +101,59 @@ function App() {
             <Navbar />
             <Routes>
               <Route exact path="/" element={<Homepage />} />
-              <Route
-                exact
-                path="/login"
-                element={<Homepage />}
-              />
-              <Route
-                exact
-                path="/signup"
-                element={<Homepage />}
-              />
-              {/* <Route 
-                exact path="/dashboard" 
-                element={
-                  <Dashboard 
-                    renderPanel={"calendar"}
-                  />}
-              /> */}
+              <Route exact path="/login" element={<Homepage />} />
+              <Route exact path="/signup" element={<Homepage />} />
               <Route
                 exact
                 path="/calendar"
                 element={
-                  <Dashboard 
+                  <Dashboard
                     renderPanel={"calendar"}
                     calendarButtonIsActive={true}
                     employeesButtonIsActive={false}
                     locationsButtonIsActive={false}
-                  />}
+                  />
+                }
               />
               <Route
                 exact
                 path="/employees"
                 element={
-                  <Dashboard 
+                  <Dashboard
                     renderPanel={"employees"}
                     calendarButtonIsActive={false}
                     employeesButtonIsActive={true}
-                    locationsButtonIsActive={false} 
-                  />}
+                    locationsButtonIsActive={false}
+                  />
+                }
               />
               <Route
                 exact
                 path="/locations"
                 element={
                   <Dashboard
-                    renderPanel={"locations"} 
+                    renderPanel={"locations"}
                     calendarButtonIsActive={false}
                     employeesButtonIsActive={false}
                     locationsButtonIsActive={true}
-                  />}
+                  />
+                }
+              />
+              <Route
+                exact
+                path="/location"
+                element={
+                  <Dashboard
+                    renderPanel={"location"}
+                    calendarButtonIsActive={false}
+                    employeesButtonIsActive={false}
+                    locationsButtonIsActive={false}
+                  />
+                }
               />
               <Route exact path="/availability" element={<Availability />} />
               <Route exact path="/timeoff" element={<Timeoff />} />
               <Route exact path="/incident" element={<Incident />} />
-              <Route exact path="/location" element={<Location />} />
               <Route exact path="/incidentlist" element={<IncidentList />} />
               <Route path="*" element={<WrongPage />} />
             </Routes>
