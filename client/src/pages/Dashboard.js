@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Container, Col, Row } from "react-bootstrap/";
 import AllEmployeesCont from "../components/AllEmployeesCont";
 import AllLocationsCont from "../components/AllLocationsCont";
@@ -9,6 +9,10 @@ import { QUERY_ME } from "../utils/queries";
 import { getUserId } from "../utils/getUserId";
 import Auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
+
+//section start
+import Location from "../pages/Location";
+//section end
 
 const Dashboard = ({
   renderPanel,
@@ -87,13 +91,18 @@ const Dashboard = ({
                 </Button>
               </div>
 
-              {renderPanel === "calendar" ? (
-                <FullCalendarApp />
-              ) : renderPanel === "employees" ? (
-                <AllEmployeesCont />
-              ) : (
-                <AllLocationsCont />
-              )}
+              {
+                renderPanel === "calendar" ? (
+                  <FullCalendarApp />
+                ) : renderPanel === "employees" ? (
+                  <AllEmployeesCont />
+                ) : renderPanel === "locations" ? (
+                  <AllLocationsCont />
+                ) : (
+                  <Location />
+                )
+              }
+
             </Col>
           </Row>
         </Container>

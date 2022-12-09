@@ -14,12 +14,24 @@ import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 import { SkipBackwardCircle } from "react-bootstrap-icons";
 import "../styles/button-style.css";
 
+//section start
+import { useLocation } from 'react-router-dom';
+//section end
+
 const Location = ({ locationDetails, selectedPage }) => {
+
+  //section start
+  const location = useLocation();
+  console.log(location);
+  console.log(location.state.locationInfo)
+  //section end
+
   const [showMap, setShowMap] = useState(false);
   const [openDetails, setOpenDetails] = useState(true);
   const [openInstructions, setOpenInstruction] = useState(false);
   const [locationPage, setLocationPage] = useState(false);
 
+  //Back button
   const handleAllLocationsClick = (e) => {
     setLocationPage(true);
   };
@@ -71,21 +83,25 @@ const Location = ({ locationDetails, selectedPage }) => {
             <Row>
               <Col>
                 <Card>
-                  <Card.Header>{locationDetails.businessName}</Card.Header>
+                  {/* <Card.Header>{locationDetails.businessName}</Card.Header> */}
+                  <Card.Header>{location.state.locationInfo.businessName}</Card.Header>
                   <Card.Body className=" bg-light">
                     <ListGroup variant="flush">
                       <ListGroup.Item>
                         <b>Manager:</b> McNatt, Colin
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <b>Address:</b> {locationDetails.address}
+                        {/* <b>Address:</b> {locationDetails.address} */}
+                        <b>Address:</b> {location.state.locationInfo.address}
                       </ListGroup.Item>
                       <ListGroup.Item>
                         <b>Contact #:</b>{" "}
-                        {format_phone(locationDetails.businessContact)}
+                        {/* {format_phone(locationDetails.businessContact)} */}
+                        {format_phone(location.state.locationInfo.businessContact)}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <b>Frequency:</b> {locationDetails.shifts}
+                        {/* <b>Frequency:</b> {locationDetails.shifts} */}
+                        <b>Frequency:</b> {location.state.locationInfo.shifts}
                       </ListGroup.Item>
                       <Button
                         onClick={() => setOpenInstruction(!openInstructions)}
@@ -109,65 +125,83 @@ const Location = ({ locationDetails, selectedPage }) => {
                               <ListGroup variant="flush">
                                 <ListGroup.Item>
                                   <b>Facility Type:</b>{" "}
-                                  {locationDetails.instructions.facilityType}
+                                  {/* {locationDetails.instructions.facilityType} */}
+                                  {location.state.locationInfo.instructions.facilityType}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Cleaning Type:</b>{" "}
-                                  {locationDetails.instructions.cleaningType}
+                                  {/* {locationDetails.instructions.cleaningType} */}
+                                  {location.state.locationInfo.instructions.cleaningType}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Bathrooms:</b>{" "}
-                                  {locationDetails.instructions.bathrooms}
+                                  {/* {locationDetails.instructions.bathrooms} */}
+                                  {location.state.locationInfo.instructions.bathrooms}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Lobby:</b>{" "}
-                                  {locationDetails.instructions.lobby}
+                                  {/* {locationDetails.instructions.lobby} */}
+                                  {location.state.locationInfo.instructions.lobby}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Sitting-Area:</b>{" "}
-                                  {locationDetails.instructions.sittingArea}
+                                  {/* {locationDetails.instructions.sittingArea} */}
+                                  {location.state.locationInfo.instructions.sittingArea}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Break-Room:</b>{" "}
-                                  {locationDetails.instructions.breakRoom}
+                                  {/* {locationDetails.instructions.breakRoom} */}
+                                  {location.state.locationInfo.instructions.breakRoom}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Fornt-Desk:</b>{" "}
-                                  {locationDetails.instructions.frontdesk}
+                                  {/* {locationDetails.instructions.frontdesk} */}
+                                  {location.state.locationInfo.instructions.frontdesk}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Appliances:</b>{" "}
-                                  {locationDetails.instructions.appliances}
+                                  {/* {locationDetails.instructions.appliances} */}
+                                  {location.state.locationInfo.instructions.appliances}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Dusting:</b>{" "}
-                                  {locationDetails.instructions.dusting}
+                                  {/* {locationDetails.instructions.dusting} */}
+                                  {location.state.locationInfo.instructions.dusting}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Windows:</b>{" "}
-                                  {locationDetails.instructions.exclusions}
+                                  {/* {locationDetails.instructions.exclusions} */}
+                                  {location.state.locationInfo.instructions.exclusions}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Trash:</b>{" "}
-                                  {locationDetails.instructions.trash}
+                                  {/* {locationDetails.instructions.trash} */}
+                                  {location.state.locationInfo.instructions.trash}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Vacuum:</b>{" "}
-                                  {locationDetails.instructions.vacuum}
+                                  {/* {locationDetails.instructions.vacuum} */}
+                                  {location.state.locationInfo.instructions.vacuum}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                  <b>Mop:</b> {locationDetails.instructions.mop}
+                                  {/* <b>Mop:</b> {locationDetails.instructions.mop} */}
+                                  <b>Mop:</b> {location.state.locationInfo.instructions.mop}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Additional Services:</b>{" "}
-                                  {
+                                  {/* {
                                     locationDetails.instructions
+                                      .additionalServices
+                                  } */}
+                                  {
+                                    location.state.locationInfo.instructions
                                       .additionalServices
                                   }
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Exclusions:</b>{" "}
-                                  {locationDetails.instructions.exclusions}
+                                  {/* {locationDetails.instructions.exclusions} */}
+                                  {location.state.locationInfo.instructions.exclusions}
                                 </ListGroup.Item>
                               </ListGroup>
                             </Card.Body>
@@ -200,7 +234,8 @@ const Location = ({ locationDetails, selectedPage }) => {
                 style={{ height: "1000px" }}
               >
                 <div>
-                  <Map destinationDb={locationDetails.address} />
+                  {/* <Map destinationDb={locationDetails.address} /> */}
+                  <Map destinationDb={location.state.locationInfo.address} />
                 </div>
               </ResponsiveEmbed>
             </div>

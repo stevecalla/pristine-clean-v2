@@ -7,7 +7,14 @@ import { QUERY_EVENTS } from "../../utils/queries";
 import { QUERY_LOCATIONS } from "../../utils/queries";
 import "../../styles/calendar.css";
 
+//section start
+import { useNavigate } from "react-router-dom";
+//section end
+
 const FullCalendarApp = () => {
+  // section start
+  const navigate = useNavigate();
+  // section end
   // set state of sctive view through day# click
   const [activeView, setActiveView] = useState("dayGridMonth");
 
@@ -36,11 +43,11 @@ const FullCalendarApp = () => {
     locations = locationData.locations;
   }
 
-  if (locationPage) {
-    return (
-      <Location locationDetails={selectedLocation} selectedPage={"calendar"} />
-    );
-  }
+  // if (locationPage) {
+  //   return (
+  //     <Location locationDetails={selectedLocation} selectedPage={"calendar"} />
+  //   );
+  // }
 
   const handleEventClick = (event) => {
     let eventId = event.event._def.publicId;
@@ -53,7 +60,26 @@ const FullCalendarApp = () => {
 
     setSelectedLocation(filteredLocation[0]);
     setLocationPage(true);
+
+    
+    //section start
+    console.log({eventId})
+    console.log(filteredLocation[0])
+    console.log(selectedLocation);
+
+    navigate('/location', { state: { locationInfo: filteredLocation[0] }});
+    //section end
+    return;
   };
+
+    //section start
+    // if (locationPage) {
+
+    //   navigate('/location',{state:{id: selectedLocation}});
+    //   return;
+  
+    // }
+    //section end
 
   let results = [];
 
@@ -124,7 +150,7 @@ const FullCalendarApp = () => {
     return (
       <>
         <b>{eventInfo.timeText}</b>
-        <i> {eventInfo.event.title}</i>
+        <i>{eventInfo.event.title}</i>
       </>
     );
   }
