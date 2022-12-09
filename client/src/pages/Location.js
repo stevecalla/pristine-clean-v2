@@ -35,10 +35,10 @@ const Location = ({ locationDetails, selectedPage }) => {
   const [locationPage, setLocationPage] = useState(false);
 
   //Back button
-  const handleAllLocationsClick = (e) => {
-    navigate("/calendar");
-    // setLocationPage(true);
-  };
+  // const handleAllLocationsClick = (e) => {
+  //   navigate("/calendar");
+  //   // setLocationPage(true);
+  // };
 
   if (locationPage && selectedPage === "calendar") {
     // return <FullCalendarApp />;
@@ -58,7 +58,7 @@ const Location = ({ locationDetails, selectedPage }) => {
         >
           <Row className="justify-content-between">
             <Col xs={1.25} className="ml-1">
-              <div>
+              {/* <div>
                 <SkipBackwardCircle
                   id="link-location-page"
                   className="back-button-style"
@@ -67,7 +67,7 @@ const Location = ({ locationDetails, selectedPage }) => {
                   aria-hidden="true"
                   onClick={() => handleAllLocationsClick()}
                 />
-              </div>
+              </div> */}
             </Col>
             <Col xs={8}>Location Details</Col>
             <Col xs={1.25} className="mr-1">
@@ -130,66 +130,66 @@ const Location = ({ locationDetails, selectedPage }) => {
                                 <ListGroup.Item>
                                   <b>Facility Type:</b>{" "}
                                   {/* {locationDetails.instructions.facilityType} */}
-                                  {location.state.locationInfo.instructions.facilityType}
+                                  {location.state.locationInfo.instructions?.facilityType}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Cleaning Type:</b>{" "}
                                   {/* {locationDetails.instructions.cleaningType} */}
-                                  {location.state.locationInfo.instructions.cleaningType}
+                                  {location.state.locationInfo.instructions?.cleaningType}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Bathrooms:</b>{" "}
                                   {/* {locationDetails.instructions.bathrooms} */}
-                                  {location.state.locationInfo.instructions.bathrooms}
+                                  {location.state.locationInfo.instructions?.bathrooms}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Lobby:</b>{" "}
                                   {/* {locationDetails.instructions.lobby} */}
-                                  {location.state.locationInfo.instructions.lobby}
+                                  {location.state.locationInfo.instructions?.lobby}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Sitting-Area:</b>{" "}
                                   {/* {locationDetails.instructions.sittingArea} */}
-                                  {location.state.locationInfo.instructions.sittingArea}
+                                  {location.state.locationInfo.instructions?.sittingArea}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Break-Room:</b>{" "}
                                   {/* {locationDetails.instructions.breakRoom} */}
-                                  {location.state.locationInfo.instructions.breakRoom}
+                                  {location.state.locationInfo.instructions?.breakRoom}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Fornt-Desk:</b>{" "}
                                   {/* {locationDetails.instructions.frontdesk} */}
-                                  {location.state.locationInfo.instructions.frontdesk}
+                                  {location.state.locationInfo.instructions?.frontdesk}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Appliances:</b>{" "}
                                   {/* {locationDetails.instructions.appliances} */}
-                                  {location.state.locationInfo.instructions.appliances}
+                                  {location.state.locationInfo.instructions?.appliances}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Dusting:</b>{" "}
                                   {/* {locationDetails.instructions.dusting} */}
-                                  {location.state.locationInfo.instructions.dusting}
+                                  {location.state.locationInfo.instructions?.dusting}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Windows:</b>{" "}
                                   {/* {locationDetails.instructions.exclusions} */}
-                                  {location.state.locationInfo.instructions.exclusions}
+                                  {location.state.locationInfo.instructions?.exclusions}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Trash:</b>{" "}
                                   {/* {locationDetails.instructions.trash} */}
-                                  {location.state.locationInfo.instructions.trash}
+                                  {location.state.locationInfo.instructions?.trash}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Vacuum:</b>{" "}
                                   {/* {locationDetails.instructions.vacuum} */}
-                                  {location.state.locationInfo.instructions.vacuum}
+                                  {location.state.locationInfo.instructions?.vacuum}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   {/* <b>Mop:</b> {locationDetails.instructions.mop} */}
-                                  <b>Mop:</b> {location.state.locationInfo.instructions.mop}
+                                  <b>Mop:</b> {location.state.locationInfo.instructions?.mop}
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Additional Services:</b>{" "}
@@ -198,14 +198,13 @@ const Location = ({ locationDetails, selectedPage }) => {
                                       .additionalServices
                                   } */}
                                   {
-                                    location.state.locationInfo.instructions
-                                      .additionalServices
+                                    location.state.locationInfo.instructions?.additionalServices
                                   }
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                   <b>Exclusions:</b>{" "}
                                   {/* {locationDetails.instructions.exclusions} */}
-                                  {location.state.locationInfo.instructions.exclusions}
+                                  {location.state.locationInfo.instructions?.exclusions}
                                 </ListGroup.Item>
                               </ListGroup>
                             </Card.Body>

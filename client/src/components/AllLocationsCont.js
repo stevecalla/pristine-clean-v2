@@ -6,13 +6,26 @@ import { QUERY_LOCATIONS } from "../utils/queries";
 import Location from "../pages/Location";
 import "../styles/button-style.css";
 
+//section start
+import { useNavigate } from "react-router-dom";
+//section end
+
 const AllLocationsCont = ({ allLocations }) => {
+  // section start
+  const navigate = useNavigate();
+  // section end
   const { loading: locationLoad, data: locationData } = useQuery(QUERY_LOCATIONS);
 
   let locations;
   if (!locationLoad) {
     locations = locationData.locations;
   }
+
+  // if (locationPage) {
+  //   return (
+  //     <Location locationDetails={selectedLocation} selectedPage={"location"} />
+  //   );
+  // }
 
   const [locationPage, setLocationPage] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -25,13 +38,16 @@ const AllLocationsCont = ({ allLocations }) => {
     );
     setSelectedLocation(filteredLocation[0]);
     setLocationPage(true);
+
+    //section start
+    console.log({locationId})
+    console.log(filteredLocation)
+    console.log(selectedLocation);
+
+    navigate('/location', { state: { locationInfo: filteredLocation[0] }});
+    //section end
   };
 
-  if (locationPage) {
-    return (
-      <Location locationDetails={selectedLocation} selectedPage={"location"} />
-    );
-  }
 
   if (!locationLoad) {
     return (

@@ -18,9 +18,6 @@ const FullCalendarApp = () => {
   // set state of sctive view through day# click
   const [activeView, setActiveView] = useState("dayGridMonth");
 
-  const [locationPage, setLocationPage] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState({});
-
   // const calendarRef = useRef(null);
   const [weekendsVisible] = useState(true);
 
@@ -49,6 +46,9 @@ const FullCalendarApp = () => {
   //   );
   // }
 
+  const [locationPage, setLocationPage] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState({});
+
   const handleEventClick = (event) => {
     let eventId = event.event._def.publicId;
 
@@ -71,15 +71,6 @@ const FullCalendarApp = () => {
     //section end
     return;
   };
-
-    //section start
-    // if (locationPage) {
-
-    //   navigate('/location',{state:{id: selectedLocation}});
-    //   return;
-  
-    // }
-    //section end
 
   let results = [];
 
