@@ -43,5 +43,8 @@ const isDisplayed = {
 const isNotDisplayed = {
   height: "2.75rem",
   display: "block",
+  position: "fixed",
+  top: 7,
+  left:0,
   zIndex: "3",
 };

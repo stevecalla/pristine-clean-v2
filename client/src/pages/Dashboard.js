@@ -52,8 +52,8 @@ const Dashboard = ({
           <Row>
             <Col>
               <div
-                className="d-flex flex-row mb-1 p-0 rounded"
-                style={{ border: "1px solid blue" }}
+                className="d-flex flex-row mb-1 p-0 border border-secondary rounded-lg"
+                // style={{ border: "1px solid blue" }}
               >
                 <Button
                   variant="outline-primary"
