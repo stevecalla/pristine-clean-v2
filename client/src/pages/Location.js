@@ -14,13 +14,16 @@ import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 import { SkipBackwardCircle } from "react-bootstrap-icons";
 import "../styles/button-style.css";
 
+
 //section start
+import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 //section end
 
 const Location = ({ locationDetails, selectedPage }) => {
 
   //section start
+  let navigate = useNavigate();
   const location = useLocation();
   console.log(location);
   console.log(location.state.locationInfo)
@@ -33,11 +36,12 @@ const Location = ({ locationDetails, selectedPage }) => {
 
   //Back button
   const handleAllLocationsClick = (e) => {
-    setLocationPage(true);
+    navigate("/calendar");
+    // setLocationPage(true);
   };
 
   if (locationPage && selectedPage === "calendar") {
-    return <FullCalendarApp />;
+    // return <FullCalendarApp />;
   } else if (locationPage && selectedPage === "location") {
     return <AllLocationsCont />;
   }
